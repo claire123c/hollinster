@@ -11,7 +11,6 @@ class App extends React.Component {
 
 // APIaxiosget request goes here- JYU
   }
-
   render() {
     return (
       <h1>HOLLINSTER established 1942</h1>
