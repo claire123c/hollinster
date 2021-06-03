@@ -7,8 +7,8 @@ const serveStatic = express.static(filePath);
 
 app.use(serveStatic);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('https://app-hrsei-api.herokuapp.com/api/fec2/hrsfo/reviews/', (req, res) => {
+  res.send('Hello World!');
 })
 
 app.listen(PORT, () => {
