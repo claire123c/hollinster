@@ -1,0 +1,41 @@
+{
+  "name": "hollinster",
+  "version": "1.0.0",
+  "description": "Front End Capstone for Hack Reactor",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "react-dev": "webpack -d eval-source-map --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claire123c/hollinster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claire123c/hollinster/issues"
+  },
+  "homepage": "https://github.com/claire123c/hollinster#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "webpack-cli": "^4.7.0",
+    "webpack": "^4.46.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.0.1",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "underscore": "^1.13.1"
+  }
+}
