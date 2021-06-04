@@ -8,12 +8,13 @@ class App extends React.Component {
   }
 
   componentDidMount(){
+    console.log('mounted')
 
 // APIaxiosget request goes here- JYU
   }
   render() {
     return (
-      <h1>HOLLINSTER established 1942</h1>
+      <h1>HOLLINSTER established 1991</h1>
     )
   }
 }
