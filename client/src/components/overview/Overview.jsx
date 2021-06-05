@@ -6,7 +6,6 @@ import sampleData from './sampleData.js';
 function Overview() {
   return (
     <>
-      <div> hihi</div>
       <Gallery styles={sampleData.results} />
     </>
   );
