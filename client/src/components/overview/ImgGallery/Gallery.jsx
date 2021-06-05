@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Overview() {
+function Gallery() {
   return (
     <>
     </>
   );
 }
 
-export default Overview;
+export default Gallery;
