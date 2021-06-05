@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d eval-source-map --watch",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.7",
     "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -35,7 +36,9 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.13.0",
     "axios": "^0.21.1",
+    "babel-jest": "^27.0.2",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.0.1",

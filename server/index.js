@@ -5,9 +5,9 @@ const PORT = 3000;
 const filePath = path.join(__dirname, '../client/public');
 const serveStatic = express.static(filePath);
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
-const APIInfo = require('../config.js');
+const APIInfo = require('../config');
 const axios = require('axios');
-app.use(express.json())
+app.use(express.json());
 app.use(serveStatic);
 
 // PRODUCT API Calls
