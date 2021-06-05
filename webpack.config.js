@@ -1,12 +1,12 @@
-var path = require('path');
-var SRC_DIR = path.join(__dirname, '/client/src');
-var PUBLIC_DIR = path.join(__dirname, '/client/public');
+const path = require('path');
+const SRC_DIR = path.join(__dirname, '/client/src');
+const PUBLIC_DIR = path.join(__dirname, '/client/public');
 
 module.exports = {
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: PUBLIC_DIR
+    path: PUBLIC_DIR,
   },
   devtool: 'eval-source-map',
   mode: 'development',
@@ -18,10 +18,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+    ],
+  },
 };
