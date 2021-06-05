@@ -1,22 +1,16 @@
 // imports the react module installed in node_modules
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+// import axios from 'axios';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const App = (props) => {
+  const [test, setTest] = useState(true);
 
-  componentDidMount(){
-    console.log('mounted')
-
-// APIaxiosget request goes here- JYU
-  }
-  render() {
-    return (
+  return (
+    <>
       <h1>HOLLINSTER established 1991</h1>
-    )
-  }
-}
+      <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
+    </>
+  );
+};
 
 export default App;
