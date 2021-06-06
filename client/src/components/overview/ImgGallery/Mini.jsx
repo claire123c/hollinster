@@ -6,9 +6,7 @@ const Thumbnail = styled.img`
   height: 100%;
 `;
 
-
-function Mini(props) {
-  const { mini: { thumbnail_url }, currentImg } = props;
+function Mini({ mini: { thumbnail_url }, currentImg }) {
   const ThumbnailBox = styled.div`
     display: flex;
     justify-content: center;

@@ -44,8 +44,7 @@ const LeftArrow = styled.button`
   transform: translateX(25%) rotate(45deg);
 `;
 
-function Large(props) {
-  const { defaultStyle: [firstStyle] } = props;
+function Large({ defaultStyle: [firstStyle] }) {
   const { photos } = firstStyle;
   const [currentImg, useCurrentImg] = useState(photos[0]);
   const [allImgs, useOtherImgs] = useState(photos);
