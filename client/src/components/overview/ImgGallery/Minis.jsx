@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Mini from './Mini.jsx'
 
 function Minis(props) {
