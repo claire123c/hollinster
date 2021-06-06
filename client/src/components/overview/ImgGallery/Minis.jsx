@@ -4,16 +4,15 @@ import styled from 'styled-components';
 
 import Mini from './Mini.jsx'
 
-const ThumbnailsBox = styled.div`
-  margin-right: 30%;
-`;
-
 function Minis(props) {
-  const { minis } = props;
+  const { minis, currentImg } = props;
+  const ThumbnailsBox = styled.div`
+    margin-right: 30%;
+  `;
   return (
     <ThumbnailsBox>
       {minis.map((mini) => (
-        <Mini mini={mini} key={mini.url} />
+        <Mini mini={mini} key={mini.url} currentImg={currentImg} />
       ))}
     </ThumbnailsBox>
 
@@ -23,5 +22,6 @@ function Minis(props) {
 export default Minis;
 
 Minis.propTypes = {
-  minis: PropTypes.array
+  minis: PropTypes.array,
+  currentImg: PropTypes.object
 };

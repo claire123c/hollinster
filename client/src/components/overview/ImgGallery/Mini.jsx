@@ -6,19 +6,20 @@ const Thumbnail = styled.img`
   height: 100%;
 `;
 
-const ThumbnailBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  outline: solid black 1px;
-  width: 70px;
-  height: 70px;
-  margin: 10% 30%;
-`;
 
 function Mini(props) {
-  const { mini: { thumbnail_url } } = props;
+  const { mini: { thumbnail_url }, currentImg } = props;
+  const ThumbnailBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: ${thumbnail_url === currentImg.thumbnail_url ? 'black' : 'rgb(232,232,232)'};
+    outline: solid black 1px;
+    width: 70px;
+    height: 70px;
+    margin: 10% 30%;
+  `;
   return (
     <ThumbnailBox>
       <Thumbnail src={thumbnail_url} alt={thumbnail_url} />

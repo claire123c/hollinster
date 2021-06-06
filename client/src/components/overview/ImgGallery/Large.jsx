@@ -48,13 +48,11 @@ function Large(props) {
   const { defaultStyle: [firstStyle] } = props;
   const { photos } = firstStyle;
   const [currentImg, useCurrentImg] = useState(photos[0]);
-  const [otherImgs, useOtherImgs] = useState(photos.filter((img) => (
-    img.url !== currentImg.url
-  )));
+  const [allImgs, useOtherImgs] = useState(photos);
 
   return (
     <ThumbnailsGroup>
-      <Minis minis={otherImgs} />
+      <Minis minis={allImgs} currentImg={currentImg} />
       <CenterDefaultView>
         <LeftArrow type='button'></LeftArrow>
         <DefaultView src={currentImg.url} alt={firstStyle.name} />
