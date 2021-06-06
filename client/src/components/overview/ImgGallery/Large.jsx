@@ -13,9 +13,9 @@ function Large(props) {
   return (
     <>
       <Minis minis={otherImgs} />
-      <button>Left</button>
-      <img src={currentImg.url} alt='name' />
-      <button>Right</button>
+      <button type="button">Left</button>
+      <img src={currentImg.url} alt={firstStyle.name} />
+      <button type="button">Right</button>
     </>
   );
 }
