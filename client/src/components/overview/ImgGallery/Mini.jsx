@@ -9,12 +9,12 @@ const Thumbnail = styled.img`
 const ThumbnailBox = styled.div`
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   background-color: white;
   outline: solid black 1px;
-  width: 50px;
-  height: 50px;
-  margin: 40% 20%;
+  width: 70px;
+  height: 70px;
+  margin: 10% 30%;
 `;
 
 function Mini(props) {

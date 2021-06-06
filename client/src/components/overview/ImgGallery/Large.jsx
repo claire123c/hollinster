@@ -5,13 +5,17 @@ import styled from 'styled-components';
 import Minis from './Minis.jsx';
 
 const DefaultView = styled.img`
-  height: 55%;
-  background-color: silver;
+  height: 100%;
 `;
 
 const ThumbnailsGroup = styled.div`
   display: flex;
-  height: 1000px;
+`;
+
+const CenterDefaultView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const RightArrow = styled.button`
@@ -51,9 +55,11 @@ function Large(props) {
   return (
     <ThumbnailsGroup>
       <Minis minis={otherImgs} />
-      <LeftArrow type='button'></LeftArrow>
-      <DefaultView src={currentImg.url} alt={firstStyle.name} />
-      <RightArrow type='button'></RightArrow>
+      <CenterDefaultView>
+        <LeftArrow type='button'></LeftArrow>
+        <DefaultView src={currentImg.url} alt={firstStyle.name} />
+        <RightArrow type='button'></RightArrow>
+      </CenterDefaultView>
     </ThumbnailsGroup>
   );
 }

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Mini from './Mini.jsx'
 
 const ThumbnailsBox = styled.div`
-
+  margin-right: 30%;
 `;
 
 function Minis(props) {

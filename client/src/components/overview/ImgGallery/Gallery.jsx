@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
+  display: flex;
+  height: 80%;
+  width: 80%;
+  background-color: rgb(232,232,232);
 `;
 
 function Gallery(props) {
