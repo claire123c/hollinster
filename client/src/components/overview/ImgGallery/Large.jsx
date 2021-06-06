@@ -10,6 +10,7 @@ const DefaultView = styled.img`
 
 const ThumbnailsGroup = styled.div`
   display: flex;
+  background-color: rgb(232,232,232);
 `;
 
 const CenterDefaultView = styled.div`
@@ -44,18 +45,27 @@ const LeftArrow = styled.button`
   transform: translateX(25%) rotate(45deg);
 `;
 
-function Large({ defaultStyle: [firstStyle] }) {
-  const { photos } = firstStyle;
+function Large({ defaultStyle }) {
+  const {photos } = defaultStyle;
   const [currentImg, useCurrentImg] = useState(photos[0]);
   const [allImgs, useOtherImgs] = useState(photos);
+
+  const leftButtonOnClick = () => {
+    console.log(1);
+
+  };
+  const rightButtonOnClick = () => {
+    console.log(1);
+
+  };
 
   return (
     <ThumbnailsGroup>
       <Minis minis={allImgs} currentImg={currentImg} />
       <CenterDefaultView>
-        <LeftArrow type='button'></LeftArrow>
-        <DefaultView src={currentImg.url} alt={firstStyle.name} />
-        <RightArrow type='button'></RightArrow>
+        <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" />
+        <DefaultView src={currentImg.url} alt={defaultStyle.name} />
+        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}/>
       </CenterDefaultView>
     </ThumbnailsGroup>
   );
@@ -64,5 +74,5 @@ function Large({ defaultStyle: [firstStyle] }) {
 export default Large;
 
 Large.propTypes = {
-  defaultStyle: PropTypes.array
+  defaultStyle: PropTypes.object,
 };

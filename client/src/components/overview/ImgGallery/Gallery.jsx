@@ -18,7 +18,7 @@ function Gallery(props) {
     <GalleryBox>
       <Large defaultStyle={styles.filter((style) => (
         style['default?'] === true
-      ))}
+      ))[0]}
       />
     </GalleryBox>
   );

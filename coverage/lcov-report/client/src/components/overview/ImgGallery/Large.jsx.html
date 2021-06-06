@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">92.86% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">92.86% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -125,7 +125,15 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,12 +180,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -239,19 +255,27 @@ const LeftArrow = styled.button`
   transform: translateX(25%) rotate(45deg);
 `;
 &nbsp;
-function <span class="fstat-no" title="function not covered" >Large(</span>props) {
-  const { defaultStyle: [firstStyle] } = <span class="cstat-no" title="statement not covered" >props;</span>
-  const { photos } = <span class="cstat-no" title="statement not covered" >firstStyle;</span>
-  const [currentImg, useCurrentImg] = <span class="cstat-no" title="statement not covered" >useState(photos[0]);</span>
-  const [allImgs, useOtherImgs] = <span class="cstat-no" title="statement not covered" >useState(photos);</span>
+function Large({ defaultStyle }) {
+  const {photos } = defaultStyle;
+  const [currentImg, useCurrentImg] = useState(photos[0]);
+  const [allImgs, useOtherImgs] = useState(photos);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  const leftButtonOnClick = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    console.log(1);</span>
+&nbsp;
+  };
+  const rightButtonOnClick = () =&gt; {
+    console.log(1);
+&nbsp;
+  };
+&nbsp;
+  return (
     &lt;ThumbnailsGroup&gt;
       &lt;Minis minis={allImgs} currentImg={currentImg} /&gt;
       &lt;CenterDefaultView&gt;
-        &lt;LeftArrow type='button'&gt;&lt;/LeftArrow&gt;
-        &lt;DefaultView src={currentImg.url} alt={firstStyle.name} /&gt;
-        &lt;RightArrow type='button'&gt;&lt;/RightArrow&gt;
+        &lt;LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" /&gt;
+        &lt;DefaultView src={currentImg.url} alt={defaultStyle.name} /&gt;
+        &lt;RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}/&gt;
       &lt;/CenterDefaultView&gt;
     &lt;/ThumbnailsGroup&gt;
   );
@@ -260,7 +284,7 @@ function <span class="fstat-no" title="function not covered" >Large(</span>props
 export default Large;
 &nbsp;
 Large.propTypes = {
-  defaultStyle: PropTypes.array
+  defaultStyle: PropTypes.object,
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -268,7 +292,7 @@ Large.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jun 06 2021 13:58:31 GMT-0700 (Pacific Daylight Time)
+                at Sun Jun 06 2021 15:53:37 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../../../../prettify.js"></script>
