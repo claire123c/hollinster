@@ -6,7 +6,14 @@ import Minis from './Minis.jsx';
 
 const DefaultView = styled.img`
   height: 55%;
+  background-color: silver;
 `;
+
+const ThumbnailsGroup = styled.div`
+  display: flex;
+  height: 80%;
+`;
+
 
 function Large(props) {
   const { defaultStyle: [firstStyle] } = props;
@@ -17,13 +24,12 @@ function Large(props) {
   )));
 
   return (
-    <>
+    <ThumbnailsGroup>
       <Minis minis={otherImgs} />
       <button type="button">Left</button>
       <DefaultView src={currentImg.url} alt={firstStyle.name} />
-      {/* <img src={currentImg.url} alt={firstStyle.name} /> */}
       <button type="button">Right</button>
-    </>
+    </ThumbnailsGroup>
   );
 }
 
