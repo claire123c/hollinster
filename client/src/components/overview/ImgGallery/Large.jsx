@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import Minis from './Minis.jsx';
+
+const DefaultView = styled.img`
+  height: 55%;
+`;
 
 function Large(props) {
   const { defaultStyle: [firstStyle] } = props;
@@ -14,7 +20,8 @@ function Large(props) {
     <>
       <Minis minis={otherImgs} />
       <button type="button">Left</button>
-      <img src={currentImg.url} alt={firstStyle.name} />
+      <DefaultView src={currentImg.url} alt={firstStyle.name} />
+      {/* <img src={currentImg.url} alt={firstStyle.name} /> */}
       <button type="button">Right</button>
     </>
   );
