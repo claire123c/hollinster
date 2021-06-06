@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Thumbnail = styled.img`
-  height: 10%;
+  height: 100%;
 `;
 
 const ThumbnailBox = styled.div`
-  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  outline: solid black 1px;
+  width: 50px;
+  height: 50px;
+  margin: 40% 20%;
 `;
 
 function Mini(props) {
