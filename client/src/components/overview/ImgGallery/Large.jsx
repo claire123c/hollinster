@@ -11,9 +11,34 @@ const DefaultView = styled.img`
 
 const ThumbnailsGroup = styled.div`
   display: flex;
-  height: 80%;
+  height: 1000px;
 `;
 
+const RightArrow = styled.button`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  background-color: transparent;
+  height: 12px;
+  width: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  border-left: 1px solid rgba(0, 0, 0, 0);
+  transform: translateX(25%) rotate(45deg);
+`;
+
+const LeftArrow = styled.button`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  background-color: transparent;
+  height: 12px;
+  width: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0);
+  border-right: 1px solid rgba(0, 0, 0, 0);
+  transform: translateX(25%) rotate(45deg);
+`;
 
 function Large(props) {
   const { defaultStyle: [firstStyle] } = props;
@@ -26,9 +51,9 @@ function Large(props) {
   return (
     <ThumbnailsGroup>
       <Minis minis={otherImgs} />
-      <button type="button">Left</button>
+      <LeftArrow type='button'></LeftArrow>
       <DefaultView src={currentImg.url} alt={firstStyle.name} />
-      <button type="button">Right</button>
+      <RightArrow type='button'></RightArrow>
     </ThumbnailsGroup>
   );
 }
