@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Mini from './Mini.jsx'
 
 function Minis(props) {
-
+  const { minis } = props;
   return (
     <>
-      {props.minis.map(mini => (
+      {minis.map((mini) => (
         <Mini mini={mini} key={mini.url} />
       ))}
     </>
@@ -14,3 +14,7 @@ function Minis(props) {
 }
 
 export default Minis;
+
+Minis.propTypes = {
+  minis: PropTypes.array
+};
