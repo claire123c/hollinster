@@ -11,14 +11,13 @@ const GalleryBox = styled.div`
   background-color: rgb(232,232,232);
 `;
 
-function Gallery(props) {
-  const { styles } = props;
-
+function Gallery({ styles }) {
   return (
     <GalleryBox>
-      <Large defaultStyle={styles.filter((style) => (
-        style['default?'] === true
-      ))[0]}
+      <Large
+        defaultStyle={styles.filter((style) => (
+          style['default?'] === true
+        ))[0]}
       />
     </GalleryBox>
   );

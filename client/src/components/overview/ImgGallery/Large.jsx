@@ -51,11 +51,9 @@ function Large({ defaultStyle }) {
 
   const leftButtonOnClick = () => {
     console.log(1);
-
   };
   const rightButtonOnClick = () => {
     console.log(1);
-
   };
 
   return (
@@ -64,7 +62,7 @@ function Large({ defaultStyle }) {
       <CenterDefaultView>
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" />
         <DefaultView src={currentImg.url} alt={defaultStyle.name} />
-        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}/>
+        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} />
       </CenterDefaultView>
     </ThumbnailsGroup>
   );
