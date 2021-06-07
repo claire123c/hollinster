@@ -19,7 +19,6 @@ const ThumbnailBox = styled.div`
 
 function Mini({ mini, currentImg, onClickThumb, i }) {
   const { thumbnail_url } = mini;
-  console.log(currentImg);
   const onClickImg = () => {
     onClickThumb(mini, i);
   };
