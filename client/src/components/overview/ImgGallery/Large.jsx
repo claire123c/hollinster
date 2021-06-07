@@ -10,7 +10,6 @@ const DefaultView = styled.img`
 
 const ThumbnailsGroup = styled.div`
   display: flex;
-  background-color: rgb(232,232,232);
 `;
 
 const CenterDefaultView = styled.div`
@@ -46,7 +45,7 @@ const LeftArrow = styled.button`
 `;
 
 function Large({ defaultStyle }) {
-  const {photos } = defaultStyle;
+  const { photos } = defaultStyle;
   const [currentImg, useCurrentImg] = useState(photos[0]);
   const [allImgs, useOtherImgs] = useState(photos);
 

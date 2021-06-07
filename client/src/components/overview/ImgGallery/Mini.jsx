@@ -11,10 +11,10 @@ function Mini({ mini: { thumbnail_url }, currentImg }) {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: ${thumbnail_url === currentImg.thumbnail_url ? 'black' : 'rgb(232,232,232)'};
-    outline: solid black 1px;
-    width: 70px;
+    border-bottom: ${thumbnail_url === currentImg.thumbnail_url ? 'solid rgb(72,72,72) 3px' : 'solid rgb(232,232,232)'};
+    outline: solid rgb(72,72,72) 1px;
+    padding: 3%;
+    width: 100%;
     height: 70px;
     margin: 10% 30%;
   `;
