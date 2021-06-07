@@ -7,11 +7,11 @@ import Mini from './Mini.jsx'
 const ThumbnailsBox = styled.div`
   margin-right: 18%;
 `;
-function Minis({ minis, currentImg }) {
+function Minis({ minis, currentImg, onClickThumb }) {
   return (
     <ThumbnailsBox>
-      {minis.map((mini) => (
-        <Mini mini={mini} key={mini.url} currentImg={currentImg} />
+      {minis.map((mini, i) => (
+        <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
     </ThumbnailsBox>
 
