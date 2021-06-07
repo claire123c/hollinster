@@ -9,7 +9,6 @@ export default function Related() {
   useEffect(() => {
     axios.get(`/products/${current}/related`)
       .then((response) => {
-        console.log(response.data);
         setRelated(response.data);
       })
       .catch((error) => {

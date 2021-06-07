@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 export default function Card(props) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
-  const [style, setStyle] = useState();
+  const [image, setImage] = useState();
   const [rating, setRating] = useState();
 
   const averageRating = (reviewResults) => {
@@ -14,9 +15,8 @@ export default function Card(props) {
     if (reviewResults.length === 0) {
       return 'No Rating Available';
     }
-    for (let i = 0; i < reviewResults.length; i++) {
+    for (let i = 0; i < reviewResults.length; i += 1) {
       if (reviewResults[i].rating !== undefined) {
-        console.log(ratings)
         ratings += reviewResults[i].rating;
         totalRatings += 1;
       }
@@ -33,9 +33,11 @@ export default function Card(props) {
       .catch((error) => {
         console.log(error);
       });
+    // need to implement sale price behavior
     axios.get(`/products/${props.product}/styles`)
       .then((response) => {
         setPrice(response.data.results[0].original_price);
+        setImage(response.data.results[0].photos[0].url);
       })
       .catch((error) => {
         console.log(error);
@@ -51,6 +53,7 @@ export default function Card(props) {
 
   return (
     <div>
+      <img src={image} alt="Primary Product" />
       <div>{category}</div>
       <div>{name}</div>
       <div>{price}</div>
@@ -58,3 +61,7 @@ export default function Card(props) {
     </div>
   );
 }
+
+// Card.propTypes = {
+//   product: PropTypes.number,
+// };
