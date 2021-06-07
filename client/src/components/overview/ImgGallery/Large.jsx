@@ -46,14 +46,18 @@ const LeftArrow = styled.button`
 
 function Large({ defaultStyle }) {
   const { photos } = defaultStyle;
-  const [currentImg, useCurrentImg] = useState(photos[0]);
+  let currentImgIndex = 0;
+  const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useOtherImgs] = useState(photos);
 
   const leftButtonOnClick = () => {
-    console.log(1);
   };
   const rightButtonOnClick = () => {
-    console.log(1);
+    currentImgIndex += 1;
+    if (photos[currentImgIndex] !== undefined) {
+      useCurrentImg(photos[currentImgIndex]);
+      useOtherImgs(photos);
+    }
   };
 
   return (
