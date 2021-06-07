@@ -32,6 +32,10 @@ function Large({ defaultStyle }) {
   console.log(currentImgIndex);
 
   const leftButtonOnClick = () => {
+    if (photos[currentImgIndex - 1] !== undefined) {
+      usecurrentImgIndex(currentImgIndex - 1);
+      useCurrentImg(photos[currentImgIndex - 1]);
+    }
   };
   const rightButtonOnClick = () => {
     if (photos[currentImgIndex + 1] !== undefined) {
