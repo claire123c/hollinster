@@ -21,9 +21,17 @@ describe('Right Arrow', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const rightArrow = LargeComp.getByTestId('rightArrowImgGallery');
     const currentImage = LargeComp.getByAltText(sampleData.results[0].name);
-    const previousImgSrc = currentImage.src;
 
     fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+
+    const previousImgSrc = currentImage.src;
+    fireEvent.click(rightArrow);
+
     expect(currentImage.src).toBe(previousImgSrc);
   });
 
