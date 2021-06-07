@@ -8,11 +8,8 @@ config.js
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-<<<<<<< HEAD
-=======
 config.js
 /client/public/bundle.js
->>>>>>> 5db53faeb78d7d82cada48ca9fbf1f3ff1f1e258
 
 # User-specific files
 *.rsuser
