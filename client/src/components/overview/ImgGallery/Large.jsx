@@ -59,6 +59,7 @@ function Large({ defaultStyle }) {
       useOtherImgs(photos);
     }
   };
+  console.log(currentImg.url);
 
   return (
     <ThumbnailsGroup>
