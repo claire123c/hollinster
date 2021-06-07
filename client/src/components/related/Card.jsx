@@ -2,47 +2,59 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function Card(props) {
-  const [related, setRelated] = useState([]);
-  const [style, setStyle] = useState([]);
-  const [rating, setRating] = useState([])
+  const [category, setCategory] = useState();
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [style, setStyle] = useState();
+  const [rating, setRating] = useState();
 
-  let style = [];
-
-  for (let i = 0; i < related.length; i++) {
-    style.push(axios.get(`products/${related[i]}/styles`))
-  }
-
-
-
-
+  const averageRating = (reviewResults) => {
+    let ratings = 0;
+    let totalRatings = 0;
+    if (reviewResults.length === 0) {
+      return 'No Rating Available';
+    }
+    for (let i = 0; i < reviewResults.length; i++) {
+      if (reviewResults[i].rating !== undefined) {
+        console.log(ratings)
+        ratings += reviewResults[i].rating;
+        totalRatings += 1;
+      }
+    }
+    return ratings / totalRatings;
+  };
 
   useEffect(() => {
-    axios.get('/products')
+    axios.get(`/products/${props.product}`)
       .then((response) => {
-        setData(response.data);
+        setCategory(response.data.category);
+        setName(response.data.name);
       })
-      .catch((error) => console.log(error));
-    axios.get(`/products/${current}/related`)
+      .catch((error) => {
+        console.log(error);
+      });
+    axios.get(`/products/${props.product}/styles`)
       .then((response) => {
-        setRelated(response.data);
+        setPrice(response.data.results[0].original_price);
       })
-      .catch((error) => console.log(error));
-    axios.get(`/products/${current}/styles`)
+      .catch((error) => {
+        console.log(error);
+      });
+    axios.get(`/reviews/${props.product}`)
       .then((response) => {
-        setStyle(response.data);
+        setRating(averageRating(response.data.results));
       })
-    axios.get(`/reviews/${current}`)
-    })
-
-
-
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
-      <div>Product Category</div>
-      <div>Product Name</div>
-      <div>Price</div>
-      <div>Star Rating</div>
+      <div>{category}</div>
+      <div>{name}</div>
+      <div>{price}</div>
+      <div>{rating}</div>
     </div>
   );
 }
