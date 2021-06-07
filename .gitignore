@@ -6,7 +6,7 @@
 
 config.js
 /client/public/bundle.js
-coverage
+coverage/
 
 # User-specific files
 *.rsuser
