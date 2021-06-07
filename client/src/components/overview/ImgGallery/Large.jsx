@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Minis from './Minis.jsx';
 
 const DefaultView = styled.img`
-  height: 100%;
+  height: 700;
 `;
 
 const ThumbnailsGroup = styled.div`
@@ -64,9 +64,10 @@ function Large({ defaultStyle }) {
   return (
     <ThumbnailsGroup>
       <Minis minis={allImgs} currentImg={currentImg} />
-      <CenterDefaultView>
+      <CenterDefaultView className="alldefaultview">
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" />
-        <DefaultView src={currentImg.url} alt={defaultStyle.name} />
+        <p>&#8592;</p>
+        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name} />
         <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} />
       </CenterDefaultView>
     </ThumbnailsGroup>
