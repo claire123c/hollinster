@@ -17,31 +17,13 @@ const CenterDefaultView = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-const RightArrow = styled.button`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 8px;
-  background-color: transparent;
-  height: 12px;
-  width: 12px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
-  border-left: 1px solid rgba(0, 0, 0, 0);
-  transform: translateX(25%) rotate(45deg);
+const RightArrow = styled.p`
+  font-size: 40px;
+  padding: 5%;
 `;
-
-const LeftArrow = styled.button`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  padding: 8px;
-  background-color: transparent;
-  height: 12px;
-  width: 12px;
-  border-top: 1px solid rgba(0, 0, 0, 0);
-  border-right: 1px solid rgba(0, 0, 0, 0);
-  transform: translateX(25%) rotate(45deg);
+const LeftArrow = styled.p`
+  font-size: 40px;
+  padding: 5%;
 `;
 
 function Large({ defaultStyle }) {
@@ -65,10 +47,9 @@ function Large({ defaultStyle }) {
     <ThumbnailsGroup>
       <Minis minis={allImgs} currentImg={currentImg} />
       <CenterDefaultView className="alldefaultview">
-        <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" />
-        <p>&#8592;</p>
+        <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name} />
-        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} />
+        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
       </CenterDefaultView>
     </ThumbnailsGroup>
   );
