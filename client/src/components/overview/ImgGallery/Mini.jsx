@@ -18,9 +18,12 @@ const ThumbnailBox = styled.div`
 `;
 
 function Mini({ mini: { thumbnail_url }, currentImg }) {
+  const onClickThumbnail = () => {
+
+  };
   return (
     <ThumbnailBox thumbnail_url={thumbnail_url} currentImg={currentImg}>
-      <Thumbnail src={thumbnail_url} alt={thumbnail_url} />
+      <Thumbnail className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />
     </ThumbnailBox>
   );
 }

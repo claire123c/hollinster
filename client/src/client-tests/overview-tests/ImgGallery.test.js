@@ -61,3 +61,16 @@ describe('Left Arrow', () => {
     expect(currentImage.src).toBe(previousImgSrc);
   });
 });
+
+describe('Click Thumbnails', () => {
+  test('Thumbnail changes default image on click', () => {
+    const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
+    const currentImage = LargeComp.getByAltText(sampleData.results[0].name);
+    const thumbnail = document.querySelector('.minithumbnail');
+    const previousImgSrc = currentImage.src;
+
+    fireEvent.click(thumbnail);
+
+    expect(currentImage.src).not.toBe(previousImgSrc);
+  });
+});

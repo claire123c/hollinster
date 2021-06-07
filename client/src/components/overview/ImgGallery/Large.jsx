@@ -29,7 +29,6 @@ function Large({ defaultStyle }) {
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useOtherImgs] = useState(photos);
-  console.log(currentImgIndex);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -42,6 +41,9 @@ function Large({ defaultStyle }) {
       usecurrentImgIndex(currentImgIndex + 1);
       useCurrentImg(photos[currentImgIndex + 1]);
     }
+  };
+  const onClickThumbnail = () => {
+
   };
 
   return (
