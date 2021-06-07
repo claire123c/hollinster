@@ -6,7 +6,7 @@ import Mini from './Mini.jsx'
 
 function Minis({ minis, currentImg }) {
   const ThumbnailsBox = styled.div`
-    margin-right: 30%;
+    margin-right: 18%;
   `;
   return (
     <ThumbnailsBox>

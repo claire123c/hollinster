@@ -4,18 +4,16 @@ import styled from 'styled-components';
 
 import Minis from './Minis.jsx';
 
-const DefaultView = styled.img`
-  height: 700;
-`;
-
 const ThumbnailsGroup = styled.div`
   display: flex;
 `;
-
 const CenterDefaultView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const DefaultView = styled.img`
+  height: 700;
 `;
 const RightArrow = styled.p`
   font-size: 40px;
@@ -41,7 +39,6 @@ function Large({ defaultStyle }) {
       useOtherImgs(photos);
     }
   };
-  console.log(currentImg.url);
 
   return (
     <ThumbnailsGroup>
