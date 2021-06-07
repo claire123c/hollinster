@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
+
 import Large from '../../components/overview/ImgGallery/Large.jsx';
+import Mini from '../../components/overview/ImgGallery/Mini.jsx';
 import sampleData from '../../components/overview/sampleData.js';
 
 describe('Right Arrow', () => {
@@ -66,10 +68,10 @@ describe('Click Thumbnails', () => {
   test('Thumbnail changes default image on click', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const currentImage = LargeComp.getByAltText(sampleData.results[0].name);
-    const thumbnail = document.querySelector('.minithumbnail');
+    const thumbnail2 = LargeComp.getByAltText('https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
     const previousImgSrc = currentImage.src;
 
-    fireEvent.click(thumbnail);
+    fireEvent.click(thumbnail2);
 
     expect(currentImage.src).not.toBe(previousImgSrc);
   });
