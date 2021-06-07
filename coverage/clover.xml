@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1623033666043" clover="3.2.0">
-  <project timestamp="1623033666043" name="All files">
-    <metrics statements="35" coveredstatements="35" conditionals="6" coveredconditionals="5" methods="10" coveredmethods="9" elements="51" coveredelements="49" complexity="0" loc="35" ncloc="35" packages="4" files="6" classes="6"/>
+<coverage generated="1623094357827" clover="3.2.0">
+  <project timestamp="1623094357827" name="All files">
+    <metrics statements="34" coveredstatements="34" conditionals="6" coveredconditionals="6" methods="10" coveredmethods="9" elements="50" coveredelements="49" complexity="0" loc="34" ncloc="34" packages="4" files="6" classes="6"/>
     <package name="client.src.client-tests">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="example.jsx" path="/Users/yawnsandsmiles/hollinster/client/src/client-tests/example.jsx">
@@ -21,27 +21,26 @@
       </file>
     </package>
     <package name="client.src.components.overview.ImgGallery">
-      <metrics statements="27" coveredstatements="27" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="6"/>
+      <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="6"/>
       <file name="Large.jsx" path="/Users/yawnsandsmiles/hollinster/client/src/components/overview/ImgGallery/Large.jsx">
-        <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="48" count="10" type="stmt"/>
-        <line num="49" count="10" type="stmt"/>
-        <line num="50" count="10" type="stmt"/>
-        <line num="51" count="10" type="stmt"/>
-        <line num="53" count="10" type="stmt"/>
-        <line num="55" count="10" type="stmt"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="57" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="58" count="8" type="stmt"/>
-        <line num="59" count="8" type="stmt"/>
-        <line num="62" count="10" type="stmt"/>
-        <line num="64" count="10" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="36" count="8" type="stmt"/>
+        <line num="37" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="43" count="8" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
       </file>
       <file name="Mini.jsx" path="/Users/yawnsandsmiles/hollinster/client/src/components/overview/ImgGallery/Mini.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>

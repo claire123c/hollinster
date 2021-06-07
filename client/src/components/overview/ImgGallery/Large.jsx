@@ -26,17 +26,17 @@ const LeftArrow = styled.p`
 
 function Large({ defaultStyle }) {
   const { photos } = defaultStyle;
-  let currentImgIndex = 0;
+  const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useOtherImgs] = useState(photos);
+  console.log(currentImgIndex);
 
   const leftButtonOnClick = () => {
   };
   const rightButtonOnClick = () => {
-    currentImgIndex += 1;
-    if (photos[currentImgIndex] !== undefined) {
-      useCurrentImg(photos[currentImgIndex]);
-      useOtherImgs(photos);
+    if (photos[currentImgIndex + 1] !== undefined) {
+      usecurrentImgIndex(currentImgIndex + 1);
+      useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
 
