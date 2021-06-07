@@ -5,20 +5,18 @@ import styled from 'styled-components';
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
-  display: flex;
-  height: 80%;
-  width: 80%;
+  height: 700px;
+  width: 1000px;
   background-color: rgb(232,232,232);
 `;
 
-function Gallery(props) {
-  const { styles } = props;
-
+function Gallery({ styles }) {
   return (
-    <GalleryBox>
-      <Large defaultStyle={styles.filter((style) => (
-        style['default?'] === true
-      ))}
+    <GalleryBox className="gallery">
+      <Large
+        defaultStyle={styles.find((style) => (
+          style['default?'] === true
+        ))}
       />
     </GalleryBox>
   );
