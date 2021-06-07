@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function Card(props) {
+export default function Card({product}) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -25,7 +25,7 @@ export default function Card(props) {
   };
 
   useEffect(() => {
-    axios.get(`/products/${props.product}`)
+    axios.get(`/products/${product}`)
       .then((response) => {
         setCategory(response.data.category);
         setName(response.data.name);
@@ -34,7 +34,7 @@ export default function Card(props) {
         console.log(error);
       });
     // need to implement sale price behavior
-    axios.get(`/products/${props.product}/styles`)
+    axios.get(`/products/${product}/styles`)
       .then((response) => {
         setPrice(response.data.results[0].original_price);
         setImage(response.data.results[0].photos[0].url);
@@ -42,7 +42,7 @@ export default function Card(props) {
       .catch((error) => {
         console.log(error);
       });
-    axios.get(`/reviews/${props.product}`)
+    axios.get(`/reviews/${product}`)
       .then((response) => {
         setRating(averageRating(response.data.results));
       })
