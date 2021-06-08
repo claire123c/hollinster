@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Gallery from './ImgGallery/Gallery.jsx';
@@ -6,20 +6,32 @@ import sampleData from './sampleData.js';
 
 function Overview() {
   const [productNum] = useState('25167');
-  const getProduct = () => {
+  const [productData, setProductData] = useState(sampleData.results);
+  const getProductDets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
-        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const getStyles = () => {
+    axios.get(`/products/${productNum}/styles`)
+      .then((response) => {
+        setProductData(response.data.results);
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  getProduct();
+  useEffect(() => {
+    getStyles();
+  }, []);
+
   return (
     <>
-      <Gallery styles={sampleData.results} />
+      <Gallery styles={productData} />
     </>
   );
 }
