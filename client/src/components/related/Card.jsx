@@ -5,9 +5,13 @@ import axios from 'axios';
 export default function Card({ product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
+  const [defaultPrice, setDefaultPrice] = useState(1);
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
+  const [productData, setProductData] = useState([]);
+  const [productStyleData, setProductStyleData] = useState([]);
+  const [productReviewData, setProductReviewData] = useState([]);
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -25,40 +29,58 @@ export default function Card({ product }) {
   };
 
   const checkPrice = (stylesResults) => {
-    const defaultStyle = stylesResults.find((element) => element['default?'] === true);
-    if (defaultStyle.sales_price !== null) {
-      return defaultStyle.sales_price;
+    const defaultStyle = stylesResults.findIndex((element) => element['default?'] === true);
+    console.log(defaultStyle);
+    if (defaultStyle === -1) {
+      return defaultPrice;
     }
-    return defaultStyle.original_price;
+    return stylesResults[defaultStyle].original_price;
   };
 
+  const getProduct = () => axios.get(`/products/${product}`);
+
+  const getProductStyles = () => axios.get(`/products/${product}/styles`);
+
+  const getProductReviews = () => axios.get(`/reviews/${product}`);
+
   useEffect(() => {
-    axios.get(`/products/${product}`)
+    Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        setCategory(response.data.category);
-        setName(response.data.name);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    // need to implement sale price behavior
-    axios.get(`/products/${product}/styles`)
-      .then((response) => {
-        // setPrice(response.data.results[0].original_price);
-        setPrice(checkPrice(response.data.results));
-        setImage(response.data.results[0].photos[0].url);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get(`/reviews/${product}`)
-      .then((response) => {
-        setRating(averageRating(response.data.results));
-      })
-      .catch((error) => {
-        console.log(error);
+        setProductData(response[0].data);
+        setProductStyleData(response[1].data);
+        setProductReviewData(response[2].data);
       });
   }, []);
+
+  // use Promise.all() you idiot
+  // useEffect(() => {
+  //   axios.get(`/products/${product}`)
+  //     .then((response) => {
+  //       setCategory(response.data.category);
+  //       setName(response.data.name);
+  //       setDefaultPrice(response.data.default_price);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   // need to implement sale price behavior
+  //   axios.get(`/products/${product}/styles`)
+  //     .then((response) => {
+  //       // setPrice(response.data.results[0].original_price);
+  //       setPrice(checkPrice(response.data.results));
+  //       setImage(response.data.results[0].photos[0].url);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   axios.get(`/reviews/${product}`)
+  //     .then((response) => {
+  //       setRating(averageRating(response.data.results));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <div>
