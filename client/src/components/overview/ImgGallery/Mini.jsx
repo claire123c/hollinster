@@ -17,10 +17,14 @@ const ThumbnailBox = styled.div`
   margin: 10% 30%;
 `;
 
-function Mini({ mini: { thumbnail_url }, currentImg }) {
+function Mini({ mini, currentImg, onClickThumb, i }) {
+  const { thumbnail_url } = mini;
+  const onClickImg = () => {
+    onClickThumb(mini, i);
+  };
   return (
     <ThumbnailBox thumbnail_url={thumbnail_url} currentImg={currentImg}>
-      <Thumbnail src={thumbnail_url} alt={thumbnail_url} />
+      <Thumbnail onClick={onClickImg} className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />
     </ThumbnailBox>
   );
 }
@@ -28,5 +32,8 @@ function Mini({ mini: { thumbnail_url }, currentImg }) {
 export default Mini;
 
 Mini.propTypes = {
-  mini: PropTypes.object
+  mini: PropTypes.object,
+  onClickThumb: PropTypes.func,
+  currentImg: PropTypes.object,
+  i: PropTypes.number,
 };

@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 import Mini from './Mini.jsx'
 
-function Minis({ minis, currentImg }) {
-  const ThumbnailsBox = styled.div`
-    margin-right: 18%;
-  `;
+const ThumbnailsBox = styled.div`
+  margin-right: 18%;
+`;
+function Minis({ minis, currentImg, onClickThumb }) {
   return (
     <ThumbnailsBox>
-      {minis.map((mini) => (
-        <Mini mini={mini} key={mini.url} currentImg={currentImg} />
+      {minis.map((mini, i) => (
+        <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
     </ThumbnailsBox>
 

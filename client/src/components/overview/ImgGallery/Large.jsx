@@ -28,8 +28,7 @@ function Large({ defaultStyle }) {
   const { photos } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
-  const [allImgs, useOtherImgs] = useState(photos);
-  console.log(currentImgIndex);
+  const [allImgs] = useState(photos);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -43,10 +42,14 @@ function Large({ defaultStyle }) {
       useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
+  const onClickThumb = (currentThumbnail, i) => {
+    useCurrentImg(currentThumbnail);
+    usecurrentImgIndex(i);
+  };
 
   return (
     <ThumbnailsGroup>
-      <Minis minis={allImgs} currentImg={currentImg} />
+      <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
       <CenterDefaultView className="alldefaultview">
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name} />
