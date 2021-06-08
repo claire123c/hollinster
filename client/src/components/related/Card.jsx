@@ -5,13 +5,35 @@ import axios from 'axios';
 export default function Card({ product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
-  const [defaultPrice, setDefaultPrice] = useState(1);
+  const [defaultPrice, setDefaultPrice] = useState();
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
+
+  const getProduct = () => axios.get(`/products/${product}`);
+
+  const getProductStyles = () => axios.get(`/products/${product}/styles`);
+
+  const getProductReviews = () => axios.get(`/reviews/${product}`);
+
+  useEffect(() => {
+    Promise.all([getProduct(), getProductStyles(), getProductReviews()])
+      .then((response) => {
+        setProductData(response[0].data);
+        setProductStyleData(response[1].data);
+        setProductReviewData(response[2].data);
+        setCategory(response[0].data.category);
+        setName(response[0].data.name);
+        setDefaultPrice(response[0].data.default_price);
+        setPrice(response[1].data.results[0].original_price);
+        setPrice(checkPrice(response[1].data.results));
+        setImage(response[1].data.results[0].photos[0].url);
+        setRating(averageRating(response[2].data.results));
+      });
+  }, []);
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -37,22 +59,6 @@ export default function Card({ product }) {
     return stylesResults[defaultStyle].original_price;
   };
 
-  const getProduct = () => axios.get(`/products/${product}`);
-
-  const getProductStyles = () => axios.get(`/products/${product}/styles`);
-
-  const getProductReviews = () => axios.get(`/reviews/${product}`);
-
-  useEffect(() => {
-    Promise.all([getProduct(), getProductStyles(), getProductReviews()])
-      .then((response) => {
-        setProductData(response[0].data);
-        setProductStyleData(response[1].data);
-        setProductReviewData(response[2].data);
-      });
-  }, []);
-
-  // use Promise.all() you idiot
   // useEffect(() => {
   //   axios.get(`/products/${product}`)
   //     .then((response) => {
