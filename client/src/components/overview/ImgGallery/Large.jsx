@@ -7,6 +7,7 @@ import Minis from './Minis.jsx';
 const ThumbnailsGroup = styled.div`
   display: flex;
   min-height; 500px;
+  flex-direction: row;
 
 `;
 const CenterDefaultView = styled.div`
@@ -15,11 +16,12 @@ const CenterDefaultView = styled.div`
   align-items: center;
 `;
 const DefaultView = styled.div`
-
+  display: flex;
+  flex-direction: column;
 `;
 const DefaultImg = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
   min-height: 200;
   min-width: 200;
 `;

@@ -5,12 +5,16 @@ import styled from 'styled-components';
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
+
   height: 70%;
   width: 50%;
   background-color: rgb(232,232,232);
-  min-width: 700px;
+  overflow: hidden;
+
 `;
 const Images = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 const Expand = styled.div`
   font-size: 40px;
