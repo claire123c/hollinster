@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -6,14 +6,24 @@ import Minis from './Minis.jsx';
 
 const ThumbnailsGroup = styled.div`
   display: flex;
+  min-height; 500px;
+  flex-direction: row;
+
 `;
 const CenterDefaultView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const DefaultView = styled.img`
-  height: 700;
+const DefaultView = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const DefaultImg = styled.img`
+  max-width: 90%;
+  max-height: 90%;
+  min-height: 200;
+  min-width: 200;
 `;
 const RightArrow = styled.p`
   font-size: 40px;
@@ -24,12 +34,12 @@ const LeftArrow = styled.p`
   padding: 5%;
 `;
 
-function Large({ defaultStyle }) {
+function Large(props) {
+  const { defaultStyle } = props;
   const { photos } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
-  const [allImgs, useOtherImgs] = useState(photos);
-  console.log(currentImgIndex);
+  const [allImgs, useAllImgs] = useState(photos);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -43,13 +53,25 @@ function Large({ defaultStyle }) {
       useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
+  const onClickThumb = (current, i) => {
+    useCurrentImg(current);
+    usecurrentImgIndex(i);
+  };
+
+  useEffect(() => {
+    usecurrentImgIndex(0);
+    useCurrentImg(defaultStyle.photos[0]);
+    useAllImgs(photos);
+  }, [props]);
 
   return (
     <ThumbnailsGroup>
-      <Minis minis={allImgs} currentImg={currentImg} />
+      <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
       <CenterDefaultView className="alldefaultview">
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
-        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name} />
+        <DefaultView className="defaultview">
+          <DefaultImg src={currentImg.url} alt={defaultStyle.name} />
+        </DefaultView>
         <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
       </CenterDefaultView>
     </ThumbnailsGroup>
