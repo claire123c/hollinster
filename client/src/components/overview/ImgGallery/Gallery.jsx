@@ -8,24 +8,23 @@ const GalleryBox = styled.div`
   height: 70%;
   width: 50%;
   background-color: rgb(232,232,232);
+  min-width: 700px;
 `;
 const Images = styled.div`
-  display: flex;
-  align-items: center;
 `;
 const Expand = styled.div`
-  display: inline;
   font-size: 40px;
+  float: right;
 `;
 
 function Gallery({ styles }) {
   return (
     <GalleryBox className="gallery">
+      <Expand className="collapsible">&#x2750;</Expand>
       <Images>
         <Large
           defaultStyle={styles[0]}
         />
-        <Expand className="collapsible">&#x2750;</Expand>
       </Images>
     </GalleryBox>
   );

@@ -6,6 +6,8 @@ import Minis from './Minis.jsx';
 
 const ThumbnailsGroup = styled.div`
   display: flex;
+  min-height; 500px;
+
 `;
 const CenterDefaultView = styled.div`
   display: flex;
@@ -13,12 +15,13 @@ const CenterDefaultView = styled.div`
   align-items: center;
 `;
 const DefaultView = styled.div`
-  max-width: 100%;
-  max-height: 100%;
+
 `;
 const DefaultImg = styled.img`
-  max-width: 450;
-  max-height: 722;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 200;
+  min-width: 200;
 `;
 const RightArrow = styled.p`
   font-size: 40px;

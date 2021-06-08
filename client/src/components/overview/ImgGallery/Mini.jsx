@@ -22,6 +22,7 @@ function Mini(props) {
   const { mini, currentImg, onClickThumb, i } = props;
   const { thumbnail_url } = mini;
   const onClickImg = () => {
+    //change to not click img but click div
     onClickThumb(mini, i);
   };
 
