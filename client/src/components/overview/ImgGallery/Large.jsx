@@ -25,17 +25,11 @@ const LeftArrow = styled.p`
 `;
 
 function Large(props) {
-  console.log(defaultStyle, 'default');
   const { defaultStyle } = props;
   const { photos } = defaultStyle;
-  console.log(photos, 'photos');
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
-  console.log(photos[currentImgIndex]);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
-  const [allImgs] = useState(photos);
-  console.log(Object.is(photos[currentImgIndex], currentImg));
-  console.log(currentImg, 'img');
-  console.log(0);
+  const [allImgs, useAllImgs] = useState(photos);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -57,6 +51,7 @@ function Large(props) {
   useEffect(() => {
     usecurrentImgIndex(0);
     useCurrentImg(defaultStyle.photos[0]);
+    useAllImgs(photos);
   }, [props]);
 
   return (
