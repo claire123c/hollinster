@@ -18,7 +18,6 @@ function Overview() {
   const getStyles = () => {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
-        console.log(response.data.results);
         setProductData(response.data.results);
       })
       .catch((error) => {
@@ -32,7 +31,7 @@ function Overview() {
 
   return (
     <>
-      <Gallery styles={productData} />
+      <Gallery className="gallery" styles={productData} />
     </>
   );
 }
