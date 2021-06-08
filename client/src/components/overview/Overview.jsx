@@ -3,10 +3,11 @@ import axios from 'axios';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import sampleData from './sampleData.js';
+import emptyData from './emptyData.js';
 
 function Overview() {
   const [productNum] = useState('25174');
-  const [productData, setProductData] = useState(sampleData.results);
+  const [productData, setProductData] = useState(emptyData.results);
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
