@@ -12,7 +12,7 @@ export default function Related() {
     if (!outfit.includes(current)) {
       setOutfit(outfit.push(current));
     }
-  }
+  };
 
   useEffect(() => {
     axios.get(`/products/${current}/related`)
