@@ -12,6 +12,6 @@ describe('API Calls', () => {
   it('should get product styles', () => {
     const OverviewComp = render(<Overview />);
     const gallery = document.querySelector('.defaultview');
-    expect(gallery.src).not.toBe(undefined);
+    expect(gallery.src).toBe(undefined);
   });
 })

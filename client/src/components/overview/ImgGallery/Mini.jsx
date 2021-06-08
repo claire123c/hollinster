@@ -21,13 +21,13 @@ const ThumbnailBox = styled.div`
 function Mini(props) {
   const { mini, currentImg, onClickThumb, i } = props;
   const { thumbnail_url } = mini;
-  const onClickImg = () => {
+  const onClickImgDiv = () => {
     onClickThumb(mini, i);
   };
 
   return (
-    <ThumbnailBox onClick={onClickImg} thumbnail_url={thumbnail_url} currentImg={currentImg}>
-      <Thumbnail className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />
+    <ThumbnailBox className="minithumbnail" onClick={onClickImgDiv} thumbnail_url={thumbnail_url} currentImg={currentImg}>
+      <Thumbnail src={thumbnail_url} alt={thumbnail_url} />
     </ThumbnailBox>
   );
 }
