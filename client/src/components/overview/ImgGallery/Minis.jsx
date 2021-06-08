@@ -20,17 +20,20 @@ const DownButton = styled.div`
 function Minis(props) {
   const { minis, currentImg, onClickThumb } = props;
   const [showUp, setShowUp] = useState(false);
-  const [showDown, setShowDown] = useState(true);
+  const [showDown, setShowDown] = useState(false);
 
   let array = minis;
-
   if (array.length > 7) {
     array = minis.slice(0, 7);
+    if (!showDown) {
+      setShowDown(true);
+    }
   }
 
   const onClickDown = () => {
-
+    //array = minis.slice(7, )
   };
+
 
   return (
     <ThumbnailsBox>
@@ -38,7 +41,7 @@ function Minis(props) {
       {array.map((mini, i) => (
         <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
-      {showUp ? <DownButton>&#5121;</DownButton> : <></>}
+      {showDown ? <DownButton>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>
 
   );
