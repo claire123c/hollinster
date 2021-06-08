@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function Card(props) {
+export default function Card({ product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
+  let defaultPrice = 0;
   const [price, setPrice] = useState();
-  const [style, setStyle] = useState();
+  const [image, setImage] = useState();
   const [rating, setRating] = useState();
+  const [productData, setProductData] = useState([]);
+  const [productStyleData, setProductStyleData] = useState([]);
+  const [productReviewData, setProductReviewData] = useState([]);
+
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -14,9 +20,8 @@ export default function Card(props) {
     if (reviewResults.length === 0) {
       return 'No Rating Available';
     }
-    for (let i = 0; i < reviewResults.length; i++) {
+    for (let i = 0; i < reviewResults.length; i += 1) {
       if (reviewResults[i].rating !== undefined) {
-        console.log(ratings)
         ratings += reviewResults[i].rating;
         totalRatings += 1;
       }
@@ -24,33 +29,73 @@ export default function Card(props) {
     return ratings / totalRatings;
   };
 
+  const checkPrice = (stylesResults) => {
+    const defaultStyle = stylesResults.findIndex((element) => element['default?'] === true);
+    console.log(defaultStyle);
+    if (defaultStyle === -1) {
+      return defaultPrice;
+    }
+    return stylesResults[defaultStyle].original_price;
+  };
+
+  const getProduct = () => axios.get(`/products/${product}`);
+
+  const getProductStyles = () => axios.get(`/products/${product}/styles`);
+
+  const getProductReviews = () => axios.get(`/reviews/${product}`);
+
   useEffect(() => {
-    axios.get(`/products/${props.product}`)
+    Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        setCategory(response.data.category);
-        setName(response.data.name);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get(`/products/${props.product}/styles`)
-      .then((response) => {
-        setPrice(response.data.results[0].original_price);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios.get(`/reviews/${props.product}`)
-      .then((response) => {
-        setRating(averageRating(response.data.results));
+        setProductData(response[0].data);
+        setProductStyleData(response[1].data);
+        setProductReviewData(response[2].data);
+        setCategory(response[0].data.category);
+        setName(response[0].data.name);
+        // setDefaultPrice(response[0].data.default_price);
+        defaultPrice = response[0].data.default_price;
+        // setPrice(response[1].data.results[0].original_price);
+        setPrice(checkPrice(response[1].data.results));
+        setImage(response[1].data.results[0].photos[0].url);
+        setRating(averageRating(response[2].data.results));
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  // useEffect(() => {
+  //   axios.get(`/products/${product}`)
+  //     .then((response) => {
+  //       setCategory(response.data.category);
+  //       setName(response.data.name);
+  //       setDefaultPrice(response.data.default_price);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   // need to implement sale price behavior
+  //   axios.get(`/products/${product}/styles`)
+  //     .then((response) => {
+  //       // setPrice(response.data.results[0].original_price);
+  //       setPrice(checkPrice(response.data.results));
+  //       setImage(response.data.results[0].photos[0].url);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   axios.get(`/reviews/${product}`)
+  //     .then((response) => {
+  //       setRating(averageRating(response.data.results));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
   return (
     <div>
+      <img src={image} alt="Primary Product" />
       <div>{category}</div>
       <div>{name}</div>
       <div>{price}</div>
@@ -58,3 +103,13 @@ export default function Card(props) {
     </div>
   );
 }
+
+// Card.propTypes = {
+//   product: PropTypes.number,
+// };
+
+// Card.propTypes = {
+//   product: PropTypes.number,
+// };
+
+*/

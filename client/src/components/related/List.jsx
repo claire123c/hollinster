@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from './Card.jsx';
 
-export default function List(props) {
+export default function List({related}) {
   return (
     <>
-      {props.related.map((product) => (<Card product={product} key={product} />))}
+      {related.map((product) => (<Card product={product} key={product} />))}
     </>
   );
 }
