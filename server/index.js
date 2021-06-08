@@ -36,6 +36,7 @@ app.get('/products/:product_id', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch(error => {
+      console.log(error);
       res.status(500).send(error);
     })
 })

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import Gallery from './ImgGallery/Gallery.jsx';
@@ -15,6 +15,8 @@ function Overview() {
         console.error(error);
       });
   };
+
+  getProduct();
   return (
     <>
       <Gallery styles={sampleData.results} />
