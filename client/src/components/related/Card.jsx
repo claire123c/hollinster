@@ -13,7 +13,6 @@ export default function Card({ product }) {
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
 
-
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
@@ -111,5 +110,3 @@ export default function Card({ product }) {
 // Card.propTypes = {
 //   product: PropTypes.number,
 // };
-
-*/
