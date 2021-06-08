@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function Card({product}) {
+export default function Card({ product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -24,6 +24,14 @@ export default function Card({product}) {
     return ratings / totalRatings;
   };
 
+  const checkPrice = (stylesResults) => {
+    const defaultStyle = stylesResults.find((element) => element['default?'] === true);
+    if (defaultStyle.sales_price !== null) {
+      return defaultStyle.sales_price;
+    }
+    return defaultStyle.original_price;
+  };
+
   useEffect(() => {
     axios.get(`/products/${product}`)
       .then((response) => {
@@ -36,7 +44,8 @@ export default function Card({product}) {
     // need to implement sale price behavior
     axios.get(`/products/${product}/styles`)
       .then((response) => {
-        setPrice(response.data.results[0].original_price);
+        // setPrice(response.data.results[0].original_price);
+        setPrice(checkPrice(response.data.results));
         setImage(response.data.results[0].photos[0].url);
       })
       .catch((error) => {
