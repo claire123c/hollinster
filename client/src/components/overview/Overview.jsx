@@ -6,7 +6,7 @@ import sampleData from './sampleData.js';
 
 function Overview() {
   const [productNum] = useState('25174');
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState(sampleData.results);
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {

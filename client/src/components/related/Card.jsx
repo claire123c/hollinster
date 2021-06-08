@@ -111,5 +111,3 @@ export default function Card({ product }) {
 // Card.propTypes = {
 //   product: PropTypes.number,
 // };
-
-*/
