@@ -46,6 +46,18 @@ function Minis(props) {
   //     setShowDown(true);
   //   }
   // }
+  const onClickUp = () => {
+    if (start - (window - 1) < 0) {
+      start = 0;
+    } else {
+      start -= window - 1;
+    }
+    console.log(end);
+    end -= window - 1;
+    console.log(start, end);
+    console.log(minis.slice(start, end));
+    setArray(minis.slice(start, end));
+  };
 
   const onClickDown = () => {
     start += window - 1;
@@ -62,7 +74,7 @@ function Minis(props) {
 
   return (
     <ThumbnailsBox>
-      {showUp ? <UpButton>&#5123;</UpButton> : <></>}
+      {showUp ? <UpButton onClick={onClickUp}>&#5123;</UpButton> : <></>}
       {array.map((mini, i) => (
         <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
