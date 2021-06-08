@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
-
   height: 70%;
-  width: 50%;
+  width: ${(props) => (props.expand ? '80%' : '50%')};
   background-color: rgb(232,232,232);
   overflow: hidden;
-
 `;
 const Images = styled.div`
   display: flex;
@@ -22,9 +20,13 @@ const Expand = styled.div`
 `;
 
 function Gallery({ styles }) {
+  const [expand, setExpand] = useState(false);
+  const onClickExp = () => {
+    setExpand(!expand);
+  };
   return (
-    <GalleryBox className="gallery">
-      <Expand className="collapsible">&#x2750;</Expand>
+    <GalleryBox className="gallery" expand={expand}>
+      <Expand onClick={onClickExp} className="collapsible">&#x2750;</Expand>
       <Images>
         <Large
           defaultStyle={styles[0]}
