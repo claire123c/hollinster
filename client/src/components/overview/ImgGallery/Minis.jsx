@@ -7,6 +7,11 @@ import Mini from './Mini.jsx'
 const ThumbnailsBox = styled.div`
   margin-right: 10%;
 `;
+const UpButton = styled.div`
+  font-size: 30px;
+  margin: 10% 60%;
+  color: rgb(72,72,72);
+`;
 const DownButton = styled.div`
   font-size: 30px;
   margin: 10% 60%;
@@ -14,20 +19,26 @@ const DownButton = styled.div`
 `;
 function Minis(props) {
   const { minis, currentImg, onClickThumb } = props;
+  const [showUp, setShowUp] = useState(false);
+  const [showDown, setShowDown] = useState(true);
+
   let array = minis;
 
   if (array.length > 7) {
-    console.log(minis);
-    console.log(minis.slice(0, 7));
     array = minis.slice(0, 7);
   }
 
+  const onClickDown = () => {
+
+  };
+
   return (
     <ThumbnailsBox>
+      {showUp ? <UpButton>&#5123;</UpButton> : <></>}
       {array.map((mini, i) => (
         <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
-      <DownButton>&#5121;</DownButton>
+      {showUp ? <DownButton>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>
 
   );
