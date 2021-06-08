@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Thumbnail = styled.img`
-  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
 `;
 const ThumbnailBox = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const ThumbnailBox = styled.div`
   border-bottom: ${(props) => (props.thumbnail_url === props.currentImg.thumbnail_url ? 'solid rgb(72,72,72) 3px' : 'solid rgb(232,232,232)')};
   outline: solid rgb(72,72,72) 1px;
   padding: 3%;
-  width: 100%;
+  width: 50px;
   height: 70px;
   margin: 10% 30%;
 `;
