@@ -14,8 +14,8 @@ const ThumbnailBox = styled.div`
   outline: solid rgb(72,72,72) 1px;
   padding: 5%;
   width: 50px;
-  height: 70px;
-  margin: 10% 30%;
+  height: 50px;
+  margin: 17% 30%;
 `;
 
 function Mini(props) {
