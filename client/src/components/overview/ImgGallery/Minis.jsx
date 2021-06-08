@@ -37,25 +37,15 @@ function Minis(props) {
         setShowDown(true);
       }
     }
-  });
+  }, [array]);
 
-  //let array = minis;
-  // if (array.length > 7) {
-  //   array = minis.slice(start, end);
-  //   if (!showDown) {
-  //     setShowDown(true);
-  //   }
-  // }
   const onClickUp = () => {
     if (start - (window - 1) < 0) {
       start = 0;
     } else {
       start -= window - 1;
     }
-    console.log(end);
     end -= window - 1;
-    console.log(start, end);
-    console.log(minis.slice(start, end));
     setArray(minis.slice(start, end));
   };
 
@@ -63,7 +53,6 @@ function Minis(props) {
     start += window - 1;
     end += window - 1;
     setArray(minis.slice(start, end));
-    //array = minis.slice(start, end);
     if (end > minis.length) {
       setShowUp(true);
       setShowDown(false);
@@ -86,7 +75,11 @@ function Minis(props) {
 //make carousel into class components so it can be reusable
 
 // class Carousel {
+//   constructor(window) {
+
+//   }
 // }
+//higher order components, function
 
 export default Minis;
 
