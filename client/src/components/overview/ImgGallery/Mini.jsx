@@ -10,7 +10,7 @@ const ThumbnailBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: ${(props) => (props.thumbnail_url === props.currentImg.thumbnail_url ? 'solid rgb(72,72,72) 3px' : 'solid rgb(232,232,232)')};
+  border-bottom: ${(props) => (props.thumbnail_url === props.currentImg.thumbnail_url ? 'solid rgb(72,72,72) 5px' : 'solid rgb(232,232,232)')};
   outline: solid rgb(72,72,72) 1px;
   padding: 5%;
   width: 50px;
@@ -22,13 +22,12 @@ function Mini(props) {
   const { mini, currentImg, onClickThumb, i } = props;
   const { thumbnail_url } = mini;
   const onClickImg = () => {
-    //change to not click img but click div
     onClickThumb(mini, i);
   };
 
   return (
-    <ThumbnailBox thumbnail_url={thumbnail_url} currentImg={currentImg}>
-      <Thumbnail onClick={onClickImg} className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />
+    <ThumbnailBox onClick={onClickImg} thumbnail_url={thumbnail_url} currentImg={currentImg}>
+      <Thumbnail className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />
     </ThumbnailBox>
   );
 }
