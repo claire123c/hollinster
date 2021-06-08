@@ -21,32 +21,44 @@ function Minis(props) {
   const { minis, currentImg, onClickThumb } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
-  const [showPhotos, setshowPhotos] = useState(minis);
+  const [array, setArray] = useState(minis);
   let start = 0;
   let end = 7;
   const window = 7;
 
-  let array = minis;
-  if (array.length > 7) {
-    array = minis.slice(start, end);
-    if (!showDown) {
-      setShowDown(true);
+  useEffect(() => {
+    setArray(minis);
+  }, [props]);
+
+  useEffect(() => {
+    if (array.length > window) {
+      setArray(minis.slice(start, end));
+      if (!showDown) {
+        setShowDown(true);
+      }
     }
-  }
+  });
+
+  //let array = minis;
+  // if (array.length > 7) {
+  //   array = minis.slice(start, end);
+  //   if (!showDown) {
+  //     setShowDown(true);
+  //   }
+  // }
 
   const onClickDown = () => {
-    console.log(end);
-    if (end + end - 1 > minis.length) {
-      start += window - 1;
-      end += window - 1;
-      console.log(array);
-      array = minis.slice(start, end);
-      console.log(array);
-
+    start += window - 1;
+    end += window - 1;
+    setArray(minis.slice(start, end));
+    //array = minis.slice(start, end);
+    if (end > minis.length) {
+      setShowUp(true);
+      setShowDown(false);
     } else {
+      setShowUp(true);
     }
   };
-
 
   return (
     <ThumbnailsBox>
@@ -59,6 +71,10 @@ function Minis(props) {
 
   );
 }
+//make carousel into class components so it can be reusable
+
+// class Carousel {
+// }
 
 export default Minis;
 
