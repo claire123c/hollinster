@@ -21,6 +21,7 @@ function Minis(props) {
   const { minis, currentImg, onClickThumb } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
+  const [showPhotos, setshowPhotos] = useState(minis);
   let start = 0;
   let end = 7;
   const window = 7;
@@ -34,10 +35,14 @@ function Minis(props) {
   }
 
   const onClickDown = () => {
-    if (end + end - 1 <= minis.length) {
+    console.log(end);
+    if (end + end - 1 > minis.length) {
       start += window - 1;
       end += window - 1;
+      console.log(array);
       array = minis.slice(start, end);
+      console.log(array);
+
     } else {
     }
   };
