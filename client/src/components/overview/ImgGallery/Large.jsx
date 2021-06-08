@@ -25,10 +25,15 @@ const LeftArrow = styled.p`
 `;
 
 function Large({ defaultStyle }) {
+  console.log(defaultStyle);
   const { photos } = defaultStyle;
+  console.log(photos, 'photos');
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
+  console.log(photos[currentImgIndex]);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs] = useState(photos);
+  console.log(Object.is(photos[currentImgIndex], currentImg));
+  console.log(currentImg, 'img');
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -42,8 +47,8 @@ function Large({ defaultStyle }) {
       useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
-  const onClickThumb = (currentThumbnail, i) => {
-    useCurrentImg(currentThumbnail);
+  const onClickThumb = (current, i) => {
+    useCurrentImg(current);
     usecurrentImgIndex(i);
   };
 
