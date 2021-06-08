@@ -5,8 +5,8 @@ import Gallery from './ImgGallery/Gallery.jsx';
 import sampleData from './sampleData.js';
 
 function Overview() {
-  const [productNum] = useState('25173');
-  const [productData, setProductData] = useState(sampleData.results);
+  const [productNum] = useState('25174');
+  const [productData, setProductData] = useState([]);
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {

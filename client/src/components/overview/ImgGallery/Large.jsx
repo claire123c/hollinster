@@ -36,7 +36,7 @@ const LeftArrow = styled.p`
 
 function Large(props) {
   const { defaultStyle } = props;
-  const { photos } = defaultStyle;
+  const { photos = [] } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useAllImgs] = useState(photos);
