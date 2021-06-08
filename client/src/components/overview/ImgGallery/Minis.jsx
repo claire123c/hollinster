@@ -21,17 +21,25 @@ function Minis(props) {
   const { minis, currentImg, onClickThumb } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
+  let start = 0;
+  let end = 7;
+  const window = 7;
 
   let array = minis;
   if (array.length > 7) {
-    array = minis.slice(0, 7);
+    array = minis.slice(start, end);
     if (!showDown) {
       setShowDown(true);
     }
   }
 
   const onClickDown = () => {
-    //array = minis.slice(7, )
+    if (end + end - 1 <= minis.length) {
+      start += window - 1;
+      end += window - 1;
+      array = minis.slice(start, end);
+    } else {
+    }
   };
 
 
@@ -41,7 +49,7 @@ function Minis(props) {
       {array.map((mini, i) => (
         <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
       ))}
-      {showDown ? <DownButton>&#5121;</DownButton> : <></>}
+      {showDown ? <DownButton onClick={onClickDown}>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>
 
   );
