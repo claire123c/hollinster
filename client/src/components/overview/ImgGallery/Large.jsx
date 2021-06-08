@@ -12,8 +12,13 @@ const CenterDefaultView = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const DefaultView = styled.img`
-  height: 700;
+const DefaultView = styled.div`
+  max-width: 100%;
+  max-height: 100%;
+`;
+const DefaultImg = styled.img`
+  max-width: 450;
+  max-height: 722;
 `;
 const RightArrow = styled.p`
   font-size: 40px;
@@ -59,7 +64,9 @@ function Large(props) {
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
       <CenterDefaultView className="alldefaultview">
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
-        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name} />
+        <DefaultView className="defaultview">
+          <DefaultImg src={currentImg.url} alt={defaultStyle.name} />
+        </DefaultView>
         <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
       </CenterDefaultView>
     </ThumbnailsGroup>

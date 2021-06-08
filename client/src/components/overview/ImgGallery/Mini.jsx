@@ -12,7 +12,7 @@ const ThumbnailBox = styled.div`
   align-items: center;
   border-bottom: ${(props) => (props.thumbnail_url === props.currentImg.thumbnail_url ? 'solid rgb(72,72,72) 3px' : 'solid rgb(232,232,232)')};
   outline: solid rgb(72,72,72) 1px;
-  padding: 3%;
+  padding: 5%;
   width: 50px;
   height: 70px;
   margin: 10% 30%;

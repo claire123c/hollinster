@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
-  height: 700px;
-  width: 1000px;
+  display: flex;
+  align-items: center;
+  height: 70%;
+  width: 50%;
   background-color: rgb(232,232,232);
 `;
 
