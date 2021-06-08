@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -24,11 +24,12 @@ const LeftArrow = styled.p`
   padding: 5%;
 `;
 
-function Large({ defaultStyle }) {
+function Large(props) {
+  const { defaultStyle } = props;
   const { photos } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
-  const [allImgs] = useState(photos);
+  const [allImgs, useAllImgs] = useState(photos);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
@@ -42,10 +43,16 @@ function Large({ defaultStyle }) {
       useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
-  const onClickThumb = (currentThumbnail, i) => {
-    useCurrentImg(currentThumbnail);
+  const onClickThumb = (current, i) => {
+    useCurrentImg(current);
     usecurrentImgIndex(i);
   };
+
+  useEffect(() => {
+    usecurrentImgIndex(0);
+    useCurrentImg(defaultStyle.photos[0]);
+    useAllImgs(photos);
+  }, [props]);
 
   return (
     <ThumbnailsGroup>

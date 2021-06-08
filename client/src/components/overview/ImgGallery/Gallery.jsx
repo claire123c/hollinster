@@ -14,9 +14,7 @@ function Gallery({ styles }) {
   return (
     <GalleryBox className="gallery">
       <Large
-        defaultStyle={styles.find((style) => (
-          style['default?'] === true
-        ))}
+        defaultStyle={styles[0]}
       />
     </GalleryBox>
   );

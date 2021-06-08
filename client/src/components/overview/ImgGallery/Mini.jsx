@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -17,11 +17,13 @@ const ThumbnailBox = styled.div`
   margin: 10% 30%;
 `;
 
-function Mini({ mini, currentImg, onClickThumb, i }) {
+function Mini(props) {
+  const { mini, currentImg, onClickThumb, i } = props;
   const { thumbnail_url } = mini;
   const onClickImg = () => {
     onClickThumb(mini, i);
   };
+
   return (
     <ThumbnailBox thumbnail_url={thumbnail_url} currentImg={currentImg}>
       <Thumbnail onClick={onClickImg} className="minithumbnail" src={thumbnail_url} alt={thumbnail_url} />

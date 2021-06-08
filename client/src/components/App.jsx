@@ -12,8 +12,8 @@ const App = (props) => {
     <>
       <h1>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-      {/* <Related /> */}
       {/* <Overview /> */}
+      {/* <Related /> */}
     </>
   );
 };

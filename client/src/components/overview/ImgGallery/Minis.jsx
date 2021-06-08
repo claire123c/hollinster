@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -7,7 +7,9 @@ import Mini from './Mini.jsx'
 const ThumbnailsBox = styled.div`
   margin-right: 18%;
 `;
-function Minis({ minis, currentImg, onClickThumb }) {
+function Minis(props) {
+  const { minis, currentImg, onClickThumb } = props;
+
   return (
     <ThumbnailsBox>
       {minis.map((mini, i) => (
@@ -22,5 +24,6 @@ export default Minis;
 
 Minis.propTypes = {
   minis: PropTypes.array,
-  currentImg: PropTypes.object
+  currentImg: PropTypes.object,
+  onClickThumb: PropTypes.func,
 };
