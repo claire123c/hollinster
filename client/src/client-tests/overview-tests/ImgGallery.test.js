@@ -6,6 +6,7 @@ import {cleanup, fireEvent, render} from '@testing-library/react';
 
 import Large from '../../components/overview/ImgGallery/Large.jsx';
 import Mini from '../../components/overview/ImgGallery/Mini.jsx';
+import Gallery from '../../components/overview/ImgGallery/Gallery.jsx';
 import sampleData from '../../components/overview/sampleData.js';
 
 describe('Right Arrow', () => {
@@ -74,5 +75,16 @@ describe('Click Thumbnails', () => {
     fireEvent.click(thumbnail2);
 
     expect(currentImage.src).not.toBe(previousImgSrc);
+  });
+});
+
+describe('Expand Gallery', () => {
+  test('onClick Expand Gallery should not change the div element', () => {
+    const { container } = render(<Gallery styles={sampleData.results} />);
+    const coll = document.querySelector('.collapsible');
+    const previousItem = coll;
+    fireEvent.click(coll);
+
+    expect(coll).toBe(previousItem);
   });
 });
