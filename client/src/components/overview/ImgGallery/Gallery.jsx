@@ -9,14 +9,13 @@ const GalleryBox = styled.div`
   width: ${(props) => (props.expand ? '80%' : '50%')};
   background-color: rgb(232,232,232);
   overflow: hidden;
-`;
-const Images = styled.div`
-  display: flex;
-  flex-direction: row;
+  padding: 2%;
 `;
 const Expand = styled.div`
   font-size: 40px;
   float: right;
+  min-height: 20px;
+  min-width: 20px;
 `;
 
 function Gallery({ styles }) {
@@ -26,12 +25,10 @@ function Gallery({ styles }) {
   };
   return (
     <GalleryBox className="gallery" expand={expand}>
-      <Expand onClick={onClickExp} className="collapsible">&#x2750;</Expand>
-      <Images>
-        <Large
-          defaultStyle={styles[0]}
-        />
-      </Images>
+      <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
+      <Large
+        defaultStyle={styles[0]}
+      />
     </GalleryBox>
   );
 }
