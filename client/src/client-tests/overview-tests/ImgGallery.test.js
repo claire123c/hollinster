@@ -95,13 +95,24 @@ describe('Sliding Window for Mini Thumbnails', () => {
   test('Down onClick should change displayed arrays', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results} />);
     const down = document.querySelector('.downbutton');
-    const image = document.querySelector('.miniimage');
-
-    const previousURL = image.src;
+    const imageURL = document.querySelector('.miniimage').src;
 
     fireEvent.click(down);
 
-    expect(image.src).toBe(previousURL);
+    const newURL = document.querySelector('.miniimage').src;
+    expect(imageURL).not.toBe(newURL);
   });
 
+  test('Up onClick should change displayed arrays', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    fireEvent.click(down);
+    const imageURL = document.querySelector('.miniimage').src;
+
+    const up = document.querySelector('.upbutton');
+    fireEvent.click(up);
+    const newURL = document.querySelector('.miniimage').src;
+    console.log(imageURL);
+    expect(imageURL).not.toBe(newURL);
+  });
 });
