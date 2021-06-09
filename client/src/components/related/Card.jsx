@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Comparison from './Comparison.jsx'
-import Modal from './Modal.jsx'
+import Comparison from './Comparison.jsx';
+import Modal from './Modal.jsx';
 
 export default function Card({ product }) {
   const [category, setCategory] = useState();
@@ -33,19 +33,16 @@ export default function Card({ product }) {
 
   const checkPrice = (stylesResults) => {
     const defaultStyle = stylesResults.findIndex((element) => element['default?'] === true);
-    console.log(defaultStyle);
+    const style = stylesResults[defaultStyle];
     if (defaultStyle === -1) {
       return defaultPrice;
     }
-    if (stylesResults[defaultStyle].sale_price !== null) {
-      return stylesResults[defaultStyle].sale_price;
-    }
-    return stylesResults[defaultStyle].original_price;
+    return (style.sale_price !== null ? style.sale_price : style.original_price);
   };
 
   const showComparison = () => {
     setModal(!modal);
-  }
+  };
 
   const getProduct = () => axios.get(`/products/${product}`);
 
