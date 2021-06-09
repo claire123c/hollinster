@@ -112,7 +112,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
     const up = document.querySelector('.upbutton');
     fireEvent.click(up);
     const newURL = document.querySelector('.miniimage').src;
-    console.log(imageURL);
+
     expect(imageURL).not.toBe(newURL);
   });
 });
