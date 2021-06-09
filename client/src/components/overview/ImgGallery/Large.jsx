@@ -25,7 +25,7 @@ const DefaultView = styled.div`
   max-width: 100%;
   height: 100%;
   width: 100%;
-  background-image: url(${(props) => (props.source)});
+  background-image: url(${(props) => (props.src)});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -76,7 +76,7 @@ function Large(props) {
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
       <AllDefaultView className="alldefaultview">
-        <DefaultView className="defaultview" source={currentImg.url} alt={defaultStyle.name}>
+        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
           <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
           <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
         </DefaultView>
