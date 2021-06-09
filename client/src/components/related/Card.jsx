@@ -9,9 +9,9 @@ export default function Card({ product }) {
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
-  const [productData, setProductData] = useState([]);
-  const [productStyleData, setProductStyleData] = useState([]);
-  const [productReviewData, setProductReviewData] = useState([]);
+  // const [productData, setProductData] = useState([]);
+  // const [productStyleData, setProductStyleData] = useState([]);
+  // const [productReviewData, setProductReviewData] = useState([]);
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -46,9 +46,9 @@ export default function Card({ product }) {
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        setProductData(response[0].data);
-        setProductStyleData(response[1].data);
-        setProductReviewData(response[2].data);
+        // setProductData(response[0].data);
+        // setProductStyleData(response[1].data);
+        // setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         // setDefaultPrice(response[0].data.default_price);
