@@ -6,8 +6,9 @@ import {cleanup, fireEvent, render} from '@testing-library/react';
 
 import Large from '../../components/overview/ImgGallery/Large.jsx';
 import Mini from '../../components/overview/ImgGallery/Mini.jsx';
+import Minis from '../../components/overview/ImgGallery/Minis.jsx';
 import Gallery from '../../components/overview/ImgGallery/Gallery.jsx';
-import sampleData from '../../components/overview/sampleData.js';
+import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
 
 describe('Right Arrow', () => {
   test('Right Arrow changes image after click', () => {
@@ -87,5 +88,31 @@ describe('Expand Gallery', () => {
     fireEvent.click(coll);
 
     expect(coll).toBe(previousItem);
+  });
+});
+
+describe('Sliding Window for Mini Thumbnails', () => {
+  test('Down onClick should change displayed arrays', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    const imageURL = document.querySelector('.miniimage').src;
+
+    fireEvent.click(down);
+
+    const newURL = document.querySelector('.miniimage').src;
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('Up onClick should change displayed arrays', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    fireEvent.click(down);
+    const imageURL = document.querySelector('.miniimage').src;
+
+    const up = document.querySelector('.upbutton');
+    fireEvent.click(up);
+    const newURL = document.querySelector('.miniimage').src;
+    console.log(imageURL);
+    expect(imageURL).not.toBe(newURL);
   });
 });

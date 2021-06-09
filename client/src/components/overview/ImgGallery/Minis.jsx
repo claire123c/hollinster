@@ -9,23 +9,22 @@ const ThumbnailsBox = styled.div`
 `;
 const UpButton = styled.div`
   font-size: 30px;
-  margin: 10% 60%;
+  margin: 10% 30%;
   color: rgb(72,72,72);
 `;
 const DownButton = styled.div`
   font-size: 30px;
-  margin: 10% 60%;
+  margin: 10% 30%;
   color: rgb(72,72,72);
 `;
+
 function Minis(props) {
-  const { minis, currentImg, onClickThumb } = props;
+  const { minis, currentImg, onClickThu } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
   const [array, setArray] = useState(minis);
   const [startI, setStartI] = useState(0);
-  const [endI, setEndI] = useState(0);
-  let start = 0;
-  let end = 7;
+  const [endI, setEndI] = useState(7);
   const window = 7;
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function Minis(props) {
 
   useEffect(() => {
     if (array.length > window) {
-      setArray(minis.slice(start, end));
+      setArray(minis.slice(startI, endI));
       if (!showDown) {
         setShowDown(true);
       }
@@ -42,36 +41,42 @@ function Minis(props) {
   }, [array]);
 
   const onClickUp = () => {
-    if (start - (window - 1) < 0) {
-      start = 0;
+    if (startI - (window - 1) <= 0) {
+      setStartI(0);
+      setArray(minis.slice(0, endI - (window - 1)));
+      setShowUp(false);
+      setShowDown(true);
     } else {
-      start -= window - 1;
+      setStartI(startI - window - 1);
+      setArray(minis.slice(startI - window - 1, endI - (window - 1)));
+      setShowUp(true);
+      setShowDown(true);
     }
-    end -= window - 1;
-    setArray(minis.slice(start, end));
+    setEndI(endI - (window - 1));
   };
 
   const onClickDown = () => {
-    start += window - 1;
-    end += window - 1;
-    setArray(minis.slice(start, end));
-    if (end > minis.length) {
+    setStartI(startI + window - 1);
+    setEndI(endI + window - 1);
+    setArray(minis.slice(startI + window - 1, endI + window - 1));
+
+    if (endI + window - 1 > minis.length) {
       setShowUp(true);
       setShowDown(false);
     } else {
       setShowUp(true);
+      setShowDown(false);
     }
   };
 
   return (
     <ThumbnailsBox>
-      {showUp ? <UpButton onClick={onClickUp}>&#5123;</UpButton> : <></>}
+      {showUp ? <UpButton className="upbutton" onClick={onClickUp}>&#5123;</UpButton> : <></>}
       {array.map((mini, i) => (
-        <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
+        <Mini className="themini" mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThu={onClickThu} />
       ))}
-      {showDown ? <DownButton onClick={onClickDown}>&#5121;</DownButton> : <></>}
+      {showDown ? <DownButton className="downbutton" onClick={onClickDown}>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>
-
   );
 }
 
@@ -80,5 +85,5 @@ export default Minis;
 Minis.propTypes = {
   minis: PropTypes.array,
   currentImg: PropTypes.object,
-  onClickThumb: PropTypes.func,
+  onClickThu: PropTypes.func,
 };

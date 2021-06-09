@@ -61,7 +61,7 @@ function Large(props) {
       useCurrentImg(photos[currentImgIndex + 1]);
     }
   };
-  const onClickThumb = (current, i) => {
+  const onClickThu = (current, i) => {
     useCurrentImg(current);
     usecurrentImgIndex(i);
   };
@@ -74,7 +74,7 @@ function Large(props) {
 
   return (
     <ThumbnailsGroup className="thumbnailgroup">
-      <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
+      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} />
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
           <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
