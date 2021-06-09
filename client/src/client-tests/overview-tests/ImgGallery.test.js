@@ -66,20 +66,20 @@ describe('Left Arrow', () => {
   });
 });
 
-xdescribe('Click Thumbnails', () => {
+describe('Click Thumbnails', () => {
   test('Thumbnail changes default image on click', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
-    const currentImage = LargeComp.getByAltText(sampleData.results[0].name);
+    const currentImage = document.querySelector('.defaultview');
     const thumbnail2 = LargeComp.getByAltText('https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
-    const previousImgSrc = currentImage.src;
+    const previousAttr = currentImage.getAttribute('src');
 
     fireEvent.click(thumbnail2);
 
-    expect(currentImage.src).not.toBe(previousImgSrc);
+    expect(currentImage.getAttribute('src')).not.toBe(previousAttr);
   });
 });
 
-xdescribe('Expand Gallery', () => {
+describe('Expand Gallery', () => {
   test('onClick Expand Gallery should not change the div element', () => {
     const { container } = render(<Gallery styles={sampleData.results} />);
     const coll = document.querySelector('.collapsible');
