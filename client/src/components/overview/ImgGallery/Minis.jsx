@@ -18,7 +18,7 @@ const DownButton = styled.div`
   color: rgb(72,72,72);
 `;
 function Minis(props) {
-  const { minis, currentImg, onClickThumb } = props;
+  const { minis, currentImg, onClickThu } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
   const [array, setArray] = useState(minis);
@@ -70,11 +70,11 @@ function Minis(props) {
 
   return (
     <ThumbnailsBox>
-      {showUp ? <UpButton onClick={onClickUp}>&#5123;</UpButton> : <></>}
+      {showUp ? <UpButton className="upbutton" onClick={onClickUp}>&#5123;</UpButton> : <></>}
       {array.map((mini, i) => (
-        <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThumb={onClickThumb} />
+        <Mini mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThu={onClickThu} />
       ))}
-      {showDown ? <DownButton onClick={onClickDown}>&#5121;</DownButton> : <></>}
+      {showDown ? <DownButton className="downbutton" onClick={onClickDown}>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>
 
   );

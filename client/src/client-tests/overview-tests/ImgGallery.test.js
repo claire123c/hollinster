@@ -93,7 +93,7 @@ describe('Expand Gallery', () => {
 
 describe('Sliding Window for Mini Thumbnails', () => {
   test('Down onClick should change displayed arrays', () => {
-    const MinisComp = render(<Minis />);
+    const GalleryComp = render(<Gallery styles={sampleData.results} />);
   });
 
 

@@ -19,10 +19,10 @@ const ThumbnailBox = styled.div`
 `;
 
 function Mini(props) {
-  const { mini, currentImg, onClickThumb, i } = props;
+  const { mini, currentImg, onClickThu, i } = props;
   const { thumbnail_url } = mini;
   const onClickImgDiv = () => {
-    onClickThumb(mini, i);
+    onClickThu(mini, i);
   };
 
   return (
@@ -36,7 +36,7 @@ export default Mini;
 
 Mini.propTypes = {
   mini: PropTypes.object,
-  onClickThumb: PropTypes.func,
+  onClickThu: PropTypes.func,
   currentImg: PropTypes.object,
   i: PropTypes.number,
 };
