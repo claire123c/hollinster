@@ -14,6 +14,8 @@ const GalleryBox = styled.div`
 const Expand = styled.div`
   font-size: 40px;
   float: right;
+  min-height: 20px;
+  min-width: 20px;
 `;
 
 function Gallery({ styles }) {

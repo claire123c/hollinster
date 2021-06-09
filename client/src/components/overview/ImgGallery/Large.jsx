@@ -30,16 +30,15 @@ const DefaultView = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
 `;
-
 const RightArrow = styled.p`
   font-size: 40px;
   color: rgba(72, 72, 72, 0.7);
-  padding: 50%;
+  padding-left: 50%;
 `;
 const LeftArrow = styled.p`
   font-size: 40px;
   color: rgba(72, 72, 72, 0.7);
-  padding: 50%;
+  padding-right: 50%;
 `;
 
 function Large(props) {
