@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 export default function Modal() {
-  const [current, setCurrent] = useState('25167');
-  const [selected, setSelectd] = useState('25168');
+  const [current, setCurrent] = useState();
+  const [selected, setSelectd] = useState();
 
   return (
     <>
-      <p>Table with colgroup</p>
+      <p>COMPARING</p>
       <table>
         <colgroup span="3" />
         <tr>

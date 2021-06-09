@@ -37,12 +37,14 @@ export default function Card({ product }) {
     if (defaultStyle === -1) {
       return defaultPrice;
     }
+    if (stylesResults[defaultStyle].sale_price !== null) {
+      return stylesResults[defaultStyle].sale_price;
+    }
     return stylesResults[defaultStyle].original_price;
   };
 
   const showComparison = () => {
-    setModal(!modal)
-    console.log('clicked')
+    setModal(!modal);
   }
 
   const getProduct = () => axios.get(`/products/${product}`);
@@ -104,7 +106,7 @@ export default function Card({ product }) {
     <div>
       {modal ? <Modal /> : null}
       <Comparison showComparison={showComparison} />
-      <img src={image} alt="Primary Product" />
+      <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>
       <div>{price}</div>
@@ -113,10 +115,10 @@ export default function Card({ product }) {
   );
 }
 
-// Card.propTypes = {
-//   product: PropTypes.number,
-// };
+Card.propTypes = {
+  product: PropTypes.number,
+};
 
-// Card.propTypes = {
-//   product: PropTypes.number,
-// };
+Card.defaultProps = {
+  product: 25167,
+};

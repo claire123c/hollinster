@@ -4,7 +4,7 @@ import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
 export default function Related() {
-  const [current, setCurrent] = useState('25167');
+  const [current, setCurrent] = useState(25167);
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
@@ -15,8 +15,7 @@ export default function Related() {
   };
 
   const removeFromOutfit = (selected) => {
-    outfit.findIndex((element))
-
+    outfit.findIndex((element));
   }
 
   useEffect(() => {
