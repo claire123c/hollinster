@@ -26,7 +26,7 @@ function Gallery({ styles }) {
   };
   return (
     <GalleryBox className="gallery" expand={expand}>
-      <Expand onClick={onClickExp} className="collapsible">&#x2610;</Expand>
+      <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
       <Images>
         <Large
           defaultStyle={styles[0]}
