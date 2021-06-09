@@ -19,7 +19,9 @@ const DownButton = styled.div`
 `;
 
 function Minis(props) {
-  const { minis, currentImg, onClickThu } = props;
+  const {
+    minis, currentImg, onClickThu, getCurrentMinis, leftClicked,
+  } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
   const [array, setArray] = useState(minis);
@@ -38,6 +40,7 @@ function Minis(props) {
         setShowDown(true);
       }
     }
+    getCurrentMinis(array);
   }, [array]);
 
   const onClickUp = () => {
@@ -54,6 +57,16 @@ function Minis(props) {
     }
     setEndI(endI - (window - 1));
   };
+
+  useEffect(() => {
+    console.log(leftClicked);
+    console.log(array.indexOf(currentImg));
+    console.log(array);
+    console.log(currentImg);
+    if (array.indexOf(currentImg) === -1) {
+      onClickUp();
+    }
+  }, [leftClicked]);
 
   const onClickDown = () => {
     setStartI(startI + window - 1);
@@ -73,7 +86,7 @@ function Minis(props) {
     <ThumbnailsBox>
       {showUp ? <UpButton className="upbutton" onClick={onClickUp}>&#5123;</UpButton> : <></>}
       {array.map((mini, i) => (
-        <Mini className="themini" mini={mini} key={mini.url} currentImg={currentImg} i={i} onClickThu={onClickThu} />
+        <Mini className="themini" mini={mini} key={mini.url} currentImg={currentImg} i={minis.indexOf(mini)} onClickThu={onClickThu} />
       ))}
       {showDown ? <DownButton className="downbutton" onClick={onClickDown}>&#5121;</DownButton> : <></>}
     </ThumbnailsBox>

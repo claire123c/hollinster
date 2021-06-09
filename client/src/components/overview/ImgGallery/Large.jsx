@@ -47,13 +47,20 @@ function Large(props) {
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useAllImgs] = useState(photos);
+  let currentMinis = [];
+  const [leftClicked, useLeftClicked] = useState(false);
 
+  const getCurrentMinis = (info) => {
+    currentMinis = info;
+  };
   // left and right button should disappear if on first image or last
-  //if img not appearing, go to next
+  // if img not appearing, go to next
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
       usecurrentImgIndex(currentImgIndex - 1);
       useCurrentImg(photos[currentImgIndex - 1]);
+      useLeftClicked(!leftClicked);
+
     }
   };
   const rightButtonOnClick = () => {
@@ -75,7 +82,7 @@ function Large(props) {
 
   return (
     <ThumbnailsGroup className="thumbnailgroup">
-      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} />
+      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} getCurrentMinis={getCurrentMinis} leftClicked={leftClicked}/>
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
           <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>

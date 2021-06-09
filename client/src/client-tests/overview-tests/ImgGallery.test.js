@@ -92,7 +92,7 @@ describe('Expand Gallery', () => {
 });
 
 describe('Sliding Window for Mini Thumbnails', () => {
-  test('Down onClick should change displayed arrays', () => {
+  test('Down onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results} />);
     const down = document.querySelector('.downbutton');
     const imageURL = document.querySelector('.miniimage').src;
@@ -103,7 +103,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
     expect(imageURL).not.toBe(newURL);
   });
 
-  test('Up onClick should change displayed arrays', () => {
+  test('Up onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results} />);
     const down = document.querySelector('.downbutton');
     fireEvent.click(down);
@@ -114,5 +114,9 @@ describe('Sliding Window for Mini Thumbnails', () => {
     const newURL = document.querySelector('.miniimage').src;
 
     expect(imageURL).not.toBe(newURL);
+  });
+
+  test('Right arrow should change displayed thumbnails', () => {
+
   });
 });

@@ -19,9 +19,12 @@ const ThumbnailBox = styled.div`
 `;
 
 function Mini(props) {
-  const { mini, currentImg, onClickThu, i } = props;
+  const {
+    mini, currentImg, onClickThu, i,
+  } = props;
   const { thumbnail_url } = mini;
   const onClickImgDiv = () => {
+    console.log(mini);
     onClickThu(mini, i);
   };
 
