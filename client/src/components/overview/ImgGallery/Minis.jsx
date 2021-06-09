@@ -24,8 +24,6 @@ function Minis(props) {
   const [array, setArray] = useState(minis);
   const [startI, setStartI] = useState(0);
   const [endI, setEndI] = useState(7);
-  // let startI = 0;
-  // let endI = 7;
   const window = 7;
 
   useEffect(() => {
@@ -44,7 +42,6 @@ function Minis(props) {
   const onClickUp = () => {
     if (startI - (window - 1) <= 0) {
       setStartI(0);
-      console.log(endI - window - 1);
       setArray(minis.slice(0, endI - (window - 1)));
       setShowUp(false);
       setShowDown(true);

@@ -6,6 +6,7 @@ import {cleanup, fireEvent, render} from '@testing-library/react';
 
 import Large from '../../components/overview/ImgGallery/Large.jsx';
 import Mini from '../../components/overview/ImgGallery/Mini.jsx';
+import Minis from '../../components/overview/ImgGallery/Minis.jsx';
 import Gallery from '../../components/overview/ImgGallery/Gallery.jsx';
 import sampleData from '../../components/overview/sampleData.js';
 
@@ -88,4 +89,12 @@ describe('Expand Gallery', () => {
 
     expect(coll).toBe(previousItem);
   });
+});
+
+describe('Sliding Window for Mini Thumbnails', () => {
+  test('Down onClick should change displayed arrays', () => {
+    const MinisComp = render(<Minis />);
+  });
+
+
 });
