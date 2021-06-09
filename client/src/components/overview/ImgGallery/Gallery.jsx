@@ -23,6 +23,7 @@ function Gallery({ styles }) {
   const onClickExp = () => {
     setExpand(!expand);
   };
+
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>

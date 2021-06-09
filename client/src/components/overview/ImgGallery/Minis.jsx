@@ -9,12 +9,12 @@ const ThumbnailsBox = styled.div`
 `;
 const UpButton = styled.div`
   font-size: 30px;
-  margin: 10% 60%;
+  margin: 10% 30%;
   color: rgb(72,72,72);
 `;
 const DownButton = styled.div`
   font-size: 30px;
-  margin: 10% 60%;
+  margin: 10% 30%;
   color: rgb(72,72,72);
 `;
 function Minis(props) {
