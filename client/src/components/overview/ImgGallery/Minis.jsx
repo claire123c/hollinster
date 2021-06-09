@@ -23,9 +23,9 @@ function Minis(props) {
   const [showDown, setShowDown] = useState(false);
   const [array, setArray] = useState(minis);
   const [startI, setStartI] = useState(0);
-  const [endI, setEndI] = useState(0);
-  let start = 0;
-  let end = 7;
+  const [endI, setEndI] = useState(7);
+  // let startI = 0;
+  // let endI = 7;
   const window = 7;
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Minis(props) {
 
   useEffect(() => {
     if (array.length > window) {
-      setArray(minis.slice(start, end));
+      setArray(minis.slice(startI, endI));
       if (!showDown) {
         setShowDown(true);
       }
@@ -42,20 +42,21 @@ function Minis(props) {
   }, [array]);
 
   const onClickUp = () => {
-    if (start - (window - 1) < 0) {
-      start = 0;
+    if (startI - (window - 1) < 0) {
+      setStartI(0);
     } else {
-      start -= window - 1;
+      setStartI(startI - window - 1);
     }
-    end -= window - 1;
-    setArray(minis.slice(start, end));
+    setEndI(endI - window - 1);
+    setArray(minis.slice(startI, endI));
   };
 
   const onClickDown = () => {
-    start += window - 1;
-    end += window - 1;
-    setArray(minis.slice(start, end));
-    if (end > minis.length) {
+    setStartI(startI + window - 1);
+    setEndI(endI + window - 1);
+    setArray(minis.slice(startI + window - 1, endI + window - 1));
+    //how to get endI to update after
+    if (endI + window - 1 > minis.length) {
       setShowUp(true);
       setShowDown(false);
     } else {
