@@ -9,6 +9,7 @@ const GalleryBox = styled.div`
   width: ${(props) => (props.expand ? '80%' : '50%')};
   background-color: rgb(232,232,232);
   overflow: hidden;
+  padding: 2%;
 `;
 const Images = styled.div`
   display: flex;
@@ -27,11 +28,9 @@ function Gallery({ styles }) {
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
-      <Images>
-        <Large
-          defaultStyle={styles[0]}
-        />
-      </Images>
+      <Large
+        defaultStyle={styles[0]}
+      />
     </GalleryBox>
   );
 }

@@ -6,22 +6,27 @@ import Minis from './Minis.jsx';
 
 const ThumbnailsGroup = styled.div`
   display: flex;
-  min-height; 500px;
-  flex-direction: row;
-
+  max-height: 100%;
+  max-width: 100%;
 `;
-const CenterDefaultView = styled.div`
+const AllDefaultView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
+  max-height: 100%;
+  max-width: 100%;
 `;
 const DefaultView = styled.div`
   display: flex;
   flex-direction: column;
+  max-height: 100%;
+  max-width: 100%;
+
 `;
 const DefaultImg = styled.img`
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   min-height: 200;
   min-width: 200;
 `;
@@ -66,15 +71,15 @@ function Large(props) {
   }, [props]);
 
   return (
-    <ThumbnailsGroup>
+    <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
-      <CenterDefaultView className="alldefaultview">
+      <AllDefaultView className="alldefaultview">
         <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
         <DefaultView className="defaultview">
-          <DefaultImg src={currentImg.url} alt={defaultStyle.name} />
+          <DefaultImg alt={defaultStyle.name} />
         </DefaultView>
         <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
-      </CenterDefaultView>
+      </AllDefaultView>
     </ThumbnailsGroup>
   );
 }

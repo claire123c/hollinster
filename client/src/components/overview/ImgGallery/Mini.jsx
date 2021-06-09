@@ -15,7 +15,7 @@ const ThumbnailBox = styled.div`
   padding: 5%;
   width: 50px;
   height: 50px;
-  margin: 17% 30%;
+  margin: 17% 0%;
 `;
 
 function Mini(props) {
