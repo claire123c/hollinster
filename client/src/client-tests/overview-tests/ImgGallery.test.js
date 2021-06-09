@@ -8,7 +8,7 @@ import Large from '../../components/overview/ImgGallery/Large.jsx';
 import Mini from '../../components/overview/ImgGallery/Mini.jsx';
 import Minis from '../../components/overview/ImgGallery/Minis.jsx';
 import Gallery from '../../components/overview/ImgGallery/Gallery.jsx';
-import sampleData from '../../components/overview/sampleData.js';
+import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
 
 describe('Right Arrow', () => {
   test('Right Arrow changes image after click', () => {
@@ -93,8 +93,15 @@ describe('Expand Gallery', () => {
 
 describe('Sliding Window for Mini Thumbnails', () => {
   test('Down onClick should change displayed arrays', () => {
-    const GalleryComp = render(<Gallery styles={sampleData.results} />);
-  });
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    const image = document.querySelector('.miniimage');
 
+    const previousURL = image.src;
+
+    fireEvent.click(down);
+
+    expect(image.src).toBe(previousURL);
+  });
 
 });
