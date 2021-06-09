@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Comparison from './Comparison.jsx'
+import Modal from './Modal.jsx'
 
 export default function Card({ product }) {
   const [category, setCategory] = useState();
@@ -101,7 +102,8 @@ export default function Card({ product }) {
 
   return (
     <div>
-      <Comparison showComparison={showComparison}/>
+      {modal ? <Modal /> : null}
+      <Comparison showComparison={showComparison} />
       <img src={image} alt="Primary Product" />
       <div>{category}</div>
       <div>{name}</div>
