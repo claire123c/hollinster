@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
+import Modal from './Modal.jsx'
 
 export default function Related() {
   const [current, setCurrent] = useState('25167');
@@ -33,6 +34,7 @@ export default function Related() {
     <>
       <List related={related} />
       <YourOutfit outfit={outfit} addToOutfit={addToOutfit} />
+      <Modal />
     </>
   );
 }
