@@ -22,6 +22,8 @@ function Minis(props) {
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
   const [array, setArray] = useState(minis);
+  const [startI, setStartI] = useState(0);
+  const [endI, setEndI] = useState(0);
   let start = 0;
   let end = 7;
   const window = 7;
@@ -72,14 +74,6 @@ function Minis(props) {
 
   );
 }
-//make carousel into class components so it can be reusable
-
-// class Carousel {
-//   constructor(window) {
-
-//   }
-// }
-//higher order components, function
 
 export default Minis;
 
