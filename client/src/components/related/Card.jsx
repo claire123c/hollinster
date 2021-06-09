@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Comparison from './Comparison.jsx'
 
 export default function Card({ product }) {
   const [category, setCategory] = useState();
@@ -9,6 +10,7 @@ export default function Card({ product }) {
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
+  const [modal, setModal] = useState(false);
   // const [productData, setProductData] = useState([]);
   // const [productStyleData, setProductStyleData] = useState([]);
   // const [productReviewData, setProductReviewData] = useState([]);
@@ -36,6 +38,11 @@ export default function Card({ product }) {
     }
     return stylesResults[defaultStyle].original_price;
   };
+
+  const showComparison = () => {
+    setModal(!modal)
+    console.log('clicked')
+  }
 
   const getProduct = () => axios.get(`/products/${product}`);
 
@@ -94,6 +101,7 @@ export default function Card({ product }) {
 
   return (
     <div>
+      <Comparison showComparison={showComparison}/>
       <img src={image} alt="Primary Product" />
       <div>{category}</div>
       <div>{name}</div>
