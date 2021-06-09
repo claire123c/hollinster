@@ -9,7 +9,7 @@ const ThumbnailsGroup = styled.div`
   max-height: 100%;
   max-width: 100%;
   height: 100%;
-  width: 100%;
+  width: 90%;
 `;
 const AllDefaultView = styled.div`
   max-height: 100%;
@@ -26,18 +26,20 @@ const DefaultView = styled.div`
   height: 100%;
   width: 100%;
   background-image: url(${(props) => (props.source)});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 `;
 
 const RightArrow = styled.p`
   font-size: 40px;
-  padding: 5%;
+  color: rgba(72, 72, 72, 0.7);
+  padding: 50%;
 `;
 const LeftArrow = styled.p`
   font-size: 40px;
-  padding: 5%;
+  color: rgba(72, 72, 72, 0.7);
+  padding: 50%;
 `;
 
 function Large(props) {
@@ -71,7 +73,6 @@ function Large(props) {
     useAllImgs(photos);
   }, [props]);
 
-  console.log(currentImg.url);
   return (
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
