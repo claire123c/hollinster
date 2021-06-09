@@ -8,21 +8,27 @@ const ThumbnailsGroup = styled.div`
   display: flex;
   max-height: 100%;
   max-width: 100%;
+  height: 100%;
+  width: 100%;
 `;
 const AllDefaultView = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
   max-height: 100%;
   max-width: 100%;
+  height: 100%;
+  width: 100%;
 `;
 const DefaultView = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-height: 100%;
   max-width: 100%;
-
+  height: 100%;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 const DefaultImg = styled.img`
   max-width: 100%;
@@ -73,12 +79,11 @@ function Large(props) {
   return (
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
-      <AllDefaultView className="alldefaultview">
-        <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
+      <AllDefaultView className="alldefaultview" alt={defaultStyle.name}>
         <DefaultView className="defaultview">
-          <DefaultImg alt={defaultStyle.name} />
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
+          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
         </DefaultView>
-        <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
       </AllDefaultView>
     </ThumbnailsGroup>
   );

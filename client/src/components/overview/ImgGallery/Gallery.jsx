@@ -11,10 +11,6 @@ const GalleryBox = styled.div`
   overflow: hidden;
   padding: 2%;
 `;
-const Images = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
 const Expand = styled.div`
   font-size: 40px;
   float: right;
