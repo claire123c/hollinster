@@ -11,8 +11,9 @@ const App = (props) => {
     <>
       <h1 style={{fontFamily: 'Staatliches'}}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-      {/* <Overview /> */}
       {/* <Related /> */}
+      {/* <Overview /> */}
+
     </>
   );
 };
