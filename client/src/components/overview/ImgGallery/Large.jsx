@@ -25,17 +25,12 @@ const DefaultView = styled.div`
   max-width: 100%;
   height: 100%;
   width: 100%;
-  background-image: url("https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
+  background-image: url(${(props) => (props.source)});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 `;
-const DefaultImg = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-  min-height: 200;
-  min-width: 200;
-`;
+
 const RightArrow = styled.p`
   font-size: 40px;
   padding: 5%;
@@ -52,7 +47,7 @@ function Large(props) {
   const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
   const [allImgs, useAllImgs] = useState(photos);
 
-  //left and right button should disappear if on first image or last
+  // left and right button should disappear if on first image or last
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
       usecurrentImgIndex(currentImgIndex - 1);
@@ -76,11 +71,12 @@ function Large(props) {
     useAllImgs(photos);
   }, [props]);
 
+  console.log(currentImg.url);
   return (
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThumb={onClickThumb} />
-      <AllDefaultView className="alldefaultview" alt={defaultStyle.name}>
-        <DefaultView className="defaultview">
+      <AllDefaultView className="alldefaultview">
+        <DefaultView className="defaultview" source={currentImg.url} alt={defaultStyle.name}>
           <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
           <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
         </DefaultView>
