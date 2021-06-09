@@ -42,25 +42,32 @@ function Minis(props) {
   }, [array]);
 
   const onClickUp = () => {
-    if (startI - (window - 1) < 0) {
+    if (startI - (window - 1) <= 0) {
       setStartI(0);
+      console.log(endI - window - 1);
+      setArray(minis.slice(0, endI - (window - 1)));
+      setShowUp(false);
+      setShowDown(true);
     } else {
       setStartI(startI - window - 1);
+      setArray(minis.slice(startI - window - 1, endI - (window - 1)));
+      setShowUp(true);
+      setShowDown(true);
     }
-    setEndI(endI - window - 1);
-    setArray(minis.slice(startI, endI));
+    setEndI(endI - (window - 1));
   };
 
   const onClickDown = () => {
     setStartI(startI + window - 1);
     setEndI(endI + window - 1);
     setArray(minis.slice(startI + window - 1, endI + window - 1));
-    //how to get endI to update after
+
     if (endI + window - 1 > minis.length) {
       setShowUp(true);
       setShowDown(false);
     } else {
       setShowUp(true);
+      setShowDown(false);
     }
   };
 
