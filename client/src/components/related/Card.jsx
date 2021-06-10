@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Comparison from './Comparison.jsx';
+import CompareButton from './CompareButton.jsx';
 import Modal from './Modal.jsx';
 
-export default function Card({ product }) {
+export default function Card({ current, product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   let defaultPrice = 0;
@@ -12,9 +12,9 @@ export default function Card({ product }) {
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
   const [modal, setModal] = useState(false);
-  // const [productData, setProductData] = useState([]);
-  // const [productStyleData, setProductStyleData] = useState([]);
-  // const [productReviewData, setProductReviewData] = useState([]);
+  const [productData, setProductData] = useState([]);
+  const [productStyleData, setProductStyleData] = useState([]);
+  const [productReviewData, setProductReviewData] = useState([]);
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -53,9 +53,9 @@ export default function Card({ product }) {
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        // setProductData(response[0].data);
-        // setProductStyleData(response[1].data);
-        // setProductReviewData(response[2].data);
+        setProductData(response[0].data);
+        setProductStyleData(response[1].data);
+        setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         // setDefaultPrice(response[0].data.default_price);
@@ -101,8 +101,8 @@ export default function Card({ product }) {
 
   return (
     <div>
-      {modal ? <Modal /> : null}
-      <Comparison showComparison={showComparison} />
+      {modal ? <Modal current={current} productData={productData} /> : null}
+      <CompareButton showComparison={showComparison} />
       <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>

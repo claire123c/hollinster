@@ -1,14 +1,11 @@
 import React from 'react';
 
-export default function Comparison( {showComparison} ) {
-  return <button onClick={showComparison}>Star</button>
-}
-
-// Comparison.propTypes = {
-//   showComparison: Proptypes.func,
-
-// }
-
-// Comparison.defaultProps = {
-//   showComparison:
-// }
+export default function Comparison() {
+  return (
+    <tr>
+      <td>Current Product Value</td>
+      <td>Characteristic</td>
+      <td>Compared Product Value</td>
+    </tr>
+  );
+};

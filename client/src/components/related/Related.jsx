@@ -19,6 +19,10 @@ export default function Related() {
   }
 
   useEffect(() => {
+    axios.get(`/products/${current}`)
+      .then((response) => {
+        setCurrent(response.data);
+      });
     axios.get(`/products/${current}/related`)
       .then((response) => {
         setRelated(response.data);
@@ -30,7 +34,7 @@ export default function Related() {
 
   return (
     <>
-      <List related={related} />
+      <List current={current} related={related} />
       <YourOutfit outfit={outfit} addToOutfit={addToOutfit} />
     </>
   );
