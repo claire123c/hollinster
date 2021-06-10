@@ -8,12 +8,14 @@ import emptyData from './emptyData.js';
 
 function Overview() {
   const [productNum] = useState('25174');
-  const [styleData, setProductData] = useState(emptyData.results);
-  const [productInfo] = useState();
+  const [styleData, setStyleData] = useState(emptyData.results);
+  const [productInfo, setProductInfo] = useState({});
 
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
+        console.log(response.data);
+        setProductInfo(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -22,7 +24,7 @@ function Overview() {
   const getStyles = () => {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
-        setProductData(response.data.results);
+        setStyleData(response.data.results);
       })
       .catch((error) => {
         console.error(error);
@@ -31,12 +33,13 @@ function Overview() {
 
   useEffect(() => {
     getStyles();
+    getProductDeets();
   }, []);
 
   return (
     <>
       <Gallery className="gallery" styles={styleData} />
-      <Info />
+      <Info productInfo={productInfo} />
     </>
   );
 }
