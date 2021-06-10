@@ -20,7 +20,7 @@ const DownButton = styled.div`
 
 function Minis(props) {
   const {
-    minis, currentImg, onClickThu, getCurrentMinis, leftClicked,
+    minis, currentImg, onClickThu, leftClicked, rightClicked,
   } = props;
   const [showUp, setShowUp] = useState(false);
   const [showDown, setShowDown] = useState(false);
@@ -40,7 +40,6 @@ function Minis(props) {
         setShowDown(true);
       }
     }
-    getCurrentMinis(array);
   }, [array]);
 
   const onClickUp = () => {
@@ -59,10 +58,6 @@ function Minis(props) {
   };
 
   useEffect(() => {
-    console.log(leftClicked);
-    console.log(array.indexOf(currentImg));
-    console.log(array);
-    console.log(currentImg);
     if (array.indexOf(currentImg) === -1) {
       onClickUp();
     }
@@ -81,6 +76,12 @@ function Minis(props) {
       setShowDown(false);
     }
   };
+
+  useEffect(() => {
+    if (array.indexOf(currentImg) === -1) {
+      onClickDown();
+    }
+  }, [rightClicked]);
 
   return (
     <ThumbnailsBox>
