@@ -5,6 +5,7 @@ import styled from 'styled-components';
 function Star( {reviews}) {
   const { results } = reviews;
   const [stars, useStars] = useState('');
+  const [showStars, useShowStars] = useState(false);
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -17,8 +18,10 @@ function Star( {reviews}) {
           totalRatings += 1;
         }
       }
+      useShowStars(true);
       return ratings / totalRatings;
     }
+    useShowStars(false);
     return 'No rating';
   };
 
@@ -28,7 +31,7 @@ function Star( {reviews}) {
 
   return (
     <div className="starrating">
-      <p>&#9734;</p>
+      {showStars ? <p>&#9734;&#9734;&#9734;&#9734;&#9734;</p> : <p />}
       <p>{stars}</p>
     </div>
   );
