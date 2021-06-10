@@ -49,6 +49,8 @@ function Large(props) {
   const [allImgs, useAllImgs] = useState(photos);
   const [leftClicked, useLeftClicked] = useState(false);
   const [rightClicked, useRightClicked] = useState(false);
+  const [leftArrow, useLeftArrow] = useState(false);
+  const [rightArrow, useRightArrow] = useState(true);
 
   // left and right button should disappear if on first image or last
   const leftButtonOnClick = () => {
@@ -81,8 +83,8 @@ function Large(props) {
       <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked}/>
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#xab;</LeftArrow>
-          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#xbb;</RightArrow>
+          {leftArrow ? <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#xab;</LeftArrow> : <LeftArrow />}
+          {rightArrow ? <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#xbb;</RightArrow> : <RightArrow />}
         </DefaultView>
       </AllDefaultView>
     </ThumbnailsGroup>
