@@ -31,12 +31,12 @@ const DefaultView = styled.div`
   background-position: center center;
 `;
 const RightArrow = styled.p`
-  font-size: 40px;
+  font-size: 80px;
   color: rgba(72, 72, 72, 0.7);
   padding-left: 50%;
 `;
 const LeftArrow = styled.p`
-  font-size: 40px;
+  font-size: 80px;
   color: rgba(72, 72, 72, 0.7);
   padding-right: 50%;
 `;
@@ -81,8 +81,8 @@ function Large(props) {
       <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked}/>
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
-          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#xab;</LeftArrow>
+          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#xbb;</RightArrow>
         </DefaultView>
       </AllDefaultView>
     </ThumbnailsGroup>
