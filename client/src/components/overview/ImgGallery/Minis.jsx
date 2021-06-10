@@ -31,7 +31,7 @@ function Minis(props) {
 
   useEffect(() => {
     setArray(minis);
-  }, [props]);
+  }, [minis]);
 
   useEffect(() => {
     if (array.length > window) {
