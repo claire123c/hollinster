@@ -92,7 +92,7 @@ describe('Expand Gallery', () => {
 });
 
 describe('Sliding Window for Mini Thumbnails', () => {
-  test('Down onClick should change displayed arrays', () => {
+  test('Down onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results} />);
     const down = document.querySelector('.downbutton');
     const imageURL = document.querySelector('.miniimage').src;
@@ -103,7 +103,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
     expect(imageURL).not.toBe(newURL);
   });
 
-  test('Up onClick should change displayed arrays', () => {
+  test('Up onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results} />);
     const down = document.querySelector('.downbutton');
     fireEvent.click(down);
@@ -112,7 +112,41 @@ describe('Sliding Window for Mini Thumbnails', () => {
     const up = document.querySelector('.upbutton');
     fireEvent.click(up);
     const newURL = document.querySelector('.miniimage').src;
-    console.log(imageURL);
+
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('onClick Right arrow should change displayed thumbnails if img is on next page', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
+    const imageURL = document.querySelector('.miniimage').src;
+
+    let i = 0;
+    while (i < 7) {
+      fireEvent.click(rightArrow);
+      i += 1;
+    }
+
+    const newURL = document.querySelector('.miniimage').src;
+
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('onClick Left arrow should change displayed thumbnails if img is on next page', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
+    const leftArrow = GalleryComp.getByTestId('leftArrowImgGallery');
+
+    let i = 0;
+    while (i < 7) {
+      fireEvent.click(rightArrow);
+      i += 1;
+    }
+    const imageURL = document.querySelector('.miniimage').src;
+    fireEvent.click(leftArrow);
+    fireEvent.click(leftArrow);
+    const newURL = document.querySelector('.miniimage').src;
+
     expect(imageURL).not.toBe(newURL);
   });
 });
