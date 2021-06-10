@@ -39,7 +39,7 @@ function Overview() {
   return (
     <>
       <Gallery className="gallery" styles={styleData} />
-      <Info productInfo={productInfo} />
+      <Info productInfo={productInfo} styles={styleData}/>
     </>
   );
 }
