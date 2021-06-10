@@ -52,7 +52,14 @@ function Large(props) {
   const [leftArrow, useLeftArrow] = useState(false);
   const [rightArrow, useRightArrow] = useState(true);
 
-  // left and right button should disappear if on first image or last
+  useEffect(() => {
+    if (photos.length <= 1) {
+      useRightArrow(false);
+    } else {
+      useRightArrow(true);
+    }
+  }, [props]);
+
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
       usecurrentImgIndex(currentImgIndex - 1);
