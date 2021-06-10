@@ -6,15 +6,17 @@ import Info from './Info/Info.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 
+//TODO: fix 25178 edge case
+//25172 edge case
 function Overview() {
-  const [productNum] = useState('25174');
+  const [productNum] = useState('25173');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
+  const [reviews, setReviews] = useState({});
 
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
-        console.log(response.data);
         setProductInfo(response.data);
       })
       .catch((error) => {
@@ -30,16 +32,26 @@ function Overview() {
         console.error(error);
       });
   };
+  const getReviews = () => {
+    axios.get(`/reviews/${productNum}`)
+      .then((response) => {
+        setReviews(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     getStyles();
     getProductDeets();
+    getReviews();
   }, []);
 
   return (
     <>
       <Gallery className="gallery" styles={styleData} />
-      <Info productInfo={productInfo} styles={styleData}/>
+      <Info productInfo={productInfo} styles={styleData} reviews={reviews} />
     </>
   );
 }
