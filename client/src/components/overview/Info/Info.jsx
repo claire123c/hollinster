@@ -29,4 +29,5 @@ Info.propTypes = {
   name: PropTypes.string,
   category: PropTypes.string,
   default_price: PropTypes.string,
+  reviews: PropTypes.object,
 };

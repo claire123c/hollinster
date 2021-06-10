@@ -32,7 +32,7 @@ function Star( {reviews}) {
   return (
     <div className="starrating">
       {showStars ? <p>&#9734;&#9734;&#9734;&#9734;&#9734;</p> : <p />}
-      <p>{stars}</p>
+      <p className="stars">{stars}</p>
     </div>
   );
 }
