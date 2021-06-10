@@ -123,20 +123,13 @@ describe('Sliding Window for Mini Thumbnails', () => {
     const previous = imageURL.src;
 
     let i = 0;
-
-
-    console.log(previous);
-    console.log(imageURL);
-    while (i <= 8) {
+    while (i < 7) {
       fireEvent.click(rightArrow);
       i += 1;
     }
-    console.log(imageURL.src);
-
-
 
     const newURL = document.querySelector('.miniimage').src;
 
-    expect(imageURL).not.toBe(newURL);
+    expect(previous).not.toBe(newURL);
   });
 });
