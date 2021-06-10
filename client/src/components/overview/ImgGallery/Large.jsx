@@ -58,6 +58,10 @@ function Large(props) {
       usecurrentImgIndex(currentImgIndex - 1);
       useCurrentImg(photos[currentImgIndex - 1]);
       useLeftClicked(!leftClicked);
+      useRightArrow(true);
+      if (currentImgIndex === 1) {
+        useLeftArrow(false);
+      }
     }
   };
   const rightButtonOnClick = () => {
@@ -65,6 +69,11 @@ function Large(props) {
       usecurrentImgIndex(currentImgIndex + 1);
       useCurrentImg(photos[currentImgIndex + 1]);
       useRightClicked(!rightClicked);
+      useLeftArrow(true);
+      console.log(currentImgIndex);
+      if (currentImgIndex === photos.length - 2) {
+        useRightArrow(false);
+      }
     }
   };
   const onClickThu = (current, i) => {
