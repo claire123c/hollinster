@@ -51,7 +51,6 @@ function Large(props) {
   const [rightClicked, useRightClicked] = useState(false);
 
   // left and right button should disappear if on first image or last
-  // if img not appearing, go to next
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
       usecurrentImgIndex(currentImgIndex - 1);

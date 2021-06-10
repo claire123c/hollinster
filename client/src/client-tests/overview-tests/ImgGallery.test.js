@@ -116,7 +116,27 @@ describe('Sliding Window for Mini Thumbnails', () => {
     expect(imageURL).not.toBe(newURL);
   });
 
-  test('Right arrow should change displayed thumbnails', () => {
+  test('onClick Right arrow should change displayed thumbnails if img is on next page', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
+    const imageURL = document.querySelector('.miniimage');
+    const previous = imageURL.src;
 
+    let i = 0;
+
+
+    console.log(previous);
+    console.log(imageURL);
+    while (i <= 8) {
+      fireEvent.click(rightArrow);
+      i += 1;
+    }
+    console.log(imageURL.src);
+
+
+
+    const newURL = document.querySelector('.miniimage').src;
+
+    expect(imageURL).not.toBe(newURL);
   });
 });

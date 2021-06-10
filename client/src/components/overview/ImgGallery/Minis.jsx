@@ -86,7 +86,7 @@ function Minis(props) {
   return (
     <ThumbnailsBox>
       {showUp ? <UpButton className="upbutton" onClick={onClickUp}>&#5123;</UpButton> : <></>}
-      {array.map((mini, i) => (
+      {array.map((mini) => (
         <Mini className="themini" mini={mini} key={mini.url} currentImg={currentImg} i={minis.indexOf(mini)} onClickThu={onClickThu} />
       ))}
       {showDown ? <DownButton className="downbutton" onClick={onClickDown}>&#5121;</DownButton> : <></>}
