@@ -14,3 +14,10 @@ function Info({ productInfo }) {
 };
 
 export default Info;
+
+Info.propTypes = {
+  productInfo: PropTypes.object,
+  name: PropTypes.string,
+  category: PropTypes.string,
+  default_price: PropTypes.string,
+};
