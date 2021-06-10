@@ -12,9 +12,20 @@ describe('Star Rating', () => {
     let reviews = {
       results: [{rating: 5}, {rating: 2}],
     };
-    const InfoComp = render(<Star reviews={reviews}/>);
+
+    const InfoComp = render(<Star reviews={reviews} />);
     const starElement = document.querySelector('.stars').innerHTML;
 
-    expect(starElement).toBe('5');
+    expect(starElement).toBe('3.5');
+  });
+
+  test('star rating gives no rating to array with no ratings', () => {
+    let empty = {
+      results: [],
+    };
+    const InfoComp = render(<Star reviews={empty} />);
+    const starElement = document.querySelector('.stars').innerHTML;
+
+    expect(starElement).toBe('No rating');
   });
 });
