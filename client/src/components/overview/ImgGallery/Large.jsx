@@ -85,6 +85,16 @@ function Large(props) {
   const onClickThu = (current, i) => {
     useCurrentImg(current);
     usecurrentImgIndex(i);
+    if (i === 0) {
+      useLeftArrow(false);
+      useRightArrow(true);
+    } else if (i === photos.length - 1) {
+      useLeftArrow(true);
+      useRightArrow(false);
+    } else {
+      useLeftArrow(true);
+      useRightArrow(true);
+    }
   };
 
   useEffect(() => {
