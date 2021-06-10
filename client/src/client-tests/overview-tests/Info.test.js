@@ -9,8 +9,8 @@ import { sampleData, sampleData2 } from '../../components/overview/sampleData.js
 
 describe('Star Rating', () => {
   test('star rating gives average rating', () => {
-    let reviews = {
-      results: [{rating: 5}, {rating: 2}],
+    const reviews = {
+      results: [{ rating: 5 }, { rating: 2 }],
     };
 
     const InfoComp = render(<Star reviews={reviews} />);
@@ -20,7 +20,7 @@ describe('Star Rating', () => {
   });
 
   test('star rating gives no rating to array with no ratings', () => {
-    let empty = {
+    const empty = {
       results: [],
     };
     const InfoComp = render(<Star reviews={empty} />);
