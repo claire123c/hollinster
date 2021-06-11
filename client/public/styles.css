@@ -17,3 +17,9 @@ body {
   background-color: #F5F4F2;
   font-family: "Source Sans", sans-serif;
 }
+
+.review-div {
+  border: 2px solid black;
+  margin: 10px;
+  padding: 10px;
+}

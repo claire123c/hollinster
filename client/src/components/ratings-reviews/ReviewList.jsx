@@ -15,8 +15,6 @@ class ReviewList extends React.Component {
     axios.get('/reviews/25167')
       .then((response) => {
         this.setState({'data': response.data.results});
-        console.log('response', response.data.results);
-        console.log('state', this.state);
       })
       .catch((error) => {
         console.log('error', error);
@@ -25,15 +23,15 @@ class ReviewList extends React.Component {
 
   render() {
     const reviewList = this.state.data.map((review) => (
-      <li key={review.review_id}>{review.review_id}</li>
-      // <ReviewItem key={review.review_id} review={review}/>
+      // <li key={review.review_id}>{review.review_id}</li>
+      <ReviewItem key={review.review_id} review={review} />
     ));
 
     return (
       <>
         {/* <h1>{this.state.data[0].body}</h1> */}
-        <h1>{reviewList}</h1>
-        {/* {reviewList} */}
+        {/* <h1>{reviewList}</h1> */}
+        {reviewList}
       </>
     );
   }
