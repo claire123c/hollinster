@@ -27,7 +27,6 @@ function Overview() {
     }
     return newArr;
   };
-
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
