@@ -72,8 +72,6 @@ app.get('/products/:product_id/styles', (req, res) => {
 // ***********************************************************************
 // REVIEW API Calls
 app.get('/reviews/:product_id', (req, res) => {
-  console.log(req.query);
-  console.log(req.params);
   axios({
     url: `${API}/reviews?product_id=${req.params.product_id}`,
     method: 'GET',
@@ -89,8 +87,6 @@ app.get('/reviews/:product_id', (req, res) => {
 
 //Reviews meta goes here
 app.get('/reviews/meta/:product_id', (req, res) => {
-  console.log(req.query);
-  console.log(req.params);
   axios({
     url: `${API}/reviews/meta?product_id=${req.params.product_id}`,
     method: 'GET',
