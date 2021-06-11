@@ -49,9 +49,9 @@ function Star({ reviews }) {
     <div className="starrating">
       {showStars
         ? (
-          <OuterStar>
+          <OuterStar className="outerstars">
             &#9734;&#9734;&#9734;&#9734;&#9734;
-            <InnerStars className="stars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+            <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
           </OuterStar>
         ) : <InnerStars />}
       <p>Read all reviews</p>

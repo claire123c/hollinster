@@ -9,15 +9,14 @@ import Star from '../../components/overview/Info/Star.jsx';
 import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
 
 describe('Star Rating', () => {
-  test('star rating gives average rating', () => {
+  test('star rating shows given ratings', () => {
     const reviews = {
       results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
     };
     render(<Star reviews={reviews} />);
-    render(<Star reviews={reviews} />);
-    const starElement = document.querySelector('.stars');
+    const starElement = document.querySelector('.innerstars').innerHTML;
 
-    expect(starElement).toBe('.35');
+    expect(starElement).toBe('★★★★★');
   });
 
   test('star rating should be hidden with no ratings', () => {
