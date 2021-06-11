@@ -8,17 +8,19 @@ const InnerStars = styled.div`
   left: 0;
   white-space: nowrap;
   overflow: hidden;
-  width: 75%;
+  width: ${(props) => (props.stars)}%;
+  color: rgb(255,196,12)
 `;
 
 const OuterStar = styled.div`
   display: inline-block;
   position: relative;
+  color: rgb(255,196,12);
 `;
 
 function Star({ reviews }) {
   const { results } = reviews;
-  const [stars, useStars] = useState('');
+  const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
   const averageRating = (reviewResults) => {
@@ -36,7 +38,7 @@ function Star({ reviews }) {
       return ratings / totalRatings;
     }
     useShowStars(false);
-    return 'No rating';
+    return 0;
   };
 
   useEffect(() => {
@@ -47,7 +49,7 @@ function Star({ reviews }) {
     <div className="starrating">
       {showStars
         ? (
-          <OuterStar>
+          <OuterStar stars={stars}>
             &#9734;&#9734;&#9734;&#9734;&#9734;
             <InnerStars>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
           </OuterStar>
@@ -58,3 +60,7 @@ function Star({ reviews }) {
 }
 
 export default Star;
+
+Star.propTypes = {
+  reviews: PropTypes.object,
+};
