@@ -121,5 +121,12 @@ function Large(props) {
 export default Large;
 
 Large.propTypes = {
-  defaultStyle: PropTypes.object,
+  defaultStyle: PropTypes.shape({
+    'default?': PropTypes.bool,
+    name: PropTypes.string,
+  }),
+};
+
+Large.defaultProps = {
+  defaultStyle: { photos: [''] },
 };

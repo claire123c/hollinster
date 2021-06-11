@@ -49,12 +49,14 @@ function Star({ reviews }) {
     <div className="starrating">
       {showStars
         ? (
-          <OuterStar className="outerstars">
-            &#9734;&#9734;&#9734;&#9734;&#9734;
-            <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
-          </OuterStar>
+          <div>
+            <OuterStar className="outerstars">
+              &#9734;&#9734;&#9734;&#9734;&#9734;
+              <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+            </OuterStar>
+            <a href="#RatingsandReviews">{`Read ${results.length} review(s)`}</a>
+          </div>
         ) : <InnerStars />}
-      <p>Read all reviews</p>
     </div>
   );
 }

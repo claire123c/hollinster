@@ -24,22 +24,11 @@ function Gallery({ styles }) {
     setExpand(!expand);
   };
 
-  const findDefaultStyles = (stylesArr) => {
-    const newArr = stylesArr.find((style) => (
-      style['default?']
-    ));
-
-    if (!newArr) {
-      return stylesArr[0];
-    }
-    return newArr;
-  };
-
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
       <Large
-        defaultStyle={findDefaultStyles(styles)}
+        defaultStyle={styles}
       />
     </GalleryBox>
   );
@@ -48,5 +37,21 @@ function Gallery({ styles }) {
 export default Gallery;
 
 Gallery.propTypes = {
-  styles: PropTypes.array
+  styles: PropTypes.object,
+};
+
+Gallery.defaultProps = {
+  styles: {
+    style_id: 142825,
+    name: '',
+    original_price: '',
+    sale_price: null,
+    'default?': true,
+    photos: [
+      {
+        thumbnail_url: '',
+        url: '',
+      },
+    ],
+  },
 };

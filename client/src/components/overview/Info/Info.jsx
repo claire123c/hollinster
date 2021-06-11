@@ -4,17 +4,35 @@ import styled from 'styled-components';
 
 import Star from './Star.jsx';
 
+const SalePrice = styled.div`
+  display: inline;
+  color: red;
+`;
+const Original = styled.div`
+  display: inline;
+  text-decoration: line-through;
+`;
+
 function Info({ productInfo, styles, reviews }) {
-  const { name, category, default_price} = productInfo;
-  const [defaultStyle] = styles;
-  const { original_price, sale_price} = defaultStyle;
+  const { name, category } = productInfo;
+  const { original_price, sale_price } = styles;
+
   return (
     <div className="productinfo">
       <Star reviews={reviews} />
       <div className="category">{category}</div>
       <div className="name">{name}</div>
       <div className="price">
-        {sale_price ? sale_price : original_price}
+        {sale_price ? (
+          <div>
+            <SalePrice className="sales">
+              ${sale_price}
+            </SalePrice>
+            <Original className="original">
+              ${original_price}
+            </Original>
+          </div>
+        ) : original_price}
       </div>
     </div>
   );
@@ -23,10 +41,25 @@ function Info({ productInfo, styles, reviews }) {
 export default Info;
 
 Info.propTypes = {
-  styles: PropTypes.array,
-  productInfo: PropTypes.object,
-  name: PropTypes.string,
-  category: PropTypes.string,
-  default_price: PropTypes.string,
-  reviews: PropTypes.object,
+  styles: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+  }),
+  productInfo: PropTypes.shape({
+    id: PropTypes.number,
+    campus: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  reviews: PropTypes.shape({
+    count: PropTypes.number,
+    page: PropTypes.number,
+    product: PropTypes.string,
+  }),
+};
+
+Info.defaultProps = {
+  styles: {},
+  productInfo: {},
+  reviews: {},
 };
