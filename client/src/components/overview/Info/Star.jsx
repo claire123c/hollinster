@@ -9,7 +9,7 @@ const InnerStars = styled.div`
   white-space: nowrap;
   overflow: hidden;
   width: ${(props) => (props.stars)}%;
-  color: rgb(255,196,12)
+  color: rgb(255,196,12);
 `;
 
 const OuterStar = styled.div`
@@ -49,9 +49,9 @@ function Star({ reviews }) {
     <div className="starrating">
       {showStars
         ? (
-          <OuterStar stars={stars}>
+          <OuterStar>
             &#9734;&#9734;&#9734;&#9734;&#9734;
-            <InnerStars>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+            <InnerStars stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
           </OuterStar>
         ) : <InnerStars />}
       <p className="stars">{stars}</p>

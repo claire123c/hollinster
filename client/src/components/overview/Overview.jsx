@@ -9,7 +9,7 @@ import emptyData from './emptyData.js';
 //TODO: fix 25178 edge case
 //25172 edge case
 function Overview() {
-  const [productNum] = useState('25173');
+  const [productNum] = useState('25167');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
