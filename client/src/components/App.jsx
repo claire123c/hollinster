@@ -5,7 +5,7 @@ import Overview from './overview/Overview.jsx';
 import Ratings from './ratings-reviews/Ratings.jsx';
 import Reviews from './ratings-reviews/Reviews.jsx';
 // import Overview from './overview/Overview.jsx';
-// import Related from './related/Related.jsx'
+import Related from './related/Related.jsx'
 
 const App = (props) => {
   const [test, setTest] = useState(true);

@@ -1,28 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// Must import product_ID for successful git request
-//
 
-class Ratings extends React.Component {
-  componentDidMount() {
-    axios.get('').then((response) => {
+function Ratings(props) {
+  const [ratings, setRatings] = useState([]);
 
-    });
-  }
+  useEffect(() => {
+    const getRatings = async () => {
+      const result = await axios.get(`/api/reviews?product_id=${props.productId}`);
+      setRatings(result.data);
+    };
+    getRatings();
+  }, []);
 
-  render() {
-    return (
-      <>
-        <p>Ratings will appear here.</p>
-      </>
-    );
-  }
-}
-
-// function Ratings() {
-//   return (
-
-//   );
-// }
+  return (
+    <>
+      <p>Ratings will appear here.</p>
+    </>
+  );
 
 export default Ratings;
