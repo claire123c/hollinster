@@ -6,8 +6,9 @@ import {cleanup, fireEvent, render} from '@testing-library/react';
 
 import Large from '../../components/overview/ImgGallery/Large.jsx';
 import Mini from '../../components/overview/ImgGallery/Mini.jsx';
+import Minis from '../../components/overview/ImgGallery/Minis.jsx';
 import Gallery from '../../components/overview/ImgGallery/Gallery.jsx';
-import sampleData from '../../components/overview/sampleData.js';
+import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
 
 describe('Right Arrow', () => {
   test('Right Arrow changes image after click', () => {
@@ -87,5 +88,65 @@ describe('Expand Gallery', () => {
     fireEvent.click(coll);
 
     expect(coll).toBe(previousItem);
+  });
+});
+
+describe('Sliding Window for Mini Thumbnails', () => {
+  test('Down onClick should change displayed thumbnails', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    const imageURL = document.querySelector('.miniimage').src;
+
+    fireEvent.click(down);
+
+    const newURL = document.querySelector('.miniimage').src;
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('Up onClick should change displayed thumbnails', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const down = document.querySelector('.downbutton');
+    fireEvent.click(down);
+    const imageURL = document.querySelector('.miniimage').src;
+
+    const up = document.querySelector('.upbutton');
+    fireEvent.click(up);
+    const newURL = document.querySelector('.miniimage').src;
+
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('onClick Right arrow should change displayed thumbnails if img is on next page', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
+    const imageURL = document.querySelector('.miniimage').src;
+
+    let i = 0;
+    while (i < 7) {
+      fireEvent.click(rightArrow);
+      i += 1;
+    }
+
+    const newURL = document.querySelector('.miniimage').src;
+
+    expect(imageURL).not.toBe(newURL);
+  });
+
+  test('onClick Left arrow should change displayed thumbnails if img is on next page', () => {
+    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
+    const leftArrow = GalleryComp.getByTestId('leftArrowImgGallery');
+
+    let i = 0;
+    while (i < 7) {
+      fireEvent.click(rightArrow);
+      i += 1;
+    }
+    const imageURL = document.querySelector('.miniimage').src;
+    fireEvent.click(leftArrow);
+    fireEvent.click(leftArrow);
+    const newURL = document.querySelector('.miniimage').src;
+
+    expect(imageURL).not.toBe(newURL);
   });
 });

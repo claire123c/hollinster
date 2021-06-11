@@ -12,10 +12,10 @@ const App = (props) => {
 
   return (
     <>
-      <h1 style={{fontFamily: 'Staatliches'}}>HOLLINSTER established 1991</h1>
+      <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-      {/* <Related /> */}
       {/* <Overview /> */}
+      {/* <Related /> */}
       {/* <ReviewList /> */}
     </>
   );
