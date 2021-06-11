@@ -23,6 +23,8 @@ function Star({ reviews }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
+  console.log(reviews);
+
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
@@ -54,7 +56,7 @@ function Star({ reviews }) {
               &#9734;&#9734;&#9734;&#9734;&#9734;
               <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
-            <p>Read all reviews</p>
+            <a href="#RatingsandReviews">{`Read ${results.length} review(s)`}</a>
           </div>
         ) : <InnerStars />}
     </div>
