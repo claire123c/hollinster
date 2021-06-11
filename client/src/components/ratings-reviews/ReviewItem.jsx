@@ -6,7 +6,6 @@ import React from 'react';
 class ReviewItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props', props);
   }
 
   render(props) {
