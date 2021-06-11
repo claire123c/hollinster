@@ -8,9 +8,6 @@ const serveStatic = express.static(filePath);
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 const APIInfo = require('../config');
 const axios = require('axios');
-app.use(express.json());
-app.use(serveStatic);
-
 const sessionConfig = {
   secret: 'MYSECRET',
   name: 'appName',
@@ -20,6 +17,9 @@ const sessionConfig = {
     sameSite: 'strict',
   },
 };
+app.use(express.json());
+app.use(serveStatic);
+
 app.use(session(sessionConfig));
 
 // PRODUCT API Calls
