@@ -8,7 +8,6 @@ function Info({ productInfo, styles, reviews }) {
   const { name, category, default_price} = productInfo;
   const [defaultStyle] = styles;
   const { original_price, sale_price} = defaultStyle;
-  console.log(reviews);
   return (
     <div className="productinfo">
       <Star reviews={reviews} />

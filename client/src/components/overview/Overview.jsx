@@ -7,10 +7,11 @@ import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 
 //TODO: fix 25178 edge case
+  //what to do if image isn't the same
 //25172 edge case
-//25168
+  //what to do if there's an invalid HTML url?
 function Overview() {
-  const [productNum] = useState('25168');
+  const [productNum] = useState('25178');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -28,6 +29,7 @@ function Overview() {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
         setStyleData(response.data.results);
+        console.log(response.data.results);
       })
       .catch((error) => {
         console.error(error);
