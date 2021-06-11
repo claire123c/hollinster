@@ -18,7 +18,6 @@ const IndividualQuestion = () => {
     <p><strong>Q: {questions}</strong> <span>Helpful? <u
     onClick={
       () => {
-        console.log('yes clicked');
         if (!yesClicked) {
           toggleClicked(true);
           setHelpfulness(helpfulness + 1);

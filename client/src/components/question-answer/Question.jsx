@@ -8,8 +8,8 @@ const Question = () => {
     <Search />
     <ListOfQuestions />
     <span>
-      <button><strong>MORE ANSWERED QUESTIONS</strong></button>
-      <button><strong>ADD A QUESTION +</strong></button>
+      <button onClick={() => console.log('retrieve more questions')}><strong>MORE ANSWERED QUESTIONS</strong></button>
+      <button onClick={() => console.log('add a question')}><strong>ADD A QUESTION +</strong></button>
     </span>
     </>
   )

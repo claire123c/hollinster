@@ -5,7 +5,7 @@ const ListOfQuestions = () => {
   return (
     <>
     <IndividualQuestion />
-    <p><strong>LOAD MORE ANSWERS</strong></p>
+    <p onClick={() => console.log('render more answers')}><strong>LOAD MORE ANSWERS</strong></p>
     </>
   )
 }
