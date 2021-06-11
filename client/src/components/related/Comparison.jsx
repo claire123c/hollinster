@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default function Comparison( {feature: {feature, value}} ) {
+export default function Comparison( {feature: {comparedValue, currentValue, feature}} ) {
+
   return (
     <tr>
-      <td>Current Product Value</td>
+      <td>{currentValue}</td>
       <td>{feature}</td>
-      <td>{value}</td>
+      <td>{comparedValue}</td>
     </tr>
   );
 };

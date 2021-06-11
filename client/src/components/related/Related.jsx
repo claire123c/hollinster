@@ -14,9 +14,9 @@ export default function Related() {
     }
   };
 
-  const removeFromOutfit = (selected) => {
-    outfit.findIndex((element));
-  }
+  // const removeFromOutfit = (selected) => {
+  //   outfit.findIndex((element));
+  // }
 
   useEffect(() => {
     axios.get(`/products/${current}`)

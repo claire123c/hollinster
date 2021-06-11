@@ -7,7 +7,6 @@ import Modal from './Modal.jsx';
 export default function Card({ current, product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
-  let defaultPrice = 0;
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
@@ -15,6 +14,8 @@ export default function Card({ current, product }) {
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
+
+  let defaultPrice = 0;
 
   const averageRating = (reviewResults) => {
     let ratings = 0;
@@ -53,13 +54,13 @@ export default function Card({ current, product }) {
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
+        defaultPrice = response[0].data.default_price;
         setProductData(response[0].data);
         setProductStyleData(response[1].data);
         setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         // setDefaultPrice(response[0].data.default_price);
-        defaultPrice = response[0].data.default_price;
         // setPrice(response[1].data.results[0].original_price);
         setPrice(checkPrice(response[1].data.results));
         setImage(response[1].data.results[0].photos[0].url);
