@@ -2,7 +2,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function Star( {reviews}) {
+const InnerStars = styled.div`
+  display: inline-block;
+`;
+
+const OuterStar = styled.div`
+  display: inline-block;
+  position: relative;
+`;
+
+function Star({ reviews }) {
   const { results } = reviews;
   const [stars, useStars] = useState('');
   const [showStars, useShowStars] = useState(false);
@@ -31,7 +40,13 @@ function Star( {reviews}) {
 
   return (
     <div className="starrating">
-      {showStars ? <p>&#9734;&#9734;&#9734;&#9734;&#9734;</p> : <p />}
+      {showStars
+        ? (
+          <InnerStars>
+            &#9734;
+            <OuterStar>&#9733;</OuterStar>
+          </InnerStars>
+        ) : <InnerStars />}
       <p className="stars">{stars}</p>
     </div>
   );
