@@ -18,7 +18,7 @@ const App = (props) => {
       {/* <Overview /> */}
       <div>
         {/* <Ratings /> */}
-        <ReviewList />
+        {/* <ReviewList /> */}
       </div>
 
     </>
