@@ -11,11 +11,13 @@ import emptyData from './emptyData.js';
 //25172 edge case
   //what to do if there's an invalid HTML url?
 function Overview() {
-  const [productNum] = useState('25177');
+  const [productNum] = useState('25169');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
+
+  console.log(styleData);
 
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
@@ -66,7 +68,7 @@ function Overview() {
   return (
     <>
       <Gallery className="gallery" styles={currentStyle} />
-      <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+      <Info productInfo={productInfo} styles={styleData[2]} reviews={reviews} />
     </>
   );
 }

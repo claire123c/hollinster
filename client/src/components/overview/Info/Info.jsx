@@ -4,6 +4,15 @@ import styled from 'styled-components';
 
 import Star from './Star.jsx';
 
+const SalePrice = styled.div`
+  display: inline;
+  color: red;
+`;
+const Original = styled.div`
+  display: inline;
+  text-decoration: line-through;
+`;
+
 function Info({ productInfo, styles, reviews }) {
   const { name, category } = productInfo;
   const { original_price, sale_price} = styles;
@@ -14,7 +23,12 @@ function Info({ productInfo, styles, reviews }) {
       <div className="category">{category}</div>
       <div className="name">{name}</div>
       <div className="price">
-        {sale_price ? sale_price : original_price}
+        {sale_price ? (
+          <div>
+            <SalePrice>${sale_price} </SalePrice>
+            <Original> ${original_price}</Original>
+          </div>
+        ) : original_price}
       </div>
     </div>
   );
