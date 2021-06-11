@@ -24,17 +24,6 @@ function Gallery({ styles }) {
     setExpand(!expand);
   };
 
-  const findDefaultStyles = (stylesArr) => {
-    const newArr = stylesArr.find((style) => (
-      style['default?']
-    ));
-
-    if (!newArr) {
-      return stylesArr[0];
-    }
-    return newArr;
-  };
-
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>

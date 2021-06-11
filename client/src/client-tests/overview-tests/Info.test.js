@@ -29,3 +29,13 @@ describe('Star Rating', () => {
     expect(starElement).toBe(null);
   });
 });
+
+describe('Sales price', () => {
+  test('Sales price should be displayed if there is sales price', () => {
+
+  });
+
+  test('Sales price should not be displayed if null', () => {
+
+  });
+})

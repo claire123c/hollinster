@@ -82,7 +82,7 @@ describe('Click Thumbnails', () => {
 
 describe('Expand Gallery', () => {
   test('onClick Expand Gallery should not change the div element', () => {
-    const { container } = render(<Gallery styles={sampleData.results} />);
+    const { container } = render(<Gallery styles={sampleData.results[0]} />);
     const coll = document.querySelector('.collapsible');
     const previousItem = coll;
     fireEvent.click(coll);
@@ -93,7 +93,7 @@ describe('Expand Gallery', () => {
 
 describe('Sliding Window for Mini Thumbnails', () => {
   test('Down onClick should change displayed thumbnails', () => {
-    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
     const down = document.querySelector('.downbutton');
     const imageURL = document.querySelector('.miniimage').src;
 
@@ -104,7 +104,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
   });
 
   test('Up onClick should change displayed thumbnails', () => {
-    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
     const down = document.querySelector('.downbutton');
     fireEvent.click(down);
     const imageURL = document.querySelector('.miniimage').src;
@@ -117,7 +117,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
   });
 
   test('onClick Right arrow should change displayed thumbnails if img is on next page', () => {
-    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
     const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
     const imageURL = document.querySelector('.miniimage').src;
 
@@ -133,7 +133,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
   });
 
   test('onClick Left arrow should change displayed thumbnails if img is on next page', () => {
-    const GalleryComp = render(<Gallery styles={sampleData2.results} />);
+    const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
     const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
     const leftArrow = GalleryComp.getByTestId('leftArrowImgGallery');
 
