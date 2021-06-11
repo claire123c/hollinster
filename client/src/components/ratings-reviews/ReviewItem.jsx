@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+// import ReviewPics.jsx from './ReviewPics.jsx';
 
 class ReviewItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props', props);
   }
 
   render(props) {
@@ -24,6 +24,7 @@ class ReviewItem extends React.Component {
         <p>Reviewer Name: {this.props.review.reviewer_name}</p>
         <p>Date: {this.props.review.date}</p>
         <p>Review ID: {this.props.review.review_id}</p>
+        {/* Add code here to render pics */}
       </div>
     );
   }
