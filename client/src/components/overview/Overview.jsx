@@ -27,7 +27,6 @@ function Overview() {
   const getStyles = () => {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
-        console.log('yoyo', response.data);
         setStyleData(response.data.results);
       })
       .catch((error) => {

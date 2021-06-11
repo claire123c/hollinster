@@ -25,7 +25,6 @@ function Gallery({ styles }) {
   };
 
   const findDefaultStyles = (stylesArr) => {
-    console.log(stylesArr);
     const newArr = stylesArr.find((style) => (
       style['default?']
     ));
@@ -33,7 +32,6 @@ function Gallery({ styles }) {
     if (!newArr) {
       return stylesArr[0];
     }
-    console.log('hihi', newArr);
     return newArr;
   };
 

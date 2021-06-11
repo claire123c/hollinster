@@ -23,7 +23,6 @@ function Star({ reviews }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
-  //fix star rating to be 1/4 units
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
@@ -52,10 +51,10 @@ function Star({ reviews }) {
         ? (
           <OuterStar>
             &#9734;&#9734;&#9734;&#9734;&#9734;
-            <InnerStars stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+            <InnerStars className="stars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
           </OuterStar>
         ) : <InnerStars />}
-      <p className="stars">{stars}</p>
+      <p>Read all reviews</p>
     </div>
   );
 }
