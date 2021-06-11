@@ -6,8 +6,7 @@ import Star from './Star.jsx';
 
 function Info({ productInfo, styles, reviews }) {
   const { name, category } = productInfo;
-  const [defaultStyle] = styles;
-  const { original_price, sale_price} = defaultStyle;
+  const { original_price, sale_price} = styles;
   return (
     <div className="productinfo">
       <Star reviews={reviews} />
@@ -23,10 +22,25 @@ function Info({ productInfo, styles, reviews }) {
 export default Info;
 
 Info.propTypes = {
-  styles: PropTypes.array,
-  productInfo: PropTypes.object,
-  name: PropTypes.string,
-  category: PropTypes.string,
-  default_price: PropTypes.string,
-  reviews: PropTypes.object,
+  styles: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+  }),
+  productInfo: PropTypes.shape({
+    id: PropTypes.number,
+    campus: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  reviews: PropTypes.shape({
+    count: PropTypes.number,
+    page: PropTypes.number,
+    product: PropTypes.string,
+  }),
+};
+
+Info.defaultProps = {
+  styles: {},
+  productInfo: {},
+  reviews: {},
 };
