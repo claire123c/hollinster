@@ -6,6 +6,7 @@ import React from 'react';
 import {screen, fireEvent, render} from '@testing-library/react';
 
 import Star from '../../components/overview/Info/Star.jsx';
+import Info from '../../components/overview/Info/Info.jsx';
 import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
 
 describe('Star Rating', () => {
@@ -29,3 +30,19 @@ describe('Star Rating', () => {
     expect(starElement).toBe(null);
   });
 });
+
+describe('Sales price', () => {
+  test('Sales price should be displayed if there is sales price', () => {
+    render(<Info styles={sampleData2.results[7]} />);
+    const sales = document.querySelector('.sales');
+
+    expect(sales.innerHTML).toBe('$400.00');
+  });
+
+  test('Sales price should not be displayed if null', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const sales = document.querySelector('.sales');
+
+    expect(sales).toBe(null);
+  });
+})
