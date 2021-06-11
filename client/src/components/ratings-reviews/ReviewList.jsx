@@ -1,6 +1,5 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import axios from 'axios';
 import ReviewItem from './ReviewItem.jsx';
 
 // const getReviews = (review) => (<ReviewElement review={review}/>);
