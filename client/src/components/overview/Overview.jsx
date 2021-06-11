@@ -8,8 +8,9 @@ import emptyData from './emptyData.js';
 
 //TODO: fix 25178 edge case
 //25172 edge case
+//25168
 function Overview() {
-  const [productNum] = useState('25167');
+  const [productNum] = useState('25168');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -26,6 +27,7 @@ function Overview() {
   const getStyles = () => {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
+        console.log('yoyo', response.data);
         setStyleData(response.data.results);
       })
       .catch((error) => {

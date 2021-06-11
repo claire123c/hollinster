@@ -23,6 +23,7 @@ function Star({ reviews }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
+  //fix star rating to be 1/4 units
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
@@ -35,7 +36,7 @@ function Star({ reviews }) {
         }
       }
       useShowStars(true);
-      return ratings / totalRatings;
+      return Math.round((ratings / totalRatings) * 4) / 4;
     }
     useShowStars(false);
     return 0;
