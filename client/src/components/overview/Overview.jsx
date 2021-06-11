@@ -15,7 +15,7 @@ function Overview() {
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
-  const [currentStyle, setCurrentStyle] = useState();
+  const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
 
   console.log(styleData, 'over');
   console.log(currentStyle);
@@ -59,8 +59,6 @@ function Overview() {
       });
   };
 
-
-
   useEffect(() => {
     getStyles();
     getProductDeets();
@@ -69,8 +67,8 @@ function Overview() {
 
   return (
     <>
-      <Gallery className="gallery" styles={styleData} />
-      <Info productInfo={productInfo} styles={styleData} reviews={reviews} />
+      <Gallery className="gallery" styles={currentStyle} />
+      <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
     </>
   );
 }

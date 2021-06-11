@@ -39,7 +39,7 @@ function Gallery({ styles }) {
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
       <Large
-        defaultStyle={findDefaultStyles(styles)}
+        defaultStyle={styles}
       />
     </GalleryBox>
   );
@@ -48,5 +48,9 @@ function Gallery({ styles }) {
 export default Gallery;
 
 Gallery.propTypes = {
-  styles: PropTypes.array
+  styles: PropTypes.object,
+};
+
+Gallery.defaultProps = {
+  styles: {},
 };

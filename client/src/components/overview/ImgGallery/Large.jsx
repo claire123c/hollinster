@@ -52,6 +52,7 @@ function Large(props) {
   const [leftArrow, useLeftArrow] = useState(false);
   const [rightArrow, useRightArrow] = useState(true);
 
+
   useEffect(() => {
     if (photos.length <= 1) {
       useRightArrow(false);
@@ -122,4 +123,8 @@ export default Large;
 
 Large.propTypes = {
   defaultStyle: PropTypes.object,
+};
+
+Large.defaultProps = {
+  defaultStyle: { photos: [''] },
 };
