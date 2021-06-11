@@ -52,5 +52,17 @@ Gallery.propTypes = {
 };
 
 Gallery.defaultProps = {
-  styles: {},
+  styles: {
+    style_id: 142825,
+    name: '',
+    original_price: '',
+    sale_price: null,
+    'default?': true,
+    photos: [
+      {
+        thumbnail_url: '',
+        url: '',
+      },
+    ],
+  },
 };

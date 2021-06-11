@@ -7,6 +7,7 @@ import Star from './Star.jsx';
 function Info({ productInfo, styles, reviews }) {
   const { name, category } = productInfo;
   const { original_price, sale_price} = styles;
+  console.log(styles);
   return (
     <div className="productinfo">
       <Star reviews={reviews} />

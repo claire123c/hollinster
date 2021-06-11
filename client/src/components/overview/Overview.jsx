@@ -11,7 +11,7 @@ import emptyData from './emptyData.js';
 //25172 edge case
   //what to do if there's an invalid HTML url?
 function Overview() {
-  const [productNum] = useState('25174');
+  const [productNum] = useState('25177');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
