@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 function Ratings(props) {
@@ -17,5 +17,6 @@ function Ratings(props) {
       <p>Ratings will appear here.</p>
     </>
   );
+}
 
 export default Ratings;

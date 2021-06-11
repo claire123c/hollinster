@@ -1,26 +1,40 @@
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import axios from 'axios';
+import ReviewItem from './ReviewItem.jsx'
 
-const getReviews = (data) => <Review data={data} />;
-class ReviewList extends React.Component() {
+// const getReviews = (review) => (<ReviewElement review={review}/>);
+
+class ReviewList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = 0;
+    this.state = {'data': [{'body': 1}]};
   }
 
-  useEffect(() => {
-    const getRatings = async () => {
-      const result = await axios.get(`/api/reviews?product_id=${props.productId}`);
-      setRatings(result.data);
-    };
-    getRatings();
-  }, []);
+  componentDidMount() {
+    axios.get('/reviews/25167')
+      .then((response) => {
+        this.setState({'data': response.data.results});
+        console.log('response', response.data.results);
+        console.log('state', this.state);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  }
 
   render() {
+    const reviewList = this.state.data.map((review) => (
+      <li key={review.review_id}>{review.review_id}</li>
+      // <ReviewItem key={review.review_id} review={review}/>
+    ));
+
     return (
-      <div>
-        {this.props.map(getReviews)}
-      </div>
+      <>
+        {/* <h1>{this.state.data[0].body}</h1> */}
+        <h1>{reviewList}</h1>
+        {/* {reviewList} */}
+      </>
     );
   }
 }
