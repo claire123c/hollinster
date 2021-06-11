@@ -45,4 +45,27 @@ describe('Sales price', () => {
 
     expect(sales).toBe(null);
   });
+});
+
+describe('Social Media', () => {
+  test('Fb share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.fb-share-button');
+
+    expect(button).toBeDefined();
+  });
+
+  test('Twitter share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.twitter-follow-button');
+
+    expect(button).toBeDefined();
+  });
+
+  test('Pinterest share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.pinterest-save-button');
+
+    expect(button).toBeDefined();
+  });
 })
