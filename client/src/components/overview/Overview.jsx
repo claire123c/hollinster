@@ -17,8 +17,6 @@ function Overview() {
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
 
-  console.log(styleData);
-
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
       style['default?']

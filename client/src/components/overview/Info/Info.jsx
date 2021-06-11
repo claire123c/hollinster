@@ -15,8 +15,8 @@ const Original = styled.div`
 
 function Info({ productInfo, styles, reviews }) {
   const { name, category } = productInfo;
-  const { original_price, sale_price} = styles;
-  console.log(styles);
+  const { original_price, sale_price } = styles;
+
   return (
     <div className="productinfo">
       <Star reviews={reviews} />
@@ -25,8 +25,12 @@ function Info({ productInfo, styles, reviews }) {
       <div className="price">
         {sale_price ? (
           <div>
-            <SalePrice>${sale_price} </SalePrice>
-            <Original> ${original_price}</Original>
+            <SalePrice className="sales">
+              ${sale_price}
+            </SalePrice>
+            <Original className="original">
+              ${original_price}
+            </Original>
           </div>
         ) : original_price}
       </div>
