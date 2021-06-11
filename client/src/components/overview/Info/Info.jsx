@@ -13,6 +13,15 @@ const Original = styled.div`
   text-decoration: line-through;
 `;
 
+const Social = styled.div`
+  height: 30px;
+`;
+
+const Pin = styled.div`
+  display: inline;
+  vertical-align: top;
+`;
+
 function Info({ productInfo, styles, reviews }) {
   const { name, category } = productInfo;
   const { original_price, sale_price } = styles;
@@ -26,14 +35,23 @@ function Info({ productInfo, styles, reviews }) {
         {sale_price ? (
           <div>
             <SalePrice className="sales">
-              ${sale_price}
+              $
+              {sale_price}
             </SalePrice>
             <Original className="original">
-              ${original_price}
+              $
+              {original_price}
             </Original>
           </div>
         ) : original_price}
       </div>
+      <Social>
+        <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
+        <a href="https://twitter.com/Cpak90?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @Cpak90</a>
+        <Pin className="pinterest-save-button">
+          <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" />
+        </Pin>
+      </Social>
     </div>
   );
 }

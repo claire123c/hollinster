@@ -27,7 +27,6 @@ function Overview() {
     }
     return newArr;
   };
-
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
@@ -66,7 +65,7 @@ function Overview() {
   return (
     <>
       <Gallery className="gallery" styles={currentStyle} />
-      <Info productInfo={productInfo} styles={styleData[2]} reviews={reviews} />
+      <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
     </>
   );
 }

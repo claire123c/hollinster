@@ -3,12 +3,24 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 const filePath = path.join(__dirname, '../client/public');
+const session = require('express-session');
 const serveStatic = express.static(filePath);
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sfo';
 const APIInfo = require('../config');
 const axios = require('axios');
+const sessionConfig = {
+  secret: 'MYSECRET',
+  name: 'appName',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'strict',
+  },
+};
 app.use(express.json());
 app.use(serveStatic);
+
+app.use(session(sessionConfig));
 
 // PRODUCT API Calls
 app.get('/products', (req, res) => {
