@@ -13,30 +13,51 @@ export default function Modal({ current, productData }) {
 
   const combinedFeatures = () => {
     const results = [];
-    console.log(currentFeatures, 'current')
-    console.log(comparedFeatures, 'compared')
-    // const combined = [...currentFeatures, ...comparedFeatures];
-    const combined = currentFeatures.concat(comparedFeatures)
-    console.log(combined)
+    console.log(currentFeatures, 'current');
+    console.log(comparedFeatures, 'compared');
+    const combined = [...currentFeatures, ...comparedFeatures];
+    // const combined = currentFeatures.concat(comparedFeatures);
+    // console.log(combined);
+    // for (let i = 0; i < combined.length; i += 1) {
+    //   const index = combined.indexOf(combined[i].feature);
+    //   if (index === -1) {
+    //     results.push({
+    //       feature: combined[i].feature,
+    //       currentValue: combined[i].value,
+    //       comparedValue: '',
+    //     });
+    //     combined.splice(index, 1);
+    //   }
+    //   if (index > 0) {
+    //     results.push({
+    //       feature: combined[i].feature,
+    //       currentValue: combined[i].value,
+    //       comparedValue: combined[index].value,
+    //     });
+    //     combined.splice(index, 1);
+    //   }
+    // }
+
     // currentLength = currentFeatures.length;
     // comparedLength = comparedFeatures.length;
-    for (let i = 0; i < combined.length; i += 1) {
-      for (let j = i + 1; j < combined.length; j += 1) {
-        if (combined[i].feature === combined[j].feature) {
-          results.push({
-            feature: combined[i].feature,
-            currentValue: combined[i].value,
-            comparedValue: combined[j].value,
-          })
-        // } else {
-        //   results.push({
-        //     feature: combined[i].feature,
-        //     currentValue: combined[i].value,
-        //     comparedValue: '',
-        //   });
-        }
-      }
-    }
+    // use indexOf or findindex you idiot its sending 10 cause youre pushing each time it returns false
+    // for (let i = 0; i < combined.length; i += 1) {
+    //   for (let j = i + 1; j < combined.length; j += 1) {
+    //     if (combined[i].feature === combined[j].feature) {
+    //       results.push({
+    //         feature: combined[i].feature,
+    //         currentValue: combined[i].value,
+    //         comparedValue: combined[j].value,
+    //       });
+    //     // } else {
+    //     //   results.push({
+    //     //     feature: combined[i].feature,
+    //     //     currentValue: combined[i].value,
+    //     //     comparedValue: '',
+    //     //   });
+    //     }
+    //   }
+    // }
     // for (let i = 0; i < currentFeatures.length; i += 1) {
     //   for (let j = 0; j < comparedFeatures.length; j += 1) {
     //     if (currentFeatures[i].feature === comparedFeatures[j].feature) {
@@ -71,8 +92,8 @@ export default function Modal({ current, productData }) {
     //     }
     //   }
     // }
-    console.log(results);
-    return results.map((feature, i) => (<Comparison feature={feature} key={i} />));
+    console.log(results, 'results');
+    return combined.map((feature, i) => (<Comparison feature={feature} key={i} />));
   };
 
   // const combinedFeatures = [...currentFeatures, ...comparedFeatures];

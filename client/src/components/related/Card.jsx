@@ -19,7 +19,7 @@ export default function Card({ current, product }) {
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
-    if (reviewResults.length === 0) {
+    if (reviewResults.length < 1) {
       return 'No Rating Available';
     }
     for (let i = 0; i < reviewResults.length; i += 1) {
@@ -37,7 +37,7 @@ export default function Card({ current, product }) {
     if (defaultStyle === -1) {
       return defaultPrice;
     }
-    return (style.sale_price !== null ? style.sale_price : style.original_price);
+    return (style.sale_price ? style.sale_price : style.original_price);
   };
 
   const showComparison = () => {
