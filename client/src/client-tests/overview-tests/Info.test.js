@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+import 'regenerator-runtime/runtime'
 import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
 
@@ -19,12 +20,12 @@ describe('Star Rating', () => {
     expect(starElement).toBe('.35');
   });
 
-  test('star rating gives no rating to array with no ratings', () => {
+  test('star rating gives no rating to array with no ratings', async () => {
     const empty = {
       results: [],
     };
     const InfoComp = render(<Star reviews={empty} />);
-    const starElement = document.querySelector('.stars').getAttribute('stars');
+    const starElement = await document.querySelector('.stars').getAttribute('stars');
 
     expect(starElement).toBe(0);
   });
