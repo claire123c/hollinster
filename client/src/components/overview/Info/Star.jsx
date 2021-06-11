@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const InnerStars = styled.div`
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 50%;
 `;
 
 const OuterStar = styled.div`
@@ -42,10 +47,10 @@ function Star({ reviews }) {
     <div className="starrating">
       {showStars
         ? (
-          <InnerStars>
+          <OuterStar>
             &#9734;
-            <OuterStar>&#9733;</OuterStar>
-          </InnerStars>
+            <InnerStars>&#9733;</InnerStars>
+          </OuterStar>
         ) : <InnerStars />}
       <p className="stars">{stars}</p>
     </div>
