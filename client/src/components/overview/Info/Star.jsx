@@ -8,7 +8,7 @@ const InnerStars = styled.div`
   left: 0;
   white-space: nowrap;
   overflow: hidden;
-  width: 50%;
+  width: 75%;
 `;
 
 const OuterStar = styled.div`
@@ -48,8 +48,8 @@ function Star({ reviews }) {
       {showStars
         ? (
           <OuterStar>
-            &#9734;
-            <InnerStars>&#9733;</InnerStars>
+            &#9734;&#9734;&#9734;&#9734;&#9734;
+            <InnerStars>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
           </OuterStar>
         ) : <InnerStars />}
       <p className="stars">{stars}</p>
