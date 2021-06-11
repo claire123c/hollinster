@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {sampleAnswersList } from './sampleData.js'
 
 const IndividualAnswer = () => {
+  const [answers, setAnswers] = useState(sampleAnswersList.results[0].body);
+  console.log('sampleanswer:', sampleAnswersList.results[0]);
   return (
     <>
-      <h2>Individual Answer</h2>
+    <span><strong>A:</strong> {answers}</span>
     </>
   )
 }
