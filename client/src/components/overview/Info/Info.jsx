@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Star from './Star.jsx';
 
 function Info({ productInfo, styles, reviews }) {
-  const { name, category, default_price} = productInfo;
+  const { name, category } = productInfo;
   const [defaultStyle] = styles;
   const { original_price, sale_price} = defaultStyle;
   return (

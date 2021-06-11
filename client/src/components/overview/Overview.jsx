@@ -11,10 +11,24 @@ import emptyData from './emptyData.js';
 //25172 edge case
   //what to do if there's an invalid HTML url?
 function Overview() {
-  const [productNum] = useState('25173');
+  const [productNum] = useState('25174');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
+  const [currentStyle, setCurrentStyle] = useState();
+
+  console.log(styleData, 'over');
+  console.log(currentStyle);
+  const findDefaultStyles = (stylesArr) => {
+    const newArr = stylesArr.find((style) => (
+      style['default?']
+    ));
+
+    if (!newArr) {
+      return stylesArr[0];
+    }
+    return newArr;
+  };
 
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
@@ -29,6 +43,7 @@ function Overview() {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
         setStyleData(response.data.results);
+        setCurrentStyle(findDefaultStyles(response.data.results));
       })
       .catch((error) => {
         console.error(error);
@@ -43,6 +58,8 @@ function Overview() {
         console.error(error);
       });
   };
+
+
 
   useEffect(() => {
     getStyles();

@@ -23,8 +23,6 @@ function Star({ reviews }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
-  console.log(reviews);
-
   const averageRating = (reviewResults) => {
     let ratings = 0;
     let totalRatings = 0;
