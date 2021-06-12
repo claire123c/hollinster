@@ -5,7 +5,15 @@
 
 config.js
 coverage/
+client/public/bundle.js
 /client/public/bundle.js
+./client/public/bundle.js
+client/.DS_Store
+client/public/.DS_Store
+/client/.DS_Store
+/client/public/.DS_Store
+./client/.DS_Store
+./client/public/.DS_Store
 
 # User-specific files
 *.rsuser
