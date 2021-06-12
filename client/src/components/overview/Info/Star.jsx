@@ -23,6 +23,11 @@ const StarRating = styled.div`
   margin-bottom: 2%;
 `;
 
+const ReviewsComp = styled.a`
+  margin-left: 2%;
+  color: black;
+`;
+
 function Star({ reviews }) {
   const { results } = reviews;
   const [stars, useStars] = useState(0);
@@ -59,9 +64,9 @@ function Star({ reviews }) {
               &#9734;&#9734;&#9734;&#9734;&#9734;
               <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
-            <a href="#RatingsandReviews">
+            <ReviewsComp href="#RatingsandReviews">
               {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
-            </a>
+            </ReviewsComp>
           </div>
         ) : <InnerStars />}
     </StarRating>
