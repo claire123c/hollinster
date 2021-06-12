@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';

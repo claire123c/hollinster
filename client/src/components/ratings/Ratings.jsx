@@ -57,21 +57,3 @@ class Ratings extends React.Component {
 }
 
 export default Ratings;
-
-// if (this.state.ratings.data) {
-//   return (
-//     <div className="ratings">
-//       <RatingSummary summary={this.state.ratings} />
-//       <RatingRecommendations summary={this.state.recommended} />
-//       {/* <RatingBreakdown /> */}
-//     </div>
-//   );
-// } else {
-//   return (
-//     <div className="ratings">
-//       <RatingSummary summary={this.state.ratings} />
-//       <RatingRecommendations summary={this.state.recommended} />
-//       {/* <RatingBreakdown /> */}
-//     </div>
-//   )
-// }
