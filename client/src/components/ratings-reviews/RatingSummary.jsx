@@ -13,28 +13,28 @@ class RatingSummary extends React.Component {
 
   render() {
     if (!this.props.summary['5']) {
-      this.props.summary['5'] = '0'
+      this.props.summary['5'] = '0';
     }
     if (!this.props.summary['4']) {
-      this.props.summary['4'] = '0'
+      this.props.summary['4'] = '0';
     }
     if (!this.props.summary['3']) {
-      this.props.summary['3'] = '0'
+      this.props.summary['3'] = '0';
     }
     if (!this.props.summary['2']) {
-      this.props.summary['2'] = '0'
+      this.props.summary['2'] = '0';
     }
     if (!this.props.summary['1']) {
-      this.props.summary['1'] = '0'
+      this.props.summary['1'] = '4';
     }
 
-    let fiveStars = parseInt(this.props.summary['5']);
-    let fourStars = parseInt(this.props.summary['4']);
-    let threeStars = parseInt(this.props.summary['3']);
-    let twoStars = parseInt(this.props.summary['2']);
-    let oneStars = parseInt(this.props.summary['1']);
-    let totalRatings = fiveStars + fourStars + threeStars + twoStars + oneStars;
-    let averageRating = (((fiveStars * 5) + (fourStars * 4) + (threeStars * 3) + (twoStars * 2) + (oneStars)) / totalRatings).toFixed(1);
+    let sum = 0;
+    let totalRatings = 0;
+    for (var key in this.props.summary) {
+      sum += parseInt(this.props.summary[key] * key);
+      totalRatings += parseInt(this.props.summary[key]);
+    }
+    const averageRating = sum / totalRatings;
 
     return (
       <div className="rating-summary">

@@ -9,6 +9,7 @@ class Ratings extends React.Component {
   }
 
   render() {
+    console.log('props', this.props)
     if(this.props.metadata.data) {
       return (
         <div className="ratings">
