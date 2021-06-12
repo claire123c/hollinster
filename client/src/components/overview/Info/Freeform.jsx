@@ -7,8 +7,9 @@ const FreeformText = styled.div`
   justify-content: center;
 `;
 
-const List = styled.div`
-
+const ListItem = styled.div`
+  margin-top: 2%;
+  margin-bottom: 2%;
 `;
 
 const Line = styled.hr`
@@ -18,6 +19,7 @@ const Line = styled.hr`
 
 const Slogan = styled.div`
   font-weight: bold;
+  margin-bottom: 5%;
 `;
 
 const Description = styled.div`
@@ -33,17 +35,17 @@ function Freeform({ productInfo }) {
         currentFeat.map((item) => {
           if (!item.value) {
             return (
-              <div key={`${item.feature}_${item.value}`}>
+              <ListItem key={`${item.feature}_${item.value}`}>
                 <span>&#10003; </span>
                 <span>{item.feature}</span>
-              </div>
+              </ListItem>
             );
           }
           return (
-            <div key={`${item.feature}_${item.value}`}>
+            <ListItem key={`${item.feature}_${item.value}`}>
               <span>{item.feature}: </span>
               <span>{item.value}</span>
-            </div>
+            </ListItem>
           );
         })
       );
@@ -54,13 +56,13 @@ function Freeform({ productInfo }) {
   return (
     <FreeformText className="freeform">
       <div>
-        <Slogan>{slogan}</Slogan>
-        <Description>{description}</Description>
+        <Slogan className="slogan">{slogan}</Slogan>
+        <Description className="description">{description}</Description>
       </div>
-      <Line />
-      <List>
+      <Line className="features" />
+      <div>
         {getListItems(features)}
-      </List>
+      </div>
     </FreeformText>
   );
 }

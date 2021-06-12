@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
-import Freeform from './Freeform.jsx';
+import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 
