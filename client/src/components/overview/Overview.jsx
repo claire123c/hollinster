@@ -18,8 +18,8 @@ const Top = styled.div`
 `;
 
 const OveviewComp = styled.div`
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 12%;
+  margin-right: 12%;
 `;
 
 function Overview() {
