@@ -19,6 +19,8 @@ const Name = styled.div`
 `;
 
 const Price = styled.div`
+  margin-top: 4%;
+  margin-bottom: 6%;
 `;
 
 const SalePrice = styled.div`
