@@ -41,15 +41,14 @@ const Pin = styled.div`
   vertical-align: top;
 `;
 
-function Info({ productInfo, styles, prodReviews, meta }) {
+function Info({ productInfo, styles, meta }) {
   const { name, category } = productInfo;
   const { original_price, sale_price } = styles;
-  const { reviews } = meta;
+  const { ratings } = meta;
 
-  console.log(meta);
   return (
     <ProductInfo className="productinfo">
-      <Star reviews={reviews} />
+      <Star ratings={ratings} />
       <Category className="category">
         {category ? category.toUpperCase() : category}
       </Category>
@@ -66,7 +65,12 @@ function Info({ productInfo, styles, prodReviews, meta }) {
               {original_price}
             </Original>
           </Price>
-        ) : <Price>${original_price}</Price>}
+        ) : (
+          <Price>
+            $
+            {original_price}
+          </Price>
+        )}
       </div>
       <Social>
         <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
@@ -93,11 +97,6 @@ Info.propTypes = {
     name: PropTypes.string,
     category: PropTypes.string,
   }),
-  prodReviews: PropTypes.shape({
-    count: PropTypes.number,
-    page: PropTypes.number,
-    product: PropTypes.string,
-  }),
   meta: PropTypes.shape({
     ratings: PropTypes.shape({
       3: PropTypes.string,
@@ -108,5 +107,11 @@ Info.propTypes = {
 Info.defaultProps = {
   styles: {},
   productInfo: {},
-  reviews: {},
+  meta: {
+    ratings: {
+      3: '2',
+      4: '1',
+      5: '7',
+    },
+  },
 };

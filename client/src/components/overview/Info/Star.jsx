@@ -30,14 +30,24 @@ const ReviewsComp = styled.a`
   color: black;
 `;
 
-function Star({ reviews }) {
-  const { results } = reviews;
+function Star({ ratings }) {
+  console.log(ratings);
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
+  let ratingCount = 0;
+
+  const countRatings = (ratingsObj) => {
+    if (ratingsObj) {
+      for (let i = 0; i < Object.values(ratingsObj).length; i += 1) {
+        ratingCount += Object.values(ratingsObj)[i];
+      }
+    }
+  };
 
   useEffect(() => {
-    useStars(averageRating(results, useShowStars));
-  }, [results]);
+    useStars(averageRating(ratings, useShowStars));
+    countRatings(ratings);
+  }, [ratings]);
 
   return (
     <StarRating className="starrating">
@@ -49,7 +59,7 @@ function Star({ reviews }) {
               <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
             <ReviewsComp href="#RatingsandReviews">
-              {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
+              {ratingCount === 1 ? (`Read ${ratingCount} review`) : (`Read ${ratingCount} reviews`)}
             </ReviewsComp>
           </div>
         ) : <InnerStars />}
@@ -60,5 +70,15 @@ function Star({ reviews }) {
 export default Star;
 
 Star.propTypes = {
-  reviews: PropTypes.object,
+  ratings: PropTypes.shape({
+    3: PropTypes.string,
+  }),
+};
+
+Star.defaultProps = {
+  ratings: {
+    3: '2',
+    4: '1',
+    5: '7',
+  },
 };
