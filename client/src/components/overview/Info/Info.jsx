@@ -68,6 +68,7 @@ Info.propTypes = {
     id: PropTypes.number,
     campus: PropTypes.string,
     name: PropTypes.string,
+    category: PropTypes.string,
   }),
   reviews: PropTypes.shape({
     count: PropTypes.number,
