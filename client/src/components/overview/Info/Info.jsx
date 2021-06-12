@@ -4,6 +4,11 @@ import styled from 'styled-components';
 
 import Star from './Star.jsx';
 
+const ProductInfo = styled.div`
+  margin-left: 3%;
+  margin-top: 2%;
+`;
+
 const SalePrice = styled.div`
   display: inline;
   color: red;
@@ -27,7 +32,7 @@ function Info({ productInfo, styles, reviews }) {
   const { original_price, sale_price } = styles;
 
   return (
-    <div className="productinfo">
+    <ProductInfo className="productinfo">
       <Star reviews={reviews} />
       <div className="category">{category}</div>
       <div className="name">{name}</div>
@@ -52,7 +57,7 @@ function Info({ productInfo, styles, reviews }) {
           <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" />
         </Pin>
       </Social>
-    </div>
+    </ProductInfo>
   );
 }
 

@@ -18,6 +18,11 @@ const OuterStar = styled.div`
   color: rgb(255,196,12);
 `;
 
+const StarRating = styled.div`
+  margin-top: 2%;
+  margin-bottom: 2%;
+`;
+
 function Star({ reviews }) {
   const { results } = reviews;
   const [stars, useStars] = useState(0);
@@ -46,7 +51,7 @@ function Star({ reviews }) {
   }, [results]);
 
   return (
-    <div className="starrating">
+    <StarRating className="starrating">
       {showStars
         ? (
           <div>
@@ -57,7 +62,7 @@ function Star({ reviews }) {
             <a href="#RatingsandReviews">{`Read ${results.length} review(s)`}</a>
           </div>
         ) : <InnerStars />}
-    </div>
+    </StarRating>
   );
 }
 
