@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const FreeformText = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
 `;
 
 const ListItem = styled.div`

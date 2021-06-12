@@ -17,6 +17,11 @@ const Top = styled.div`
   display: flex;
 `;
 
+const OveviewComp = styled.div`
+  margin-left: 10%;
+  margin-right: 10%;
+`;
+
 function Overview() {
   const [productNum] = useState('25170');
   const [styleData, setStyleData] = useState(emptyData.results);
@@ -70,13 +75,13 @@ function Overview() {
   }, []);
 
   return (
-    <>
+    <OveviewComp>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
         <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
       </Top>
       <Freeform productInfo={productInfo} />
-    </>
+    </OveviewComp>
   );
 }
 
