@@ -6,8 +6,10 @@ import React from 'react';
 import {screen, fireEvent, render} from '@testing-library/react';
 
 import Star from '../../components/overview/Info/Star.jsx';
+import Freeform from '../../components/overview/Info/Freeform.jsx';
 import Info from '../../components/overview/Info/Info.jsx';
-import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
+import Overview from '../../components/overview/Overview.jsx';
+import { sampleData, sampleData2, sampleProduct } from '../../components/overview/sampleData.js';
 
 describe('Star Rating', () => {
   test('star rating shows given ratings', () => {
@@ -45,4 +47,50 @@ describe('Sales price', () => {
 
     expect(sales).toBe(null);
   });
-})
+});
+
+describe('Social Media', () => {
+  test('Fb share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.fb-share-button');
+
+    expect(button).toBeDefined();
+  });
+
+  test('Twitter share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.twitter-follow-button');
+
+    expect(button).toBeDefined();
+  });
+
+  test('Pinterest share should show up', () => {
+    render(<Info styles={sampleData2.results[8]} />);
+    const button = document.querySelector('.pinterest-save-button');
+
+    expect(button).toBeDefined();
+  });
+});
+
+describe('Freeform', () => {
+  test('Slogan shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const slogan = document.querySelector('.slogan');
+
+    expect(slogan).toBeDefined();
+  });
+
+  test('Description shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const description = document.querySelector('.description');
+
+    expect(description).toBeDefined();
+  });
+  test('Features shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const slogan = document.querySelector('.slogan');
+
+    expect(slogan).toBeDefined();
+  });
+});
+
