@@ -12,15 +12,37 @@ function Freeform({ productInfo }) {
   const { slogan, description, features } = productInfo;
   console.log(features);
 
+  const getListItems = (currentFeat) => {
+    if (currentFeat) {
+      return (
+        currentFeat.map((item) => {
+          if (!item.value) {
+            return (
+              <li key={`${item.feature}_${item.value}`}>
+                &#10003;
+                {item.feature}
+              </li>
+            );
+          }
+          return (
+            <li key={`${item.feature}_${item.value}`}>
+              {item.feature}
+              :
+              {item.value}
+            </li>
+          );
+        })
+      );
+    }
+    return <li />;
+  };
 
   return (
     <div>
       <div>{slogan}</div>
       <div>{description}</div>
       <List>
-        <li>hi</li>
-        <li>sadf</li>
-        <li>asdfasdfsadf</li>
+        {getListItems(features)}
       </List>
     </div>
   );
