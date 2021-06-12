@@ -19,16 +19,15 @@ function Freeform({ productInfo }) {
           if (!item.value) {
             return (
               <li key={`${item.feature}_${item.value}`}>
-                &#10003;
-                {item.feature}
+                <span>&#10003; </span>
+                <span>{item.feature}</span>
               </li>
             );
           }
           return (
             <li key={`${item.feature}_${item.value}`}>
-              {item.feature}
-              :
-              {item.value}
+              <span>{item.feature}: </span>
+              <span>{item.value}</span>
             </li>
           );
         })
