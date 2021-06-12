@@ -74,6 +74,9 @@ Freeform.propTypes = {
     id: PropTypes.number,
     campus: PropTypes.string,
     name: PropTypes.string,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    features: PropTypes.shape([]),
   }),
 };
 
