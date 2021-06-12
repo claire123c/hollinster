@@ -7,16 +7,13 @@ const FreeformText = styled.div`
   justify-content: center;
 `;
 
-const List = styled.ul`
-  list-style: none;
-  margin-left: 0;
-  padding-left: 1em;
-  text-indent: -1em;
+const List = styled.div`
+
 `;
 
 const Line = styled.hr`
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
 `;
 
 const Slogan = styled.div`
@@ -36,17 +33,17 @@ function Freeform({ productInfo }) {
         currentFeat.map((item) => {
           if (!item.value) {
             return (
-              <li key={`${item.feature}_${item.value}`}>
+              <div key={`${item.feature}_${item.value}`}>
                 <span>&#10003; </span>
                 <span>{item.feature}</span>
-              </li>
+              </div>
             );
           }
           return (
-            <li key={`${item.feature}_${item.value}`}>
+            <div key={`${item.feature}_${item.value}`}>
               <span>{item.feature}: </span>
               <span>{item.value}</span>
-            </li>
+            </div>
           );
         })
       );
