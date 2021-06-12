@@ -1,22 +1,32 @@
+/* eslint-disable no-else-return */
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import axios from 'axios';
+import RatingSummary from './RatingSummary.jsx';
 
-function Ratings(props) {
-  const [ratings, setRatings] = useState([]);
+class Ratings extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  useEffect(() => {
-    const getRatings = async () => {
-      const result = await axios.get(`/api/reviews?product_id=${props.productId}`);
-      setRatings(result.data);
-    };
-    getRatings();
-  }, []);
-
-  return (
-    <>
-      <p>Ratings will appear here.</p>
-    </>
-  );
+  render() {
+    if(this.props.metadata.data) {
+      return (
+        <div className="ratings">
+          <RatingSummary summary={this.props.metadata.data.ratings} />
+          {/* <RatingRecommendations />
+          <RatingBreakdown /> */}
+        </div>
+      );
+    } else {
+      return (
+        <div className="ratings">
+          <RatingSummary summary={this.props.metadata} />
+          {/* <RatingRecommendations />
+          <RatingBreakdown /> */}
+        </div>
+      )
+    }
+  }
 }
 
 export default Ratings;
