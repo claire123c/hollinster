@@ -30,6 +30,10 @@ const Description = styled.div`
   color: rgb(80,80,80);
 `;
 
+const SplitEvenly = styled.div`
+  width: 30%;
+`;
+
 function Freeform({ productInfo }) {
   const { slogan, description, features } = productInfo;
 
@@ -59,14 +63,14 @@ function Freeform({ productInfo }) {
 
   return (
     <FreeformText className="freeform">
-      <div>
+      <SplitEvenly>
         <Slogan className="slogan">{slogan}</Slogan>
         <Description className="description">{description}</Description>
-      </div>
+      </SplitEvenly>
       <Line className="features" />
-      <div>
+      <SplitEvenly>
         {getListItems(features)}
-      </div>
+      </SplitEvenly>
     </FreeformText>
   );
 }
