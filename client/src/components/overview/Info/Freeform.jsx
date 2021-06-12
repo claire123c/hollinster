@@ -17,6 +17,8 @@ const ListItem = styled.div`
 const Line = styled.hr`
   margin-left: 7%;
   margin-right: 7%;
+  border: 1px solid rgb(32,32,32);
+  color: rgb(32,32,32);
 `;
 
 const Slogan = styled.div`
