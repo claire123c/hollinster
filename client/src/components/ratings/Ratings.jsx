@@ -1,3 +1,5 @@
+/* eslint-disable quote-props */
+/* eslint-disable quotes */
 /* eslint-disable no-else-return */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
@@ -17,15 +19,15 @@ class Ratings extends React.Component {
           "id": "00001",
           "value": "0"
         },
-          "Length": {
+        "Length": {
           "id": "00002",
           "value": "0"
         },
-          "Comfort": {
+        "Comfort": {
           "id": "00003",
           "value": "0"
         },
-          "Quality": {
+        "Quality": {
           "id": "00004",
           "value": "0"
         }
