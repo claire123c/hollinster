@@ -12,6 +12,14 @@ class RatingBreakdown extends React.Component {
 
     const ratingItemsArray = Object.entries(this.props.breakdown);
 
+    let totalRatings = false;
+    for (let i = 0; i < ratingItemsArray.length; i++) {
+      if (ratingItemsArray[i][1] > 0) {
+        totalRatings = true;
+        break;
+      }
+    }
+
     const getRatingItems = ratingItemsArray.map((item) => {
       return (
         <p>{`${item[0]}: ${Number(item[1].value).toFixed(1)}`}</p>
@@ -19,16 +27,16 @@ class RatingBreakdown extends React.Component {
       );
     });
 
-    if (!this.props.breakdown) {
+    if (!this.props.breakdown || !totalRatings) {
       return (
-        <>
+        <div className="rating-categories">
           <h3>No ratings yet</h3>
           <h5>Be the first to recommend this product!</h5>
-        </>
+        </div>
       );
     } else {
       return (
-        <div className="rating-summary">
+        <div className="rating-categories">
           <h3>Ratings</h3>
           {getRatingItems}
         </div>

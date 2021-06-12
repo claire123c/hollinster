@@ -36,7 +36,7 @@ class RatingSummary extends React.Component {
     if (sum > 0) {
       averageRating = (sum / totalRatings).toFixed(1);
       return (
-        <div className="rating-summary">
+        <div className="rating-categories">
           <h3>{averageRating} Stars</h3>
           <p>5 Stars: {this.props.summary['5']}</p>
           <p>4 Stars: {this.props.summary['4']}</p>
@@ -47,7 +47,7 @@ class RatingSummary extends React.Component {
       );
     } else {
       return (
-        <div className="rating-summary">
+        <div className="rating-categories">
           <h3>No ratings yet</h3>
           <h5>Be the first to rate this product</h5>
         </div>

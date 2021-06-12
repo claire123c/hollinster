@@ -9,9 +9,9 @@ class RatingRecommendations extends React.Component {
     const totalRecommendations = positiveRecs + negativeRecs;
 
     if (totalRecommendations > 0) {
-      const averageRecommendation = (positiveRecs / totalRecommendations) * 100;
+      const averageRecommendation = Number((positiveRecs / totalRecommendations) * 100).toFixed(0);
       return (
-        <div className="rating-summary">
+        <div className="rating-categories">
           <div>
             <h3>{averageRecommendation}% of users</h3>
             <h5>recommend this product</h5>
@@ -24,7 +24,7 @@ class RatingRecommendations extends React.Component {
       );
     } else {
       return (
-        <div className="rating-summary">
+        <div className="rating-categories">
           <h3>No recommendations yet</h3>
           <h5>Be the first to rate this product</h5>
         </div>
