@@ -41,10 +41,12 @@ const Pin = styled.div`
   vertical-align: top;
 `;
 
-function Info({ productInfo, styles, reviews }) {
+function Info({ productInfo, styles, prodReviews, meta }) {
   const { name, category } = productInfo;
   const { original_price, sale_price } = styles;
+  const { reviews } = meta;
 
+  console.log(meta);
   return (
     <ProductInfo className="productinfo">
       <Star reviews={reviews} />
@@ -91,10 +93,15 @@ Info.propTypes = {
     name: PropTypes.string,
     category: PropTypes.string,
   }),
-  reviews: PropTypes.shape({
+  prodReviews: PropTypes.shape({
     count: PropTypes.number,
     page: PropTypes.number,
     product: PropTypes.string,
+  }),
+  meta: PropTypes.shape({
+    ratings: PropTypes.shape({
+      3: PropTypes.string,
+    }),
   }),
 };
 

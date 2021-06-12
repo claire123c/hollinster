@@ -28,6 +28,7 @@ function Overview() {
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
+  const [rMeta, setrMeta] = useState({});
 
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
@@ -68,17 +69,28 @@ function Overview() {
       });
   };
 
+  const getMetaReviews = () => {
+    axios.get(`/reviews/meta/${productNum}`)
+      .then((response) => {
+        setrMeta(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   useEffect(() => {
     getStyles();
     getProductDeets();
     getReviews();
+    getMetaReviews();
   }, []);
 
   return (
     <OveviewComp>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
-        <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+        <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
       </Top>
       <Freeform productInfo={productInfo} />
     </OveviewComp>
