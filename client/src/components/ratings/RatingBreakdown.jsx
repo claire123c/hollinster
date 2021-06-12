@@ -8,13 +8,12 @@ import React from 'react';
 
 class RatingBreakdown extends React.Component {
   render() {
-    console.log(Object.entries(this.props.breakdown));
-
     const ratingItemsArray = Object.entries(this.props.breakdown);
+    console.log(ratingItemsArray);
 
     let totalRatings = false;
     for (let i = 0; i < ratingItemsArray.length; i++) {
-      if (ratingItemsArray[i][1] > 0) {
+      if (ratingItemsArray[i][1].value > 0) {
         totalRatings = true;
         break;
       }
