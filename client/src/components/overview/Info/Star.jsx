@@ -35,8 +35,6 @@ function Star({ reviews }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
-
-
   useEffect(() => {
     useStars(averageRating(results, useShowStars));
   }, [results]);
