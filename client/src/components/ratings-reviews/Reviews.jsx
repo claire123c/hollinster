@@ -10,7 +10,8 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      'data': [{'body': 1, 'review_id': 0, 'metadata': {'5': 0, '4': 0, '3': 0, '2': 0, '1': 0}}]
+      data: [{ body: 1, review_id: 0 }],
+      metadata: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
     };
   }
 
@@ -35,7 +36,7 @@ class Reviews extends React.Component {
   render() {
     return (
       <div className="reviews">
-        <Ratings ratings={this.state.metadata} />
+        <Ratings metadata={this.state.metadata} />
         <ReviewList reviews={this.state.data} />
       </div>
     );
