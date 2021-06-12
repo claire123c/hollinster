@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 // import Overview from './overview/Overview.jsx';
-// import Reviews from './ratings-reviews/Reviews.jsx';
+import Ratings from './ratings/Ratings.jsx';
 // import Related from './related/Related.jsx'
+import Reviews from './reviews/Reviews.jsx';
 
 const App = (props) => {
   const [test, setTest] = useState(true);
@@ -13,8 +14,9 @@ const App = (props) => {
       <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
       {/* <Overview /> */}
+      <Ratings />
       {/* <Related /> */}
-      {/* <Reviews /> */}
+      <Reviews />
     </>
   );
 };
