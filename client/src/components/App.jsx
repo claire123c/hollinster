@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 // import Overview from './overview/Overview.jsx';
 // import Ratings from './ratings-reviews/Ratings.jsx';
 import Reviews from './ratings-reviews/Reviews.jsx';
-// import Overview from './overview/Overview.jsx';
+import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx'
 
 const App = (props) => {
@@ -14,7 +14,7 @@ const App = (props) => {
     <>
       <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-      {/* <Overview /> */}
+      <Overview />
       {/* <Related /> */}
       {/* <Reviews /> */}
     </>
