@@ -8,7 +8,7 @@ import ReviewList from './ReviewList.jsx';
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'data': [{'body': 1}]};
+    this.state = {'data': [{'body': 1, 'review_id': 0}]};
   }
 
   componentDidMount() {

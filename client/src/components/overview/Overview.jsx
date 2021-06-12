@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
@@ -11,6 +12,11 @@ import emptyData from './emptyData.js';
   //what to do if image isn't the same
 //25172 edge case
   //what to do if there's an invalid HTML url?
+
+const Top = styled.div`
+  display: flex;
+`;
+
 function Overview() {
   const [productNum] = useState('25170');
   const [styleData, setStyleData] = useState(emptyData.results);
@@ -65,8 +71,10 @@ function Overview() {
 
   return (
     <>
-      <Gallery className="gallery" styles={currentStyle} />
-      <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+      <Top>
+        <Gallery className="gallery" styles={currentStyle} />
+        <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+      </Top>
       <Freeform productInfo={productInfo} />
     </>
   );
