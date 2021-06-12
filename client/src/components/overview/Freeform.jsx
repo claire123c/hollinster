@@ -8,9 +8,14 @@ const List = styled.ul`
   padding-left: 1em;
   text-indent: -1em;
 `;
+
+const Slogan = styled.ul`
+  font-weight: bold;
+`;
+
 function Freeform({ productInfo }) {
   const { slogan, description, features } = productInfo;
-  console.log(features);
+  console.log(productInfo);
 
   const getListItems = (currentFeat) => {
     if (currentFeat) {
@@ -38,7 +43,7 @@ function Freeform({ productInfo }) {
 
   return (
     <div>
-      <div>{slogan}</div>
+      <Slogan>{slogan}</Slogan>
       <div>{description}</div>
       <List>
         {getListItems(features)}
