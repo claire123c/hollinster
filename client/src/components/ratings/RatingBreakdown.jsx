@@ -4,6 +4,19 @@ import React from 'react';
 
 class RatingBreakdown extends React.Component {
   render() {
+    if (!this.props.breakdown.Fit && !this.props.breakdown.Length && !this.props.breakdown.Comfort && !this.props.breakdown.Quality) {
+      return (
+        <>
+          <h3>No ratings yet</h3>
+          <h5>Be the first to recommend this product!</h5>
+        </>
+      );
+    }
+
+    // for (var key in this.props.breakdown) {
+    //   this.props.breakdown.key.value = parseInt(this.props.breakdown.key.value).toFixed(1);
+    // }
+
     if (!this.props.breakdown.Fit) {
       this.props.breakdown.Fit = { value: 'No ratings yet' };
     } else {
