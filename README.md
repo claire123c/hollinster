@@ -1,5 +1,5 @@
 # hollinster
-Front End Capstone for Hack Reactor
+eCommerce webapp for Project Catwalk
 
 
 =======
