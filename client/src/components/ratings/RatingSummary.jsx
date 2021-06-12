@@ -7,9 +7,6 @@
 import React from 'react';
 
 class RatingSummary extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     if (!this.props.summary['5']) {
@@ -34,17 +31,21 @@ class RatingSummary extends React.Component {
       sum += parseInt(this.props.summary[key] * key);
       totalRatings += parseInt(this.props.summary[key]);
     }
-    const averageRating = (sum / totalRatings).toFixed(1);
+    let averageRating = (sum / totalRatings).toFixed(1);
+
+    // Why isn't this working?
+    if (!averageRating) {
+      averageRating = 0;
+    }
 
     return (
       <div className="rating-summary">
-        <h3>Rating Summary</h3>
+        <h3>{averageRating} Stars</h3>
         <p>5 Stars: {this.props.summary['5']}</p>
         <p>4 Stars: {this.props.summary['4']}</p>
         <p>3 Stars: {this.props.summary['3']}</p>
         <p>2 Stars: {this.props.summary['2']}</p>
         <p>1 Star: {this.props.summary['1']}</p>
-        <p>Average Rating: {averageRating} Stars</p>
       </div>
     );
   }

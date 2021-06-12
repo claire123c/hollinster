@@ -5,10 +5,6 @@ import ReviewItem from './ReviewItem.jsx';
 // const getReviews = (review) => (<ReviewElement review={review}/>);
 
 class ReviewList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const reviewList = this.props.reviews.map((review) => (
       // <li key={review.review_id}>{review.review_id}</li>

@@ -13,7 +13,7 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/reviews/25167')
+    axios.get('/reviews/' + this.props.productID)
       .then((response) => {
         this.setState({'data': response.data.results});
       })

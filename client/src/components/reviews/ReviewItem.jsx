@@ -4,11 +4,7 @@ import React from 'react';
 // import ReviewPics.jsx from './ReviewPics.jsx';
 
 class ReviewItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render(props) {
+  render() {
     let recommendation;
     if (this.props.review.recommend) {
       recommendation = "Recommended"

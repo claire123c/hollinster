@@ -15,11 +15,12 @@
 body {
   color: #292A33;
   background-color: #F5F4F2;
-<<<<<<< HEAD
-  font-family: 'Open Sans', sans-serif;
-=======
   font-family: "Source Sans", sans-serif;
->>>>>>> dev
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-around;
 }
 
 .review-item-div, .rating-summary {
