@@ -1,22 +1,26 @@
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import axios from 'axios';
+// import RatingSummary from './RatingBreakdown.jsx';
+// import RatingBreakdown from './RatingBreakdown.jsx';
+// import RatingRecommendations from './RatingRecommendations.jsx';
 
-function Ratings(props) {
-  const [ratings, setRatings] = useState([]);
+// const getReviews = (review) => (<ReviewElement review={review}/>);
 
-  useEffect(() => {
-    const getRatings = async () => {
-      const result = await axios.get(`/api/reviews?product_id=${props.productId}`);
-      setRatings(result.data);
-    };
-    getRatings();
-  }, []);
+class Ratings extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <>
-      <p>Ratings will appear here.</p>
-    </>
-  );
+  render() {
+    return (
+      <>
+        {/* <RatingSummary />
+        <RatingBreakdown />
+        <RatingRecommendations /> */}
+        <h1>Ratings will go here</h1>
+      </>
+    );
+  }
 }
 
 export default Ratings;

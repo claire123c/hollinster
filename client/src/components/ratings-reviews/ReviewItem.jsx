@@ -17,7 +17,7 @@ class ReviewItem extends React.Component {
     }
 
     return (
-      <div className="review-div">
+      <div className="review-item-div">
         <h3>Rating: {this.props.review.rating} Stars out of 5</h3>
         <h4>Review: {this.props.review.body}</h4>
         <h4>Recommendation: {recommendation}</h4>
