@@ -25,7 +25,7 @@ class RatingRecommendations extends React.Component {
     } else {
       return (
         <div className="rating-summary">
-          <h3>No ratings yet</h3>
+          <h3>No recommendations yet</h3>
           <h5>Be the first to rate this product</h5>
         </div>
       );
