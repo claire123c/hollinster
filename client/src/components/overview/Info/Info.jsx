@@ -41,14 +41,19 @@ const Pin = styled.div`
   vertical-align: top;
 `;
 
-function Info({ productInfo, styles, meta }) {
+function Info({
+  productInfo, styles, meta, reviews,
+}) {
   const { name, category } = productInfo;
   const { original_price, sale_price } = styles;
   const { ratings } = meta;
+  const { results } = reviews;
+
+  console.log(reviews);
 
   return (
     <ProductInfo className="productinfo">
-      <Star ratings={ratings} />
+      <Star ratings={ratings} results={results} />
       <Category className="category">
         {category ? category.toUpperCase() : category}
       </Category>
@@ -102,6 +107,9 @@ Info.propTypes = {
       3: PropTypes.string,
     }),
   }),
+  reviews: PropTypes.shape({
+    product: PropTypes.string,
+  }),
 };
 
 Info.defaultProps = {
@@ -113,5 +121,24 @@ Info.defaultProps = {
       4: '1',
       5: '7',
     },
+  },
+  reviews: {
+    product: '25167',
+    page: 0,
+    count: 5,
+    results: [
+      {
+        review_id: 406630,
+        rating: 5,
+        summary: 'Camo Onesie',
+        recommend: true,
+        response: null,
+        body: 'Blend in to your crowd',
+        date: '2021-06-07T00:00:00.000Z',
+        reviewer_name: 'test post',
+        helpfulness: 0,
+        photos: [],
+      },
+    ],
   },
 };

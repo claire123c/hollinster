@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import averageRating from './Info-helper.jsx/star-helper.jsx'
+import averageRating from './Info-helper.jsx/star-helper.jsx';
 
 const InnerStars = styled.div`
   position: absolute;
@@ -30,23 +30,13 @@ const ReviewsComp = styled.a`
   color: black;
 `;
 
-function Star({ ratings }) {
-  console.log(ratings);
+function Star({ ratings, results }) {
+  console.log(results, 'hihi');
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
-  let ratingCount = 0;
-
-  const countRatings = (ratingsObj) => {
-    if (ratingsObj) {
-      for (let i = 0; i < Object.values(ratingsObj).length; i += 1) {
-        ratingCount += Object.values(ratingsObj)[i];
-      }
-    }
-  };
 
   useEffect(() => {
     useStars(averageRating(ratings, useShowStars));
-    countRatings(ratings);
   }, [ratings]);
 
   return (
@@ -59,7 +49,7 @@ function Star({ ratings }) {
               <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
             <ReviewsComp href="#RatingsandReviews">
-              {ratingCount === 1 ? (`Read ${ratingCount} review`) : (`Read ${ratingCount} reviews`)}
+              {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
             </ReviewsComp>
           </div>
         ) : <InnerStars />}
@@ -73,6 +63,7 @@ Star.propTypes = {
   ratings: PropTypes.shape({
     3: PropTypes.string,
   }),
+  results: PropTypes.instanceOf(Array),
 };
 
 Star.defaultProps = {
@@ -81,4 +72,18 @@ Star.defaultProps = {
     4: '1',
     5: '7',
   },
+  results: [
+    {
+      review_id: 406630,
+      rating: 5,
+      summary: 'Camo Onesie',
+      recommend: true,
+      response: null,
+      body: 'Blend in to your crowd',
+      date: '2021-06-07T00:00:00.000Z',
+      reviewer_name: 'test post',
+      helpfulness: 0,
+      photos: [],
+    },
+  ],
 };
