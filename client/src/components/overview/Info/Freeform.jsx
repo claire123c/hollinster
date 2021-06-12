@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const FreeformText = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
 `;
 
 const ListItem = styled.div`
@@ -15,6 +17,8 @@ const ListItem = styled.div`
 const Line = styled.hr`
   margin-left: 7%;
   margin-right: 7%;
+  border: 1px solid rgb(32,32,32);
+  color: rgb(32,32,32);
 `;
 
 const Slogan = styled.div`
@@ -24,6 +28,10 @@ const Slogan = styled.div`
 
 const Description = styled.div`
   color: rgb(80,80,80);
+`;
+
+const SplitEvenly = styled.div`
+  width: 30%;
 `;
 
 function Freeform({ productInfo }) {
@@ -55,14 +63,14 @@ function Freeform({ productInfo }) {
 
   return (
     <FreeformText className="freeform">
-      <div>
+      <SplitEvenly>
         <Slogan className="slogan">{slogan}</Slogan>
         <Description className="description">{description}</Description>
-      </div>
+      </SplitEvenly>
       <Line className="features" />
-      <div>
+      <SplitEvenly>
         {getListItems(features)}
-      </div>
+      </SplitEvenly>
     </FreeformText>
   );
 }

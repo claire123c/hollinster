@@ -12,10 +12,14 @@ const ThumbnailsGroup = styled.div`
   width: 90%;
 `;
 const AllDefaultView = styled.div`
-  max-height: 100%;
-  max-width: 100%;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 80%;;
+  max-width: 80%;
+  min-height: 80%;
+  min-width: 80%;
+
 `;
 const DefaultView = styled.div`
   display: flex;
@@ -107,10 +111,12 @@ function Large(props) {
 
   return (
     <ThumbnailsGroup className="thumbnailgroup">
-      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked}/>
+      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked} />
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow}>&#xab;</LeftArrow>
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow}>
+            &#xab;
+          </LeftArrow>
           <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow}>&#xbb;</RightArrow>
         </DefaultView>
       </AllDefaultView>

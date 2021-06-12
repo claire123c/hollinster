@@ -4,6 +4,25 @@ import styled from 'styled-components';
 
 import Star from './Star.jsx';
 
+const ProductInfo = styled.div`
+  margin-left: 3%;
+  margin-top: 2%;
+`;
+
+const Category = styled.div`
+  margin-top: 2%;
+`;
+
+const Name = styled.div`
+  font-weight: bold;
+  font-size: 40px;
+`;
+
+const Price = styled.div`
+  margin-top: 4%;
+  margin-bottom: 6%;
+`;
+
 const SalePrice = styled.div`
   display: inline;
   color: red;
@@ -27,13 +46,15 @@ function Info({ productInfo, styles, reviews }) {
   const { original_price, sale_price } = styles;
 
   return (
-    <div className="productinfo">
+    <ProductInfo className="productinfo">
       <Star reviews={reviews} />
-      <div className="category">{category}</div>
-      <div className="name">{name}</div>
+      <Category className="category">
+        {category ? category.toUpperCase() : category}
+      </Category>
+      <Name className="name">{name}</Name>
       <div className="price">
         {sale_price ? (
-          <div>
+          <Price>
             <SalePrice className="sales">
               $
               {sale_price}
@@ -42,8 +63,8 @@ function Info({ productInfo, styles, reviews }) {
               $
               {original_price}
             </Original>
-          </div>
-        ) : <div>${original_price}</div>}
+          </Price>
+        ) : <Price>${original_price}</Price>}
       </div>
       <Social>
         <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
@@ -52,7 +73,7 @@ function Info({ productInfo, styles, reviews }) {
           <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" />
         </Pin>
       </Social>
-    </div>
+    </ProductInfo>
   );
 }
 
