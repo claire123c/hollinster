@@ -3,15 +3,16 @@ import axios from 'axios';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
+import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 
-//TODO: fix 25178 edge case
+//TODO: fix 25178 edge case, and quotes
   //what to do if image isn't the same
 //25172 edge case
   //what to do if there's an invalid HTML url?
 function Overview() {
-  const [productNum] = useState('25169');
+  const [productNum] = useState('25170');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -66,6 +67,7 @@ function Overview() {
     <>
       <Gallery className="gallery" styles={currentStyle} />
       <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+      <Freeform productInfo={productInfo} />
     </>
   );
 }

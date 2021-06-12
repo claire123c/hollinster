@@ -6,8 +6,10 @@ import React from 'react';
 import {screen, fireEvent, render} from '@testing-library/react';
 
 import Star from '../../components/overview/Info/Star.jsx';
+import Freeform from '../../components/overview/Info/Freeform.jsx';
 import Info from '../../components/overview/Info/Info.jsx';
-import { sampleData, sampleData2 } from '../../components/overview/sampleData.js';
+import Overview from '../../components/overview/Overview.jsx';
+import { sampleData, sampleData2, sampleProduct } from '../../components/overview/sampleData.js';
 
 describe('Star Rating', () => {
   test('star rating shows given ratings', () => {
@@ -68,4 +70,27 @@ describe('Social Media', () => {
 
     expect(button).toBeDefined();
   });
-})
+});
+
+describe('Freeform', () => {
+  test('Slogan shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const slogan = document.querySelector('.slogan');
+
+    expect(slogan).toBeDefined();
+  });
+
+  test('Description shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const description = document.querySelector('.description');
+
+    expect(description).toBeDefined();
+  });
+  test('Features shows up on render', () => {
+    render(<Freeform productInfo={sampleProduct} />);
+    const slogan = document.querySelector('.slogan');
+
+    expect(slogan).toBeDefined();
+  });
+});
+
