@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import axios from 'axios';
+import Ratings from './Ratings.jsx';
 import ReviewList from './ReviewList.jsx';
 
 // const getReviews = (review) => (<ReviewElement review={review}/>);
@@ -8,7 +9,10 @@ import ReviewList from './ReviewList.jsx';
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'data': [{'body': 1}]};
+    this.state = {
+      data: [{ body: 1, review_id: 0 }],
+      metadata: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
+    };
   }
 
   componentDidMount() {
@@ -19,13 +23,22 @@ class Reviews extends React.Component {
       .catch((error) => {
         console.log('error', error);
       });
+
+    axios.get('/reviews/meta/25167')
+      .then((response) => {
+        this.setState({'metadata': response});
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   }
 
   render() {
     return (
-      <>
+      <div className="reviews">
+        <Ratings metadata={this.state.metadata} />
         <ReviewList reviews={this.state.data} />
-      </>
+      </div>
     );
   }
 }

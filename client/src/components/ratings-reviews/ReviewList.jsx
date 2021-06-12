@@ -16,11 +16,11 @@ class ReviewList extends React.Component {
     ));
 
     return (
-      <>
+      <div className="review-list">
         {/* <h1>{this.state.data[0].body}</h1> */}
         {/* <h1>{reviewList}</h1> */}
         {reviewList}
-      </>
+      </div>
     );
   }
 }
