@@ -9,14 +9,11 @@ import ReviewList from './ReviewList.jsx';
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
     this.state = {'data': [{'body': 1, 'review_id': 0}]};
-=======
     this.state = {
       data: [{ body: 1, review_id: 0 }],
       metadata: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
     };
->>>>>>> main
   }
 
   componentDidMount() {
