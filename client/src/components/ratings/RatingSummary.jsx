@@ -25,7 +25,7 @@ class RatingSummary extends React.Component {
       this.props.summary['2'] = '0';
     }
     if (!this.props.summary['1']) {
-      this.props.summary['1'] = '4';
+      this.props.summary['1'] = '0';
     }
 
     let sum = 0;
@@ -34,7 +34,7 @@ class RatingSummary extends React.Component {
       sum += parseInt(this.props.summary[key] * key);
       totalRatings += parseInt(this.props.summary[key]);
     }
-    const averageRating = sum / totalRatings;
+    const averageRating = (sum / totalRatings).toFixed(1);
 
     return (
       <div className="rating-summary">
