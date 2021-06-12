@@ -8,7 +8,7 @@ import {screen, fireEvent, render} from '@testing-library/react';
 import Star from '../../components/overview/Info/Star.jsx';
 import Freeform from '../../components/overview/Info/Freeform.jsx';
 import Info from '../../components/overview/Info/Info.jsx';
-import Overview from '../../components/overview/Overview.jsx';
+import averageRating from '../../components/overview/Info/Info-helper.jsx/star-helper.jsx';
 import { sampleData, sampleData2, sampleProduct } from '../../components/overview/sampleData.js';
 
 describe('Star Rating', () => {
@@ -30,6 +30,20 @@ describe('Star Rating', () => {
     const starElement = document.querySelector('.stars');
 
     expect(starElement).toBe(null);
+  });
+
+  test('star rating function should work', () => {
+    const reviews = {
+      results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
+    };
+    const empty = {
+      results: [],
+    };
+    const average = averageRating(reviews.results, () => {});
+    const emptyAverage = averageRating(empty.results, () => {});
+
+    expect(average).toBe(3.75);
+    expect(emptyAverage).toBe(0);
   });
 });
 
