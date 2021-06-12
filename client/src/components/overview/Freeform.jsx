@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const FreeformText = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const List = styled.ul`
   list-style: none;
   margin-left: 0;
@@ -9,13 +14,21 @@ const List = styled.ul`
   text-indent: -1em;
 `;
 
-const Slogan = styled.ul`
+const Line = styled.hr`
+  margin-left: 10%;
+  margin-right: 10%;
+`;
+
+const Slogan = styled.div`
   font-weight: bold;
+`;
+
+const Description = styled.div`
+  color: rgb(80,80,80);
 `;
 
 function Freeform({ productInfo }) {
   const { slogan, description, features } = productInfo;
-  console.log(productInfo);
 
   const getListItems = (currentFeat) => {
     if (currentFeat) {
@@ -42,13 +55,16 @@ function Freeform({ productInfo }) {
   };
 
   return (
-    <div>
-      <Slogan>{slogan}</Slogan>
-      <div>{description}</div>
+    <FreeformText className="freeform">
+      <div>
+        <Slogan>{slogan}</Slogan>
+        <Description>{description}</Description>
+      </div>
+      <Line />
       <List>
         {getListItems(features)}
       </List>
-    </div>
+    </FreeformText>
   );
 }
 
