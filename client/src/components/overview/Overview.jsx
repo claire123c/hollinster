@@ -98,7 +98,7 @@ function Overview() {
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
-          <AllStyles className="all-styles" styleData={styleData} />
+          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />

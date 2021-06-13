@@ -20,7 +20,9 @@ const AllStylesComp = styled.div`
   max-width: 100%;
 `;
 
-function AllStyles({ styleData }) {
+function AllStyles({ styleData, currentStyle }) {
+  const { name } = currentStyle;
+
   return (
     <AllStylesComp>
       <div>
@@ -29,8 +31,8 @@ function AllStyles({ styleData }) {
           {' '}
           {'>'}
         </StyleText>
-        {' '}
-        SELECTED STYLE
+        {'  '}
+        {name.toUpperCase()}
       </div>
       <StyleThumbnails>
         {styleData.map((style) => (
@@ -45,8 +47,10 @@ export default AllStyles;
 
 AllStyles.propTypes = {
   styleData: PropTypes.instanceOf(Array),
+  currentStyle: PropTypes.instanceOf(Object),
 };
 
 AllStyles.defaultProps = {
   styleData: [],
+  currentStyle: { name: '' },
 };
