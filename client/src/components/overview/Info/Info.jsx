@@ -49,8 +49,6 @@ function Info({
   const { ratings } = meta;
   const { results } = reviews;
 
-  console.log(reviews);
-
   return (
     <ProductInfo className="productinfo">
       <Star ratings={ratings} results={results} />
@@ -109,6 +107,7 @@ Info.propTypes = {
   }),
   reviews: PropTypes.shape({
     product: PropTypes.string,
+    results: PropTypes.instanceOf(Array),
   }),
 };
 
@@ -130,14 +129,6 @@ Info.defaultProps = {
       {
         review_id: 406630,
         rating: 5,
-        summary: 'Camo Onesie',
-        recommend: true,
-        response: null,
-        body: 'Blend in to your crowd',
-        date: '2021-06-07T00:00:00.000Z',
-        reviewer_name: 'test post',
-        helpfulness: 0,
-        photos: [],
       },
     ],
   },

@@ -31,7 +31,7 @@ const ReviewsComp = styled.a`
 `;
 
 function Star({ ratings, results }) {
-  console.log(results, 'hihi');
+  console.log(ratings, 'hihi');
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
@@ -76,14 +76,6 @@ Star.defaultProps = {
     {
       review_id: 406630,
       rating: 5,
-      summary: 'Camo Onesie',
-      recommend: true,
-      response: null,
-      body: 'Blend in to your crowd',
-      date: '2021-06-07T00:00:00.000Z',
-      reviewer_name: 'test post',
-      helpfulness: 0,
-      photos: [],
     },
   ],
 };
