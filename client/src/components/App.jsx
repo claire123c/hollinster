@@ -1,6 +1,6 @@
 // imports the react module installed in node_modules
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 // import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
@@ -16,9 +16,9 @@ const App = (props) => {
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
       {/* <Overview /> */}
       {/* don't forget to remove this before committing */}
-      {/* (<Question /> */}
+      {/* <Question /> */}
       {/* <Related /> */}
-      <RatingsReviews productID={productID} />
+      {/* <RatingsReviews productID={productID} /> */}
     </>
   );
 };
