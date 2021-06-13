@@ -12,10 +12,14 @@ const ThumbnailsGroup = styled.div`
   width: 90%;
 `;
 const AllDefaultView = styled.div`
-  max-height: 100%;
-  max-width: 100%;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 80%;;
+  max-width: 80%;
+  min-height: 80%;
+  min-width: 80%;
+
 `;
 const DefaultView = styled.div`
   display: flex;
@@ -31,13 +35,13 @@ const DefaultView = styled.div`
   background-position: center center;
 `;
 const RightArrow = styled.p`
-  font-size: 40px;
-  color: rgba(72, 72, 72, 0.7);
+  font-size: 80px;
+  color: ${(props) => (props.rightArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
   padding-left: 50%;
 `;
 const LeftArrow = styled.p`
-  font-size: 40px;
-  color: rgba(72, 72, 72, 0.7);
+  font-size: 80px;
+  color: ${(props) => (props.leftArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
   padding-right: 50%;
 `;
 
@@ -49,13 +53,26 @@ function Large(props) {
   const [allImgs, useAllImgs] = useState(photos);
   const [leftClicked, useLeftClicked] = useState(false);
   const [rightClicked, useRightClicked] = useState(false);
+  const [leftArrow, useLeftArrow] = useState(false);
+  const [rightArrow, useRightArrow] = useState(true);
 
-  // left and right button should disappear if on first image or last
+  useEffect(() => {
+    if (photos.length <= 1) {
+      useRightArrow(false);
+    } else {
+      useRightArrow(true);
+    }
+  }, [props]);
+
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
       usecurrentImgIndex(currentImgIndex - 1);
       useCurrentImg(photos[currentImgIndex - 1]);
       useLeftClicked(!leftClicked);
+      useRightArrow(true);
+      if (currentImgIndex === 1) {
+        useLeftArrow(false);
+      }
     }
   };
   const rightButtonOnClick = () => {
@@ -63,11 +80,27 @@ function Large(props) {
       usecurrentImgIndex(currentImgIndex + 1);
       useCurrentImg(photos[currentImgIndex + 1]);
       useRightClicked(!rightClicked);
+      useLeftArrow(true);
+      if (currentImgIndex === photos.length - 2) {
+        useRightArrow(false);
+      }
     }
   };
   const onClickThu = (current, i) => {
     useCurrentImg(current);
     usecurrentImgIndex(i);
+    if (photos.length > 1) {
+      if (i === 0) {
+        useLeftArrow(false);
+        useRightArrow(true);
+      } else if (i === photos.length - 1) {
+        useLeftArrow(true);
+        useRightArrow(false);
+      } else {
+        useLeftArrow(true);
+        useRightArrow(true);
+      }
+    }
   };
 
   useEffect(() => {
@@ -78,11 +111,13 @@ function Large(props) {
 
   return (
     <ThumbnailsGroup className="thumbnailgroup">
-      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked}/>
+      <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked} />
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery">&#8592;</LeftArrow>
-          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick}>&#8594;</RightArrow>
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow}>
+            &#xab;
+          </LeftArrow>
+          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow}>&#xbb;</RightArrow>
         </DefaultView>
       </AllDefaultView>
     </ThumbnailsGroup>
@@ -92,5 +127,12 @@ function Large(props) {
 export default Large;
 
 Large.propTypes = {
-  defaultStyle: PropTypes.object,
+  defaultStyle: PropTypes.shape({
+    'default?': PropTypes.bool,
+    name: PropTypes.string,
+  }),
+};
+
+Large.defaultProps = {
+  defaultStyle: { photos: [''] },
 };
