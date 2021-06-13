@@ -1,5 +1,3 @@
-//FIX STAR Rating Function
-
 const averageRating = (reviewResults, changeState) => {
   let ratings = 0;
   let totalRatings = 0;

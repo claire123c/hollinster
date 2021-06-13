@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import React from 'react';
-import {screen, fireEvent, render} from '@testing-library/react';
+import { screen, fireEvent, render } from '@testing-library/react';
 
 import Star from '../../components/overview/Info/Star.jsx';
 import Freeform from '../../components/overview/Info/Freeform.jsx';
@@ -34,13 +34,17 @@ describe('Star Rating', () => {
 
   test('star rating function should work', () => {
     const reviews = {
-      results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
+      ratings: {
+        2: '1',
+        4: '1',
+        5: '1',
+      },
     };
     const empty = {
-      results: [],
+      results: {},
     };
-    const average = averageRating(reviews.results, () => {});
-    const emptyAverage = averageRating(empty.results, () => {});
+    const average = averageRating(reviews.ratings, () => {});
+    const emptyAverage = averageRating(empty.ratings, () => {});
 
     expect(average).toBe(3.75);
     expect(emptyAverage).toBe(0);
@@ -107,4 +111,3 @@ describe('Freeform', () => {
     expect(slogan).toBeDefined();
   });
 });
-
