@@ -25,6 +25,7 @@ const OveviewComp = styled.div`
 
 const SideColumn = styled.div`
   padding: 2%;
+  max-width: 38%;
 `;
 
 function Overview() {
@@ -97,7 +98,7 @@ function Overview() {
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
-          <AllStyles styleData={styleData} />
+          <AllStyles className="all-styles" styleData={styleData} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />

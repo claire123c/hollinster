@@ -10,13 +10,18 @@ const StyleText = styled.span`
 
 const StyleThumbnails = styled.div`
   display: flex;
+  max-height: 100%;
+  max-width: 100%;
+`;
+
+const AllStylesComp = styled.div`
+  max-height: 100%;
+  max-width: 100%;
 `;
 
 function AllStyles({ styleData }) {
-
-  console.log(styleData);
   return (
-    <div>
+    <AllStylesComp>
       <div>
         <StyleText>
           STYLE
@@ -31,7 +36,7 @@ function AllStyles({ styleData }) {
           <StyleThumbnail style={style} key={style.style_id} />
         ))}
       </StyleThumbnails>
-    </div>
+    </AllStylesComp>
   );
 }
 
