@@ -8,15 +8,18 @@ const StylePhoto = styled.img`
   border-radius: 50%;
   height: 55px;
   width: 55px;
-  border: 1px solid black;
+  border: 1.5px solid black;
   margin: 8px;
 `;
 
 const CheckBox = styled.img`
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1.5px solid black;
   background-color: white;
   vertical-align: text-top;
+  width: 8px;
+  height: 8px;
+  padding: 2%;
 `;
 
 function StyleThumbnail({ style, current }) {
