@@ -60,8 +60,11 @@ const IndividualQuestion = () => {
     event.preventDefault();
   }
   // end upload photo modal
+
+  const [ incorrectFormat, setIncorrectFormat ] = useState(false);
+
   console.log('sample questions:', sampleQuestionsList.results[0]);
-  console.log('answer text area:', answerText);
+  // console.log('answer text area:', answerText);
   // console.log('helpfulness:', helpfulness);
   // console.log('clicked:', yesClicked);
 
@@ -87,16 +90,28 @@ const IndividualQuestion = () => {
         style={customStyles}
         contentLabel="Question Answer Form"
       >
-        <form>
+        <form onSubmit={
+          () => {
+            if (answerText.length === 0 || email.length === 0 || nickname.length === 0) {
+              setIncorrectFormat(true);
+              event.preventDefault();
+            } else {
+
+              console.log(nickname, email, answerText)
+              handleModalClose();
+            }
+          }
+        }>
           <div>
             <h2>Submit Your Answer</h2>
             <span><strong>Your Nickname*:</strong>
             <p>(For privacy reasons, do not use your full name or address)</p>
               <input type="text"
-                                                          placeholder="Example: Jack123"
-                                                          onChange={(e) => setNickname(e.target.value)}
-                                                          value={nickname}
-                                                          maxLength="60"></input>
+                     placeholder="Example: Jack123"
+                     onChange={(e) => setNickname(e.target.value)}
+                     value={nickname}
+                     maxLength="60"
+                     minLength="1"></input>
             </span>
             <br />
           </div>
@@ -106,26 +121,29 @@ const IndividualQuestion = () => {
             <p>(For authentication reasons, you will not be emailed)</p>
           <p>
             <input type="email"
-                                                      placeholder="Example: Jack123@email.com"
-                                                      onChange={e => setEmail(e.target.value)}
-                                                      value={email}
-                                                      maxLength="60"></input>
+                   placeholder="Example: Jack123@email.com"
+                   onChange={e => setEmail(e.target.value)}
+                   value={email}
+                   maxLength="60"
+                   minLength="1"></input>
           </p>
           </div>
           <p><strong>Your Answer*:</strong></p>
             <textarea type="text"
+                      placeholder="Why did you like the product or not?"
                       onChange={e => setAnswerText(e.target.value)}
                       value={answerText}
                       maxLength="1000"
+                      minLength="1"
             >
             </textarea>
+            <p>{incorrectFormat ? `This error will occur if:
+                                   1. Any mandatory fields are blank
+                                   2. The email provided is not in correct email format` : null}</p>
           <hr />
           <p>Note: items marked with * are mandatory</p>
           <button onClick={handlePhotoModalOpen}>Upload Your Photos</button>
-          <button onClick={() => {
-            handleModalClose();
-            console.log('then does something else')
-            }}>Submit</button>
+          <input type="submit"></input>
           <button onClick={handleModalClose}>Close</button>
         </form>
       </Modal>
