@@ -1,6 +1,5 @@
 # hollinster
-Front End Capstone for Hack Reactor
-
+eCommerce webapp for Project Catwalk
 
 =======
 To initiate the hollinster application, follow these steps:

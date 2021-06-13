@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
-  height: 70%;
-  width: ${(props) => (props.expand ? '80%' : '50%')};
+  height: calc(60vh - 16px);
+  width: ${(props) => (props.expand ? '70%' : '50%')};
   background-color: rgb(232,232,232);
   overflow: hidden;
   padding: 2%;
@@ -23,11 +23,12 @@ function Gallery({ styles }) {
   const onClickExp = () => {
     setExpand(!expand);
   };
+
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
       <Large
-        defaultStyle={styles[0]}
+        defaultStyle={styles}
       />
     </GalleryBox>
   );
@@ -36,5 +37,21 @@ function Gallery({ styles }) {
 export default Gallery;
 
 Gallery.propTypes = {
-  styles: PropTypes.array
+  styles: PropTypes.object,
+};
+
+Gallery.defaultProps = {
+  styles: {
+    style_id: 142825,
+    name: '',
+    original_price: '',
+    sale_price: null,
+    'default?': true,
+    photos: [
+      {
+        thumbnail_url: '',
+        url: '',
+      },
+    ],
+  },
 };
