@@ -5,6 +5,10 @@ import styled from 'styled-components';
 const StylePhoto = styled.img`
   max-height: 100%;
   max-width: 100%;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: 1px solid black;
 `;
 
 function StyleThumbnail({ style }) {
