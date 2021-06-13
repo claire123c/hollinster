@@ -6,9 +6,10 @@ const StylePhoto = styled.img`
   max-height: 100%;
   max-width: 100%;
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   border: 1px solid black;
+  margin: 8px;
 `;
 
 function StyleThumbnail({ style }) {

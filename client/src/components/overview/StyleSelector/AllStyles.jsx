@@ -9,8 +9,10 @@ const StyleText = styled.span`
 `;
 
 const StyleThumbnails = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   max-height: 100%;
-  max-width: 100%;
+  max-width: 350px;
 `;
 
 const AllStylesComp = styled.div`
