@@ -9,7 +9,6 @@ const StyleText = styled.span`
 `;
 
 const StyleThumbnails = styled.div`
-  display: flex;
   max-height: 100%;
   max-width: 100%;
 `;
