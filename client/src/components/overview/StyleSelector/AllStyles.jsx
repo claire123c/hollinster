@@ -21,7 +21,7 @@ const AllStylesComp = styled.div`
 `;
 
 function AllStyles({ styleData, currentStyle }) {
-  const { name } = currentStyle;
+  const { name, style_id } = currentStyle;
 
   return (
     <AllStylesComp>
@@ -36,7 +36,7 @@ function AllStyles({ styleData, currentStyle }) {
       </div>
       <StyleThumbnails>
         {styleData.map((style) => (
-          <StyleThumbnail style={style} key={style.style_id} />
+          <StyleThumbnail style={style} key={style.style_id} current={style_id} />
         ))}
       </StyleThumbnails>
     </AllStylesComp>
