@@ -12,11 +12,10 @@ const StylePhoto = styled.img`
   margin: 8px;
 `;
 
-const CheckBox = styled.img`
+const CheckMark = styled.img`
   border-radius: 50%;
   border: 1.5px solid black;
   background-color: white;
-  vertical-align: text-top;
   width: 8px;
   height: 8px;
   padding: 2%;
@@ -29,7 +28,7 @@ const { thumbnail_url } = photos[0];
   return (
     <div>
       <StylePhoto src={thumbnail_url} alt={name} />
-      <CheckBox src="./assets/check-mark-black-outline.png" alt="checkbox" />
+      <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" />
     </div>
   );
 }
