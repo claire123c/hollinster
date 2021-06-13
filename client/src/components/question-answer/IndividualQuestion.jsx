@@ -37,12 +37,31 @@ const IndividualQuestion = () => {
   function handleModalClose() {
     setModalOpen(false);
   }
-
+  //end modal experimental section
+  //part of modal form
   const [ nickname, setNickname ] = useState('');
   const [ email, setEmail ] = useState('');
+  const [ answerText, setAnswerText ] = useState('');
+  // end part of modal form
+  // upload photo modal
+  const [ photoModalOpen, setPhotoModalOpen ] = useState(false);
 
+  function handlePhotoModalOpen() {
+    setPhotoModalOpen(true);
+    event.preventDefault();
+  }
+
+  // function afterModalOpen() {
+  //   subtitle.style.color = '#f00';
+  // }
+
+  function handlePhotoModalClose() {
+    setPhotoModalOpen(false);
+    event.preventDefault();
+  }
+  // end upload photo modal
   console.log('sample questions:', sampleQuestionsList.results[0]);
-  console.log('nickname input value:', nickname, 'email value', email);
+  console.log('answer text area:', answerText);
   // console.log('helpfulness:', helpfulness);
   // console.log('clicked:', yesClicked);
 
@@ -90,17 +109,26 @@ const IndividualQuestion = () => {
           <br />
           <strong>Your Answer*:</strong>
           <br />
-            <textarea>
+            <textarea type="text"
+            onChange={e => setAnswerText(e.target.value)}
+            value={answerText}
+            >
             </textarea>
           <br />
           * is mandatory
           <hr />
-          <button onClick={() => {
-            console.log('will open another pop up that lets you upload some photos')
-            event.preventDefault();
-            }}>Upload Your Photos</button>
+          <button onClick={handlePhotoModalOpen}>Upload Your Photos</button>
           <button onClick={handleModalClose}>Submit</button>
         </form>
+      </Modal>
+      <Modal
+        isOpen={photoModalOpen}
+        // onAfterOpen={() => afterModalOpen()}
+        onRequestClose={handlePhotoModalClose}
+        style={customStyles}
+        contentLabel="Upload Photo Form"
+      >
+        <button onClick={handlePhotoModalClose}>Upload</button>
       </Modal>
     </p>
     <IndividualAnswer />
