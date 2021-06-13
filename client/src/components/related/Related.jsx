@@ -4,9 +4,9 @@ import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
 export default function Related() {
-  const [current, setCurrent] = useState('25167');
+  const [current, setCurrent] = useState(25167);
   const [related, setRelated] = useState([]);
-  const [outfit, setOutfit] = useState([]);
+  const [outfit, setOutfit] = useState([25167, 25168, 25169, 25174, 25173]);
 
   const addToOutfit = () => {
     if (!outfit.includes(current)) {
@@ -14,12 +14,15 @@ export default function Related() {
     }
   };
 
-  const removeFromOutfit = (selected) => {
-    outfit.findIndex((element))
-
-  }
+  // const removeFromOutfit = (selected) => {
+  //   outfit.findIndex((element));
+  // }
 
   useEffect(() => {
+    axios.get(`/products/${current}`)
+      .then((response) => {
+        setCurrent(response.data);
+      });
     axios.get(`/products/${current}/related`)
       .then((response) => {
         setRelated(response.data);
@@ -31,7 +34,7 @@ export default function Related() {
 
   return (
     <>
-      <List related={related} />
+      <List current={current} related={related} />
       <YourOutfit outfit={outfit} addToOutfit={addToOutfit} />
     </>
   );
