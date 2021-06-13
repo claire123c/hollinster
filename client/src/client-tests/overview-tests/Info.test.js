@@ -14,9 +14,13 @@ import { sampleData, sampleData2, sampleProduct } from '../../components/overvie
 describe('Star Rating', () => {
   test('star rating shows given ratings', () => {
     const reviews = {
-      results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
+      ratings: {
+        2: '1',
+        4: '1',
+        5: '1',
+      },
     };
-    render(<Star reviews={reviews} />);
+    render(<Star ratings={reviews.ratings} />);
     const starElement = document.querySelector('.innerstars').innerHTML;
 
     expect(starElement).toBe('★★★★★');
@@ -24,9 +28,9 @@ describe('Star Rating', () => {
 
   test('star rating should be hidden with no ratings', () => {
     const empty = {
-      results: [],
+      ratings: {},
     };
-    render(<Star reviews={empty} />);
+    render(<Star ratings={empty.ratings} />);
     const starElement = document.querySelector('.stars');
 
     expect(starElement).toBe(null);
@@ -41,7 +45,7 @@ describe('Star Rating', () => {
       },
     };
     const empty = {
-      results: {},
+      ratings: {},
     };
     const average = averageRating(reviews.ratings, () => {});
     const emptyAverage = averageRating(empty.ratings, () => {});
