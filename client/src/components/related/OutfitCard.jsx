@@ -74,7 +74,7 @@ export default function Card({ current, product }) {
 
   return (
     <div>
-      <AddToOutfit AddToOutfitList={AddToOutfitList}/>
+      {outfit ? <img src={image} alt={`A representation of ${name}`} /> : <AddToOutfit AddToOutfitList={AddToOutfitList}/>}
       <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>
