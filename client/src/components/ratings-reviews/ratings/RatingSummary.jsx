@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable nonblock-statement-body-position */
 /* eslint-disable no-else-return */
 /* eslint-disable max-len */
@@ -24,20 +26,9 @@ class RatingSummary extends React.Component {
       this.props.summary['1'] = '0';
     }
 
-    let sum = 0;
-    let totalRatings = 0;
-    let averageRating = 0;
-
-    for (const key in this.props.summary) {
-      sum += parseInt(this.props.summary[key] * key);
-      totalRatings += parseInt(this.props.summary[key]);
-    }
-
-    if (sum > 0) {
-      averageRating = (sum / totalRatings).toFixed(1);
+    if (this.props.summary) {
       return (
         <div className="rating-categories">
-          <h3>{averageRating} Stars</h3>
           <p>5 Stars: {this.props.summary['5']}</p>
           <p>4 Stars: {this.props.summary['4']}</p>
           <p>3 Stars: {this.props.summary['3']}</p>
@@ -48,7 +39,6 @@ class RatingSummary extends React.Component {
     } else {
       return (
         <div className="rating-categories">
-          <h3>No ratings yet</h3>
           <h5>Be the first to rate this product</h5>
         </div>
       );

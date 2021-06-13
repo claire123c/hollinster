@@ -6,10 +6,12 @@ import Reviews from './reviews/Reviews.jsx';
 class RatingsReviews extends React.Component {
   render() {
     return (
-      <div className="ratings-reviews">
+      <div className="ratings-reviews-header">
         <h3>RATINGS & REVIEWS</h3>
-        <Ratings productID={this.props.productID} />
-        <Reviews productID={this.props.productID} />
+        <div className="ratings-reviews">
+          <Ratings productID={this.props.productID} />
+          <Reviews productID={this.props.productID} />
+        </div>
       </div>
     );
   }

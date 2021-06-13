@@ -9,7 +9,6 @@ import React from 'react';
 class RatingBreakdown extends React.Component {
   render() {
     const ratingItemsArray = Object.entries(this.props.breakdown);
-    console.log(ratingItemsArray);
 
     let totalRatings = false;
     for (let i = 0; i < ratingItemsArray.length; i++) {

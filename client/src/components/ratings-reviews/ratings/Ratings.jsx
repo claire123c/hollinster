@@ -4,8 +4,9 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import axios from 'axios';
-import RatingSummary from './RatingSummary.jsx';
+import RatingAverage from './RatingAverage.jsx';
 import RatingRecommendations from './RatingRecommendations.jsx';
+import RatingSummary from './RatingSummary.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 
 class Ratings extends React.Component {
@@ -48,8 +49,9 @@ class Ratings extends React.Component {
   render() {
     return (
       <div className="ratings">
-        <RatingSummary summary={this.state.ratings} />
+        <RatingAverage summary={this.state.ratings} />
         <RatingRecommendations recommendations={this.state.recommended} />
+        <RatingSummary summary={this.state.ratings} />
         <RatingBreakdown breakdown={this.state.breakdown} />
       </div>
     );

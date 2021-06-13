@@ -12,15 +12,14 @@ class RatingRecommendations extends React.Component {
     if (totalRecommendations > 0) {
       const averageRecommendation = Number((positiveRecs / totalRecommendations) * 100).toFixed(0);
       return (
-        <div className="rating-categories">
-          <div>
-            <h3>{averageRecommendation}% of users</h3>
-            <h5>recommend this product</h5>
-          </div>
-          <div>
-            <p>Recommend: {this.props.recommendations.true}</p>
-            <p>Do not recommend: {this.props.recommendations.false}</p>
-          </div>
+        <div className="rating-categories recommend-tooltip">
+          <p>{averageRecommendation}% of reviews recommend this product</p>
+          <span className="recommend-tooltiptext">
+            Recommend: {this.props.recommendations.true}
+            <br />
+            Do not recommend: {this.props.recommendations.false}
+          </span>
+          {/* <span class="recommend-tooltiptext">Do not recommend: {this.props.recommendations.false}</span> */}
         </div>
       );
     } else {
