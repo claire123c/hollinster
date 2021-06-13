@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card.jsx';
+import OutfitCard from './OutfitCard.jsx';
 import AddToOutfit from './AddToOutfit.jsx';
 
 export default function YourOutfit({outfit}) {
@@ -9,8 +9,7 @@ export default function YourOutfit({outfit}) {
 
   return (
     <>
-      <AddToOutfit />
-      {outfit.map((product) => (<Card product={product} key={product} />))}
+      {outfit.map((product) => (<OutfitCard product={product} key={product} />))}
     </>
   );
 }

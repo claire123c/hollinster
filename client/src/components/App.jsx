@@ -24,12 +24,12 @@ const App = (props) => {
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
 
 
-     
+
 
       {/* <Overview /> */}
 
-      {/* <Related /> */}
-      <RatingsReviews productID={productID} />
+      <Related />
+      {/* <RatingsReviews productID={productID} /> */}
     </>
   );
 };
