@@ -96,14 +96,13 @@ const IndividualQuestion = () => {
               setIncorrectFormat(true);
               event.preventDefault();
             } else {
-
-              console.log(nickname, email, answerText)
               handleModalClose();
             }
           }
         }>
           <div>
             <h2>Submit Your Answer</h2>
+            <h3>[PRODUCT_NAME] : [QUESTION_BODY]</h3>
             <span><strong>Your Nickname*:</strong>
             <p>(For privacy reasons, do not use your full name or address)</p>
               <input type="text"

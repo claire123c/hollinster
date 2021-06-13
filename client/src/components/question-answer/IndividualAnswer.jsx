@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {sampleAnswersList } from './sampleData.js';
-import Modal from 'react-modal';
 
 const IndividualAnswer = () => {
 
