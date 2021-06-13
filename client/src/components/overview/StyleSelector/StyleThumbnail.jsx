@@ -29,7 +29,7 @@ const { thumbnail_url } = photos[0];
   return (
     <div>
       <StylePhoto src={thumbnail_url} alt={name} />
-      <CheckBox src = "./assets/check-mark-black-outline.png"></CheckBox>
+      <CheckBox src="./assets/check-mark-black-outline.png" alt="checkbox" />
     </div>
   );
 }
