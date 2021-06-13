@@ -6,7 +6,7 @@ import StyleThumbnail from './StyleThumbnail.jsx';
 
 const StyleText = styled.span`
   font-weight: bold;
-  margin-right: 1%;
+  margin-right: 2%;
 `;
 
 const StyleThumbnails = styled.div`
@@ -32,7 +32,6 @@ function AllStyles({ styleData, currentStyle }) {
           {' '}
           {'>'}
         </StyleText>
-        {'  '}
         {name.toUpperCase()}
       </div>
       <StyleThumbnails>
