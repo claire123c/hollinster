@@ -54,14 +54,14 @@ const Question = () => {
       >
         <form onSubmit={
           () => {
-            if (answerText.length === 0 || email.length === 0 || nickname.length === 0) {
+            if (questionText.length === 0 || email.length === 0 || nickname.length === 0) {
               setIncorrectFormat(true);
               event.preventDefault();
             } else {
-
-              console.log(nickname, email, answerText)
               handleModalClose();
+              event.preventDefault();
             }
+            event.preventDefault();
           }
         }>
           <div>
