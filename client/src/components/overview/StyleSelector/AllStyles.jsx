@@ -6,6 +6,7 @@ import StyleThumbnail from './StyleThumbnail.jsx';
 
 const StyleText = styled.span`
   font-weight: bold;
+  margin-right: 1%;
 `;
 
 const StyleThumbnails = styled.div`

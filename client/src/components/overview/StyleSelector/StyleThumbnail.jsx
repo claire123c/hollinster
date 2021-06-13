@@ -12,7 +12,10 @@ const StylePhoto = styled.img`
   margin: 8px;
 `;
 
-function StyleThumbnail({ style }) {
+const CheckBox = styled.div`
+`;
+
+function StyleThumbnail({ style, current }) {
 const { name, photos } = style;
 const { thumbnail_url } = photos[0];
 
@@ -27,8 +30,10 @@ export default StyleThumbnail;
 
 StyleThumbnail.propTypes = {
   style: PropTypes.instanceOf(Object),
+  current: PropTypes.number,
 };
 
 StyleThumbnail.defaultProps = {
   style: {},
+  current: 0,
 }
