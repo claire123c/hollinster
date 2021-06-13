@@ -12,7 +12,11 @@ const StylePhoto = styled.img`
   margin: 8px;
 `;
 
-const CheckBox = styled.div`
+const CheckBox = styled.img`
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  vertical-align: text-top;
 `;
 
 function StyleThumbnail({ style, current }) {
@@ -22,6 +26,7 @@ const { thumbnail_url } = photos[0];
   return (
     <div>
       <StylePhoto src={thumbnail_url} alt={name} />
+      <CheckBox src = "./assets/check-mark-black-outline.png"></CheckBox>
     </div>
   );
 }
