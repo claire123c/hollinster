@@ -59,22 +59,16 @@ function Star({ ratings, results }) {
 export default Star;
 
 Star.propTypes = {
-  ratings: PropTypes.shape({
-    3: PropTypes.string,
-  }),
+  ratings: PropTypes.shape({}),
   results: PropTypes.instanceOf(Array),
 };
 
 Star.defaultProps = {
-  ratings: {
-    3: '2',
-    4: '1',
-    5: '7',
-  },
+  ratings: {},
   results: [
     {
-      review_id: 406630,
-      rating: 5,
+      review_id: 0,
+      rating: 0,
     },
   ],
 };

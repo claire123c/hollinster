@@ -116,19 +116,16 @@ Info.defaultProps = {
   productInfo: {},
   meta: {
     ratings: {
-      3: '2',
-      4: '1',
-      5: '7',
     },
   },
   reviews: {
-    product: '25167',
+    product: '',
     page: 0,
     count: 5,
     results: [
       {
-        review_id: 406630,
-        rating: 5,
+        review_id: 0,
+        rating: 0,
       },
     ],
   },

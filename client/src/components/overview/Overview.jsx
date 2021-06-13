@@ -23,7 +23,7 @@ const OveviewComp = styled.div`
 `;
 
 function Overview() {
-  const [productNum] = useState('25167');
+  const [productNum] = useState('25172');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
