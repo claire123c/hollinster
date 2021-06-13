@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import Star from './Star.jsx';
 
 const ProductInfo = styled.div`
-  margin-left: 3%;
-  margin-top: 2%;
 `;
 
 const Category = styled.div`

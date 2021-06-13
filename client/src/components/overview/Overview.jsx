@@ -7,6 +7,7 @@ import Info from './Info/Info.jsx';
 import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
+import AllStyles from './StyleSelector/AllStyles.jsx';
 
 //TODO: fix 25178 edge case, and quotes
   //what to do if image isn't the same
@@ -22,8 +23,12 @@ const OveviewComp = styled.div`
   margin-right: 12%;
 `;
 
+const SideColumn = styled.div`
+  padding: 2%;
+`;
+
 function Overview() {
-  const [productNum] = useState('25172');
+  const [productNum] = useState('25167');
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -90,7 +95,10 @@ function Overview() {
     <OveviewComp>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
-        <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
+        <SideColumn>
+          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
+          <AllStyles />
+        </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
     </OveviewComp>
