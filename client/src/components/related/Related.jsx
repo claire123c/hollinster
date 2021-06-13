@@ -6,7 +6,7 @@ import YourOutfit from './YourOutfit.jsx';
 export default function Related() {
   const [current, setCurrent] = useState(25167);
   const [related, setRelated] = useState([]);
-  const [outfit, setOutfit] = useState([]);
+  const [outfit, setOutfit] = useState([25167, 25168, 25169, 25174, 25173]);
 
   const addToOutfit = () => {
     if (!outfit.includes(current)) {

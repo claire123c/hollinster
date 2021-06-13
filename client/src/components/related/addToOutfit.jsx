@@ -1,7 +1,7 @@
-// import React from 'react';
+import React from 'react';
 
-// export default function AddToOutfit() {
-//   return (
-//     <h2 onClick={}>+</h2>
-//   );
-// }
+export default function AddToOutfit() {
+  return (
+    <h2>+</h2>
+  );
+}

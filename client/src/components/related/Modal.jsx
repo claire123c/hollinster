@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import Comparison from './Comparison.jsx';
 
-MODALVATION
-
 export default function Modal({ current, productData }) {
   const { name: currentName, features: currentFeatures } = current;
   const { name: comparedName, features: comparedFeatures } = productData;
 
-  // if null, check
-  // feature value overview on left, feature value compared product on right
-  // iterate through both arrays, if they contain the same value then push into new array
-  //
-  // const comparison
-  // Claire is the best
   const tester = () => {
     let results = [];
     const combined = [...currentFeatures, ...comparedFeatures];
