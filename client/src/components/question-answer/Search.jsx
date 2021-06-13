@@ -12,7 +12,6 @@ const Search = () => {
            onChange={(e) => setSearch(e.target.value)}
            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
     >
-
     </input>
     </>
   )

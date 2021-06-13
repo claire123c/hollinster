@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import IndividualAnswer from './IndividualAnswer.jsx';
 import Modal from 'react-modal';
 import { sampleQuestionsList, sampleAnswersList } from './sampleData.js';
-
+//modal styles
 const customStyles = {
   content : {
     top                   : '50%',
@@ -13,7 +13,7 @@ const customStyles = {
     transform             : 'translate(-50%, -50%)'
   }
 };
-
+//binds modal to the id
 Modal.setAppElement('#app');
 
 const IndividualQuestion = () => {
@@ -89,36 +89,44 @@ const IndividualQuestion = () => {
       >
         <form>
           <div>
-          <h1>Submit Your Answer</h1>
-          <span><strong>Your Nickname*:</strong> <input type="text"
-                                                        placeholder="Example: Jack123"
-                                                        onChange={(e) => setNickname(e.target.value)}
-                                                        value={nickname}></input>
-          </span>
-          <p>(For privacy reasons, do not use your full name or address)</p>
+            <h2>Submit Your Answer</h2>
+            <span><strong>Your Nickname*:</strong>
+            <p>(For privacy reasons, do not use your full name or address)</p>
+              <input type="text"
+                                                          placeholder="Example: Jack123"
+                                                          onChange={(e) => setNickname(e.target.value)}
+                                                          value={nickname}
+                                                          maxLength="60"></input>
+            </span>
+            <br />
           </div>
           <div>
           <br />
-          <span><strong>Your Email*:</strong> <input type="text"
-                                                     placeholder="Example: Jack123@email.com"
-                                                     onChange={e => setEmail(e.target.value)}
-                                                     value={email}></input>
-          </span>
-          <p>(For authentication reasons, you will not be emailed)</p>
+          <span><strong>Your Email*:</strong></span>
+            <p>(For authentication reasons, you will not be emailed)</p>
+          <p>
+            <input type="email"
+                                                      placeholder="Example: Jack123@email.com"
+                                                      onChange={e => setEmail(e.target.value)}
+                                                      value={email}
+                                                      maxLength="60"></input>
+          </p>
           </div>
-          <br />
-          <strong>Your Answer*:</strong>
-          <br />
+          <p><strong>Your Answer*:</strong></p>
             <textarea type="text"
-            onChange={e => setAnswerText(e.target.value)}
-            value={answerText}
+                      onChange={e => setAnswerText(e.target.value)}
+                      value={answerText}
+                      maxLength="1000"
             >
             </textarea>
-          <br />
-          * is mandatory
           <hr />
+          <p>Note: items marked with * are mandatory</p>
           <button onClick={handlePhotoModalOpen}>Upload Your Photos</button>
-          <button onClick={handleModalClose}>Submit</button>
+          <button onClick={() => {
+            handleModalClose();
+            console.log('then does something else')
+            }}>Submit</button>
+          <button onClick={handleModalClose}>Close</button>
         </form>
       </Modal>
       <Modal
@@ -128,7 +136,10 @@ const IndividualQuestion = () => {
         style={customStyles}
         contentLabel="Upload Photo Form"
       >
-        <button onClick={handlePhotoModalClose}>Upload</button>
+        <form>
+          <input type="file"></input>
+          <button onClick={handlePhotoModalClose}>Upload</button>
+        </form>
       </Modal>
     </p>
     <IndividualAnswer />
