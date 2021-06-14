@@ -15,23 +15,59 @@
 body {
   color: #292A33;
   background-color: #F5F4F2;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Source Sans", sans-serif;
 }
 
-.reviews {
+.ratings-reviews {
   display: flex;
   justify-content: space-around;
 }
 
-.review-list {
-  flex-direction: column;
+.ratings {
+  display: block;
 }
 
-.review-item-div, .rating-summary {
+.reviews {
+  display: block;
+}
+
+.review-item-div {
   border: 2px solid black;
   margin: 10px;
   padding: 10px;
   padding-left: 100px;
   padding-right: 100px;
   font-family: 'Open Sans', sans-serif;
+  border-radius: 6px;
+}
+
+.recommend-tooltip {
+  position: relative;
+  display: inline-block;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+  padding-top: 10px;
+  /* border-bottom: 1px dotted black; */
+}
+
+.recommend-tooltiptext {
+  visibility: hidden;
+  width: 170px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.recommend-tooltip:hover .recommend-tooltiptext {
+  visibility: visible;
 }
