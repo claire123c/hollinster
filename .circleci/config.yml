@@ -19,20 +19,32 @@ jobs:
       - image: cimg/node:15.1
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
-    steps:
-      # Checkout the code as the first step.
-      - checkout
+#     steps:
+#       # Checkout the code as the first step.
+#       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
-      - node/install-packages:
-          cache-path: ~/project/node_modules
-          override-ci-command: npm install
-      # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
-      # - node/install-packages:
-      #     pkg-manager: yarn 
-      - run:
-          name: Run tests
-          command: npm test
+#       - node/install-packages:
+#           cache-path: ~/project/node_modules
+#           override-ci-command: npm install
+#       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
+#       # - node/install-packages:
+#       #     pkg-manager: yarn 
+#       - run:
+#           name: Run tests
+#           command: npm test
+#           test:
+ 
+  steps:
+    - checkout
+    - restore_cache:
+        keys:
+          - v1-deps-{{ checksum "package-lock.json" }}
+    - run: npm install
+    - save_cache:
+        key: v1-deps-{{ checksum "package-lock.json" }}
+        paths:
+          - node_modules
 
 workflows:
   # Below is the definition of your workflow.
