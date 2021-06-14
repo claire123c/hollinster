@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function AddToOutfit() {
+export default function AddToOutfit( {AddToOutfitList} ) {
   return (
-    <h2>+</h2>
+    <h2 onClick={() => {AddToOutfitList}}>+</h2>
   );
 }

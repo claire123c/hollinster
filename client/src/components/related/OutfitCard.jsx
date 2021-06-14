@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import CompareButton from './CompareButton.jsx';
-import Modal from './Modal.jsx';
 import AddToOutfit from './AddToOutfit.jsx'
 
 export default function Card({ current, product }) {
@@ -11,7 +9,8 @@ export default function Card({ current, product }) {
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
-  const [outfit, setOutfit] = useState(false);
+  const [outfit, setOutfit] = useState([]);
+  const [showOutfit, setShowOutfit] = useState(false);
   // const [productData, setProductData] = useState([]);
   // const [productStyleData, setProductStyleData] = useState([]);
   // const [productReviewData, setProductReviewData] = useState([]);
@@ -43,7 +42,8 @@ export default function Card({ current, product }) {
   };
 
   const AddToOutfitList = () => {
-    setOutfit(!outfit);
+    outfit.push(current);
+    setShowOutfit(!showOutfit);
   };
 
   const getProduct = () => axios.get(`/products/${product}`);

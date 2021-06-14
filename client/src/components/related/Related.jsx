@@ -14,9 +14,10 @@ export default function Related() {
     }
   };
 
-  // const removeFromOutfit = (selected) => {
-  //   outfit.findIndex((element));
-  // }
+  useEffect(() => {
+    const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
+    (storedOutfit ? setOutfit(storedOutfit) : null);
+  }, []);
 
   useEffect(() => {
     axios.get(`/products/${current}`)
@@ -35,7 +36,7 @@ export default function Related() {
   return (
     <>
       <List current={current} related={related} />
-      <YourOutfit outfit={outfit} addToOutfit={addToOutfit} />
+      <YourOutfit current={current} outfit={outfit} addToOutfit={addToOutfit} />
     </>
   );
 }
