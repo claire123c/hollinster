@@ -32,7 +32,7 @@ function AllStyles({ styleData, currentStyle, changeStyle }) {
           {' '}
           {'>'}
         </StyleText>
-        <span data-testid="style-title">
+        <span className="style-title">
           {name.toUpperCase()}
         </span>
       </div>
@@ -50,9 +50,11 @@ export default AllStyles;
 AllStyles.propTypes = {
   styleData: PropTypes.instanceOf(Array),
   currentStyle: PropTypes.instanceOf(Object),
+  changeStyle: PropTypes.func,
 };
 
 AllStyles.defaultProps = {
   styleData: [],
   currentStyle: { name: '' },
+  changeStyle: () => {},
 };
