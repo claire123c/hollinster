@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import React from 'react';
-import {screen, fireEvent, render} from '@testing-library/react';
+import { screen, fireEvent, render } from '@testing-library/react';
 
 import Star from '../../components/overview/Info/Star.jsx';
 import Freeform from '../../components/overview/Info/Freeform.jsx';
@@ -14,9 +14,13 @@ import { sampleData, sampleData2, sampleProduct } from '../../components/overvie
 describe('Star Rating', () => {
   test('star rating shows given ratings', () => {
     const reviews = {
-      results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
+      ratings: {
+        2: '1',
+        4: '1',
+        5: '1',
+      },
     };
-    render(<Star reviews={reviews} />);
+    render(<Star ratings={reviews.ratings} />);
     const starElement = document.querySelector('.innerstars').innerHTML;
 
     expect(starElement).toBe('★★★★★');
@@ -24,9 +28,9 @@ describe('Star Rating', () => {
 
   test('star rating should be hidden with no ratings', () => {
     const empty = {
-      results: [],
+      ratings: {},
     };
-    render(<Star reviews={empty} />);
+    render(<Star ratings={empty.ratings} />);
     const starElement = document.querySelector('.stars');
 
     expect(starElement).toBe(null);
@@ -34,13 +38,17 @@ describe('Star Rating', () => {
 
   test('star rating function should work', () => {
     const reviews = {
-      results: [{ rating: 5 }, { rating: 2 }, { rating: 4 }],
+      ratings: {
+        2: '1',
+        4: '1',
+        5: '1',
+      },
     };
     const empty = {
-      results: [],
+      ratings: {},
     };
-    const average = averageRating(reviews.results, () => {});
-    const emptyAverage = averageRating(empty.results, () => {});
+    const average = averageRating(reviews.ratings, () => {});
+    const emptyAverage = averageRating(empty.ratings, () => {});
 
     expect(average).toBe(3.75);
     expect(emptyAverage).toBe(0);
@@ -107,4 +115,3 @@ describe('Freeform', () => {
     expect(slogan).toBeDefined();
   });
 });
-

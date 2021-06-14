@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import averageRating from './Info-helper.jsx/star-helper.jsx'
+import averageRating from './Info-helper.jsx/star-helper.jsx';
 
 const InnerStars = styled.div`
   position: absolute;
@@ -30,14 +30,13 @@ const ReviewsComp = styled.a`
   color: black;
 `;
 
-function Star({ reviews }) {
-  const { results } = reviews;
+function Star({ ratings, results }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
 
   useEffect(() => {
-    useStars(averageRating(results, useShowStars));
-  }, [results]);
+    useStars(averageRating(ratings, useShowStars));
+  }, [ratings]);
 
   return (
     <StarRating className="starrating">
@@ -60,5 +59,16 @@ function Star({ reviews }) {
 export default Star;
 
 Star.propTypes = {
-  reviews: PropTypes.object,
+  ratings: PropTypes.shape({}),
+  results: PropTypes.instanceOf(Array),
+};
+
+Star.defaultProps = {
+  ratings: {},
+  results: [
+    {
+      review_id: 0,
+      rating: 0,
+    },
+  ],
 };

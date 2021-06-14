@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const FreeformText = styled.div`
   display: flex;
   justify-content: center;
+  align-text: center;
   margin-top: 3%;
   margin-bottom: 3%;
 `;
@@ -30,8 +31,11 @@ const Description = styled.div`
   color: rgb(80,80,80);
 `;
 
-const SplitEvenly = styled.div`
-  width: 30%;
+const SplitOne = styled.div`
+  width: 61%;
+`;
+const SplitTwo = styled.div`
+  width: 28%;
 `;
 
 function Freeform({ productInfo }) {
@@ -63,14 +67,14 @@ function Freeform({ productInfo }) {
 
   return (
     <FreeformText className="freeform">
-      <SplitEvenly>
+      <SplitOne>
         <Slogan className="slogan">{slogan}</Slogan>
         <Description className="description">{description}</Description>
-      </SplitEvenly>
+      </SplitOne>
       <Line className="features" />
-      <SplitEvenly>
+      <SplitTwo>
         {getListItems(features)}
-      </SplitEvenly>
+      </SplitTwo>
     </FreeformText>
   );
 }
