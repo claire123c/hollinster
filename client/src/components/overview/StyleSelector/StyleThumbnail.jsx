@@ -29,8 +29,6 @@ function StyleThumbnail({ style, current, changeStyle }) {
     changeStyle(style);
   };
 
-  console.log(current);
-  console.log(style, 'yo');
   return (
     <div>
       <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} />

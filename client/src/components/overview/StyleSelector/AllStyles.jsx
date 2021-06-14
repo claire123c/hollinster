@@ -32,7 +32,7 @@ function AllStyles({ styleData, currentStyle, changeStyle }) {
           {' '}
           {'>'}
         </StyleText>
-        <span className="style-title">
+        <span data-testid="style-title">
           {name.toUpperCase()}
         </span>
       </div>
