@@ -10,13 +10,15 @@ import AllStyles from '../../components/overview/StyleSelector/AllStyles.jsx';
 import { sampleData, sampleData2, sampleProduct } from '../../components/overview/sampleData.js';
 
 describe('Style Title', () => {
-  test('style title should be displayed', (done) => {
+  test('style title should be displayed', () => {
     const style = { name: 'Green', style_id: 2 };
     render(<AllStyles currentStyle={style} />);
     const title = document.querySelector('.style-title');
 
-    console.log(title);
     expect(title.innerHTML).toBe('GREEN');
     done();
+  });
+  test('clicking image should change name', () => {
+
   });
 });
