@@ -33,23 +33,33 @@ const ReviewsComp = styled.a`
 function Star({ ratings, results }) {
   const [stars, useStars] = useState(0);
   const [showStars, useShowStars] = useState(false);
+  const [showReviews, useShowReviews] = useState(true);
 
   useEffect(() => {
     useStars(averageRating(ratings, useShowStars));
   }, [ratings]);
 
+  useEffect(() => {
+    if (results[0].display === 'none') {
+      useShowReviews(false);
+    }
+  }, [results]);
+
   return (
-    <StarRating className="starrating">
+    <StarRating className="star-rating">
       {showStars
         ? (
           <div>
-            <OuterStar className="outerstars">
+            <OuterStar className="outer-stars">
               &#9734;&#9734;&#9734;&#9734;&#9734;
-              <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+              <InnerStars className="inner-stars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
-            <ReviewsComp href="#RatingsandReviews">
-              {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
-            </ReviewsComp>
+            {showReviews
+              ? (
+                <ReviewsComp href="#RatingsandReviews">
+                  {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
+                </ReviewsComp>
+              ) : <></>}
           </div>
         ) : <InnerStars />}
     </StarRating>
@@ -65,10 +75,5 @@ Star.propTypes = {
 
 Star.defaultProps = {
   ratings: {},
-  results: [
-    {
-      review_id: 0,
-      rating: 0,
-    },
-  ],
+  results: [{ display: 'yes' }],
 };
