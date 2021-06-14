@@ -8,7 +8,6 @@ coverage/
 client/public/bundle.js
 /client/public/bundle.js
 ./client/public/bundle.js
-package-lock.json
 client/.DS_Store
 client/public/.DS_Store
 /client/.DS_Store
