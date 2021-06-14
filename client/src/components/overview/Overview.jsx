@@ -74,7 +74,6 @@ function Overview() {
         console.error(error);
       });
   };
-
   const getMetaReviews = () => {
     axios.get(`/reviews/meta/${productNum}`)
       .then((response) => {
@@ -83,6 +82,9 @@ function Overview() {
       .catch((error) => {
         console.error(error);
       });
+  };
+  const changeStyle = (current) => {
+    setCurrentStyle(current);
   };
 
   useEffect(() => {
@@ -98,7 +100,7 @@ function Overview() {
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
-          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} />
+          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={changeStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
