@@ -20,7 +20,7 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
-     …
+    
     - restore_cache:
         keys:
           - v1-deps-{{ checksum "package-lock.json" }}
