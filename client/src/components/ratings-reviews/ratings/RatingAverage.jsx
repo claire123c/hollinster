@@ -31,12 +31,14 @@ class RatingAverage extends React.Component {
       // }
 
       // if (starRating) {
-        return (
-          <div className="rating-categories">
+      return (
+        <div className="rating-categories">
+          <div className="average-rating">
             <h1>{averageRating}</h1>
-            <Star />
+            <Star ratings={this.props.summary} results={[{ display: 'none' }]} />
           </div>
-        );
+        </div>
+      );
       // }
     } else {
       return (

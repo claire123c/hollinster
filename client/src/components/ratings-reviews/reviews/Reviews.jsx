@@ -6,10 +6,6 @@ import ReviewList from './ReviewList.jsx';
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD:client/src/components/ratings-reviews/Reviews.jsx
-=======
-    this.state = {'data': [{'body': 1, 'review_id': 0}]};
->>>>>>> main:client/src/components/ratings-reviews/reviews/Reviews.jsx
     this.state = {
       data: [{ body: 1, review_id: 0 }],
     };
