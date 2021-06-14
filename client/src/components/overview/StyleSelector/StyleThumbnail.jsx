@@ -29,10 +29,13 @@ function StyleThumbnail({ style, current, changeStyle }) {
     changeStyle(style);
   };
 
+  console.log(current);
+  console.log(style, 'yo');
   return (
     <div>
       <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} />
-      <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" />
+      {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <CheckMark />}
+
     </div>
   );
 }
