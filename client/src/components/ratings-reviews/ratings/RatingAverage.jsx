@@ -7,6 +7,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+import Star from '../../overview/Info/Star.jsx';
 
 class RatingAverage extends React.Component {
   render() {
@@ -21,11 +22,22 @@ class RatingAverage extends React.Component {
 
     if (this.props.summary) {
       averageRating = (sum / totalRatings).toFixed(1);
-      return (
-        <div className="rating-categories">
-          <h1>{averageRating} Stars</h1>
-        </div>
-      );
+      // let starRating = averageRating;
+      // starRating = (Math.round(starRating * 4) / 4).toFixed(2).toString();
+      // console.log(typeof starRating);
+
+      // const starDivStyle = {
+      //   --rating: starRating
+      // }
+
+      // if (starRating) {
+        return (
+          <div className="rating-categories">
+            <h1>{averageRating}</h1>
+            <Star />
+          </div>
+        );
+      // }
     } else {
       return (
         <div className="rating-categories">
