@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -28,8 +29,8 @@ const SideColumn = styled.div`
   max-width: 38%;
 `;
 
-function Overview() {
-  const [productNum] = useState('25167');
+function Overview({ productID }) {
+  const [productNum] = useState(productID);
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -74,7 +75,6 @@ function Overview() {
         console.error(error);
       });
   };
-
   const getMetaReviews = () => {
     axios.get(`/reviews/meta/${productNum}`)
       .then((response) => {
@@ -98,7 +98,7 @@ function Overview() {
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
-          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} />
+          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
@@ -107,3 +107,11 @@ function Overview() {
 }
 
 export default Overview;
+
+Overview.propTypes = {
+  productID: PropTypes.number,
+};
+
+Overview.defaultProps = {
+  productID: 25167,
+};
