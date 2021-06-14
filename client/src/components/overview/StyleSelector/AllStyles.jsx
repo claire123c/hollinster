@@ -32,7 +32,9 @@ function AllStyles({ styleData, currentStyle, changeStyle }) {
           {' '}
           {'>'}
         </StyleText>
-        {name.toUpperCase()}
+        <span className="style-title">
+          {name.toUpperCase()}
+        </span>
       </div>
       <StyleThumbnails>
         {styleData.map((style) => (

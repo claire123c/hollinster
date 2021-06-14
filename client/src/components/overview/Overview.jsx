@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -28,8 +29,8 @@ const SideColumn = styled.div`
   max-width: 38%;
 `;
 
-function Overview() {
-  const [productNum] = useState('25167');
+function Overview({ productID }) {
+  const [productNum] = useState(productID);
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -109,3 +110,11 @@ function Overview() {
 }
 
 export default Overview;
+
+Overview.propTypes = {
+  productID: PropTypes.number,
+};
+
+Overview.defaultProps = {
+  productID: 25167,
+};

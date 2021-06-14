@@ -5,8 +5,15 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import { screen, fireEvent, render } from '@testing-library/react';
 
-import Star from '../../components/overview/Info/Star.jsx';
-import Freeform from '../../components/overview/Info/Freeform.jsx';
-import Info from '../../components/overview/Info/Info.jsx';
-import averageRating from '../../components/overview/Info/Info-helper.jsx/star-helper.jsx';
+import Overview from '../../components/overview/Overview.jsx';
 import { sampleData, sampleData2, sampleProduct } from '../../components/overview/sampleData.js';
+
+describe('Style Title', () => {
+  test('clicking thumbnail should change style title', () => {
+    render(<Overview productID={25169} />);
+    const title = document.querySelector('.style-title');
+
+
+    expect(title).toBe('');
+  });
+});
