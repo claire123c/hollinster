@@ -11,16 +11,6 @@ orbs:
 
 jobs:
 
-  steps:
-    - checkout
-    - restore_cache:
-        keys:
-          - v1-deps-{{ checksum "package-lock.json" }}
-    - run: npm install
-    - save_cache:
-        key: v1-deps-{{ checksum "package-lock.json" }}
-        paths:
-          - node_modules
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build-and-test:  
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
@@ -45,7 +35,17 @@ jobs:
 #           name: Run tests
 #           command: npm test
 #           test:
- 
+        steps:
+          - checkout
+          - restore_cache:
+              keys:
+                - v1-deps-{{ checksum "package-lock.json" }}
+          - run: npm install
+          - save_cache:
+              key: v1-deps-{{ checksum "package-lock.json" }}
+              paths:
+                - node_modules
+
 
 workflows:
   # Below is the definition of your workflow.
