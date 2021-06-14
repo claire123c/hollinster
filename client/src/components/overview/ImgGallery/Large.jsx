@@ -15,9 +15,9 @@ const AllDefaultView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 80%;;
+  max-height: 100%;;
   max-width: 80%;
-  min-height: 80%;
+  min-height: 100%;
   min-width: 80%;
 
 `;
