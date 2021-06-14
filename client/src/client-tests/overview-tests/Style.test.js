@@ -18,7 +18,7 @@ describe('Style Title', () => {
     expect(title.innerHTML).toBe('GREEN');
     done();
   });
-  test('clicking image should change name', () => {
+  // test('clicking image should change name', () => {
 
-  });
+  // });
 });
