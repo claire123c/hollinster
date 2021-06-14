@@ -21,14 +21,19 @@ const CheckMark = styled.img`
   padding: 2%;
 `;
 
-function StyleThumbnail({ style, current }) {
-const { name, photos } = style;
-const { thumbnail_url } = photos[0];
+function StyleThumbnail({ style, current, changeStyle }) {
+  const { name, photos } = style;
+  const { thumbnail_url } = photos[0];
+
+  const onClickStyle = () => {
+    changeStyle(style);
+  };
 
   return (
     <div>
-      <StylePhoto src={thumbnail_url} alt={name} />
-      <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" />
+      <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} />
+      {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <CheckMark />}
+
     </div>
   );
 }
@@ -43,4 +48,4 @@ StyleThumbnail.propTypes = {
 StyleThumbnail.defaultProps = {
   style: {},
   current: 0,
-}
+};

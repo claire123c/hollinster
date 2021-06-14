@@ -24,6 +24,7 @@ const Price = styled.div`
 const SalePrice = styled.div`
   display: inline;
   color: red;
+  margin-right: 1%;
 `;
 const Original = styled.div`
   display: inline;

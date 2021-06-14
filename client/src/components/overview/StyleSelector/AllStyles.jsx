@@ -21,7 +21,7 @@ const AllStylesComp = styled.div`
   max-width: 100%;
 `;
 
-function AllStyles({ styleData, currentStyle }) {
+function AllStyles({ styleData, currentStyle, changeStyle }) {
   const { name, style_id } = currentStyle;
 
   return (
@@ -32,11 +32,13 @@ function AllStyles({ styleData, currentStyle }) {
           {' '}
           {'>'}
         </StyleText>
-        {name.toUpperCase()}
+        <span className="style-title">
+          {name.toUpperCase()}
+        </span>
       </div>
       <StyleThumbnails>
         {styleData.map((style) => (
-          <StyleThumbnail style={style} key={style.style_id} current={style_id} />
+          <StyleThumbnail style={style} key={style.style_id} current={style_id} changeStyle={changeStyle} />
         ))}
       </StyleThumbnails>
     </AllStylesComp>
@@ -48,9 +50,11 @@ export default AllStyles;
 AllStyles.propTypes = {
   styleData: PropTypes.instanceOf(Array),
   currentStyle: PropTypes.instanceOf(Object),
+  changeStyle: PropTypes.func,
 };
 
 AllStyles.defaultProps = {
   styleData: [],
   currentStyle: { name: '' },
+  changeStyle: () => {},
 };
