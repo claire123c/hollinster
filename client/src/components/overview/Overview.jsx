@@ -10,8 +10,6 @@ import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
 
-import { changeStyle } from './Overview-helper.jsx/overview-helper.jsx';
-
 //TODO: fix 25178 edge case, and quotes
   //what to do if image isn't the same
 //25172 edge case
@@ -86,9 +84,6 @@ function Overview({ productID }) {
         console.error(error);
       });
   };
-  const changeStyle = (current) => {
-    setCurrentStyle(current);
-  };
 
   useEffect(() => {
     getStyles();
@@ -103,7 +98,7 @@ function Overview({ productID }) {
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
-          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={changeStyle} />
+          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
