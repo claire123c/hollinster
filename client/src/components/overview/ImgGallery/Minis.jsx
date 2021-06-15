@@ -101,3 +101,9 @@ Minis.propTypes = {
   currentImg: PropTypes.object,
   onClickThu: PropTypes.func,
 };
+
+Minis.defaultProps = {
+  minis: [],
+  currentImg: {},
+  onClickThu: () => {},
+};

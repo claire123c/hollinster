@@ -35,7 +35,7 @@ function Overview({ productID }) {
   const [styleData, setStyleData] = useState([]);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
-  const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
+  const [currentStyle, setCurrentStyle] = useState({});
   const [rMeta, setrMeta] = useState({});
 
   const findDefaultStyles = (stylesArr) => {

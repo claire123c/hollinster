@@ -49,7 +49,7 @@ function Large(props) {
   const { defaultStyle } = props;
   const { photos } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
-  const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
+  const [currentImg, useCurrentImg] = useState(photos ? photos[currentImgIndex] : {});
   const [allImgs, useAllImgs] = useState(photos);
   const [leftClicked, useLeftClicked] = useState(false);
   const [rightClicked, useRightClicked] = useState(false);
@@ -128,6 +128,7 @@ Large.propTypes = {
   defaultStyle: PropTypes.shape({
     'default?': PropTypes.bool,
     name: PropTypes.string,
+    photos: PropTypes.shape([]),
   }),
 };
 
