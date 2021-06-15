@@ -40,7 +40,7 @@ function StyleThumbnail({ style, current, changeStyle }) {
   return (
     <StyleThumbComp>
       <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} className="style-photo" />
-      {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <CheckMark />}
+      {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <></>}
     </StyleThumbComp>
   );
 }
