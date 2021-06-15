@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const StyleThumbComp = styled.div`
+  position: relative;
+`;
+
 const StylePhoto = styled.img`
   max-height: 100%;
   max-width: 100%;
@@ -19,6 +23,8 @@ const CheckMark = styled.img`
   width: 8px;
   height: 8px;
   padding: 2%;
+  z-index: 2;
+  position: absolute;
 `;
 
 function StyleThumbnail({ style, current, changeStyle }) {
@@ -30,11 +36,11 @@ function StyleThumbnail({ style, current, changeStyle }) {
   };
 
   return (
-    <div>
+    <StyleThumbComp>
       <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} className="style-photo" />
       {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <CheckMark />}
 
-    </div>
+    </StyleThumbComp>
   );
 }
 
