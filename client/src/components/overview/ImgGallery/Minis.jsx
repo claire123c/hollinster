@@ -14,9 +14,9 @@ const UpButton = styled.div`
 `;
 const DownButton = styled.img`
   font-size: 30px;
-  margin: 10% 30%;
+  margin: 10% 43%;
   color: rgb(72,72,72);
-  width: 20px;
+  width: 20%;
 `;
 
 function Minis(props) {
@@ -90,7 +90,7 @@ function Minis(props) {
       {array.map((mini) => (
         <Mini className="the-mini" mini={mini} key={mini.url} currentImg={currentImg} i={minis.indexOf(mini)} onClickThu={onClickThu} />
       ))}
-      {showDown ? <DownButton className="down-button" onClick={onClickDown} src="./assets/down-arrow.png" alt="down-arrow" /> : <></>}
+      {showDown ? <DownButton className="down-button" onClick={onClickDown} src="./assets/down-chevron.png" alt="down-arrow" /> : <></>}
     </ThumbnailsBox>
   );
 }
