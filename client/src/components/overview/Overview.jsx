@@ -100,7 +100,7 @@ function Overview({ productID }) {
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
-          <Cart />
+          <Cart currentStyle={currentStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />

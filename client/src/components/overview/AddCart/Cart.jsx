@@ -11,7 +11,8 @@ const CartFormat = styled.div`
   display: flex;
 `;
 
-function Cart() {
+function Cart({ currentStyle }) {
+  console.log(currentStyle);
   return (
     <div>
       <CartFormat>
@@ -25,5 +26,13 @@ function Cart() {
     </div>
   );
 }
+
+Cart.propTypes = {
+  currentStyle: PropTypes.shape({}),
+};
+
+Cart.defaultProps = {
+  currentStyle: {},
+};
 
 export default Cart;
