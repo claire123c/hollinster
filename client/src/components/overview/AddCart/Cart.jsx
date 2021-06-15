@@ -14,7 +14,6 @@ const CartFormat = styled.div`
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
   const [currentSize, useCurrentSize] = useState();
-  console.log(skus);
 
   return (
     <div>

@@ -9,11 +9,20 @@ const SizeSelector = styled.div`
 `;
 
 function Size({ skus }) {
+  console.log(skus);
   return (
     <SizeSelector>
       <select>
         <option defaultValue="coconut">SELECT SIZE</option>
-        <option value="small">Small</option>
+        {Object.keys(skus).map((key) => {
+          if (skus[key].size) {
+            return (
+              <option value={skus[key].size} key={skus[key]}>
+                {skus[key].size}
+              </option>
+            );
+          }
+        })}
       </select>
     </SizeSelector>
   );
