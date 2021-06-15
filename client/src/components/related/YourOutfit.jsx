@@ -10,11 +10,11 @@ export default function YourOutfit({ outfit, addToOutfit }) {
 
   return (
     <>
+      <AddToOutfit addToOutfit={addToOutfit} />
       {outfit.map((product) => (
         <OutfitCard
           product={product}
-          key={product}
-          addToOutfit={addToOutfit}
+          key={product.id}
         />
       ))}
     </>

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import AddToOutfit from './AddToOutfit.jsx'
 
-export default function Card({ addToOutfit, outfit, current, product }) {
+export default function OutfitCard( {product : {id} } ) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -13,7 +12,6 @@ export default function Card({ addToOutfit, outfit, current, product }) {
   // const [productData, setProductData] = useState([]);
   // const [productStyleData, setProductStyleData] = useState([]);
   // const [productReviewData, setProductReviewData] = useState([]);
-
   let defaultPrice = 0;
 
   const averageRating = (reviewResults) => {
@@ -46,29 +44,29 @@ export default function Card({ addToOutfit, outfit, current, product }) {
 
   const getProductReviews = () => axios.get(`/reviews/${product}`);
 
-  useEffect(() => {
-    Promise.all([getProduct(), getProductStyles(), getProductReviews()])
-      .then((response) => {
-        defaultPrice = response[0].data.default_price;
-        setProductData(response[0].data);
-        setProductStyleData(response[1].data);
-        setProductReviewData(response[2].data);
-        setCategory(response[0].data.category);
-        setName(response[0].data.name);
-        // setDefaultPrice(response[0].data.default_price);
-        // setPrice(response[1].data.results[0].original_price);
-        setPrice(checkPrice(response[1].data.results));
-        setImage(response[1].data.results[0].photos[0].url);
-        setRating(averageRating(response[2].data.results));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   Promise.all([getProduct(), getProductStyles(), getProductReviews()])
+  //     .then((response) => {
+  //       defaultPrice = response[0].data.default_price;
+  //       setProductData(response[0].data);
+  //       setProductStyleData(response[1].data);
+  //       setProductReviewData(response[2].data);
+  //       setCategory(response[0].data.category);
+  //       setName(response[0].data.name);
+  //       // setDefaultPrice(response[0].data.default_price);
+  //       // setPrice(response[1].data.results[0].original_price);
+  //       setPrice(checkPrice(response[1].data.results));
+  //       setImage(response[1].data.results[0].photos[0].url);
+  //       setRating(averageRating(response[2].data.results));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <div>
-      {outfit ? <img src={image} alt={`A representation of ${name}`} /> : <AddToOutfit addToOutfit={addToOutfit} />}
+
       <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>

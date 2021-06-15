@@ -3,7 +3,7 @@ import axios from 'axios';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
-export default function Related( {productID} ) {
+export default function Related({ productID }) {
   const [current, setCurrent] = useState(productID);
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
@@ -25,7 +25,15 @@ export default function Related( {productID} ) {
   }, []);
 
   const addToOutfit = () => {
-    if (!outfit.includes(current)) {
+    // if (!outfit.includes(current)) {
+    //   outfit.push(current);
+    //   localStorage.setItem('outfit', JSON.stringify(outfit));
+    //   console.log('added');
+    // } else {
+    //   console.log('already exists');
+
+    const found = outfit.find((element) => element.id === current.id);
+    if (!found) {
       outfit.push(current);
       localStorage.setItem('outfit', JSON.stringify(outfit));
       console.log('added');
@@ -34,16 +42,20 @@ export default function Related( {productID} ) {
     }
   };
 
-  const removeFromOutfit = () => {
-    // if ()
-  }
+  const removeFromOutfit = (id) => {
+    const found = outfit.find((element) => element.id === current.id);
+    if (found) {
+      outfit.splice(found, 1);
+      console.log('removed');
+    }
+  };
 
   useEffect(() => {
-    axios.get(`/products/${current}`)
+    axios.get(`/products/${productID}`)
       .then((response) => {
         setCurrent(response.data);
       });
-    axios.get(`/products/${current}/related`)
+    axios.get(`/products/${productID}/related`)
       .then((response) => {
         setRelated(response.data);
       })
@@ -62,6 +74,7 @@ export default function Related( {productID} ) {
         current={current}
         outfit={outfit}
         addToOutfit={addToOutfit}
+        removeFromOutfit={removeFromOutfit}
       />
     </>
   );
