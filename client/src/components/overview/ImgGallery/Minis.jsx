@@ -7,15 +7,14 @@ import Mini from './Mini.jsx'
 const ThumbnailsBox = styled.div`
   margin-right: 10%;
 `;
-const UpButton = styled.div`
+const UpButton = styled.img`
   font-size: 30px;
-  margin: 10% 30%;
-  color: rgb(72,72,72);
+  margin: 10% 43%;
+  width: 20%;
 `;
 const DownButton = styled.img`
   font-size: 30px;
   margin: 10% 43%;
-  color: rgb(72,72,72);
   width: 20%;
 `;
 
@@ -86,7 +85,7 @@ function Minis(props) {
 
   return (
     <ThumbnailsBox>
-      {showUp ? <UpButton className="up-button" onClick={onClickUp}>&#5123;</UpButton> : <></>}
+      {showUp ? <UpButton className="up-button" onClick={onClickUp} src="./assets/up-chevron.png" alt="up-arrow" /> : <></>}
       {array.map((mini) => (
         <Mini className="the-mini" mini={mini} key={mini.url} currentImg={currentImg} i={minis.indexOf(mini)} onClickThu={onClickThu} />
       ))}
