@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
+import Cart from './AddCart/Cart.jsx';
 import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
@@ -99,6 +100,7 @@ function Overview({ productID }) {
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
+          <Cart />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
