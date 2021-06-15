@@ -94,24 +94,24 @@ describe('Expand Gallery', () => {
 describe('Sliding Window for Mini Thumbnails', () => {
   test('Down onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
-    const down = document.querySelector('.downbutton');
-    const imageURL = document.querySelector('.miniimage').src;
+    const down = document.querySelector('.down-button');
+    const imageURL = document.querySelector('.mini-image').src;
 
     fireEvent.click(down);
 
-    const newURL = document.querySelector('.miniimage').src;
+    const newURL = document.querySelector('.mini-image').src;
     expect(imageURL).not.toBe(newURL);
   });
 
   test('Up onClick should change displayed thumbnails', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
-    const down = document.querySelector('.downbutton');
+    const down = document.querySelector('.down-button');
     fireEvent.click(down);
-    const imageURL = document.querySelector('.miniimage').src;
+    const imageURL = document.querySelector('.mini-image').src;
 
-    const up = document.querySelector('.upbutton');
+    const up = document.querySelector('.up-button');
     fireEvent.click(up);
-    const newURL = document.querySelector('.miniimage').src;
+    const newURL = document.querySelector('.mini-image').src;
 
     expect(imageURL).not.toBe(newURL);
   });
@@ -119,7 +119,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
   test('onClick Right arrow should change displayed thumbnails if img is on next page', () => {
     const GalleryComp = render(<Gallery styles={sampleData2.results[0]} />);
     const rightArrow = GalleryComp.getByTestId('rightArrowImgGallery');
-    const imageURL = document.querySelector('.miniimage').src;
+    const imageURL = document.querySelector('.mini-image').src;
 
     let i = 0;
     while (i < 7) {
@@ -127,7 +127,7 @@ describe('Sliding Window for Mini Thumbnails', () => {
       i += 1;
     }
 
-    const newURL = document.querySelector('.miniimage').src;
+    const newURL = document.querySelector('.mini-image').src;
 
     expect(imageURL).not.toBe(newURL);
   });
@@ -142,10 +142,10 @@ describe('Sliding Window for Mini Thumbnails', () => {
       fireEvent.click(rightArrow);
       i += 1;
     }
-    const imageURL = document.querySelector('.miniimage').src;
+    const imageURL = document.querySelector('.mini-image').src;
     fireEvent.click(leftArrow);
     fireEvent.click(leftArrow);
-    const newURL = document.querySelector('.miniimage').src;
+    const newURL = document.querySelector('.mini-image').src;
 
     expect(imageURL).not.toBe(newURL);
   });
