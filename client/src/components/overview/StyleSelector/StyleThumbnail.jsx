@@ -23,8 +23,10 @@ const CheckMark = styled.img`
   width: 8px;
   height: 8px;
   padding: 2%;
-  z-index: 2;
   position: absolute;
+  z-index: 2;
+  left: 70%;
+  top: 10%;
 `;
 
 function StyleThumbnail({ style, current, changeStyle }) {
@@ -39,7 +41,6 @@ function StyleThumbnail({ style, current, changeStyle }) {
     <StyleThumbComp>
       <StylePhoto src={thumbnail_url} alt={name} onClick={onClickStyle} className="style-photo" />
       {style.style_id === current ? <CheckMark src="./assets/check-mark-black-outline.png" alt="checkmark" /> : <CheckMark />}
-
     </StyleThumbComp>
   );
 }
