@@ -11,11 +11,6 @@ import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
 
-//TODO: fix 25178 edge case, and quotes
-  //what to do if image isn't the same
-//25172 edge case
-  //what to do if there's an invalid HTML url?
-
 const Top = styled.div`
   display: flex;
 `;

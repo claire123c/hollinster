@@ -9,21 +9,26 @@ const SizeSelector = styled.div`
 `;
 
 function Size({ skus }) {
-  console.log(skus);
+  const getSizes = () => (Object.keys(skus).map((key) => {
+    if (skus[key].size) {
+      return (
+        <option value={skus[key].size} key={key}>
+          {skus[key].size}
+        </option>
+      );
+    }
+    return null;
+  }));
   return (
     <SizeSelector>
-      <select>
-        <option defaultValue="select">SELECT SIZE</option>
-        {Object.keys(skus).map((key) => {
-          if (skus[key].size) {
-            return (
-              <option value={skus[key].size} key={key}>
-                {skus[key].size}
-              </option>
-            );
-          }
-        })}
-      </select>
+      {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
+        : (
+          <select>
+            <option defaultValue="select">SELECT SIZE</option>
+            {getSizes()}
+          </select>
+        )}
+
     </SizeSelector>
   );
 }

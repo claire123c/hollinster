@@ -12,6 +12,7 @@ function AddtoCart(props) {
   return (
     <AddtoBag>
       ADD TO BAG
+      <span> &#x2b;</span>
     </AddtoBag>
   );
 }
