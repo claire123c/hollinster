@@ -16,7 +16,6 @@ describe('Style Title', () => {
     const title = document.querySelector('.style-title');
 
     expect(title.innerHTML).toBe('GREEN');
-    done();
   });
   // test('clicking image should change name', () => {
 
