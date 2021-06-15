@@ -21,7 +21,7 @@ describe('Style Title', () => {
 
     expect(title.innerHTML).toBe('GREEN');
   });
-  test('clicking image should change style title', async () => {
+  test('clicking new style should change style title and thumbnail', async () => {
     const resp = { data: sampleData };
     let OverviewComp;
 
@@ -29,18 +29,12 @@ describe('Style Title', () => {
     await act(async () => {
       OverviewComp = await render(<Overview productID={25167} />);
     });
-    const thumbnail = document.querySelector('.style-photo');
-    console.log(thumbnail.src);
+    const thumbnail = OverviewComp.getByAltText('Desert Brown & Tan');
+    const image = document.querySelector('.default-view').getAttribute('src');
     const title = document.querySelector('.style-title').innerHTML;
     fireEvent.click(thumbnail);
-    const newTitle = document.querySelector('.style-title');
 
-    console.log(newTitle.innerHTML);
-
-
-
-    expect(title).toBe(newTitle.innerHTML);
-
-
+    expect(image).not.toBe(document.querySelector('.default-view').src);
+    expect(title).not.toBe(document.querySelector('.style-title').innerHTML);
   });
 });

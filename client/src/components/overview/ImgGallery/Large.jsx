@@ -113,7 +113,7 @@ function Large(props) {
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked} />
       <AllDefaultView className="alldefaultview">
-        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
+        <DefaultView className="default-view" src={currentImg.url} alt={defaultStyle.name}>
           <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow} src="./assets/left-arrow.png" />
           <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow} src="./assets/right-arrow.png" />
         </DefaultView>
