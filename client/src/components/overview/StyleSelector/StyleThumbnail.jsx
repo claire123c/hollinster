@@ -12,13 +12,13 @@ const StylePhoto = styled.img`
   border-radius: 50%;
   height: 55px;
   width: 55px;
-  border: 1.5px solid black;
+  border: 1px solid rgb(72,72,72);
   margin: 8px;
 `;
 
 const CheckMark = styled.img`
   border-radius: 50%;
-  border: 1.5px solid black;
+  border: 1px solid rgb(72,72,72);
   background-color: white;
   width: 8px;
   height: 8px;
