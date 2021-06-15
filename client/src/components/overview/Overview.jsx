@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -7,6 +8,7 @@ import Info from './Info/Info.jsx';
 import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
+import AllStyles from './StyleSelector/AllStyles.jsx';
 
 //TODO: fix 25178 edge case, and quotes
   //what to do if image isn't the same
@@ -22,12 +24,18 @@ const OveviewComp = styled.div`
   margin-right: 12%;
 `;
 
-function Overview() {
-  const [productNum] = useState('25172');
+const SideColumn = styled.div`
+  padding: 2%;
+  max-width: 38%;
+`;
+
+function Overview({ productID }) {
+  const [productNum] = useState(productID);
   const [styleData, setStyleData] = useState(emptyData.results);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
+  const [rMeta, setrMeta] = useState({});
 
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
@@ -67,18 +75,31 @@ function Overview() {
         console.error(error);
       });
   };
+  const getMetaReviews = () => {
+    axios.get(`/reviews/meta/${productNum}`)
+      .then((response) => {
+        setrMeta(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     getStyles();
     getProductDeets();
     getReviews();
+    getMetaReviews();
   }, []);
 
   return (
     <OveviewComp>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
-        <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} />
+        <SideColumn>
+          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
+          <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
+        </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
     </OveviewComp>
@@ -86,3 +107,11 @@ function Overview() {
 }
 
 export default Overview;
+
+Overview.propTypes = {
+  productID: PropTypes.number,
+};
+
+Overview.defaultProps = {
+  productID: 25167,
+};

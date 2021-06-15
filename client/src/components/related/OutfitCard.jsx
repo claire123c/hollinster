@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import AddToOutfit from './AddToOutfit.jsx'
 
-export default function Card({ current, product }) {
+export default function Card({ addToOutfit, outfit, current, product }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
-  const [outfit, setOutfit] = useState([]);
   const [showOutfit, setShowOutfit] = useState(false);
   // const [productData, setProductData] = useState([]);
   // const [productStyleData, setProductStyleData] = useState([]);
@@ -41,11 +40,6 @@ export default function Card({ current, product }) {
     return (style.sale_price ? style.sale_price : style.original_price);
   };
 
-  const AddToOutfitList = () => {
-    outfit.push(current);
-    setShowOutfit(!showOutfit);
-  };
-
   const getProduct = () => axios.get(`/products/${product}`);
 
   const getProductStyles = () => axios.get(`/products/${product}/styles`);
@@ -74,7 +68,7 @@ export default function Card({ current, product }) {
 
   return (
     <div>
-      {outfit ? <img src={image} alt={`A representation of ${name}`} /> : <AddToOutfit AddToOutfitList={AddToOutfitList}/>}
+      {outfit ? <img src={image} alt={`A representation of ${name}`} /> : <AddToOutfit addToOutfit={addToOutfit} />}
       <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>
