@@ -8,12 +8,23 @@ const SizeSelector = styled.div`
   padding: 5%;
 `;
 
-function Size(props) {
+function Size({ skus }) {
   return (
     <SizeSelector>
-      SELECT SIZE
+      <select>
+        <option defaultValue="coconut">SELECT SIZE</option>
+        <option value="small">Small</option>
+      </select>
     </SizeSelector>
   );
 }
+
+Size.propTypes = {
+  currentStyle: PropTypes.shape({}),
+};
+
+Size.defaultProps = {
+  currentStyle: {},
+};
 
 export default Size;

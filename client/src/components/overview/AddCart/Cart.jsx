@@ -13,12 +13,13 @@ const CartFormat = styled.div`
 
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
+  const [currentSize, useCurrentSize] = useState();
   console.log(skus);
 
   return (
     <div>
       <CartFormat>
-        <Size />
+        <Size skus={skus} />
         <Quantity />
       </CartFormat>
       <CartFormat>
@@ -31,9 +32,7 @@ function Cart({ currentStyle }) {
 
 Cart.propTypes = {
   currentStyle: PropTypes.shape({
-    skus: PropTypes.shape({
-      828824: PropTypes.shape({}),
-    }),
+    skus: PropTypes.shape({}),
   }),
 };
 
