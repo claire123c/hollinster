@@ -34,12 +34,12 @@ const DefaultView = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
 `;
-const RightArrow = styled.p`
+const RightArrow = styled.img`
   font-size: 80px;
   color: ${(props) => (props.rightArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
   padding-left: 50%;
 `;
-const LeftArrow = styled.p`
+const LeftArrow = styled.img`
   font-size: 80px;
   color: ${(props) => (props.leftArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
   padding-right: 50%;
@@ -114,10 +114,8 @@ function Large(props) {
       <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked} />
       <AllDefaultView className="alldefaultview">
         <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow}>
-            &#xab;
-          </LeftArrow>
-          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow}>&#xbb;</RightArrow>
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow} src="./assets/left-arrow.png" />
+          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow} src="./assets/right-arrow.png" />
         </DefaultView>
       </AllDefaultView>
     </ThumbnailsGroup>
