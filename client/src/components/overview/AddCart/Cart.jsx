@@ -12,7 +12,9 @@ const CartFormat = styled.div`
 `;
 
 function Cart({ currentStyle }) {
-  console.log(currentStyle);
+  const { skus } = currentStyle;
+  console.log(skus);
+
   return (
     <div>
       <CartFormat>
@@ -28,7 +30,11 @@ function Cart({ currentStyle }) {
 }
 
 Cart.propTypes = {
-  currentStyle: PropTypes.shape({}),
+  currentStyle: PropTypes.shape({
+    skus: PropTypes.shape({
+      828824: PropTypes.shape({}),
+    }),
+  }),
 };
 
 Cart.defaultProps = {
