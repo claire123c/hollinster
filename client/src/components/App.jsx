@@ -14,13 +14,8 @@ const App = (props) => {
     <>
       <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-<<<<<<< HEAD
-      <Overview productID={productID} />
-      {/* don't forget to remove this before committing */}
-=======
 
       {/* <Overview /> */}
->>>>>>> main
       {/* <Question /> */}
       {/* <Related /> */}
       {/* <RatingsReviews productID={productID} /> */}
