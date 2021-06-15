@@ -36,12 +36,12 @@ const DefaultView = styled.div`
 `;
 const RightArrow = styled.img`
   font-size: 80px;
-  color: ${(props) => (props.rightArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
+  visibility: ${(props) => (props.rightArrow ? 'visible' : 'hidden')};
   padding-left: 50%;
 `;
 const LeftArrow = styled.img`
   font-size: 80px;
-  color: ${(props) => (props.leftArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
+  visibility: ${(props) => (props.leftArrow ? 'visible' : 'hidden')};
   padding-right: 50%;
 `;
 
