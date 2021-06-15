@@ -11,7 +11,7 @@ const QuantityBox = styled.div`
 function Quantity(props) {
   return (
     <QuantityBox>
-      1
+      -
     </QuantityBox>
   );
 }

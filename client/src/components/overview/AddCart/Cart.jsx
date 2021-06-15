@@ -13,13 +13,14 @@ const CartFormat = styled.div`
 
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
-  const [currentSize, useCurrentSize] = useState();
+  console.log(skus);
+  const [currentSize, useCurrentSize] = useState(0);
 
   return (
     <div>
       <CartFormat>
-        <Size skus={skus} />
-        <Quantity />
+        <Size skus={skus} useCurrentSize={useCurrentSize} />
+        <Quantity currentSize={skus ? skus[currentSize] : currentSize} />
       </CartFormat>
       <CartFormat>
         <AddtoCart />
@@ -36,7 +37,7 @@ Cart.propTypes = {
 };
 
 Cart.defaultProps = {
-  currentStyle: {},
+  currentStyle: { skus: {} },
 };
 
 export default Cart;

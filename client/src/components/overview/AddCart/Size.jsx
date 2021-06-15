@@ -8,22 +8,28 @@ const SizeSelector = styled.div`
   padding: 5%;
 `;
 
-function Size({ skus }) {
+function Size({ skus, useCurrentSize }) {
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
-        <option value={skus[key].size} key={key}>
+        <option value={key} key={key}>
           {skus[key].size}
         </option>
       );
     }
     return null;
   }));
+  const getCurrentSize = (event) => {
+    if (event.target.value !== 'OUT OF STOCK') {
+      useCurrentSize(event.target.value);
+    }
+  };
+
   return (
     <SizeSelector>
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
-          <select>
+          <select onChange={getCurrentSize}>
             <option defaultValue="select">SELECT SIZE</option>
             {getSizes()}
           </select>
@@ -35,10 +41,12 @@ function Size({ skus }) {
 
 Size.propTypes = {
   skus: PropTypes.shape({}),
+  useCurrentSize: PropTypes.func,
 };
 
 Size.defaultProps = {
   skus: {},
+  useCurrentSize: () => {},
 };
 
 export default Size;
