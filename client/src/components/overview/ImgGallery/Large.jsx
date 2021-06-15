@@ -49,7 +49,7 @@ function Large(props) {
   const { defaultStyle } = props;
   const { photos } = defaultStyle;
   const [currentImgIndex, usecurrentImgIndex] = useState(0);
-  const [currentImg, useCurrentImg] = useState(photos ? photos[currentImgIndex] : {});
+  const [currentImg, useCurrentImg] = useState(photos ? photos[currentImgIndex] : { url: '' });
   const [allImgs, useAllImgs] = useState(photos);
   const [leftClicked, useLeftClicked] = useState(false);
   const [rightClicked, useRightClicked] = useState(false);
@@ -57,7 +57,7 @@ function Large(props) {
   const [rightArrow, useRightArrow] = useState(true);
 
   useEffect(() => {
-    if (photos.length <= 1) {
+    if (photos && photos.length <= 1) {
       useRightArrow(false);
     } else {
       useRightArrow(true);
@@ -105,7 +105,7 @@ function Large(props) {
 
   useEffect(() => {
     usecurrentImgIndex(0);
-    useCurrentImg(defaultStyle.photos[0]);
+    useCurrentImg(photos ? photos[0] : { url: '' });
     useAllImgs(photos);
   }, [props]);
 
@@ -128,7 +128,7 @@ Large.propTypes = {
   defaultStyle: PropTypes.shape({
     'default?': PropTypes.bool,
     name: PropTypes.string,
-    photos: PropTypes.shape([]),
+    photos: PropTypes.instanceOf(Array),
   }),
 };
 

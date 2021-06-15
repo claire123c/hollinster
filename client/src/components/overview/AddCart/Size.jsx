@@ -29,11 +29,11 @@ function Size({ skus }) {
 }
 
 Size.propTypes = {
-  currentStyle: PropTypes.shape({}),
+  skus: PropTypes.shape({}),
 };
 
 Size.defaultProps = {
-  currentStyle: {},
+  skus: {},
 };
 
 export default Size;
