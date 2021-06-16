@@ -21,7 +21,7 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
       {outfit.map((product) => (
         <OutfitCard
           product={product}
-          key={product.id}
+          key={product}
           removeFromOutfit={removeFromOutfit}
         />
       ))}
