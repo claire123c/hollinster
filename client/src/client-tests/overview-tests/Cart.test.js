@@ -32,6 +32,12 @@ describe('Quantity Display', () => {
     fireEvent.change(selector, { target: { value: 828825 } });
     const quantity = document.querySelector('.quantity-selector');
 
-    expect(quantity).toBeDefined();
+    expect(quantity).not.toBe(null);
+  });
+  test('quantity should be not be displayed if it is not available', () => {
+    render(<Cart currentStyle={sampleData.results[0]} />);
+    const quantity = document.querySelector('.quantity-selector');
+
+    expect(quantity).toBe(null);
   });
 });
