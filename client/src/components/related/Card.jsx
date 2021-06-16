@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 import CompareButton from './CompareButton.jsx';
-import Modal from './Modal.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
 const CardWrapper = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  width: 16vw;
-  height: 40vh;
-  margin-right: 2em;
+  width: 18em;
+  height: 24em;
+  margin: 1em;
   user-select: none;
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
@@ -19,7 +19,7 @@ const CardWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  display: block;
+  display: grid;
   overflow: hidden;
   max-height: 50%;
   max-width: 50%;
@@ -122,7 +122,7 @@ export default function Card({ current, product, setProductID, switchProduct }) 
 
   return (
     <CardWrapper onClick={() => { setProductID(product); }}>
-      {modal ? <Modal current={current} productData={productData} /> : null}
+      {modal ? <ComparisonModal current={current} productData={productData} /> : null}
       <CompareButton showComparison={showComparison} />
       <Image src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>

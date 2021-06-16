@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Comparison from './Comparison.jsx';
+// import Modal from 'react-modal';
 
-export default function Modal({ current, productData }) {
+export default function ComparisonModal({ current, productData }) {
   const { name: currentName, features: currentFeatures } = current;
   const { name: comparedName, features: comparedFeatures } = productData;
 
@@ -155,12 +156,12 @@ export default function Modal({ current, productData }) {
   );
 }
 
-Modal.propTypes = {
+ComparisonModal.propTypes = {
   current: Number,
   selected: Number,
 };
 
-Modal.defaultProps = {
+ComparisonModal.defaultProps = {
   current: 25167,
   selected: 25168,
 };

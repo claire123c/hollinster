@@ -2,22 +2,11 @@ import React from 'react';
 import Card from './Card.jsx';
 import styled from 'styled-components';
 
-const Carousel = styled.div`
-  position: relative;
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: left;
-  align-items: center;
-  width: 18rem;
-  height: 36rem;
-  margin: 1em;
-`;
-
 // possible to reuse list twice?
 
 export default function List({ current, related, productID, setProductID, switchProduct }) {
   return (
-    <Carousel>
+    <>
       {related.map((product) => (
         <Card
           current={current}
@@ -28,6 +17,10 @@ export default function List({ current, related, productID, setProductID, switch
           setProductID={setProductID}
         />
       ))}
-    </Carousel>
+    </>
   );
+}
+
+List.defaultProps = {
+  related: []
 }
