@@ -10,23 +10,21 @@ const QuantityBox = styled.div`
 
 function Quantity({ currentSize }) {
   const { quantity } = currentSize;
-  console.log(currentSize);
   const getQuantities = () => {
     let num;
-    let numArray = [];
+    const numArray = [];
     if (quantity > 15) {
       num = 15;
     } else {
       num = quantity;
     }
-    let i = 0;
-    while (i < num) {
+    let i = 1;
+    while (i <= num) {
       numArray.push(
-        <option value={num} key={num}>{num}</option>,
+        <option value={i} key={i}>{i}</option>,
       );
       i += 1;
     }
-    console.log(numArray, 'hiasdf');
     return numArray;
   };
   return (
