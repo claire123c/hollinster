@@ -16,8 +16,8 @@ const App = (props) => {
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
 
       {/* <Overview /> */}
-      {/* <Question /> */}
       {/* <Related /> */}
+      {/* <Question /> */}
       {/* <RatingsReviews productID={productID} /> */}
     </>
   );
