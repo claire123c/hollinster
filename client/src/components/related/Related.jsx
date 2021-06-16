@@ -30,7 +30,7 @@ export default function Related({ productID, setProductID, switchProduct }) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [productID]);
 
   const addToOutfit = () => {
     // if (!outfit.includes(current)) {
