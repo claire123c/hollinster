@@ -8,7 +8,7 @@ import Related from './related/Related.jsx';
 
 const App = (props) => {
   const [test, setTest] = useState(true);
-  const [productID, setProductID] = useState(25167);
+  const [productID, setProductID] = useState(25174);
 
   const switchProduct = () => {
     setProductID(product);

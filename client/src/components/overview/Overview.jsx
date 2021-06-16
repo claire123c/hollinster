@@ -83,11 +83,14 @@ function Overview({ productID }) {
 
   useEffect(() => {
     setProductNum(productID);
+  }, [productID]);
+
+  useEffect(() => {
     getStyles();
     getProductDeets();
     getReviews();
     getMetaReviews();
-  }, [productID]);
+  }, [productNum]);
 
   return (
     <OveviewComp>

@@ -31,6 +31,10 @@ function Minis(props) {
 
   useEffect(() => {
     setArray(minis);
+    setShowUp(false);
+    setShowDown(false);
+    setStartI(0);
+    setEndI(7);
   }, [minis]);
 
   useEffect(() => {
