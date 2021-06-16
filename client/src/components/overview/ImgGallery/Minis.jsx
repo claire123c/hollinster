@@ -29,6 +29,8 @@ function Minis(props) {
   const [endI, setEndI] = useState(7);
   const window = 7;
 
+  console.log(showUp, 'up');
+
   useEffect(() => {
     setArray(minis);
   }, [minis]);
@@ -58,8 +60,10 @@ function Minis(props) {
   };
 
   useEffect(() => {
-    if (array.indexOf(currentImg) === -1) {
-      onClickUp();
+    if (array.length > window) {
+      if (array.indexOf(currentImg) === -1) {
+        onClickUp();
+      }
     }
   }, [leftClicked]);
 
@@ -78,8 +82,10 @@ function Minis(props) {
   };
 
   useEffect(() => {
-    if (array.indexOf(currentImg) === -1) {
-      onClickDown();
+    if (array.length > window) {
+      if (array.indexOf(currentImg) === -1) {
+        onClickDown();
+      }
     }
   }, [rightClicked]);
 
@@ -97,8 +103,8 @@ function Minis(props) {
 export default Minis;
 
 Minis.propTypes = {
-  minis: PropTypes.array,
-  currentImg: PropTypes.object,
+  minis: PropTypes.instanceOf(Array),
+  currentImg: PropTypes.shape({}),
   onClickThu: PropTypes.func,
 };
 
