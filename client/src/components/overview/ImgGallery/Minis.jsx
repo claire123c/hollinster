@@ -58,7 +58,7 @@ function Minis(props) {
   };
 
   useEffect(() => {
-    if (array.length > window) {
+    if (minis.length > window) {
       if (array.indexOf(currentImg) === -1) {
         onClickUp();
       }
@@ -80,7 +80,7 @@ function Minis(props) {
   };
 
   useEffect(() => {
-    if (array.length > window) {
+    if (minis.length > window) {
       if (array.indexOf(currentImg) === -1) {
         onClickDown();
       }
