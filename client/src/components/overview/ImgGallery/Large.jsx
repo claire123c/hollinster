@@ -57,7 +57,7 @@ function Large(props) {
   const [rightArrow, setRightArrow] = useState(true);
 
   useEffect(() => {
-    if (photos && photos.length <= 1) {
+    if (photos && photos.length === 1) {
       setRightArrow(false);
     } else {
       setRightArrow(true);
