@@ -14,7 +14,6 @@ export default function Card({ current, product }) {
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
-
   let defaultPrice = 0;
 
   const averageRating = (reviewResults) => {
