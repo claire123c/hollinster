@@ -22,7 +22,7 @@ export default function Related({ productID }) {
       console.log('empty');
     }
     // storedOutfit ? setOutfit(storedOutfit) : null
-  }, [outfit.length]);
+  }, []);
 
   useEffect(() => {
     // axios.get(`/products/${productID}`)
@@ -48,10 +48,11 @@ export default function Related({ productID }) {
 
     // const found = outfit.find((element) => element.id === current.id);
     // if (!found) {
-    if (!outfit.includes(current)) {
-      outfit.push(current);
-      setOutfit(outfit);
-      localStorage.setItem('outfit', JSON.stringify(outfit));
+    const updatedFit = [...outfit];
+    if (!updatedFit.includes(current)) {
+      updatedFit.push(current);
+      setOutfit(updatedFit);
+      localStorage.setItem('outfit', JSON.stringify(updatedFit));
       console.log('added');
     } else {
       console.log('already exists');
@@ -59,16 +60,16 @@ export default function Related({ productID }) {
   };
 
   const removeFromOutfit = (id) => {
+    const updatedFit = [...outfit];
     // const found = outfit.find((element) => element.id === current.id);
-    const found = outfit.findIndex((element) => element === current);
+    const found = updatedFit.findIndex((element) => element === current);
     console.log(found)
     if (found !== -1) {
       outfit.splice(found, 1);
+      setOutfit(outfit);
       localStorage.setItem('outfit', JSON.stringify(outfit));
     }
   };
-
-
 
   return (
     <>
