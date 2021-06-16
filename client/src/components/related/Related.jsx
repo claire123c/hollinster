@@ -3,32 +3,26 @@ import axios from 'axios';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
-export default function Related({ productID }) {
+export default function Related({ productID, setProductID, switchProduct }) {
   const [current, setCurrent] = useState(productID);
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
-  // const addToOutfit = () => {
-  //   if (!outfit.includes(current)) {
-  //     setOutfit(outfit.push(current));
-  //   }
-  // };
-
   useEffect(() => {
     const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
-    if (storedOutfit) {
-      setOutfit(storedOutfit);
-    } else {
-      console.log('empty');
-    }
-    // storedOutfit ? setOutfit(storedOutfit) : null
+    // if (storedOutfit) {
+    //   setOutfit(storedOutfit);
+    // } else {
+    //   console.log('empty');
+    // }
+    storedOutfit ? setOutfit(storedOutfit) : null;
   }, []);
 
   useEffect(() => {
-    // axios.get(`/products/${productID}`)
-    //   .then((response) => {
-    //     setCurrent(response.data);
-    //   });
+    axios.get(`/products/${productID}`)
+      .then((response) => {
+        setCurrent(response.data);
+      });
     axios.get(`/products/${productID}/related`)
       .then((response) => {
         setRelated(response.data);
@@ -36,7 +30,7 @@ export default function Related({ productID }) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [productID]);
 
   const addToOutfit = () => {
     // if (!outfit.includes(current)) {
@@ -49,8 +43,8 @@ export default function Related({ productID }) {
     // const found = outfit.find((element) => element.id === current.id);
     // if (!found) {
     const updatedOutfit = [...outfit];
-    if (!updatedOutfit.includes(current)) {
-      updatedOutfit.push(current);
+    if (!updatedOutfit.includes(productID)) {
+      updatedOutfit.push(productID);
       setOutfit(updatedOutfit);
       localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
       console.log('added');
@@ -63,7 +57,7 @@ export default function Related({ productID }) {
     const updatedOutfit = [...outfit];
     // const found = outfit.find((element) => element.id === current.id);
     const found = updatedOutfit.findIndex((element) => element === id);
-    console.log(found)
+    console.log(found);
     if (found !== -1) {
       updatedOutfit.splice(found, 1);
       setOutfit(updatedOutfit);
@@ -76,10 +70,14 @@ export default function Related({ productID }) {
       <List
         current={current}
         related={related}
+        productID={productID}
+        switchProduct={switchProduct}
+        setProductID={setProductID}
       />
       <YourOutfit
         current={current}
         outfit={outfit}
+        productID={productID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
       />

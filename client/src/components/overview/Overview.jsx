@@ -26,7 +26,7 @@ const SideColumn = styled.div`
 `;
 
 function Overview({ productID }) {
-  const [productNum] = useState(productID);
+  const [productNum, setProductNum] = useState(productID);
   const [styleData, setStyleData] = useState([]);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
@@ -82,11 +82,12 @@ function Overview({ productID }) {
   };
 
   useEffect(() => {
+    setProductNum(productID);
     getStyles();
     getProductDeets();
     getReviews();
     getMetaReviews();
-  }, []);
+  }, [productID]);
 
   return (
     <OveviewComp>
