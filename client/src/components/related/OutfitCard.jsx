@@ -68,7 +68,7 @@ export default function OutfitCard( {product, removeFromOutfit } ) {
 
   return (
     <div>
-      <RemoveProduct removeFromOutfit={removeFromOutfit} />
+      <button onClick={() => removeFromOutfit(product)}>X</button>
       <img src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>
