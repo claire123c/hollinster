@@ -50,9 +50,11 @@ export default StyleThumbnail;
 StyleThumbnail.propTypes = {
   style: PropTypes.instanceOf(Object),
   current: PropTypes.number,
+  changeStyle: PropTypes.func,
 };
 
 StyleThumbnail.defaultProps = {
   style: {},
   current: 0,
+  changeStyle: () => {},
 };

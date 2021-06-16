@@ -13,12 +13,12 @@ const CartFormat = styled.div`
 
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
-  const [currentSize, useCurrentSize] = useState(0);
+  const [currentSize, setCurrentSize] = useState(0);
 
   return (
     <div>
       <CartFormat>
-        <Size skus={skus} useCurrentSize={useCurrentSize} />
+        <Size skus={skus} useCurrentSize={setCurrentSize} />
         <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>

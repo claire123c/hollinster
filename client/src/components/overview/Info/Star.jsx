@@ -31,17 +31,17 @@ const ReviewsComp = styled.a`
 `;
 
 function Star({ ratings, results }) {
-  const [stars, useStars] = useState(0);
-  const [showStars, useShowStars] = useState(false);
-  const [showReviews, useShowReviews] = useState(true);
+  const [stars, setStars] = useState(0);
+  const [showStars, setShowStars] = useState(false);
+  const [showReviews, setShowReviews] = useState(true);
 
   useEffect(() => {
-    useStars(averageRating(ratings, useShowStars));
+    setStars(averageRating(ratings, setShowStars));
   }, [ratings]);
 
   useEffect(() => {
     if (results[0] && results[0].display === 'none') {
-      useShowReviews(false);
+      setShowReviews(false);
     }
   }, [results]);
 
