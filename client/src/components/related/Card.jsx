@@ -6,20 +6,23 @@ import Modal from './Modal.jsx';
 import styled from 'styled-components';
 
 const CardWrapper = styled.div`
-  display: grid;
-  overflow: hidden;
-  padding: 0 0 32px;
-  margin: 48px auto 0;
-  width: 300px;
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+  width: 16vw;
+  height: 40vh;
+  margin-right: 2em;
+  user-select: none;
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
 `;
 
 const Image = styled.img`
+  display: block;
   overflow: hidden;
-  max-height: 15rem;
-  max-width: 15rem;
+  max-height: 50%;
+  max-width: 50%;
 `;
 
 export default function Card({ current, product }) {
@@ -134,4 +137,3 @@ Card.propTypes = {
   product: PropTypes.number.isRequired,
   current: PropTypes.number.isRequired,
 };
-

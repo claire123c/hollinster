@@ -8,12 +8,6 @@ export default function Related({ productID }) {
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
 
-  // const addToOutfit = () => {
-  //   if (!outfit.includes(current)) {
-  //     setOutfit(outfit.push(current));
-  //   }
-  // };
-
   useEffect(() => {
     const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
     // if (storedOutfit) {
@@ -21,7 +15,7 @@ export default function Related({ productID }) {
     // } else {
     //   console.log('empty');
     // }
-    storedOutfit ? setOutfit(storedOutfit) : null
+    storedOutfit ? setOutfit(storedOutfit) : null;
   }, []);
 
   useEffect(() => {
@@ -63,7 +57,7 @@ export default function Related({ productID }) {
     const updatedOutfit = [...outfit];
     // const found = outfit.find((element) => element.id === current.id);
     const found = updatedOutfit.findIndex((element) => element === id);
-    console.log(found)
+    console.log(found);
     if (found !== -1) {
       updatedOutfit.splice(found, 1);
       setOutfit(updatedOutfit);
