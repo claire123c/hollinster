@@ -18,7 +18,7 @@ const StyleThumbnails = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-height: 100%;
-  max-width: 350px;
+  width: calc(50vh);
 `;
 
 const AllStylesComp = styled.div`
