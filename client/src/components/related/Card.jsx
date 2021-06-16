@@ -3,9 +3,26 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import CompareButton from './CompareButton.jsx';
 import Modal from './Modal.jsx';
+import styled from 'styled-components';
+
+const CardWrapper = styled.div`
+  display: grid;
+  overflow: hidden;
+  padding: 0 0 32px;
+  margin: 48px auto 0;
+  width: 300px;
+  font-family: Quicksand, arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+`;
+
+const Image = styled.img`
+  overflow: hidden;
+  max-height: 15rem;
+  max-width: 15rem;
+`;
 
 export default function Card({ current, product }) {
-
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -101,22 +118,20 @@ export default function Card({ current, product }) {
   // }, []);
 
   return (
-    <div>
+    <CardWrapper>
       {modal ? <Modal current={current} productData={productData} /> : null}
       <CompareButton showComparison={showComparison} />
-      <img src={image} alt={`A representation of ${name}`} />
+      <Image src={image} alt={`A representation of ${name}`} />
       <div>{category}</div>
       <div>{name}</div>
       <div>{price}</div>
       <div>{rating}</div>
-    </div>
+    </CardWrapper>
   );
 }
 
 Card.propTypes = {
-  product: PropTypes.number,
+  product: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
 };
 
-Card.defaultProps = {
-  product: 25167,
-};

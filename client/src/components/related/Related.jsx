@@ -16,12 +16,12 @@ export default function Related({ productID }) {
 
   useEffect(() => {
     const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
-    if (storedOutfit) {
-      setOutfit(storedOutfit);
-    } else {
-      console.log('empty');
-    }
-    // storedOutfit ? setOutfit(storedOutfit) : null
+    // if (storedOutfit) {
+    //   setOutfit(storedOutfit);
+    // } else {
+    //   console.log('empty');
+    // }
+    storedOutfit ? setOutfit(storedOutfit) : null
   }, []);
 
   useEffect(() => {
