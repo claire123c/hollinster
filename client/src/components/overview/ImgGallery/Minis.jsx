@@ -29,8 +29,6 @@ function Minis(props) {
   const [endI, setEndI] = useState(7);
   const window = 7;
 
-  console.log(showUp, 'up');
-
   useEffect(() => {
     setArray(minis);
   }, [minis]);
