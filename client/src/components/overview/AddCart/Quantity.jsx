@@ -6,6 +6,11 @@ const QuantityBox = styled.div`
   border: 1px solid black;
   margin: 2%;
   padding: 5%;
+
+`;
+
+const QuantityDropDown = styled.select`
+
 `;
 
 function Quantity({ currentSize }) {
@@ -31,9 +36,9 @@ function Quantity({ currentSize }) {
     <QuantityBox>
       {quantity
         ? (
-          <select className="quantity-selector">
+          <QuantityDropDown className="quantity-selector">
             {getQuantities()}
-          </select>
+          </QuantityDropDown>
         ) : '-' }
     </QuantityBox>
   );

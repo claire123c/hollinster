@@ -6,15 +6,27 @@ const SizeSelector = styled.div`
   border: 1px solid black;
   margin: 2%;
   padding: 5%;
+
+`;
+
+const SizeHeader = styled.option`
+
+`;
+
+const SizeDropDown = styled.select`
+
+`;
+
+const SizeOptions = styled.option`
 `;
 
 function Size({ skus, useCurrentSize }) {
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
-        <option value={key} key={key}>
+        <SizeOptions value={key} key={key}>
           {skus[key].size}
-        </option>
+        </SizeOptions>
       );
     }
     return null;
@@ -29,10 +41,10 @@ function Size({ skus, useCurrentSize }) {
     <SizeSelector className="size-selector">
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
-          <select onChange={getCurrentSize} data-testid="selector">
-            <option defaultValue="select">SELECT SIZE</option>
+          <SizeDropDown onChange={getCurrentSize} data-testid="selector">
+            <SizeHeader defaultValue="select">SELECT SIZE</SizeHeader>
             {getSizes()}
-          </select>
+          </SizeDropDown>
         )}
 
     </SizeSelector>
