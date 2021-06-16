@@ -8,12 +8,48 @@ const QuantityBox = styled.div`
   padding: 5%;
 `;
 
-function Quantity(props) {
+function Quantity({ currentSize }) {
+  const { quantity } = currentSize;
+  console.log(currentSize);
+  const getQuantities = () => {
+    let num;
+    let numArray = [];
+    if (quantity > 15) {
+      num = 15;
+    } else {
+      num = quantity;
+    }
+    let i = 0;
+    while (i < num) {
+      numArray.push(
+        <option value={num} key={num}>{num}</option>,
+      );
+      i += 1;
+    }
+    console.log(numArray, 'hiasdf');
+    return numArray;
+  };
   return (
     <QuantityBox>
-      -
+      {quantity
+        ? (
+          <select>
+            {getQuantities()}
+          </select>
+        ) : '-' }
     </QuantityBox>
   );
 }
+
+Quantity.propTypes = {
+  currentSize: PropTypes.shape({
+    quantity: PropTypes.number,
+    size: PropTypes.string,
+  }),
+};
+
+Quantity.defaultProps = {
+  currentSize: { quantity: 0 },
+};
 
 export default Quantity;
