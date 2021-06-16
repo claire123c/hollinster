@@ -5,15 +5,11 @@ import styled from 'styled-components';
 
 import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
+import Cart from './AddCart/Cart.jsx';
 import Freeform from './Info/Freeform.jsx';
 import sampleData from './sampleData.js';
 import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
-
-//TODO: fix 25178 edge case, and quotes
-  //what to do if image isn't the same
-//25172 edge case
-  //what to do if there's an invalid HTML url?
 
 const Top = styled.div`
   display: flex;
@@ -31,10 +27,10 @@ const SideColumn = styled.div`
 
 function Overview({ productID }) {
   const [productNum] = useState(productID);
-  const [styleData, setStyleData] = useState(emptyData.results);
+  const [styleData, setStyleData] = useState([]);
   const [productInfo, setProductInfo] = useState({});
   const [reviews, setReviews] = useState({});
-  const [currentStyle, setCurrentStyle] = useState(emptyData.results[0]);
+  const [currentStyle, setCurrentStyle] = useState({});
   const [rMeta, setrMeta] = useState({});
 
   const findDefaultStyles = (stylesArr) => {
@@ -99,6 +95,7 @@ function Overview({ productID }) {
         <SideColumn>
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
+          <Cart currentStyle={currentStyle} />
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />

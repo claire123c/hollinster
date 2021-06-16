@@ -26,8 +26,8 @@ function Mini(props) {
   };
 
   return (
-    <ThumbnailBox className="minithumbnail" onClick={onClickImgDiv} thumbnail_url={thumbnail_url} currentImg={currentImg}>
-      <Thumbnail className="miniimage" src={thumbnail_url} alt={thumbnail_url} />
+    <ThumbnailBox className="mini-thumbnail" onClick={onClickImgDiv} thumbnail_url={thumbnail_url} currentImg={currentImg}>
+      <Thumbnail className="mini-image" src={thumbnail_url} alt={thumbnail_url} />
     </ThumbnailBox>
   );
 }
