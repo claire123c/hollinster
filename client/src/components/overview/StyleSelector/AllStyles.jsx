@@ -9,6 +9,11 @@ const StyleText = styled.span`
   margin-right: 2%;
 `;
 
+const LessThan = styled.img`
+  width: 10px;
+  margin-bottom: 1px;
+`;
+
 const StyleThumbnails = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -30,7 +35,7 @@ function AllStyles({ styleData, currentStyle, changeStyle }) {
         <StyleText>
           STYLE
           {' '}
-          {'>'}
+          <LessThan src="./assets/is-greater-than-mathematical-sign.png" alt="less-than" />
         </StyleText>
         <span className="style-title">
           {name.toUpperCase()}
