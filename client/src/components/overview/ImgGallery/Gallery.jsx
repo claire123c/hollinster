@@ -11,7 +11,7 @@ const GalleryBox = styled.div`
   overflow: hidden;
   padding: 2%;
 `;
-const Expand = styled.div`
+const Expand = styled.img`
   font-size: 40px;
   float: right;
   min-height: 20px;
@@ -26,7 +26,7 @@ function Gallery({ styles }) {
 
   return (
     <GalleryBox className="gallery" expand={expand}>
-      <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
+      <Expand onClick={onClickExp} className="collapsible" src="./assets/fullscreen.png" />
       <Large
         defaultStyle={styles}
       />

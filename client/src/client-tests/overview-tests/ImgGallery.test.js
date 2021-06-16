@@ -14,7 +14,7 @@ describe('Right Arrow', () => {
   test('Right Arrow changes image after click', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const rightArrow = LargeComp.getByTestId('rightArrowImgGallery');
-    const currentImage = document.querySelector('.defaultview');
+    const currentImage = document.querySelector('.default-view');
     const previousAttr = currentImage.getAttribute('src');
 
     fireEvent.click(rightArrow);
@@ -25,7 +25,7 @@ describe('Right Arrow', () => {
   test('Right Arrow does not change image when at last image', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const rightArrow = LargeComp.getByTestId('rightArrowImgGallery');
-    const currentImage = document.querySelector('.defaultview');
+    const currentImage = document.querySelector('.default-view');
 
     fireEvent.click(rightArrow);
     fireEvent.click(rightArrow);
@@ -46,7 +46,7 @@ describe('Left Arrow', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const rightArrow = LargeComp.getByTestId('rightArrowImgGallery');
     const leftArrow = LargeComp.getByTestId('leftArrowImgGallery');
-    const currentImage = document.querySelector('.defaultview');
+    const currentImage = document.querySelector('.default-view');
 
     fireEvent.click(rightArrow);
     const previousAttr = currentImage.getAttribute('src');
@@ -58,7 +58,7 @@ describe('Left Arrow', () => {
   test('Left Arrow does not change image when at first image', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
     const leftArrow = LargeComp.getByTestId('leftArrowImgGallery');
-    const currentImage = document.querySelector('.defaultview');
+    const currentImage = document.querySelector('.default-view');
     const previousAttr = currentImage.getAttribute('src');
 
     fireEvent.click(leftArrow);
@@ -70,7 +70,7 @@ describe('Left Arrow', () => {
 describe('Click Thumbnails', () => {
   test('Thumbnail changes default image on click', () => {
     const LargeComp = render(<Large defaultStyle={sampleData.results[0]} />);
-    const currentImage = document.querySelector('.defaultview');
+    const currentImage = document.querySelector('.default-view');
     const thumbnail2 = LargeComp.getByAltText('https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
     const previousAttr = currentImage.getAttribute('src');
 
