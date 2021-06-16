@@ -9,9 +9,10 @@ const AddtoBag = styled.div`
   padding: 5%;
 `;
 
-function AddtoCart(props) {
-
-  const addItem = (item) => {
+function AddtoCart({ currentSize, skus }) {
+  console.log(currentSize);
+  console.log(skus);
+  const addItem = () => {
     axios.post('/cart', item)
       .then((response) => {
         console.log(response);
@@ -20,9 +21,18 @@ function AddtoCart(props) {
         console.error(error);
       });
   };
+
+  const checkSkus = () => {
+    if (skus) {
+      if (Object.keys(skus).length > 0) {
+        return true;
+      }
+    }
+    return false;
+  };
   return (
-    <AddtoBag>
-      ADD TO BAG
+    <AddtoBag onClick={addItem}>
+      {checkSkus() ? <button>ADD TO BAG</button> : <></>}
       <span> &#x2b;</span>
     </AddtoBag>
   );

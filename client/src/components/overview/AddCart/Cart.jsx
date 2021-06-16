@@ -22,7 +22,7 @@ function Cart({ currentStyle }) {
         <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>
-        <AddtoCart />
+        <AddtoCart currentSize={currentSize} skus={skus} />
         <StarCart />
       </CartFormat>
     </div>
