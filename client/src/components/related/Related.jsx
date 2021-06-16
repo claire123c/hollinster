@@ -62,12 +62,12 @@ export default function Related({ productID }) {
   const removeFromOutfit = (id) => {
     const updatedOutfit = [...outfit];
     // const found = outfit.find((element) => element.id === current.id);
-    const found = updatedOutfit.findIndex((element) => element === current);
+    const found = updatedOutfit.findIndex((element) => element === id);
     console.log(found)
     if (found !== -1) {
       updatedOutfit.splice(found, 1);
       setOutfit(updatedOutfit);
-      localStorage.setItem('outfit', JSON.stringify(outfit));
+      localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
     }
   };
 
