@@ -5,6 +5,7 @@ import CompareButton from './CompareButton.jsx';
 import Modal from './Modal.jsx';
 
 export default function Card({ current, product }) {
+
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();

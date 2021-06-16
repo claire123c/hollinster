@@ -25,10 +25,10 @@ export default function Related({ productID }) {
   }, []);
 
   useEffect(() => {
-    // axios.get(`/products/${productID}`)
-    //   .then((response) => {
-    //     setCurrent(response.data);
-    //   });
+    axios.get(`/products/${productID}`)
+      .then((response) => {
+        setCurrent(response.data);
+      });
     axios.get(`/products/${productID}/related`)
       .then((response) => {
         setRelated(response.data);
@@ -49,8 +49,8 @@ export default function Related({ productID }) {
     // const found = outfit.find((element) => element.id === current.id);
     // if (!found) {
     const updatedOutfit = [...outfit];
-    if (!updatedOutfit.includes(current)) {
-      updatedOutfit.push(current);
+    if (!updatedOutfit.includes(productID)) {
+      updatedOutfit.push(productID);
       setOutfit(updatedOutfit);
       localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
       console.log('added');
