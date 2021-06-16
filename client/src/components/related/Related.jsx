@@ -3,27 +3,33 @@ import axios from 'axios';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
-export default function Related() {
-  const [current, setCurrent] = useState(25167);
+export default function Related({ productID }) {
+  const [current, setCurrent] = useState(productID);
   const [related, setRelated] = useState([]);
-  const [outfit, setOutfit] = useState([25167, 25168, 25169, 25174, 25173]);
+  const [outfit, setOutfit] = useState([]);
 
-  const addToOutfit = () => {
-    if (!outfit.includes(current)) {
-      setOutfit(outfit.push(current));
-    }
-  };
-
-  // const removeFromOutfit = (selected) => {
-  //   outfit.findIndex((element));
-  // }
+  // const addToOutfit = () => {
+  //   if (!outfit.includes(current)) {
+  //     setOutfit(outfit.push(current));
+  //   }
+  // };
 
   useEffect(() => {
-    axios.get(`/products/${current}`)
-      .then((response) => {
-        setCurrent(response.data);
-      });
-    axios.get(`/products/${current}/related`)
+    const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
+    if (storedOutfit) {
+      setOutfit(storedOutfit);
+    } else {
+      console.log('empty');
+    }
+    // storedOutfit ? setOutfit(storedOutfit) : null
+  }, []);
+
+  useEffect(() => {
+    // axios.get(`/products/${productID}`)
+    //   .then((response) => {
+    //     setCurrent(response.data);
+    //   });
+    axios.get(`/products/${productID}/related`)
       .then((response) => {
         setRelated(response.data);
       })
@@ -32,10 +38,51 @@ export default function Related() {
       });
   }, []);
 
+  const addToOutfit = () => {
+    // if (!outfit.includes(current)) {
+    //   outfit.push(current);
+    //   localStorage.setItem('outfit', JSON.stringify(outfit));
+    //   console.log('added');
+    // } else {
+    //   console.log('already exists');
+
+    // const found = outfit.find((element) => element.id === current.id);
+    // if (!found) {
+    const updatedOutfit = [...outfit];
+    if (!updatedOutfit.includes(current)) {
+      updatedOutfit.push(current);
+      setOutfit(updatedOutfit);
+      localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
+      console.log('added');
+    } else {
+      console.log('already exists');
+    }
+  };
+
+  const removeFromOutfit = (id) => {
+    const updatedOutfit = [...outfit];
+    // const found = outfit.find((element) => element.id === current.id);
+    const found = updatedOutfit.findIndex((element) => element === id);
+    console.log(found)
+    if (found !== -1) {
+      updatedOutfit.splice(found, 1);
+      setOutfit(updatedOutfit);
+      localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
+    }
+  };
+
   return (
     <>
-      <List current={current} related={related} />
-      <YourOutfit outfit={outfit} addToOutfit={addToOutfit} />
+      <List
+        current={current}
+        related={related}
+      />
+      <YourOutfit
+        current={current}
+        outfit={outfit}
+        addToOutfit={addToOutfit}
+        removeFromOutfit={removeFromOutfit}
+      />
     </>
   );
 }

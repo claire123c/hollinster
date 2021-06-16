@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 // import Overview from './overview/Overview.jsx';
-// import Related from './related/Related.jsx';
+import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
@@ -17,7 +17,7 @@ const App = (props) => {
 
       {/* <Overview productID={productID} /> */}
       {/* <Question /> */}
-      {/* <Related /> */}
+      <Related productID={productID} />
       {/* <RatingsReviews productID={productID} /> */}
     </>
   );
