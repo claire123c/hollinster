@@ -38,7 +38,7 @@ function AllStyles({ styleData, currentStyle, changeStyle }) {
           <LessThan src="./assets/is-greater-than-mathematical-sign.png" alt="less-than" />
         </StyleText>
         <span className="style-title">
-          {name.toUpperCase()}
+          {typeof name === 'string' ? name.toUpperCase() : ''}
         </span>
       </div>
       <StyleThumbnails>

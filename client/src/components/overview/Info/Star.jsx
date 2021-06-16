@@ -40,7 +40,7 @@ function Star({ ratings, results }) {
   }, [ratings]);
 
   useEffect(() => {
-    if (results[0].display === 'none') {
+    if (results[0] && results[0].display === 'none') {
       useShowReviews(false);
     }
   }, [results]);

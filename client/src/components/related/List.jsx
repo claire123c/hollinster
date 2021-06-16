@@ -3,7 +3,7 @@ import Card from './Card.jsx';
 import styled from 'styled-components';
 
 const Carousel = styled.div`
-  position: absolute
+  position: relative;
   display: grid;
   grid-auto-flow: column;
   justify-content: left;
@@ -15,7 +15,7 @@ const Carousel = styled.div`
 
 // possible to reuse list twice?
 
-export default function List({ current, related }) {
+export default function List({ current, related, productID, setProductID, switchProduct }) {
   return (
     <Carousel>
       {related.map((product) => (
@@ -23,6 +23,9 @@ export default function List({ current, related }) {
           current={current}
           product={product}
           key={product}
+          productID={productID}
+          switchProduct={switchProduct}
+          setProductID={setProductID}
         />
       ))}
     </Carousel>

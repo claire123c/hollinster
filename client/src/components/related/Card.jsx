@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import styled from 'styled-components';
 import CompareButton from './CompareButton.jsx';
 import Modal from './Modal.jsx';
-import styled from 'styled-components';
 
 const CardWrapper = styled.div`
-  display: inline-grid;
+  display: grid;
   justify-items: center;
   align-items: center;
   width: 16vw;
@@ -25,7 +25,7 @@ const Image = styled.img`
   max-width: 50%;
 `;
 
-export default function Card({ current, product }) {
+export default function Card({ current, product, setProductID, switchProduct }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -121,7 +121,7 @@ export default function Card({ current, product }) {
   // }, []);
 
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => { setProductID(product); }}>
       {modal ? <Modal current={current} productData={productData} /> : null}
       <CompareButton showComparison={showComparison} />
       <Image src={image} alt={`A representation of ${name}`} />
@@ -135,5 +135,4 @@ export default function Card({ current, product }) {
 
 Card.propTypes = {
   product: PropTypes.number.isRequired,
-  current: PropTypes.number.isRequired,
 };

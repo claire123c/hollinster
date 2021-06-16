@@ -3,7 +3,7 @@ import axios from 'axios';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
-export default function Related({ productID }) {
+export default function Related({ productID, setProductID, switchProduct }) {
   const [current, setCurrent] = useState(productID);
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
@@ -70,10 +70,14 @@ export default function Related({ productID }) {
       <List
         current={current}
         related={related}
+        productID={productID}
+        switchProduct={switchProduct}
+        setProductID={setProductID}
       />
       <YourOutfit
         current={current}
         outfit={outfit}
+        productID={productID}
         addToOutfit={addToOutfit}
         removeFromOutfit={removeFromOutfit}
       />
