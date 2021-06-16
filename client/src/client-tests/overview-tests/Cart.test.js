@@ -1,0 +1,37 @@
+/**
+ * @jest-environment jsdom
+ */
+import 'regenerator-runtime/runtime';
+import React from 'react';
+import { screen, fireEvent, render } from '@testing-library/react';
+
+import Size from '../../components/overview/AddCart/Size.jsx';
+import Cart from '../../components/overview/AddCart/Cart.jsx';
+import { sampleData, sampleData2, emptyData } from '../../components/overview/sampleData.js';
+
+describe('Size Selector Display', () => {
+  test('sizes should be displayed if available', () => {
+    const SizeComp = render(<Size skus={sampleData.results[0].skus} />);
+    const sizeElement = SizeComp.getByText('S').innerHTML;
+
+    expect(sizeElement).toBe('S');
+  });
+
+  test('Out of Stock should be displayed if not available', () => {
+    const SizeComp = render(<Size />);
+    const sizeElement = SizeComp.getByText('OUT OF STOCK').innerHTML;
+
+    expect(sizeElement).toBe('OUT OF STOCK');
+  });
+});
+
+describe('Quantity Display', () => {
+  test('quantity should be displayed if available', () => {
+    const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
+    const selector = CartComp.getByTestId('selector');
+    fireEvent.change(selector, { target: { value: 828825 } });
+    const quantity = document.querySelector('.quantity-selector');
+
+    expect(quantity).toBeDefined();
+  });
+});

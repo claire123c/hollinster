@@ -31,7 +31,7 @@ function Quantity({ currentSize }) {
     <QuantityBox>
       {quantity
         ? (
-          <select>
+          <select className="quantity-selector">
             {getQuantities()}
           </select>
         ) : '-' }

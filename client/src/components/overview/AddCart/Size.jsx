@@ -26,10 +26,10 @@ function Size({ skus, useCurrentSize }) {
   };
 
   return (
-    <SizeSelector>
+    <SizeSelector className="size-selector">
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
-          <select onChange={getCurrentSize}>
+          <select onChange={getCurrentSize} data-testid="selector">
             <option defaultValue="select">SELECT SIZE</option>
             {getSizes()}
           </select>
