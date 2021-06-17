@@ -83,7 +83,7 @@ export default function Card({
 
   const toggleModal = () => {
     setModal(!modal);
-  }
+  };
 
   const getProduct = () => axios.get(`/products/${product}`);
 
