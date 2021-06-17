@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import { sampleAnswersList } from './sampleData.js';
+
+const IndividualAnswerRow = styled.div`
+`;
 
 export default function IndividualAnswer() {
   const [answers, setAnswers] = useState(sampleAnswersList.results[0].body);
@@ -35,9 +39,9 @@ export default function IndividualAnswer() {
   };
   // console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
   return (
-    <>
+    <IndividualAnswerRow>
       <span><strong>A:</strong> {answers}</span>
       <p>by {answerUsername}, {stringOfDate} | Helpful? <u onClick={handleAnswerHelpfulness}>Yes</u> ({answerHelpfulnessRating}) | <u onClick={handleReported}>{reported}</u></p>
-    </>
+    </IndividualAnswerRow>
   );
 };
