@@ -68,11 +68,13 @@ function AddtoCart({ currentSize, skus, setShowError }) {
 AddtoCart.propTypes = {
   currentSize: PropTypes.string,
   skus: PropTypes.shape({}),
+  setShowError: PropTypes.func,
 };
 
 AddtoCart.defaultProps = {
   currentSize: 0,
   skus: {},
+  setShowError: () => {},
 };
 
 export default AddtoCart;
