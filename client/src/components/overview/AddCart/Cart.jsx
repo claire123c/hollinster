@@ -26,6 +26,7 @@ function Cart({ currentStyle }) {
         <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>
+        {showError ? 'Please select size' : <></>}
         <AddtoCart currentSize={currentSize} skus={skus} setShowError={setShowError} />
         <StarCart />
       </CartFormat>

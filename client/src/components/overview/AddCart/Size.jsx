@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SizeSelector = styled.div`
-  border: 1px solid black;
-  margin: 2%;
-  padding: 4.5% 2%;
   height: 20%;
   width: 60%;
+  z-index: 9999;
 `;
 
 const Container = styled.div`
-
+  border: 1px solid black;
+  margin: 2%;
+  padding: 4.5% 2%;
+  position: relative;
 `;
 
 const HeaderContainer = styled.ul`
@@ -27,22 +28,27 @@ const SizeHeader = styled.li`
 const SizeDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
-  background-color: silver;
-  margin-top: 11%;
+  margin-top: 8%;
   z-index: 9999;
+  background-color: #F5F4F2;
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
-  overflow-y: scroll;
+  overflow: scroll;
+  position: absolute;
+  width: 90%;
+  height: 300px;
 `;
 
-const SizeOptions = styled.button`
+const SizeOptions = styled.li`
   list-style: none;
   padding: 3%;
   margin: 1%;
-  width: 97%;
-
+  width: 90%;
   z-index: 9999;
   border: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+  }
 `;
 
 const ListContainer = styled.div`
@@ -56,7 +62,7 @@ const ArrowImg = styled.img`
 function Size({ skus, useCurrentSize, showError, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
   let imageSource = './assets/down-chevron.png';
-
+  console.log(skus);
   if (!isOpen) {
     imageSource = './assets/down-chevron.png';
   } else {
@@ -92,7 +98,7 @@ function Size({ skus, useCurrentSize, showError, setShowError }) {
   if (!isOpen) {
     return (
       <SizeSelector className="size-selector">
-        {showError ? 'Please select size' : <></>}
+        {showError ? 'Please select size' : ''}
         <Container>
           <HeaderContainer>
             <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
