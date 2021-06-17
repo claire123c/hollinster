@@ -6,15 +6,27 @@ const SizeSelector = styled.div`
   border: 1px solid black;
   margin: 2%;
   padding: 5%;
+
 `;
 
-function Size({ skus, useCurrentSize }) {
+const SizeHeader = styled.option`
+
+`;
+
+const SizeDropDown = styled.select`
+
+`;
+
+const SizeOptions = styled.option`
+`;
+
+function Size({ skus, useCurrentSize, showError }) {
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
-        <option value={key} key={key}>
+        <SizeOptions value={key} key={key}>
           {skus[key].size}
-        </option>
+        </SizeOptions>
       );
     }
     return null;
@@ -27,12 +39,13 @@ function Size({ skus, useCurrentSize }) {
 
   return (
     <SizeSelector className="size-selector">
+      {showError ? 'Please select size' : ''}
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
-          <select onChange={getCurrentSize} data-testid="selector">
-            <option defaultValue="select">SELECT SIZE</option>
+          <SizeDropDown onChange={getCurrentSize} data-testid="selector">
+            <SizeHeader defaultValue="select">SELECT SIZE</SizeHeader>
             {getSizes()}
-          </select>
+          </SizeDropDown>
         )}
 
     </SizeSelector>
@@ -42,11 +55,13 @@ function Size({ skus, useCurrentSize }) {
 Size.propTypes = {
   skus: PropTypes.shape({}),
   useCurrentSize: PropTypes.func,
+  showError: PropTypes.bool,
 };
 
 Size.defaultProps = {
   skus: {},
   useCurrentSize: () => {},
+  showError: false,
 };
 
 export default Size;

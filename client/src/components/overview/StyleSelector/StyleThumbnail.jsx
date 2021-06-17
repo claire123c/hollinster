@@ -10,8 +10,8 @@ const StylePhoto = styled.img`
   max-height: 100%;
   max-width: 100%;
   border-radius: 50%;
-  height: 65px;
-  width: 65px;
+  height: calc(9vh);
+  width: calc(9vh);
   border: 1px solid rgb(72,72,72);
   margin: 8px;
 `;
@@ -50,9 +50,11 @@ export default StyleThumbnail;
 StyleThumbnail.propTypes = {
   style: PropTypes.instanceOf(Object),
   current: PropTypes.number,
+  changeStyle: PropTypes.func,
 };
 
 StyleThumbnail.defaultProps = {
   style: {},
   current: 0,
+  changeStyle: () => {},
 };

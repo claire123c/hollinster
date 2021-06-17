@@ -13,16 +13,17 @@ const CartFormat = styled.div`
 
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
-  const [currentSize, useCurrentSize] = useState(0);
+  const [currentSize, setCurrentSize] = useState('SELECT SIZE');
+  const [showError, setShowError] = useState(false);
 
   return (
     <div>
       <CartFormat>
-        <Size skus={skus} useCurrentSize={useCurrentSize} />
+        <Size skus={skus} useCurrentSize={setCurrentSize} showError={showError} />
         <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>
-        <AddtoCart />
+        <AddtoCart currentSize={currentSize} skus={skus} setShowError={setShowError} />
         <StarCart />
       </CartFormat>
     </div>

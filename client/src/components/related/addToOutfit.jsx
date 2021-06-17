@@ -17,7 +17,7 @@ const CardWrapper = styled.div`
 export default function AddToOutfit( {addToOutfit} ) {
   return (
     <CardWrapper onClick={addToOutfit}>
-      +
+      <h1>+</h1>
     </CardWrapper>
   );
 }

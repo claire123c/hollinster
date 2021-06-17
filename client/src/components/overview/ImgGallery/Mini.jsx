@@ -13,8 +13,8 @@ const ThumbnailBox = styled.div`
   border-bottom: ${(props) => (props.thumbnail_url === props.currentImg.thumbnail_url ? 'solid rgb(72,72,72) 5px' : 'solid rgb(232,232,232)')};
   outline: solid rgb(72,72,72) 1px;
   padding: 5%;
-  width: 50px;
-  height: 50px;
+  width: calc(7vh);
+  height: calc(7vh);
   margin: 17% 0%;
 `;
 
@@ -35,8 +35,15 @@ function Mini(props) {
 export default Mini;
 
 Mini.propTypes = {
-  mini: PropTypes.object,
+  mini: PropTypes.shape({}),
   onClickThu: PropTypes.func,
-  currentImg: PropTypes.object,
+  currentImg: PropTypes.shape({}),
   i: PropTypes.number,
+};
+
+Mini.defaultProps = {
+  mini: {},
+  onClickThu: () => {},
+  currentImg: {},
+  i: 0,
 };

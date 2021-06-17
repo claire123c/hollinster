@@ -17,15 +17,16 @@ const App = (props) => {
   return (
     <>
       <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
-      <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
+      <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
+
       <Overview productID={productID} />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <Question />
-      <RatingsReviews productID={productID} />
+      {/* <Question /> */}
+      {/* <RatingsReviews productID={productID} /> */}
     </>
   );
 };
 
-//attribute free icon flaticon at bottom of website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+// attribute free icon flaticon at bottom of website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 export default App;
