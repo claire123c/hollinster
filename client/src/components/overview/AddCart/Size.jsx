@@ -20,7 +20,7 @@ const SizeDropDown = styled.select`
 const SizeOptions = styled.option`
 `;
 
-function Size({ skus, useCurrentSize }) {
+function Size({ skus, useCurrentSize, showError }) {
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
@@ -39,6 +39,7 @@ function Size({ skus, useCurrentSize }) {
 
   return (
     <SizeSelector className="size-selector">
+      {showError ? 'Please select size' : ''}
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
           <SizeDropDown onChange={getCurrentSize} data-testid="selector">
@@ -54,11 +55,13 @@ function Size({ skus, useCurrentSize }) {
 Size.propTypes = {
   skus: PropTypes.shape({}),
   useCurrentSize: PropTypes.func,
+  showError: PropTypes.bool,
 };
 
 Size.defaultProps = {
   skus: {},
   useCurrentSize: () => {},
+  showError: false,
 };
 
 export default Size;

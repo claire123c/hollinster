@@ -9,17 +9,21 @@ const AddtoBag = styled.div`
   padding: 5%;
 `;
 
-function AddtoCart({ currentSize, skus }) {
+function AddtoCart({ currentSize, skus, setShowError }) {
   console.log(currentSize);
   console.log(skus);
   const addItem = () => {
-    axios.post('/cart', item)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (currentSize === 0) {
+      setShowError(true);
+    } else {
+      axios.post('/cart', item)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   const checkSkus = () => {
