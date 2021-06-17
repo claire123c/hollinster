@@ -9,6 +9,7 @@ import StarCart from './StarCart.jsx';
 
 const CartFormat = styled.div`
   display: flex;
+  height: 10%;
 `;
 
 function Cart({ currentStyle }) {

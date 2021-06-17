@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 const StarBox = styled.div`
   border: 1px solid black;
-  margin: 2%;
-  padding: 4% 5%;
-  height: 10%;
+  margin: auto;
+  padding: 3.3% 4%;
+  text-align: center;
 `;
 
 function StarCart(props) {

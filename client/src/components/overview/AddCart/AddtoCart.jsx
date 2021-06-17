@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const AddtoBag = styled.div`
-  margin: 2%;
+  margin: auto;
   width: 80%;
-  height: 10%;
+  height: 80%;
 `;
 
 const BagButton = styled.button`
   background-color: transparent;
   border: 1px solid black;
-  padding: 5% 0;
+  padding: 1% 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;

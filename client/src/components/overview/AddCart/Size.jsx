@@ -18,7 +18,7 @@ const HeaderContainer = styled.ul`
 const SizeHeader = styled.li`
   list-style: none;
   margin: 3%;
-  width: 80%;r
+  width: 80%;
 `;
 
 const SizeDropDown = styled.ul`
