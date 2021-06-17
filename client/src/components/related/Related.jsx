@@ -78,21 +78,27 @@ export default function Related({ productID, setProductID, switchProduct }) {
   };
 
   return (
-    <Carousel>
-      <List
-        current={current}
-        related={related}
-        productID={productID}
-        switchProduct={switchProduct}
-        setProductID={setProductID}
-      />
-      <YourOutfit
-        current={current}
-        outfit={outfit}
-        productID={productID}
-        addToOutfit={addToOutfit}
-        removeFromOutfit={removeFromOutfit}
-      />
-    </Carousel>
+    <>
+      <h1>RELATED PRODUCTS</h1>
+      <Carousel>
+        <List
+          current={current}
+          related={related}
+          productID={productID}
+          switchProduct={switchProduct}
+          setProductID={setProductID}
+        />
+      </Carousel>
+      <h1>YOUR OUTFIT</h1>
+      <Carousel>
+        <YourOutfit
+          current={current}
+          outfit={outfit}
+          productID={productID}
+          addToOutfit={addToOutfit}
+          removeFromOutfit={removeFromOutfit}
+        />
+      </Carousel>
+    </>
   );
 }

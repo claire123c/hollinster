@@ -5,8 +5,8 @@ const CardWrapper = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  width: 18em;
-  height: 24em;
+  width: 24em;
+  height: 36em;
   margin: 1em;
   user-select: none;
   font-family: Quicksand, arial, sans-serif;

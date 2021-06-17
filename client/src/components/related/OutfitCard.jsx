@@ -1,9 +1,42 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import RemoveProduct from './RemoveProduct.jsx'
 
-export default function OutfitCard( {product, removeFromOutfit } ) {
+const CardWrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width: 24em;
+  height: 36em;
+  margin: 1em;
+  user-select: none;
+  font-family: Quicksand, arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+`;
+
+const Image = styled.img`
+  width: 95%;
+  height: 24rem;
+  object-fit: cover;
+`;
+
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  `;
+
+const Text = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  `;
+
+export default function OutfitCard({ product, removeFromOutfit }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -67,13 +100,13 @@ export default function OutfitCard( {product, removeFromOutfit } ) {
   }, []);
 
   return (
-    <div>
+    <CardWrapper>
       <button onClick={() => removeFromOutfit(product)}>X</button>
-      <img src={image} alt={`A representation of ${name}`} />
-      <div>{category}</div>
-      <div>{name}</div>
-      <div>{price}</div>
-      <div>{rating}</div>
-    </div>
+      <Image img src={image} alt={`A representation of ${name}`} />
+      <Text>{category}</Text>
+      <Text>{name}</Text>
+      <Text>{price}</Text>
+      <Text>{rating}</Text>
+    </CardWrapper>
   );
 }
