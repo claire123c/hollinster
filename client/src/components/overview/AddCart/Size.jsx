@@ -15,12 +15,12 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.ul`
+  list-style: none;
   padding: 0;
   margin: 0;
   font-weight: bold;
 `;
 const SizeHeader = styled.li`
-  list-style: none;
 
 `;
 
@@ -30,17 +30,23 @@ const SizeDropDown = styled.div`
   background-color: silver;
   margin-top: 11%;
   z-index: 9999;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  overflow-y: scroll;
 `;
 
 const SizeOptions = styled.button`
   list-style: none;
   padding: 3%;
-  margin: 2%;
-  width: 80%;
-  overflow-y: scroll;
+  margin: 1%;
+  width: 97%;
+
+  z-index: 9999;
+  border: none;
 `;
 
 const ListContainer = styled.div`
+  z-index: 9999;
 `;
 const ArrowImg = styled.img`
   height: 15px;

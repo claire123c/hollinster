@@ -10,6 +10,7 @@ const GalleryBox = styled.div`
   background-color: rgb(232,232,232);
   overflow: hidden;
   padding: 2%;
+
 `;
 const Expand = styled.img`
   font-size: 40px;
