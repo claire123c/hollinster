@@ -6,6 +6,9 @@ const SizeSelector = styled.div`
   height: 20%;
   width: 60%;
   z-index: 9999;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+  }
 `;
 
 const Container = styled.div`
