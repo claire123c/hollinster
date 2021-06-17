@@ -9,12 +9,19 @@ const SizeSelector = styled.div`
   width: 60%;
 `;
 
-const SizeHeader = styled.div`
+const Container = styled.div`
+`;
 
+const HeaderContainer = styled.ul`
+  padding: 0;
+`;
+const SizeHeader = styled.li`
+  list-style: none;
+  margin: 3%;
+  width: 80%;r
 `;
 
 const SizeDropDown = styled.ul`
-  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
   z-index: 2;
   padding: 0;
 `;
@@ -31,7 +38,7 @@ const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
   height: 2%;
-  margin-left: 40%;
+  margin-left: 35%;
 `;
 
 function Size({ skus, useCurrentSize, showError }) {
@@ -66,21 +73,42 @@ function Size({ skus, useCurrentSize, showError }) {
     }
   };
 
-  return (
-    <SizeSelector className="size-selector">
-      {showError ? 'Please select size' : ''}
-      {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
-        : (
-          <ListContainer>
+  if (Object.keys(skus).length === 0) {
+    return ('OUT OF STOCK');
+  }
+
+  if (!isOpen) {
+    return (
+      <SizeSelector className="size-selector">
+        {showError ? 'Please select size' : <></>}
+        <Container>
+          <HeaderContainer>
             <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
               SELECT SIZE
               <ArrowImg src={imageSource} alt="arrows" />
             </SizeHeader>
-            <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
-              {getSizes()}
-            </SizeDropDown>
-          </ListContainer>
-        )}
+          </HeaderContainer>
+        </Container>
+      </SizeSelector>
+    );
+  }
+
+  return (
+    <SizeSelector className="size-selector">
+      {showError ? 'Please select size' : <></>}
+      <Container>
+        <HeaderContainer>
+          <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
+            SELECT SIZE
+            <ArrowImg src={imageSource} alt="arrows" />
+          </SizeHeader>
+        </HeaderContainer>
+        <ListContainer>
+          <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
+            {getSizes()}
+          </SizeDropDown>
+        </ListContainer>
+      </Container>
     </SizeSelector>
   );
 }
