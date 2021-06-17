@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const AddtoBag = styled.div`
-  margin: auto;
   width: 80%;
   height: 80%;
 `;

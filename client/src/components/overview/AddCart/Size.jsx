@@ -4,26 +4,28 @@ import styled from 'styled-components';
 
 const SizeSelector = styled.div`
   border: 1px solid black;
-  padding: 5%;
   margin: 2%;
+  padding: 4.5% 2%;
   height: 20%;
   width: 60%;
+  z-index: 2;
 `;
 
 const Container = styled.div`
+
 `;
 
 const HeaderContainer = styled.ul`
   padding: 0;
+  margin: 0;
 `;
 const SizeHeader = styled.li`
   list-style: none;
-  margin: 3%;
-  width: 80%;
+
 `;
 
 const SizeDropDown = styled.ul`
-  z-index: 2;
+
   padding: 0;
 `;
 
@@ -38,8 +40,8 @@ const SizeOptions = styled.li`
 const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
-  height: 2%;
-  margin-left: 10%;
+  height: 15px;
+  margin-left: 40%;
 `;
 
 function Size({ skus, useCurrentSize, showError }) {
