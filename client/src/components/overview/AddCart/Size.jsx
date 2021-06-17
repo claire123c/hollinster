@@ -8,7 +8,7 @@ const SizeSelector = styled.div`
   padding: 4.5% 2%;
   height: 20%;
   width: 60%;
-  z-index: 2;
+  z-index: 5;
 `;
 
 const Container = styled.div`
@@ -26,16 +26,18 @@ const SizeHeader = styled.li`
 `;
 
 const SizeDropDown = styled.ul`
-
+  border: 1px solid black;
   padding: 0;
+  background-color: silver;
+  margin-top: 11%;
 `;
 
 const SizeOptions = styled.li`
   list-style: none;
-  border: 1px solid black;
   padding: 7%;
   margin: 3%;
   width: 80%;
+  overflow-y: scroll;
 `;
 
 const ListContainer = styled.div`
