@@ -9,7 +9,7 @@ const SizeSelector = styled.div`
 
 `;
 
-const SizeHeader = styled.li`
+const SizeHeader = styled.div`
 
 `;
 
@@ -39,15 +39,15 @@ function Size({ skus, useCurrentSize, showError }) {
     imageSource = './assets/up-arrow.png';
   }
 
-  const clickOption = (value) => {
-    setSelectedOption(valsue);
+  const clickOption = (event) => {
+    setSelectedOption(event.target.value);
     setIsOpen(false);
   };
 
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
-        <SizeOptions value={key} key={key}>
+        <SizeOptions value={key} key={key} onClick={clickOption}>
           {skus[key].size}
         </SizeOptions>
       );
