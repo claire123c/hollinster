@@ -6,8 +6,6 @@ import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
-
-
 const App = (props) => {
   const [test, setTest] = useState(true);
   const [productID, setProductID] = useState(25167);
