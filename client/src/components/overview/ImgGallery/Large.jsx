@@ -48,65 +48,65 @@ const LeftArrow = styled.img`
 function Large(props) {
   const { defaultStyle } = props;
   const { photos } = defaultStyle;
-  const [currentImgIndex, usecurrentImgIndex] = useState(0);
-  const [currentImg, useCurrentImg] = useState(photos ? photos[currentImgIndex] : { url: '' });
-  const [allImgs, useAllImgs] = useState(photos);
-  const [leftClicked, useLeftClicked] = useState(false);
-  const [rightClicked, useRightClicked] = useState(false);
-  const [leftArrow, useLeftArrow] = useState(false);
-  const [rightArrow, useRightArrow] = useState(true);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [currentImg, setCurrentImg] = useState(photos ? photos[currentImgIndex] : { url: '' });
+  const [allImgs, setAllImgs] = useState(photos);
+  const [leftClicked, setLeftClicked] = useState(false);
+  const [rightClicked, setRightClicked] = useState(false);
+  const [leftArrow, setLeftArrow] = useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
 
   useEffect(() => {
-    if (photos && photos.length <= 1) {
-      useRightArrow(false);
+    if (photos && photos.length === 1) {
+      setRightArrow(false);
     } else {
-      useRightArrow(true);
+      setRightArrow(true);
     }
   }, [props]);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
-      usecurrentImgIndex(currentImgIndex - 1);
-      useCurrentImg(photos[currentImgIndex - 1]);
-      useLeftClicked(!leftClicked);
-      useRightArrow(true);
+      setCurrentImgIndex(currentImgIndex - 1);
+      setCurrentImg(photos[currentImgIndex - 1]);
+      setLeftClicked(!leftClicked);
+      setRightArrow(true);
       if (currentImgIndex === 1) {
-        useLeftArrow(false);
+        setLeftArrow(false);
       }
     }
   };
   const rightButtonOnClick = () => {
     if (photos[currentImgIndex + 1] !== undefined) {
-      usecurrentImgIndex(currentImgIndex + 1);
-      useCurrentImg(photos[currentImgIndex + 1]);
-      useRightClicked(!rightClicked);
-      useLeftArrow(true);
+      setCurrentImgIndex(currentImgIndex + 1);
+      setCurrentImg(photos[currentImgIndex + 1]);
+      setRightClicked(!rightClicked);
+      setLeftArrow(true);
       if (currentImgIndex === photos.length - 2) {
-        useRightArrow(false);
+        setRightArrow(false);
       }
     }
   };
   const onClickThu = (current, i) => {
-    useCurrentImg(current);
-    usecurrentImgIndex(i);
+    setCurrentImg(current);
+    setCurrentImgIndex(i);
     if (photos.length > 1) {
       if (i === 0) {
-        useLeftArrow(false);
-        useRightArrow(true);
+        setLeftArrow(false);
+        setRightArrow(true);
       } else if (i === photos.length - 1) {
-        useLeftArrow(true);
-        useRightArrow(false);
+        setLeftArrow(true);
+        setRightArrow(false);
       } else {
-        useLeftArrow(true);
-        useRightArrow(true);
+        setLeftArrow(true);
+        setRightArrow(true);
       }
     }
   };
 
   useEffect(() => {
-    usecurrentImgIndex(0);
-    useCurrentImg(photos ? photos[0] : { url: '' });
-    useAllImgs(photos);
+    setCurrentImgIndex(0);
+    setCurrentImg(photos ? photos[0] : { url: '' });
+    setAllImgs(photos);
   }, [props]);
 
   return (
