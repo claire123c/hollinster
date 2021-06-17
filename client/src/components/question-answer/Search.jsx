@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const QuestionSearchInput = styled.input`
   width: 100%;
   height: 50px;
-  margin: 3% 0;
+  margin: 1% 0;
   ::placeholder,
   ::-webkit-input-placeholder {
     font-weight: 600;
@@ -12,7 +12,6 @@ const QuestionSearchInput = styled.input`
     padding-left: 3%;
   }
 `;
-
 
 export default function Search() {
   const [search, setSearch] = useState('');

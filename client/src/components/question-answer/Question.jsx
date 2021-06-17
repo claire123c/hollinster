@@ -9,11 +9,12 @@ const QuestionContainer = styled.div`
   color: #343a40;
 `;
 
-export default function Question() {
+export default function Question(props) {
   // const [ product, setProduct ] = useState({});
   const [arrOfQuestions, setArrOfQuestions] = useState([]);
   // console.log('question list:', sampleQuestionsList, 'answer list', sampleAnswersList.results);
-  const productID = '25168'; // hard ID for now, try to draw id located in App
+  // const productID = '25168'; // hard ID for now, try to draw id located in App
+  let productID = props.productID;
 
   useEffect(() => {
     axios.get(`/qa/questions/${productID}`)
