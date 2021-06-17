@@ -19,7 +19,7 @@ const Modal = styled.div`
   left: 40%;
   top: 40%;
   padding: 20px;
-  
+
   `;
 
 const ModalText = styled.div`
@@ -76,6 +76,8 @@ export default function ComparisonModal({ current, productData }) {
     }
     return results.map((feature, i) => (<Comparison feature={feature} key={i} />));
   };
+
+  // checkmark &#10003
 
   // const combinedFeatures = () => {
   //   const results = [];

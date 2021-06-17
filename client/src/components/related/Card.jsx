@@ -34,13 +34,11 @@ const Background = styled.div`
   `;
 
 const Text = styled.div`
-  
-
   font-family: 'Open Sans', sans-serif;
   `;
-
 const Star = styled.div`
-  &:hover {
+  position:
+  &:hover { background-color: black;
   }
 `;
 
@@ -151,8 +149,8 @@ export default function Card({
         )
         : null}
       <CardWrapper>
-        <Star onClick={toggleModal}>&#9734;</Star>
         {/* <CompareButton showComparison={showComparison} /> */}
+        <Star onClick={toggleModal}>&#9734;</Star>
         <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
         <Text>{category}</Text>
         <Text>{name}</Text>
