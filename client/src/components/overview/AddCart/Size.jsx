@@ -6,7 +6,7 @@ const SizeSelector = styled.div`
   border: 1px solid black;
   margin: 2%;
   padding: 5%;
-
+  width: 60%;
 `;
 
 const SizeHeader = styled.div`
@@ -19,13 +19,17 @@ const SizeDropDown = styled.ul`
 `;
 
 const SizeOptions = styled.li`
+  list-style: none;
+  border: 1px solid black;
+  padding: 10%;
+  margin: 2%;
 `;
 
 const ListContainer = styled.div`
 `;
-const DownArrowImg = styled.img`
-  height: 4%;
-  margin-left: 10%;
+const ArrowImg = styled.img`
+  height: 2%;
+  margin-left: 30%;
 `;
 
 function Size({ skus, useCurrentSize, showError }) {
@@ -68,14 +72,13 @@ function Size({ skus, useCurrentSize, showError }) {
           <ListContainer>
             <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
               SELECT SIZE
-              <DownArrowImg src={imageSource} alt="down-arrow" />
+              <ArrowImg src={imageSource} alt="down-arrow" />
             </SizeHeader>
             <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
               {getSizes()}
             </SizeDropDown>
           </ListContainer>
         )}
-
     </SizeSelector>
   );
 }
