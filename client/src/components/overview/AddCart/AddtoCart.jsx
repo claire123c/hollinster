@@ -6,18 +6,19 @@ import axios from 'axios';
 const AddtoBag = styled.div`
   margin: 2%;
   width: 80%;
-  height: 20%;
+  height: 10%;
 `;
 
 const BagButton = styled.button`
   background-color: transparent;
   border: 1px solid black;
-  padding: 7% 0;
+  padding: 5% 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
   width: 100%;
+  height: 100%;
   font-weight: bold
 `;
 

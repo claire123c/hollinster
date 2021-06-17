@@ -22,7 +22,7 @@ const OveviewComp = styled.div`
 
 const SideColumn = styled.div`
   padding: 2%;
-  max-width: 38%;
+  max-width: 40%;
 `;
 
 function Overview({ productID }) {
@@ -96,7 +96,7 @@ function Overview({ productID }) {
     <OveviewComp>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
-        <SideColumn>
+        <SideColumn className="side-column">
           <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
           <Cart currentStyle={currentStyle} />
