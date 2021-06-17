@@ -9,18 +9,29 @@ const SizeSelector = styled.div`
 
 `;
 
-const SizeHeader = styled.option`
+const SizeHeader = styled.li`
 
 `;
 
-const SizeDropDown = styled.select`
-
+const SizeDropDown = styled.ul`
+  visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
 `;
 
-const SizeOptions = styled.option`
+const SizeOptions = styled.li`
+`;
+
+const ListContainer = styled.div`
 `;
 
 function Size({ skus, useCurrentSize, showError }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('SELECT SIZE');
+
+  const clickOption = (value) => {
+    setSelectedOption(value);
+    setIsOpen(false);
+  };
+
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
@@ -42,10 +53,12 @@ function Size({ skus, useCurrentSize, showError }) {
       {showError ? 'Please select size' : ''}
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
-          <SizeDropDown onChange={getCurrentSize} data-testid="selector">
-            <SizeHeader defaultValue="select">SELECT SIZE</SizeHeader>
-            {getSizes()}
-          </SizeDropDown>
+          <ListContainer>
+            <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>SELECT SIZE</SizeHeader>
+            <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
+              {getSizes()}
+            </SizeDropDown>
+          </ListContainer>
         )}
 
     </SizeSelector>

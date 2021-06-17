@@ -6,12 +6,12 @@ import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
+
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
   background-color: teal;
   margin: 0 10%;
   padding: 2%;
-
 `;
 
 const KangaImg = styled.img`
@@ -57,11 +57,10 @@ const App = (props) => {
         </Search>
       </LogoBar>
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
-
       <Overview productID={productID} />
-      {/* <Question /> */}
-      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} /> */}
-      {/* <RatingsReviews productID={productID} /> */}
+      {/* <Question />
+      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
+      <RatingsReviews productID={productID} /> */}
     </>
   );
 };
