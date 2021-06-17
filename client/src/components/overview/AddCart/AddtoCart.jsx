@@ -13,7 +13,7 @@ function AddtoCart({ currentSize, skus, setShowError }) {
   console.log(currentSize);
   console.log(skus);
   const addItem = () => {
-    if (currentSize === 0) {
+    if (currentSize === 'SELECT SIZE') {
       setShowError(true);
     } else {
       axios.post('/cart', { sku_id: currentSize })
@@ -41,5 +41,15 @@ function AddtoCart({ currentSize, skus, setShowError }) {
     </AddtoBag>
   );
 }
+
+AddtoCart.propTypes = {
+  currentSize: PropTypes.string,
+  skus: PropTypes.shape({}),
+};
+
+AddtoCart.defaultProps = {
+  currentSize: 0,
+  skus: {},
+};
 
 export default AddtoCart;

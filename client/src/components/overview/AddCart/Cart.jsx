@@ -13,7 +13,7 @@ const CartFormat = styled.div`
 
 function Cart({ currentStyle }) {
   const { skus } = currentStyle;
-  const [currentSize, setCurrentSize] = useState(0);
+  const [currentSize, setCurrentSize] = useState('SELECT SIZE');
   const [showError, setShowError] = useState(false);
 
   return (
