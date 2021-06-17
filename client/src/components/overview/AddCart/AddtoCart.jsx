@@ -10,19 +10,21 @@ const AddtoBag = styled.div`
 `;
 
 const BagButton = styled.button`
-  background: transparent
-  border: none;
+  background-color: transparent;
+  border: 1px solid black;
   padding: 7% 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
   width: 100%;
+  font-weight: bold
 `;
 
 const Plus = styled.span`
-  margin-left: 40%;
+  margin-left: 54%;
   font-size: 20px;
+  font-weight: normal;
 `;
 
 function AddtoCart({ currentSize, skus, setShowError }) {
