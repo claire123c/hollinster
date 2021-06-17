@@ -4,9 +4,25 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const AddtoBag = styled.div`
-  border: 1px solid black;
   margin: 2%;
-  padding: 5%;
+  width: 80%;
+  height: 20%;
+`;
+
+const BagButton = styled.button`
+  background: transparent
+  border: none;
+  padding: 7% 0;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+`;
+
+const Plus = styled.span`
+  margin-left: 40%;
+  font-size: 20px;
 `;
 
 function AddtoCart({ currentSize, skus, setShowError }) {
@@ -36,8 +52,12 @@ function AddtoCart({ currentSize, skus, setShowError }) {
   };
   return (
     <AddtoBag onClick={addItem}>
-      {checkSkus() ? <button>ADD TO BAG</button> : <></>}
-      <span> &#x2b;</span>
+      {checkSkus() ? (
+        <BagButton type="button">
+          ADD TO BAG
+          <Plus>+</Plus>
+        </BagButton>
+      ) : <></>}
     </AddtoBag>
   );
 }
