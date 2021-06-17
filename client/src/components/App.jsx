@@ -6,6 +6,8 @@ import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
+
+
 const App = (props) => {
   const [test, setTest] = useState(true);
   const [productID, setProductID] = useState(25167);
@@ -18,10 +20,9 @@ const App = (props) => {
     <>
       <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
       <button onClick={() => {setTest(!test)}}>{test.toString()}</button>
-
       <Overview productID={productID} />
-      {/* <Question /> */}
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
+      {/* <Question /> */}
       {/* <RatingsReviews productID={productID} /> */}
     </>
   );
