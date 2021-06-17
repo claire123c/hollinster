@@ -49,7 +49,6 @@ const ArrowImg = styled.img`
 
 function Size({ skus, useCurrentSize, showError, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('SELECT SIZE');
   let imageSource = './assets/down-chevron.png';
 
   if (!isOpen) {
@@ -59,7 +58,7 @@ function Size({ skus, useCurrentSize, showError, setShowError }) {
   }
 
   const clickOption = (event) => {
-    setSelectedOption(event.target.value);
+    useCurrentSize(event.target.value);
     setIsOpen(false);
     setShowError(false);
   };
