@@ -15,6 +15,7 @@ const SizeHeader = styled.li`
 
 const SizeDropDown = styled.ul`
   visibility: ${(props) => (props.isOpen ? 'visible' : 'hidden')};
+  z-index: 2;
 `;
 
 const SizeOptions = styled.li`
@@ -22,13 +23,24 @@ const SizeOptions = styled.li`
 
 const ListContainer = styled.div`
 `;
+const DownArrowImg = styled.img`
+  height: 4%;
+  margin-left: 10%;
+`;
 
 function Size({ skus, useCurrentSize, showError }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('SELECT SIZE');
+  let imageSource = './assets/down-arrow.png';
+
+  if (!isOpen) {
+    imageSource = './assets/down-arrow.png';
+  } else {
+    imageSource = './assets/up-arrow.png';
+  }
 
   const clickOption = (value) => {
-    setSelectedOption(value);
+    setSelectedOption(valsue);
     setIsOpen(false);
   };
 
@@ -54,7 +66,10 @@ function Size({ skus, useCurrentSize, showError }) {
       {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
         : (
           <ListContainer>
-            <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>SELECT SIZE</SizeHeader>
+            <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
+              SELECT SIZE
+              <DownArrowImg src={imageSource} alt="down-arrow" />
+            </SizeHeader>
             <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
               {getSizes()}
             </SizeDropDown>
