@@ -5,17 +5,20 @@ import styled from 'styled-components';
 const SizeSelector = styled.div`
   height: 20%;
   width: 60%;
-  z-index: 9999;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
   }
+  margin: 2%;
+  padding: 5%;
+  text-align: center;
+  border: 1px solid black;
 `;
 
 const Container = styled.div`
-  border: 1px solid black;
-  margin: 2%;
-  padding: 4.5% 2%;
   position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5%;
 `;
 
 const HeaderContainer = styled.ul`
@@ -32,7 +35,7 @@ const SizeDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
   margin-top: 8%;
-  z-index: 9999;
+  z-index: 2;
   background-color: #F5F4F2;
   border: 1px solid rgba(0, 0, 0, 0.04);
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
@@ -47,7 +50,6 @@ const SizeOptions = styled.li`
   padding: 3%;
   margin: 1%;
   width: 90%;
-  z-index: 9999;
   border: none;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
@@ -55,17 +57,15 @@ const SizeOptions = styled.li`
 `;
 
 const ListContainer = styled.div`
-  z-index: 9999;
 `;
 const ArrowImg = styled.img`
   height: 15px;
   margin-left: 40%;
 `;
 
-function Size({ skus, useCurrentSize, showError, setShowError }) {
+function Size({ skus, useCurrentSize, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
   let imageSource = './assets/down-chevron.png';
-  console.log(skus);
   if (!isOpen) {
     imageSource = './assets/down-chevron.png';
   } else {
@@ -101,7 +101,6 @@ function Size({ skus, useCurrentSize, showError, setShowError }) {
   if (!isOpen) {
     return (
       <SizeSelector className="size-selector">
-        {showError ? 'Please select size' : ''}
         <Container>
           <HeaderContainer>
             <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
@@ -116,7 +115,6 @@ function Size({ skus, useCurrentSize, showError, setShowError }) {
 
   return (
     <SizeSelector className="size-selector">
-      {showError ? 'Please select size' : <></>}
       <Container>
         <HeaderContainer>
           <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
