@@ -16,7 +16,7 @@ function AddtoCart({ currentSize, skus, setShowError }) {
     if (currentSize === 0) {
       setShowError(true);
     } else {
-      axios.post('/cart', item)
+      axios.post('/cart', { sku_id: currentSize })
         .then((response) => {
           console.log(response);
         })

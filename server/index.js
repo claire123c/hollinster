@@ -159,11 +159,12 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
+  console.log(req.body);
   axios({
     url: `${API}/cart`,
     method: 'POST',
     headers: { Authorization: APIInfo.token },
-    data: { sku_id: req.body },
+    data: req.body,
   })
     .then((response) => {
       res.status(200).send(response.data);
