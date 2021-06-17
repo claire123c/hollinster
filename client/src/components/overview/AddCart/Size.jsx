@@ -18,6 +18,7 @@ const Container = styled.div`
 const HeaderContainer = styled.ul`
   padding: 0;
   margin: 0;
+  font-weight: bold;
 `;
 const SizeHeader = styled.li`
   list-style: none;
@@ -44,7 +45,7 @@ const ArrowImg = styled.img`
   margin-left: 40%;
 `;
 
-function Size({ skus, useCurrentSize, showError }) {
+function Size({ skus, useCurrentSize, showError, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('SELECT SIZE');
   let imageSource = './assets/down-chevron.png';
@@ -58,6 +59,7 @@ function Size({ skus, useCurrentSize, showError }) {
   const clickOption = (event) => {
     setSelectedOption(event.target.value);
     setIsOpen(false);
+    setShowError(false);
   };
 
   const getSizes = () => (Object.keys(skus).map((key) => {

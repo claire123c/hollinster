@@ -21,7 +21,7 @@ function Cart({ currentStyle }) {
   return (
     <div>
       <CartFormat>
-        <Size skus={skus} useCurrentSize={setCurrentSize} showError={showError} />
+        <Size skus={skus} useCurrentSize={setCurrentSize} showError={showError} setShowError={setShowError} />
         <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>
