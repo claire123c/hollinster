@@ -4,8 +4,9 @@ import styled from 'styled-components';
 
 const SizeSelector = styled.div`
   border: 1px solid black;
-  margin: 2%;
   padding: 5%;
+  margin: 2%;
+  height: 20%;
   width: 60%;
 `;
 
@@ -38,7 +39,7 @@ const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
   height: 2%;
-  margin-left: 35%;
+  margin-left: 10%;
 `;
 
 function Size({ skus, useCurrentSize, showError }) {

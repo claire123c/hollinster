@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StarBox = styled.div`
   border: 1px solid black;
   margin: auto;
-  padding: 3.3% 4%;
+  padding: 3.4% 4%;
   text-align: center;
 `;
 
