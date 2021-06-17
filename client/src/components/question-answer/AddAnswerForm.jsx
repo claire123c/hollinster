@@ -9,24 +9,19 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
+    transform: 'translate(-50%, -50%)',
+  },
 };
 //binds modal to the id
 Modal.setAppElement('#app');
 
 const AddAnswerForm = () => {
   // modal experimental section
-  let subtitle;
   const [modalOpen, setModalOpen] = useState(false);
 
   function handleModalOpen() {
     setModalOpen(true);
   }
-
-  // function afterModalOpen() {
-  //   subtitle.style.color = '#f00';
-  // }
 
   function handleModalClose() {
     setModalOpen(false);
@@ -46,7 +41,6 @@ const AddAnswerForm = () => {
   }
 
   // function afterModalOpen() {
-  //   subtitle.style.color = '#f00';
   // }
 
   function handlePhotoModalClose() {
