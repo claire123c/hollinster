@@ -24,10 +24,10 @@ function Cart({ currentStyle }) {
       <CartFormat>
         {showError ? 'Please select size' : ''}
         <Size skus={skus} useCurrentSize={setCurrentSize} setShowError={setShowError} />
-        <Quantity currentSize={skus ? skus[currentSize] : { quantity: 0 }} />
+        <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
       <CartFormat>
-        <AddtoCart currentSize={currentSize} skus={skus} setShowError={setShowError} />
+        <AddtoCart currentSize={`${currentSize}`} skus={skus} setShowError={setShowError} />
         <StarCart />
       </CartFormat>
     </div>

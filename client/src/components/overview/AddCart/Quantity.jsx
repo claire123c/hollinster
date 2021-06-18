@@ -13,8 +13,9 @@ const QuantityDropDown = styled.select`
 
 `;
 
-function Quantity({ currentSize }) {
-  const { quantity } = currentSize;
+function Quantity({ currentSizeObj }) {
+  const { quantity } = currentSizeObj;
+  const [isOpenQ, setIsOpenQ] = useState(false);
   const getQuantities = () => {
     let num;
     const numArray = [];
@@ -32,27 +33,32 @@ function Quantity({ currentSize }) {
     }
     return numArray;
   };
+
+  if (!quantity) {
+    return (
+      <QuantityBox>
+        -
+      </QuantityBox>
+    );
+  }
   return (
     <QuantityBox>
-      {quantity
-        ? (
-          <QuantityDropDown className="quantity-selector">
-            {getQuantities()}
-          </QuantityDropDown>
-        ) : '-' }
+      <QuantityDropDown className="quantity-selector">
+        {getQuantities()}
+      </QuantityDropDown>
     </QuantityBox>
   );
 }
 
 Quantity.propTypes = {
-  currentSize: PropTypes.shape({
+  currentSizeObj: PropTypes.shape({
     quantity: PropTypes.number,
     size: PropTypes.string,
   }),
 };
 
 Quantity.defaultProps = {
-  currentSize: { quantity: 0 },
+  currentSizeObj: { quantity: 0 },
 };
 
 export default Quantity;
