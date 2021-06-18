@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Comparison( {feature: {comparedValue, currentValue, feature}} ) {
-
   return (
     <tr>
       <td>{currentValue}</td>
