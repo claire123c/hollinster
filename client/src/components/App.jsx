@@ -45,8 +45,47 @@ const SearchImg = styled.img`
   height: 2.5%;
 `;
 
+const LightButton = styled.button`
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid black;
+  margin: 0 0.3em 0. 3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 800;
+  color: black;
+  text-align: center;
+  transition: all 0.2s;
+  background-color: grey;
+
+  &:hover{
+    color: #000000;
+    background-color: silver;
+    }
+`;
+const DarkButton = styled.button`
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+  &:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    }
+`;
+
 const App = (props) => {
-  const [test, setTest] = useState(true);
+  const [theme, setTheme] = useState('light');
   const [productID, setProductID] = useState(25167);
 
   const switchProduct = () => {
@@ -55,6 +94,7 @@ const App = (props) => {
 
   return (
     <>
+      <LightButton type="button">Go Dark</LightButton>
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
@@ -63,7 +103,6 @@ const App = (props) => {
           <SearchImg src="./assets/loupe.png" />
         </Search>
       </LogoBar>
-      <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
       <Overview productID={productID} />
       {/* <Question />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
