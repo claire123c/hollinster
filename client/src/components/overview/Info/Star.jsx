@@ -31,6 +31,8 @@ const ReviewsComp = styled.a`
 `;
 
 function Star({ ratings, results }) {
+  console.log(ratings);
+  console.log(results);
   const [stars, setStars] = useState(0);
   const [showStars, setShowStars] = useState(false);
   const [showReviews, setShowReviews] = useState(true);

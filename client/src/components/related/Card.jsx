@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 import ComparisonModal from './ComparisonModal.jsx';
-import averageRating from '../overview/Info/Info-helper.jsx/star-helper.jsx';
 import Star from '../overview/Info/Star.jsx';
 
 const CardWrapper = styled.div`
@@ -53,26 +52,28 @@ export default function Card({
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
+  console.log(rating)
   const [modal, setModal] = useState(false);
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
   let defaultPrice = 0;
+  let noDisplay = [{ display: 'none' }];
 
-  const averageRating = (reviewResults) => {
-    let ratings = 0;
-    let totalRatings = 0;
-    if (reviewResults.length < 1) {
-      return 'No Rating Available';
-    }
-    for (let i = 0; i < reviewResults.length; i += 1) {
-      if (reviewResults[i].rating !== undefined) {
-        ratings += reviewResults[i].rating;
-        totalRatings += 1;
-      }
-    }
-    return ratings / totalRatings;
-  };
+  // const averageRating = (reviewResults) => {
+  //   let ratings = 0;
+  //   let totalRatings = 0;
+  //   if (reviewResults.length < 1) {
+  //     return 'No Rating Available';
+  //   }
+  //   for (let i = 0; i < reviewResults.length; i += 1) {
+  //     if (reviewResults[i].rating !== undefined) {
+  //       ratings += reviewResults[i].rating;
+  //       totalRatings += 1;
+  //     }
+  //   }
+  //   return ratings / totalRatings;
+  // };
 
   const checkPrice = (stylesResults) => {
     const defaultStyle = stylesResults.findIndex((element) => element['default?']);
@@ -91,11 +92,12 @@ export default function Card({
 
   const getProductStyles = () => axios.get(`/products/${product}/styles`);
 
-  const getProductReviews = () => axios.get(`/reviews/${product}`);
+  const getProductReviews = () => axios.get(`/reviews/meta/${product}`);
 
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
+        
         defaultPrice = response[0].data.default_price;
         setProductData(response[0].data);
         setProductStyleData(response[1].data);
@@ -104,7 +106,7 @@ export default function Card({
         setName(response[0].data.name);
         setPrice(checkPrice(response[1].data.results));
         setImage(response[1].data.results[0].photos[0].url);
-        setRating(averageRating(response[2].data.results));
+        setRating(response[2].data.ratings);
       })
       .catch((error) => {
         console.log(error);
@@ -126,8 +128,8 @@ export default function Card({
         <Text>{category}</Text>
         <Text>{name}</Text>
         <Text>{price}</Text>
-        <Text>{rating}</Text>
-        {/* <Star ratings={rating} results={productReviewData} /> */}
+        {/* <Text>{rating}</Text> */}
+        <Star ratings={rating} results={noDisplay} />
       </CardWrapper>
     </>
   );
