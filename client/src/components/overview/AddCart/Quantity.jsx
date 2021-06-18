@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 const QuantityBox = styled.div`
   border: 1px solid black;
-  margin: 2%;
   padding: 5%;
-
+  margin-left: 4%;
+  height: 20%;
+  width: 20%;
 `;
 
 const ContainerQ = styled.div`

@@ -4,12 +4,11 @@ import styled from 'styled-components';
 
 const SizeSelector = styled.div`
   height: 20%;
-  width: 60%;
+  width: 50%;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
-  margin: 2%;
   padding: 5%;
   text-align: center;
   border: 1px solid black;
@@ -19,7 +18,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 5%;
+  padding-bottom: 6%;
 `;
 
 const HeaderContainer = styled.ul`
@@ -60,8 +59,8 @@ const SizeOptions = styled.li`
 const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
-  height: 15px;
-  margin-left: 40%;
+  height: 13px;
+  margin-left: 30%;
 `;
 
 function Size({ skus, useCurrentSize, setShowError }) {
