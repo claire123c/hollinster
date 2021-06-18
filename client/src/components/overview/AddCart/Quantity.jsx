@@ -78,8 +78,8 @@ function Quantity({ currentSizeObj }) {
     } else {
       num = quantity;
     }
-    let i = 1;
-    while (i <= num) {
+    let i = 2;
+    while (i <= num - 1) {
       numArray.push(
         <QuantityOptions value={i} key={i}>{i}</QuantityOptions>,
       );
@@ -101,7 +101,8 @@ function Quantity({ currentSizeObj }) {
       <QuantityBox>
         <ContainerQ>
           <HeaderContQ>
-            <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }}>
+            <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
+              1
               <ArrowImgQ src={imageSource} alt="arrows" />
             </QuantHeader>
           </HeaderContQ>
@@ -114,7 +115,8 @@ function Quantity({ currentSizeObj }) {
     <QuantityBox>
       <ContainerQ>
         <HeaderContQ>
-          <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }}>
+          <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
+            1
             <ArrowImgQ src={imageSource} alt="arrows" />
           </QuantHeader>
         </HeaderContQ>
