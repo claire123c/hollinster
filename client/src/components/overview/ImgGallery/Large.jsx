@@ -61,6 +61,7 @@ function Large(props) {
       setRightArrow(false);
     } else {
       setRightArrow(true);
+      setLeftArrow(false);
     }
   }, [props]);
 
