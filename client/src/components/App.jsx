@@ -62,7 +62,7 @@ const LightButton = styled.button`
 
   &:hover{
     color: #000000;
-    background-color: silver;
+    background-color: #303030;
     }
 `;
 const DarkButton = styled.button`
@@ -85,16 +85,21 @@ const DarkButton = styled.button`
 `;
 
 const App = (props) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(true);
   const [productID, setProductID] = useState(25167);
 
   const switchProduct = () => {
     setProductID(product);
   };
 
+  const onClickTheme = () => {
+    setTheme(!theme);
+  };
+
   return (
     <>
-      <LightButton type="button">Go Dark</LightButton>
+      {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
+
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
