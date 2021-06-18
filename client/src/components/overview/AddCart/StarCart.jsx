@@ -4,9 +4,10 @@ import styled from 'styled-components';
 
 const StarBox = styled.div`
   border: 1px solid black;
-  margin: auto;
+  margin-left: 4%;
   padding: 3.4% 4%;
   text-align: center;
+  width: 5%;
   &:hover {
     cursor: pointer;
     color: rgb(255,196,12);
