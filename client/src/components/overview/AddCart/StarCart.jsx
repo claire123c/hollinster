@@ -15,7 +15,7 @@ const StarBox = styled.div`
   }
 `;
 
-function StarCart(props) {
+function StarCart() {
   return (
     <StarBox>
       &#x2606;

@@ -32,12 +32,14 @@ const Plus = styled.span`
   font-weight: normal;
 `;
 
-function AddtoCart({ currentSize, skus, setShowError }) {
+function AddtoCart({
+  currentSize, skus, setShowError, selectedQ,
+}) {
   const addItem = () => {
     if (currentSize === 'SELECT SIZE') {
       setShowError(true);
     } else {
-      axios.post('/cart', { sku_id: currentSize })
+      axios.post('/cart', { sku_id: currentSize, count: selectedQ })
         .then((response) => {
           console.log(response);
         })
@@ -71,12 +73,14 @@ AddtoCart.propTypes = {
   currentSize: PropTypes.string,
   skus: PropTypes.shape({}),
   setShowError: PropTypes.func,
+  selectedQ: PropTypes.string,
 };
 
 AddtoCart.defaultProps = {
   currentSize: 0,
   skus: {},
   setShowError: () => {},
+  selectedQ: '1',
 };
 
 export default AddtoCart;
