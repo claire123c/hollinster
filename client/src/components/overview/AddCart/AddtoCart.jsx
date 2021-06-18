@@ -5,7 +5,10 @@ import axios from 'axios';
 
 const AddtoBag = styled.div`
   width: 80%;
-  height: 80%;
+  height: 90%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+  }
 `;
 
 const BagButton = styled.button`
