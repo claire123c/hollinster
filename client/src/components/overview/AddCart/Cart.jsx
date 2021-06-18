@@ -10,7 +10,7 @@ import StarCart from './StarCart.jsx';
 const CartFormat = styled.div`
   display: flex;
   height: 10%;
-  margin: 5%;
+  margin: 5% 0;
   width: 100%;
 `;
 

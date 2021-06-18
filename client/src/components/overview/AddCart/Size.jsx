@@ -12,6 +12,7 @@ const SizeSelector = styled.div`
   padding: 5% 1%;
   text-align: center;
   border: 1px solid black;
+  font-size: 16px;
 `;
 
 const Container = styled.div`
@@ -27,9 +28,7 @@ const HeaderContainer = styled.ul`
   font-weight: bold;
 `;
 const SizeHeader = styled.li`
-
 `;
-
 const SizeDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
@@ -59,7 +58,7 @@ const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
   height: 13px;
-  margin-left: 30%;
+  margin-left: 40%;
 `;
 
 function Size({ skus, useCurrentSize, setShowError }) {

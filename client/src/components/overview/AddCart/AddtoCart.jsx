@@ -10,6 +10,7 @@ const AddtoBag = styled.div`
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
+  font-size: 16px;
 `;
 
 const BagButton = styled.button`
