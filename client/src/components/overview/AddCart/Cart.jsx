@@ -10,7 +10,8 @@ import StarCart from './StarCart.jsx';
 const CartFormat = styled.div`
   display: flex;
   height: 10%;
-  margin: 5% 0;
+  margin-bottom: 5%;
+  margin-top: 2%;
   width: 100%;
 `;
 
@@ -21,8 +22,8 @@ function Cart({ currentStyle }) {
 
   return (
     <div>
+      {showError ? <div>Please select size</div> : <div /> }
       <CartFormat>
-        {showError ? 'Please select size' : ''}
         <Size skus={skus} useCurrentSize={setCurrentSize} setShowError={setShowError} />
         <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} />
       </CartFormat>
