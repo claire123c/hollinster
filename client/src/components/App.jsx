@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 // import axios from 'axios';
 import styled from 'styled-components';
 import Overview from './overview/Overview.jsx';
-import Related from './related/Related.jsx';
-import Question from './question-answer/Question.jsx';
-import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
+// import Related from './related/Related.jsx';
+// import Question from './question-answer/Question.jsx';
+// import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
@@ -30,6 +30,9 @@ const SearchLine = styled.input`
   border-bottom: 2px solid black;
   background-color: transparent;
   font-size: 16px;
+  &::placeholder {
+    color: silver;
+  }
   &:focus {
     outline: none;
 }
@@ -59,9 +62,9 @@ const App = (props) => {
       </LogoBar>
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
       <Overview productID={productID} />
-      <Question />
+      {/* <Question />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <RatingsReviews productID={productID} />
+      <RatingsReviews productID={productID} /> */}
     </>
   );
 };
