@@ -12,7 +12,6 @@ const QuantityBox = styled.div`
 
 const ContainerQ = styled.div`
   position: relative;
-  width: 50%;
   height: 100%;
   padding-bottom: 5%;
 `;
@@ -38,7 +37,7 @@ const QuantityDropDown = styled.div`
   overflow: scroll;
   position: absolute;
   width: 90%;
-  height: 300px;
+  max-height: 300px;
 `;
 
 const QuantityOptions = styled.li`
@@ -99,7 +98,6 @@ function Quantity({ currentSizeObj }) {
         <ContainerQ>
           <HeaderContQ>
             <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }}>
-              SELECT QUANTITY
               <ArrowImgQ src={imageSource} alt="arrows" />
             </QuantHeader>
           </HeaderContQ>
@@ -113,7 +111,6 @@ function Quantity({ currentSizeObj }) {
       <ContainerQ>
         <HeaderContQ>
           <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }}>
-            SELECT QUANTITY
             <ArrowImgQ src={imageSource} alt="arrows" />
           </QuantHeader>
         </HeaderContQ>

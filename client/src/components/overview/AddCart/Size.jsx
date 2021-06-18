@@ -42,7 +42,7 @@ const SizeDropDown = styled.div`
   overflow: scroll;
   position: absolute;
   width: 90%;
-  height: 300px;
+  max-height: 300px;
 `;
 
 const SizeOptions = styled.li`
