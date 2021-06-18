@@ -10,6 +10,12 @@ import Overview from './overview/Overview.jsx';
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 };
+
+const Body = styled.div`
+  background-color: ${(props) => (props.color ? '#F5F4F2' : '121212')};
+  color: ${(props) => (props.color ? '#292A33' : '#F5F4F2')};
+`;
+
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
   background-color: teal;
@@ -59,7 +65,9 @@ const LightButton = styled.button`
   text-align: center;
   transition: all 0.2s;
   background-color: grey;
-
+  float: right;
+  margin-right: 10%;
+  margin-top: 1%;
   &:hover{
     color: #000000;
     background-color: #303030;
@@ -78,6 +86,9 @@ const DarkButton = styled.button`
   color:#FFFFFF;
   text-align:center;
   transition: all 0.2s;
+  float: right;
+  margin-right: 10%;
+  margin-top: 1%;
   &:hover{
     color:#000000;
     background-color:#FFFFFF;
@@ -97,9 +108,7 @@ const App = (props) => {
   };
 
   return (
-    <>
-      {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
-
+    <Body color={theme}>
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
@@ -108,11 +117,12 @@ const App = (props) => {
           <SearchImg src="./assets/loupe.png" />
         </Search>
       </LogoBar>
+      {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
       <Overview productID={productID} />
       {/* <Question />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
       <RatingsReviews productID={productID} /> */}
-    </>
+    </Body>
   );
 };
 

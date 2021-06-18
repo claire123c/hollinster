@@ -27,7 +27,6 @@ const StarRating = styled.div`
 
 const ReviewsComp = styled.a`
   margin-left: 2%;
-  color: black;
   &:hover {
     cursor: pointer;
   }
