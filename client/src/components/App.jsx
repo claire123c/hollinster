@@ -12,8 +12,8 @@ window.onbeforeunload = function () {
 };
 
 const Body = styled.div`
-  background-color: ${(props) => (props.color ? '#F5F4F2' : '121212')};
-  color: ${(props) => (props.color ? '#292A33' : '#F5F4F2')};
+  background-color: ${(props) => (props.current ? '#F5F4F2' : '121212')};
+  color: ${(props) => (props.current ? '#292A33' : '#F5F4F2')};
 `;
 
 const LogoBar = styled.h1`
@@ -108,7 +108,7 @@ const App = (props) => {
   };
 
   return (
-    <Body color={theme}>
+    <Body current={theme}>
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
