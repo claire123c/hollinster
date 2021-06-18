@@ -4,10 +4,13 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import axios from 'axios';
 
 import Size from '../../components/overview/AddCart/Size.jsx';
 import Cart from '../../components/overview/AddCart/Cart.jsx';
 import { sampleData, sampleData2, emptyData } from '../../components/overview/sampleData.js';
+
+//jest.mock('axios');
 
 describe('Size Selector Display', () => {
   test('sizes should be displayed if available', () => {
@@ -56,5 +59,25 @@ describe('Quantity Display', () => {
     const quantity = document.querySelector('.quantity-selector');
 
     expect(quantity).toBe(null);
+  });
+});
+describe('AddtoCart', () => {
+  test('Cart should show up if size is selected', () => {
+    render(<Cart currentStyle={sampleData.results[0]} />);
+    const sizeElement = document.querySelector('.size-selector');
+    fireEvent.click(sizeElement);
+
+    const cartDisplay = document.querySelector('.bag-button');
+
+    expect(cartDisplay).toBeDefined();
+  });
+  test('Cart should display error message if clicked and no size is selected', () => {
+    const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
+    const cartElement = document.querySelector('.add-to-bag');
+
+    fireEvent.click(cartElement);
+    const cartDisplay = CartComp.getByText('Please select size');
+
+    expect(cartDisplay).toBeDefined();
   });
 });

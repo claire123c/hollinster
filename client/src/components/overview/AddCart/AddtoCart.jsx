@@ -40,8 +40,7 @@ function AddtoCart({
       setShowError(true);
     } else {
       axios.post('/cart', { sku_id: currentSize, count: selectedQ })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
         })
         .catch((error) => {
           console.error(error);
@@ -58,9 +57,9 @@ function AddtoCart({
     return false;
   };
   return (
-    <AddtoBag onClick={addItem}>
+    <AddtoBag onClick={addItem} className="add-to-bag">
       {checkSkus() ? (
-        <BagButton type="button">
+        <BagButton type="button" className="bag-button">
           ADD TO BAG
           <Plus>+</Plus>
         </BagButton>
