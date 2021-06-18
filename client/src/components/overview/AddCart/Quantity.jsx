@@ -60,9 +60,10 @@ const ArrowImgQ = styled.img`
   margin-left: 60%;
 `;
 
-function Quantity({ currentSizeObj }) {
+function Quantity({ currentSizeObj, setSelectedQ, selectedQ }) {
   const { quantity } = currentSizeObj;
   const [isOpenQ, setIsOpenQ] = useState(false);
+
   let imageSource = './assets/down-chevron.png';
 
   if (!isOpenQ) {
@@ -70,6 +71,10 @@ function Quantity({ currentSizeObj }) {
   } else {
     imageSource = './assets/up-chevron.png';
   }
+  const onClickQuantity = (event) => {
+    setSelectedQ(event.target.innerText);
+  };
+
   const getQuantities = () => {
     let num;
     const numArray = [];
@@ -78,10 +83,10 @@ function Quantity({ currentSizeObj }) {
     } else {
       num = quantity;
     }
-    let i = 2;
-    while (i <= num - 1) {
+    let i = 1;
+    while (i <= num) {
       numArray.push(
-        <QuantityOptions value={i} key={i}>{i}</QuantityOptions>,
+        <QuantityOptions value={i} key={i} onClick={onClickQuantity}>{i}</QuantityOptions>,
       );
       i += 1;
     }
@@ -102,7 +107,7 @@ function Quantity({ currentSizeObj }) {
         <ContainerQ>
           <HeaderContQ>
             <QuantHeader value="1" key="1">
-              1
+              {selectedQ}
               <ArrowImgQ src={imageSource} alt="arrows" />
             </QuantHeader>
           </HeaderContQ>
@@ -116,7 +121,7 @@ function Quantity({ currentSizeObj }) {
       <ContainerQ>
         <HeaderContQ>
           <QuantHeader value="1" key="1">
-            1
+            {selectedQ}
             <ArrowImgQ src={imageSource} alt="arrows" />
           </QuantHeader>
         </HeaderContQ>

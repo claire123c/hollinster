@@ -33,7 +33,6 @@ const Plus = styled.span`
 `;
 
 function AddtoCart({ currentSize, skus, setShowError }) {
-  console.log(currentSize);
   const addItem = () => {
     if (currentSize === 'SELECT SIZE') {
       setShowError(true);

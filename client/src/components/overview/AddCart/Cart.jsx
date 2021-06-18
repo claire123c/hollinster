@@ -19,16 +19,17 @@ function Cart({ currentStyle }) {
   const { skus } = currentStyle;
   const [currentSize, setCurrentSize] = useState('SELECT SIZE');
   const [showError, setShowError] = useState(false);
+  const [selectedQ, setSelectedQ] = useState('1');
 
   return (
     <div>
       {showError ? <div>Please select size</div> : <div /> }
       <CartFormat>
         <Size skus={skus} useCurrentSize={setCurrentSize} setShowError={setShowError} />
-        <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} />
+        <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} selectedQ={selectedQ} setSelectedQ={setSelectedQ} />
       </CartFormat>
       <CartFormat>
-        <AddtoCart currentSize={`${currentSize}`} skus={skus} setShowError={setShowError} />
+        <AddtoCart currentSize={`${currentSize}`} skus={skus} setShowError={setShowError} selectedQ={selectedQ} />
         <StarCart />
       </CartFormat>
     </div>
