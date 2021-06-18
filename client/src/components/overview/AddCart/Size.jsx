@@ -1,30 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SizeSelector = styled.div`
+  height: 20%;
+  width: 60%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+  }
+  padding: 5% 1%;
+  text-align: center;
   border: 1px solid black;
-  margin: 2%;
-  padding: 5%;
-
+  font-size: 16px;
 `;
 
-const SizeHeader = styled.option`
-
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
-const SizeDropDown = styled.select`
-
+const HeaderContainer = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+`;
+const SizeHeader = styled.li`
+`;
+const SizeDropDown = styled.div`
+  border: 1px solid black;
+  padding: 0;
+  margin-top: 8%;
+  z-index: 2;
+  background-color: #F5F4F2;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  overflow: scroll;
+  position: absolute;
+  width: 90%;
+  max-height: 300px;
 `;
 
-const SizeOptions = styled.option`
+const SizeOptions = styled.li`
+  list-style: none;
+  padding: 3%;
+  margin: 1%;
+  width: 90%;
+  border: none;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+  }
 `;
 
-function Size({ skus, useCurrentSize, showError }) {
+const ListContainer = styled.div`
+`;
+const ArrowImg = styled.img`
+  height: 13px;
+  margin-left: 40%;
+`;
+
+function Size({ skus, useCurrentSize, setShowError }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('SELECT SIZE');
+  let imageSource = './assets/down-chevron.png';
+  if (!isOpen) {
+    imageSource = './assets/down-chevron.png';
+  } else {
+    imageSource = './assets/up-chevron.png';
+  }
+
+  const clickOption = (event) => {
+    setSelected(event.target.innerText);
+    useCurrentSize(event.target.value);
+    setIsOpen(false);
+    setShowError(false);
+  };
+
   const getSizes = () => (Object.keys(skus).map((key) => {
     if (skus[key].size) {
       return (
-        <SizeOptions value={key} key={key}>
+        <SizeOptions value={key} key={key} onClick={clickOption}>
           {skus[key].size}
         </SizeOptions>
       );
@@ -37,17 +94,40 @@ function Size({ skus, useCurrentSize, showError }) {
     }
   };
 
+  if (Object.keys(skus).length === 0) {
+    return ('OUT OF STOCK');
+  }
+
+  if (!isOpen) {
+    return (
+      <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
+        <Container>
+          <HeaderContainer>
+            <SizeHeader defaultValue="select">
+              {selected}
+              <ArrowImg src={imageSource} alt="arrows" />
+            </SizeHeader>
+          </HeaderContainer>
+        </Container>
+      </SizeSelector>
+    );
+  }
+
   return (
-    <SizeSelector className="size-selector">
-      {showError ? 'Please select size' : ''}
-      {Object.keys(skus).length === 0 ? 'OUT OF STOCK'
-        : (
-          <SizeDropDown onChange={getCurrentSize} data-testid="selector">
-            <SizeHeader defaultValue="select">SELECT SIZE</SizeHeader>
+    <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
+      <Container>
+        <HeaderContainer>
+          <SizeHeader defaultValue="select">
+            {selected}
+            <ArrowImg src={imageSource} alt="arrows" />
+          </SizeHeader>
+        </HeaderContainer>
+        <ListContainer>
+          <SizeDropDown onChange={getCurrentSize} data-testid="selector" isOpen={isOpen}>
             {getSizes()}
           </SizeDropDown>
-        )}
-
+        </ListContainer>
+      </Container>
     </SizeSelector>
   );
 }
@@ -55,13 +135,13 @@ function Size({ skus, useCurrentSize, showError }) {
 Size.propTypes = {
   skus: PropTypes.shape({}),
   useCurrentSize: PropTypes.func,
-  showError: PropTypes.bool,
+  setShowError: PropTypes.func,
 };
 
 Size.defaultProps = {
   skus: {},
   useCurrentSize: () => {},
-  showError: false,
+  setShowError: () => {},
 };
 
 export default Size;

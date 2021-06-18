@@ -16,6 +16,9 @@ const ThumbnailBox = styled.div`
   width: calc(7vh);
   height: calc(7vh);
   margin: 17% 0%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Mini(props) {

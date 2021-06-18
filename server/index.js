@@ -159,7 +159,6 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-  console.log(req.body);
   axios({
     url: `${API}/cart`,
     method: 'POST',

@@ -7,8 +7,6 @@ import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
 import Cart from './AddCart/Cart.jsx';
 import Freeform from './Info/Freeform.jsx';
-import sampleData from './sampleData.js';
-import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
 
 const Top = styled.div`
@@ -48,8 +46,7 @@ function Overview({ productID }) {
       .then((response) => {
         setProductInfo(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getStyles = () => {
@@ -58,8 +55,7 @@ function Overview({ productID }) {
         setStyleData(response.data.results);
         setCurrentStyle(findDefaultStyles(response.data.results));
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getReviews = () => {
@@ -67,8 +63,7 @@ function Overview({ productID }) {
       .then((response) => {
         setReviews(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getMetaReviews = () => {
@@ -76,8 +71,7 @@ function Overview({ productID }) {
       .then((response) => {
         setrMeta(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
 

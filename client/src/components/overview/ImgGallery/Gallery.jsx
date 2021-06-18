@@ -16,6 +16,9 @@ const Expand = styled.img`
   float: right;
   min-height: 20px;
   min-width: 20px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Gallery({ styles }) {

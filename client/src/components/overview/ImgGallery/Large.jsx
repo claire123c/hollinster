@@ -38,11 +38,17 @@ const RightArrow = styled.img`
   font-size: 80px;
   visibility: ${(props) => (props.rightArrow ? 'visible' : 'hidden')};
   padding-left: 50%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const LeftArrow = styled.img`
   font-size: 80px;
   visibility: ${(props) => (props.leftArrow ? 'visible' : 'hidden')};
   padding-right: 50%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Large(props) {
@@ -61,6 +67,7 @@ function Large(props) {
       setRightArrow(false);
     } else {
       setRightArrow(true);
+      setLeftArrow(false);
     }
   }, [props]);
 
