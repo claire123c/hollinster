@@ -29,6 +29,7 @@ const SearchLine = styled.input`
   border: none;
   border-bottom: 2px solid black;
   background-color: transparent;
+  font-size: 16px;
   &:focus {
     outline: none;
 }
@@ -52,7 +53,7 @@ const App = (props) => {
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
         <Search>
-          <SearchLine />
+          <SearchLine placeholder="Search..." />
           <SearchImg src="./assets/loupe.png" />
         </Search>
       </LogoBar>
