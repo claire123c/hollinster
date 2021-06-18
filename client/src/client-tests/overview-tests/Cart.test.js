@@ -10,7 +10,7 @@ import Size from '../../components/overview/AddCart/Size.jsx';
 import Cart from '../../components/overview/AddCart/Cart.jsx';
 import { sampleData, sampleData2, emptyData } from '../../components/overview/sampleData.js';
 
-//jest.mock('axios');
+jest.mock('axios');
 
 describe('Size Selector Display', () => {
   test('sizes should be displayed if available', () => {
@@ -62,14 +62,19 @@ describe('Quantity Display', () => {
   });
 });
 describe('AddtoCart', () => {
-  test('Cart should show up if size is selected', () => {
-    render(<Cart currentStyle={sampleData.results[0]} />);
+  test('Cart should make ajax post request if size is selected', async () => {
+    const fakeRes = 'works!';
+    axios.post.mockResolvedValue(fakeRes);
+
+    const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
     const sizeElement = document.querySelector('.size-selector');
     fireEvent.click(sizeElement);
+    const sizeS = CartComp.getByText('S');
+    fireEvent.click(sizeS);
+    const cartElement = document.querySelector('.add-to-bag');
+    fireEvent.click(cartElement);
 
-    const cartDisplay = document.querySelector('.bag-button');
-
-    expect(cartDisplay).toBeDefined();
+    expect(axios.post).toHaveBeenCalled();
   });
   test('Cart should display error message if clicked and no size is selected', () => {
     const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
