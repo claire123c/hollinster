@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const QuestionSearchInput = styled.input`
-  width: 100%;
+  width: 60%;
   height: 50px;
   margin: 1% 0;
+  border: 1px solid black;
+  border-right: none;
   ::placeholder,
   ::-webkit-input-placeholder {
     font-weight: 600;
@@ -13,17 +16,34 @@ const QuestionSearchInput = styled.input`
   }
 `;
 
+const MagnifyingGlass = styled.button`
+  border: 1px solid black;
+  border-left: none;
+  height: 50px;
+  background: white;
+  position: relative; top: 2.5px;
+`;
+
 export default function Search() {
   const [search, setSearch] = useState('');
 
   return (
     <>
-      <QuestionSearchInput type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-      >
-      </QuestionSearchInput>
+      <form>
+        <span>
+          <QuestionSearchInput
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+          />
+          <MagnifyingGlass
+            onClick={() => event.preventDefault()}
+          >
+            <AiOutlineSearch />
+          </MagnifyingGlass>
+        </span>
+      </form>
     </>
   );
-};
+}

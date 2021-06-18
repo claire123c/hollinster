@@ -6,9 +6,9 @@ const IndividualAnswerRow = styled.div`
 `;
 
 export default function IndividualAnswer() {
-  const [answers, setAnswers] = useState(sampleAnswersList.results[0].body);
-  const [answerUsername, setAnswerUsername] = useState(sampleAnswersList.results[0].answerer_name);
-  const [answerDate, setAnswerDate] = useState(sampleAnswersList.results[0].date);
+  const [answers] = useState(sampleAnswersList.results[0].body);
+  const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
+  const [answerDate] = useState(sampleAnswersList.results[0].date);
   const [answerHelpfulnessRating, setAnswerHelpfulnessRating] =
     useState(sampleAnswersList.results[0].helpfulness);
   const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
@@ -40,8 +40,33 @@ export default function IndividualAnswer() {
   // console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
   return (
     <IndividualAnswerRow>
-      <span><strong>A:</strong> {answers}</span>
-      <p>by {answerUsername}, {stringOfDate} | Helpful? <u onClick={handleAnswerHelpfulness}>Yes</u> ({answerHelpfulnessRating}) | <u onClick={handleReported}>{reported}</u></p>
+      <span>
+        <strong>
+          A:
+        </strong>
+        {answers}
+      </span>
+      <p>
+        by
+        {answerUsername}
+        ,
+        {stringOfDate}
+        |
+        Helpful?
+        <u
+          onClick={handleAnswerHelpfulness}>
+          Yes
+        </u>
+        (
+        {answerHelpfulnessRating}
+        )
+        |
+        <u
+          onClick={handleReported}
+        >
+          {reported}
+        </u>
+      </p>
     </IndividualAnswerRow>
   );
-};
+}
