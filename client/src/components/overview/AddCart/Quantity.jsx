@@ -8,6 +8,10 @@ const QuantityBox = styled.div`
   margin-left: 4%;
   height: 20%;
   width: 20%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+  }
 `;
 
 const ContainerQ = styled.div`

@@ -9,7 +9,7 @@ const SizeSelector = styled.div`
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
-  padding: 5%;
+  padding: 5% 1%;
   text-align: center;
   border: 1px solid black;
 `;
