@@ -33,6 +33,9 @@ const DefaultView = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  &:hover {
+    cursor: zoom-in;
+  }
 `;
 const RightArrow = styled.img`
   font-size: 80px;

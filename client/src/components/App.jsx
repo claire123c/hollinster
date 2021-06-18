@@ -64,7 +64,6 @@ const LightButton = styled.button`
   color: black;
   text-align: center;
   transition: all 0.2s;
-  background-color: grey;
   float: right;
   margin-right: 10%;
   margin-top: 1%;
@@ -82,10 +81,11 @@ const DarkButton = styled.button`
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
-  font-weight:300;
+  font-weight:900;
   color:#FFFFFF;
-  text-align:center;
+  text-align: center;
   transition: all 0.2s;
+  background-color: grey;
   float: right;
   margin-right: 10%;
   margin-top: 1%;
