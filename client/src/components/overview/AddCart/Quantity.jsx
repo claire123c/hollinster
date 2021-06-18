@@ -98,10 +98,10 @@ function Quantity({ currentSizeObj }) {
 
   if (!isOpenQ) {
     return (
-      <QuantityBox>
+      <QuantityBox onClick={() => { setIsOpenQ(!isOpenQ); }}>
         <ContainerQ>
           <HeaderContQ>
-            <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
+            <QuantHeader value="1" key="1">
               1
               <ArrowImgQ src={imageSource} alt="arrows" />
             </QuantHeader>
@@ -112,10 +112,10 @@ function Quantity({ currentSizeObj }) {
   }
 
   return (
-    <QuantityBox>
+    <QuantityBox onClick={() => { setIsOpenQ(!isOpenQ); }}>
       <ContainerQ>
         <HeaderContQ>
-          <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
+          <QuantHeader value="1" key="1">
             1
             <ArrowImgQ src={imageSource} alt="arrows" />
           </QuantHeader>

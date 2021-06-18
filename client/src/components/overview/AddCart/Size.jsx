@@ -98,10 +98,10 @@ function Size({ skus, useCurrentSize, setShowError }) {
 
   if (!isOpen) {
     return (
-      <SizeSelector className="size-selector">
+      <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
         <Container>
           <HeaderContainer>
-            <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
+            <SizeHeader defaultValue="select">
               SELECT SIZE
               <ArrowImg src={imageSource} alt="arrows" />
             </SizeHeader>
@@ -112,10 +112,10 @@ function Size({ skus, useCurrentSize, setShowError }) {
   }
 
   return (
-    <SizeSelector className="size-selector">
+    <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
       <Container>
         <HeaderContainer>
-          <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
+          <SizeHeader defaultValue="select">
             SELECT SIZE
             <ArrowImg src={imageSource} alt="arrows" />
           </SizeHeader>
