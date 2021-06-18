@@ -15,9 +15,9 @@ describe('Size Selector Display', () => {
     const sizeElement = document.querySelector('.size-selector');
     fireEvent.click(sizeElement);
 
-    const size = SizeComp.getByText('S');
+    const size = SizeComp.getByText('S').innerHTML;
 
-    expect('size').toBe('S');
+    expect(size).toBe('S');
   });
 
   test('Out of Stock should be displayed if not available', () => {
@@ -28,14 +28,18 @@ describe('Size Selector Display', () => {
   });
 });
 
-xdescribe('Quantity Display', () => {
+describe('Quantity Display', () => {
   test('quantity should be displayed if available', () => {
     const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
-    const selector = CartComp.getByTestId('selector');
-    fireEvent.change(selector, { target: { value: 828825 } });
-    const quantity = document.querySelector('.quantity-selector');
+    // const selector = CartComp.getByTestId('selector');
+    // fireEvent.change(selector, { target: { value: 828825 } });
+    const sizeElement = document.querySelector('.size-selector');
+    fireEvent.click(sizeElement);
+    const sizeS = CartComp.getByText('S');
+    fireEvent.click(sizeS);
+    const quantity = CartComp.getByText('1').innerHTML;
 
-    expect(quantity).not.toBe(null);
+    expect(quantity).not.toBe('1');
   });
   test('quantity should be not be displayed if it is not available', () => {
     render(<Cart currentStyle={sampleData.results[0]} />);
