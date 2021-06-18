@@ -31,15 +31,25 @@ describe('Size Selector Display', () => {
 describe('Quantity Display', () => {
   test('quantity should be displayed if available', () => {
     const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
-    // const selector = CartComp.getByTestId('selector');
-    // fireEvent.change(selector, { target: { value: 828825 } });
     const sizeElement = document.querySelector('.size-selector');
     fireEvent.click(sizeElement);
     const sizeS = CartComp.getByText('S');
     fireEvent.click(sizeS);
-    const quantity = CartComp.getByText('1').innerHTML;
+    const quantity = CartComp.getByText('1').innerText;
 
-    expect(quantity).not.toBe('1');
+    expect(quantity).not.toBe(null);
+  });
+  test('quantity dropdown should be displayed if clicked on', () => {
+    const CartComp = render(<Cart currentStyle={sampleData.results[0]} />);
+    const sizeElement = document.querySelector('.size-selector');
+    fireEvent.click(sizeElement);
+    const sizeS = CartComp.getByText('S');
+    fireEvent.click(sizeS);
+    const quantity = CartComp.getByText('1');
+    fireEvent.click(quantity);
+    const shownQuantity = CartComp.getByText('2').innerHTML;
+
+    expect(shownQuantity).toBe('2');
   });
   test('quantity should be not be displayed if it is not available', () => {
     render(<Cart currentStyle={sampleData.results[0]} />);
