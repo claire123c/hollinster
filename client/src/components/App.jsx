@@ -21,8 +21,8 @@ const App = (props) => {
 
       <Overview productID={productID} />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      {/* <Question /> */}
-      {/* <RatingsReviews productID={productID} /> */}
+      <Question />
+      <RatingsReviews productID={productID} />
     </>
   );
 };
