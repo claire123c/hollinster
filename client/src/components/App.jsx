@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 // import axios from 'axios';
 import styled from 'styled-components';
 import Overview from './overview/Overview.jsx';
-// import Related from './related/Related.jsx';
-// import Question from './question-answer/Question.jsx';
-// import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
+import Related from './related/Related.jsx';
+import Question from './question-answer/Question.jsx';
+import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
@@ -40,7 +40,7 @@ const SearchImg = styled.img`
 
 const App = (props) => {
   const [test, setTest] = useState(true);
-  const [productID, setProductID] = useState(25174);
+  const [productID, setProductID] = useState(25173);
 
   const switchProduct = () => {
     setProductID(product);
@@ -58,9 +58,9 @@ const App = (props) => {
       </LogoBar>
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
       <Overview productID={productID} />
-      {/* <Question />
+      <Question />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <RatingsReviews productID={productID} /> */}
+      <RatingsReviews productID={productID} />
     </>
   );
 };
@@ -68,4 +68,3 @@ const App = (props) => {
 // attribute free icon flaticon at bottom of website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 export default App;
-
