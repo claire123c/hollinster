@@ -59,7 +59,7 @@ function Star({ ratings, results }) {
             </OuterStar>
             {showReviews
               ? (
-                <ReviewsComp href="#RatingsandReviews">
+                <ReviewsComp href="#ratings">
                   {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
                 </ReviewsComp>
               ) : <></>}
