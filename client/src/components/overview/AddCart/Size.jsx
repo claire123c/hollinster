@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SizeSelector = styled.div`
   height: 20%;
-  width: 50%;
+  width: 60%;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;

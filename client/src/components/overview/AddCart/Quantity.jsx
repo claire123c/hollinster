@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const QuantityBox = styled.div`
   border: 1px solid black;
   padding: 5%;
-  margin-left: 4%;
+  margin-left: 5%;
   height: 20%;
   width: 20%;
   &:hover {
