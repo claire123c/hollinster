@@ -14,6 +14,9 @@ const StylePhoto = styled.img`
   width: calc(9vh);
   border: 1px solid rgb(72,72,72);
   margin: 8px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const CheckMark = styled.img`

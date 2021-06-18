@@ -8,6 +8,7 @@ const AddtoBag = styled.div`
   height: 90%;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
   }
 `;
 

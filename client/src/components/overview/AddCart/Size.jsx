@@ -7,6 +7,7 @@ const SizeSelector = styled.div`
   width: 60%;
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
+    cursor: pointer;
   }
   margin: 2%;
   padding: 5%;

@@ -7,12 +7,17 @@ const StarBox = styled.div`
   margin: auto;
   padding: 3.4% 4%;
   text-align: center;
+  &:hover {
+    cursor: pointer;
+    color: rgb(255,196,12);
+    background-color: rgba(0, 0, 0, 0.14);
+  }
 `;
 
 function StarCart(props) {
   return (
     <StarBox>
-      &#9734;
+      &#x2606;
     </StarBox>
   );
 }
