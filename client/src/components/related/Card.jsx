@@ -37,8 +37,12 @@ const Text = styled.div`
   font-family: 'Open Sans', sans-serif;
   `;
 
+const Strikethrough = styled.div`
+  text-decoration: line-through;
+  `;
+
 const Sale = styled.div`
-  font-color: red;
+  color: red;
   `;
 
 const StarButton = styled.div`
@@ -50,13 +54,15 @@ export default function Card({
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
+  const [sale, setSale] = useState(false);
+  const [salePrice, setSalePrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
-  console.log(rating)
   const [modal, setModal] = useState(false);
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
+
   let defaultPrice = 0;
   let noDisplay = [{ display: 'none' }];
 
@@ -81,6 +87,10 @@ export default function Card({
     if (defaultStyle === -1) {
       return defaultPrice;
     }
+    if (style.sale_price) {
+      setSale(true);
+      setSalePrice(style.sale_price);
+    }
     return (style.sale_price ? style.sale_price : style.original_price);
   };
 
@@ -97,7 +107,6 @@ export default function Card({
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        
         defaultPrice = response[0].data.default_price;
         setProductData(response[0].data);
         setProductStyleData(response[1].data);
@@ -127,8 +136,12 @@ export default function Card({
         <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
         <Text>{category}</Text>
         <Text>{name}</Text>
-        <Text>{price}</Text>
-        {/* <Text>{rating}</Text> */}
+        {sale ? (
+          <>
+            <Strikethrough>{price}</Strikethrough>
+            <Sale>{salePrice}</Sale>
+          </>
+        ) : <Text>{price}</Text>}
         <Star ratings={rating} results={noDisplay} />
       </CardWrapper>
     </>
@@ -137,4 +150,5 @@ export default function Card({
 
 Card.propTypes = {
   product: PropTypes.number.isRequired,
+  setProductID: PropTypes.func.isRequired,
 };

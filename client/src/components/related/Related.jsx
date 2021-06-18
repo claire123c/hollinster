@@ -12,7 +12,11 @@ const Carousel = styled.div`
   align-items: center;
   width: 18rem;
   height: 36rem;
-  margin: 1em;
+  margin: 1rem;
+`;
+
+const CarouselHeading = styled.h1`
+  margin: 1rem;
 `;
 
 export default function Related({ productID, setProductID, switchProduct }) {
@@ -45,15 +49,6 @@ export default function Related({ productID, setProductID, switchProduct }) {
   }, [productID]);
 
   const addToOutfit = () => {
-    // if (!outfit.includes(current)) {
-    //   outfit.push(current);
-    //   localStorage.setItem('outfit', JSON.stringify(outfit));
-    //   console.log('added');
-    // } else {
-    //   console.log('already exists');
-
-    // const found = outfit.find((element) => element.id === current.id);
-    // if (!found) {
     const updatedOutfit = [...outfit];
     if (!updatedOutfit.includes(productID)) {
       updatedOutfit.push(productID);
@@ -67,7 +62,6 @@ export default function Related({ productID, setProductID, switchProduct }) {
 
   const removeFromOutfit = (id) => {
     const updatedOutfit = [...outfit];
-    // const found = outfit.find((element) => element.id === current.id);
     const found = updatedOutfit.findIndex((element) => element === id);
     console.log(found);
     if (found !== -1) {
@@ -79,7 +73,7 @@ export default function Related({ productID, setProductID, switchProduct }) {
 
   return (
     <>
-      <h1>RELATED PRODUCTS</h1>
+      <CarouselHeading>RELATED PRODUCTS</CarouselHeading>
       <Carousel>
         <List
           current={current}
@@ -89,7 +83,7 @@ export default function Related({ productID, setProductID, switchProduct }) {
           setProductID={setProductID}
         />
       </Carousel>
-      <h1>YOUR OUTFIT</h1>
+      <CarouselHeading>YOUR OUTFIT</CarouselHeading>
       <Carousel>
         <YourOutfit
           current={current}
