@@ -20,6 +20,7 @@ const MagnifyingGlass = styled.button`
   border: 1px solid black;
   border-left: none;
   height: 50px;
+  width: 5%;
   background: white;
   position: relative; top: 2.5px;
 `;
