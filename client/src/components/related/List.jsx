@@ -25,7 +25,7 @@ export default function List({ current, related, productID, setProductID, switch
 
   return (
     <>
-      {related && firstCardIndex === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
+      {(related && firstCardIndex) === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
       {displayedCards.map((product) => (
         <Card
           current={current}
@@ -36,7 +36,7 @@ export default function List({ current, related, productID, setProductID, switch
           setProductID={setProductID}
         />
       ))}
-      {related && firstCardIndex + 3 === related.length - 1
+      {(related && firstCardIndex) + 3 === related.length - 1
         ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );

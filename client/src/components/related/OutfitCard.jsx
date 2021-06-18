@@ -101,7 +101,7 @@ export default function OutfitCard({ product, removeFromOutfit }) {
 
   return (
     <CardWrapper>
-      <button onClick={() => removeFromOutfit(product)}>X</button>
+      <div onClick={() => removeFromOutfit(product)}>x</div>
       <Image img src={image} alt={`A representation of ${name}`} />
       <Text>{category}</Text>
       <Text>{name}</Text>

@@ -3,24 +3,20 @@ import Comparison from './Comparison.jsx';
 import styled from 'styled-components'
 
 const Modal = styled.div`
-  position: absolute;
-  width: 500px;
-  background: white;
-  transition: 1.1s ease-out;
-  box-shadow: -2rem 2rem 2rem
-  rgba(black, 0.2);
-  filter: blur(0);
-  transform: scale(1);
-  opacity: 1;
-  visibility: visible;
-  // position: absolute;
-  // width: 60%;
-  // background: #ffffff;
-  left: 40%;
-  top: 40%;
-  padding: 20px;
-
-  `;
+position: absolute;
+width: 500px;
+background: white;
+transition: 1.1s ease-out;
+box-shadow: -2rem 2rem 2rem
+rgba(black, 0.2);
+filter: blur(0);
+transform: scale(1);
+opacity: 1;
+visibility: visible;
+left: 40%;
+top: 40%;
+padding: 20px;
+`;
 
 const ModalText = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -169,7 +165,7 @@ export default function ComparisonModal({ current, productData }) {
   return (
 
     <Modal>
-       <p>COMPARING</p>
+      <p>COMPARING</p>
       <table>
         <th>{currentName}</th>
         <th />
@@ -182,13 +178,3 @@ export default function ComparisonModal({ current, productData }) {
     </Modal>
   );
 }
-
-ComparisonModal.propTypes = {
-  current: Number.isRequired,
-  productData: Number.isRequired,
-};
-
-// ComparisonModal.defaultProps = {
-//   current: 25167,
-//   selected: 25168,
-// };

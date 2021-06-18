@@ -20,19 +20,23 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
   const previousCard = () => {
     const previousIndex = firstCardIndex - 1;
     setFirstCardIndex(previousIndex);
+    console.log(outfit);
+    console.log(firstCardIndex + 2 < outfit.length - 1);
   };
 
   const nextCard = () => {
     const nextIndex = firstCardIndex + 1;
     setFirstCardIndex(nextIndex);
+    console.log(outfit);
+    console.log(firstCardIndex + 2 < outfit.length - 1);
   };
 
   const displayedCards = outfit.slice(firstCardIndex, firstCardIndex + 3);
 
   return (
     <>
-       {firstCardIndex === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
-       <AddToOutfit addToOutfit={addToOutfit} />
+      {firstCardIndex === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
+      <AddToOutfit addToOutfit={addToOutfit} />
       {displayedCards.map((product) => (
         <OutfitCard
           product={product}
@@ -40,7 +44,9 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
           removeFromOutfit={removeFromOutfit}
         />
       ))}
-      {firstCardIndex + 3 === outfit.length - 1 ? null : <h1 onClick={nextCard}>&#8250;</h1>}
+      {(outfit.length > 4 && firstCardIndex + 2 === outfit.length -1) ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );
 }
+
+
