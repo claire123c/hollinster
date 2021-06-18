@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -135,13 +135,13 @@ function Size({ skus, useCurrentSize, setShowError }) {
 Size.propTypes = {
   skus: PropTypes.shape({}),
   useCurrentSize: PropTypes.func,
-  showError: PropTypes.bool,
+  setShowError: PropTypes.func,
 };
 
 Size.defaultProps = {
   skus: {},
   useCurrentSize: () => {},
-  showError: false,
+  setShowError: () => {},
 };
 
 export default Size;
