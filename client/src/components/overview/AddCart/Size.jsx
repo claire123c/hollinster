@@ -63,6 +63,7 @@ const ArrowImg = styled.img`
 
 function Size({ skus, useCurrentSize, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('SELECT SIZE');
   let imageSource = './assets/down-chevron.png';
   if (!isOpen) {
     imageSource = './assets/down-chevron.png';
@@ -71,6 +72,7 @@ function Size({ skus, useCurrentSize, setShowError }) {
   }
 
   const clickOption = (event) => {
+    setSelected(event.target.innerText);
     useCurrentSize(event.target.value);
     setIsOpen(false);
     setShowError(false);
@@ -102,7 +104,7 @@ function Size({ skus, useCurrentSize, setShowError }) {
         <Container>
           <HeaderContainer>
             <SizeHeader defaultValue="select">
-              SELECT SIZE
+              {selected}
               <ArrowImg src={imageSource} alt="arrows" />
             </SizeHeader>
           </HeaderContainer>
