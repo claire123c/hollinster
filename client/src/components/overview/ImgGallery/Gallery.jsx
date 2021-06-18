@@ -7,7 +7,7 @@ import Large from './Large.jsx';
 const GalleryBox = styled.div`
   height: calc(70vh - 16px);
   width: ${(props) => (props.expand ? '80%' : '60%')};
-  background-color: rgb(232,232,232);
+
   overflow: hidden;
   padding: 2%;
 `;
