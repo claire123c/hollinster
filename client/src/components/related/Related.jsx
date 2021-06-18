@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components'
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
+
+const Carousel = styled.div`
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: left;
+  align-items: center;
+  width: 18rem;
+  height: 36rem;
+  margin: 1em;
+`;
 
 export default function Related({ productID, setProductID, switchProduct }) {
   const [current, setCurrent] = useState(productID);
@@ -67,20 +79,26 @@ export default function Related({ productID, setProductID, switchProduct }) {
 
   return (
     <>
-      <List
-        current={current}
-        related={related}
-        productID={productID}
-        switchProduct={switchProduct}
-        setProductID={setProductID}
-      />
-      <YourOutfit
-        current={current}
-        outfit={outfit}
-        productID={productID}
-        addToOutfit={addToOutfit}
-        removeFromOutfit={removeFromOutfit}
-      />
+      <h1>RELATED PRODUCTS</h1>
+      <Carousel>
+        <List
+          current={current}
+          related={related}
+          productID={productID}
+          switchProduct={switchProduct}
+          setProductID={setProductID}
+        />
+      </Carousel>
+      <h1>YOUR OUTFIT</h1>
+      <Carousel>
+        <YourOutfit
+          current={current}
+          outfit={outfit}
+          productID={productID}
+          addToOutfit={addToOutfit}
+          removeFromOutfit={removeFromOutfit}
+        />
+      </Carousel>
     </>
   );
 }
