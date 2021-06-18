@@ -118,7 +118,7 @@ function Size({ skus, useCurrentSize, setShowError }) {
       <Container>
         <HeaderContainer>
           <SizeHeader defaultValue="select">
-            SELECT SIZE
+            {selected}
             <ArrowImg src={imageSource} alt="arrows" />
           </SizeHeader>
         </HeaderContainer>

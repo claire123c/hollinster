@@ -57,7 +57,7 @@ const QuantityOptions = styled.li`
 
 const ArrowImgQ = styled.img`
   height: 15px;
-  margin-left: 60%;
+  margin-left: 50%;
 `;
 
 function Quantity({ currentSizeObj, setSelectedQ, selectedQ }) {
