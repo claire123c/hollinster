@@ -42,8 +42,7 @@ function AddtoCart({
       axios.post('/cart', { sku_id: currentSize, count: selectedQ })
         .then(() => {
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
         });
     }
   };
