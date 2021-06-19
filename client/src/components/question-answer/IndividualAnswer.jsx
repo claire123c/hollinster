@@ -6,16 +6,11 @@ const IndividualAnswerRow = styled.div`
 `;
 
 export default function IndividualAnswer(props) {
-  console.log('this is props in individual answer:', props.answers);
   const listOfAnswers = [];
-  // for (let keys in props.answers) {
-  //   listOfAnswers.push(props.answers[keys])
-  // };
   Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
-  console.log('this is a list of answers c/o having to do a ternary', listOfAnswers);
-  const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
-  const [answerHelpfulnessRating, setAnswerHelpfulnessRating] =
-    useState(sampleAnswersList.results[0].helpfulness);
+  const [amountOfAnswers, setAmountOfAnswers] = useState(2);
+  const visibleAnswers = listOfAnswers.slice(0, amountOfAnswers);
+  console.log('visible answers in individual answers:', visibleAnswers);
   const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
   const [isReported, setIsReported] = useState(false);
   const [reported, setReported] = useState('Report');
@@ -40,7 +35,7 @@ export default function IndividualAnswer(props) {
     }
   };
 
-  const answers = listOfAnswers.map((answer) => {
+  const answers = visibleAnswers.map((answer) => {
     const answerDate = answer.date;
     const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const date = new Date(answerDate);
@@ -50,11 +45,23 @@ export default function IndividualAnswer(props) {
         <strong>A:</strong> {answer.body}
         <p>
           <span>
-            by {answer.answerer_name}, {stringOfDate} | Helpful? <button onClick={handleAnswerHelpfulness}>
+            by {answer.answerer_name}, {stringOfDate} | Helpful?
+            &nbsp;
+            <button
+              type="button"
+              onClick={handleAnswerHelpfulness}
+            >
               Yes
             </button>
-            ({answer.helpfulness}) |
-            <button onClick={handleReported}>
+            &nbsp;
+            (
+            {answer.helpfulness}
+            )
+            &nbsp;|&nbsp;
+            <button
+              type="button"
+              onClick={handleReported}
+            >
               {reported}
             </button>
           </span>
@@ -69,6 +76,17 @@ export default function IndividualAnswer(props) {
       <span>
         {answers}
       </span>
+      {listOfAnswers.length <= 2 ? null
+        : (
+          <p>
+            <button
+              type="button"
+              onClick={() => setAmountOfAnswers(amountOfAnswers + 2)}
+            >
+              <strong>LOAD MORE ANSWERS</strong>
+            </button>
+          </p>
+        )}
       <hr />
     </IndividualAnswerRow>
   );
