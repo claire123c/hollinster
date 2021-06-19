@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const QuestionSearchInput = styled.input`
-  width: 80%;
+  width: 90%;
   height: 50px;
   margin: 1% 0;
   border: 1px solid black;
@@ -12,7 +12,7 @@ const QuestionSearchInput = styled.input`
   ::-webkit-input-placeholder {
     font-weight: 600;
     font-size: 14px;
-    padding-left: 3%;
+    padding-left: 1%;
   }
 `;
 
@@ -20,7 +20,7 @@ const MagnifyingGlass = styled.button`
   border: 1px solid black;
   border-left: none;
   height: 50px;
-  width: 5%;
+  width: 10%;
   background: white;
   position: relative; top: 2px;
 `;

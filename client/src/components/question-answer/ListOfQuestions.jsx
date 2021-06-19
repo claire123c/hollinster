@@ -10,7 +10,7 @@ import AddQuestionForm from './AddQuestionForm.jsx';
 
 export default function ListOfQuestions(props) {
   console.log('props.questions in list of qs:', props.questions);
-  const [amountOfQuestions, setAmountOfQuestions] = useState(2);
+  const [amountOfQuestions, setAmountOfQuestions] = useState(4);
   const listOfQuestions = props.questions.length === 0 ? null : props.questions;
   const visibleQuestions = props.questions.length === 0 ? null : listOfQuestions.slice(0, amountOfQuestions);
   console.log('list of questions in list of questions:', listOfQuestions);

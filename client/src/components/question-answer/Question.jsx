@@ -6,7 +6,7 @@ import ListOfQuestions from './ListOfQuestions.jsx';
 
 const QuestionContainer = styled.div`
   color: #343a40;
-  margin: 0 auto;
+  margin: 50px auto;
 `;
 
 export default function Question(props) {
