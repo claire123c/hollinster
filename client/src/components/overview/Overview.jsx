@@ -82,6 +82,7 @@ function Overview({ productID }) {
 
   useEffect(() => {
     setProductNum(productID);
+    localStorage.clear();
   }, [productID]);
 
   useEffect(() => {
