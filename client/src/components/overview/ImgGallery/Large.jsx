@@ -33,19 +33,24 @@ const DefaultView = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  &:hover {
+    cursor: zoom-in;
+  }
 `;
 const RightArrow = styled.img`
-  font-size: 80px;
   visibility: ${(props) => (props.rightArrow ? 'visible' : 'hidden')};
-  padding-left: 50%;
+  margin-left: 52%;
+  padding: 1%;
+  border: 1px solid black;
   &:hover {
     cursor: pointer;
   }
 `;
 const LeftArrow = styled.img`
-  font-size: 80px;
   visibility: ${(props) => (props.leftArrow ? 'visible' : 'hidden')};
-  padding-right: 50%;
+  margin-right: 52%;
+  padding: 1%;
+  border: 1px solid black;
   &:hover {
     cursor: pointer;
   }

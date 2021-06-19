@@ -82,7 +82,7 @@ function Overview({ productID }) {
   }, [productNum]);
 
   return (
-    <OveviewComp>
+    <>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn className="side-column">
@@ -92,7 +92,7 @@ function Overview({ productID }) {
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
-    </OveviewComp>
+    </>
   );
 }
 
