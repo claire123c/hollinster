@@ -6,7 +6,22 @@ const IndividualAnswerRow = styled.div`
 `;
 
 export default function IndividualAnswer(props) {
-  const [answers] = useState(sampleAnswersList.results[0].body);
+  console.log('this is props in individual answer:', props.answers);
+  const listOfAnswers = [];
+  // for (let keys in props.answers) {
+  //   listOfAnswers.push(props.answers[keys])
+  // };
+  Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
+  console.log('this is a list of answers c/o having to do a ternary', listOfAnswers);
+  const answers = listOfAnswers.map((answer) => (
+    <div key={answer.id}>
+      <strong>
+        A:
+      </strong>
+      {answer.body}
+      <br />
+    </div>
+  ));
   const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
   const [answerDate] = useState(sampleAnswersList.results[0].date);
   const [answerHelpfulnessRating, setAnswerHelpfulnessRating] =
@@ -42,9 +57,6 @@ export default function IndividualAnswer(props) {
     <IndividualAnswerRow>
       <br />
       <span>
-        <strong>
-          A:
-        </strong>
         {answers}
       </span>
       <p>
