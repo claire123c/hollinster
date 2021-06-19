@@ -7,6 +7,7 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <div className="ratings-reviews-header">
+        <a name="ratings-reviews"/>
         <h3>RATINGS & REVIEWS</h3>
         <div className="ratings-reviews">
           <Ratings productID={this.props.productID} />
