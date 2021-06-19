@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
@@ -20,7 +21,7 @@ const CarouselHeading = styled.h1`
   margin: 1rem;
 `;
 
-export default function Related({ productID, setProductID, switchProduct }) {
+export default function Related({ productID, setProductID }) {
   const [current, setCurrent] = useState(productID);
   const [related, setRelated] = useState([]);
   const [outfit, setOutfit] = useState([]);
@@ -39,8 +40,8 @@ export default function Related({ productID, setProductID, switchProduct }) {
       });
     axios.get(`/products/${productID}/related`)
       .then((response) => {
-        const uniqueIDS = [...new Set(response.data)];
-        setRelated(uniqueIDS);
+        const uniqueIds = [...new Set(response.data)];
+        setRelated(uniqueIds);
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +75,6 @@ export default function Related({ productID, setProductID, switchProduct }) {
           current={current}
           related={related}
           productID={productID}
-          switchProduct={switchProduct}
           setProductID={setProductID}
         />
       </Carousel>
@@ -92,3 +92,8 @@ export default function Related({ productID, setProductID, switchProduct }) {
   );
 }
 
+Related.propTypes = {
+  productID: PropTypes.number.isRequired,
+  setProductID: PropTypes.func.isRequired,
+
+};

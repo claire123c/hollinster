@@ -26,6 +26,20 @@ const Text = styled.div`
   font-family: 'Open Sans', sans-serif;
   `;
 
+const Strikethrough = styled.div`
+  text-decoration: line-through;
+  `;
+
+const Sale = styled.div`
+  color: red;
+  `;
+
+const StarButton = styled.div`
+  hover: {
+    background-color: grey
+  }
+`;
+
 export default function OutfitCard({ product, removeFromOutfit }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
@@ -34,21 +48,8 @@ export default function OutfitCard({ product, removeFromOutfit }) {
   const [rating, setRating] = useState();
   const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
-
-  // const averageRating = (reviewResults) => {
-  //   let ratings = 0;
-  //   let totalRatings = 0;
-  //   if (reviewResults.length < 1) {
-  //     return 'No Rating Available';
-  //   }
-  //   for (let i = 0; i < reviewResults.length; i += 1) {
-  //     if (reviewResults[i].rating !== undefined) {
-  //       ratings += reviewResults[i].rating;
-  //       totalRatings += 1;
-  //     }
-  //   }
-  //   return ratings / totalRatings;
-  // };
+  let salePrice = 0;
+  let sale = false;
 
   const checkPrice = (stylesResults) => {
     const defaultStyle = stylesResults.findIndex((element) => element['default?']);
@@ -56,7 +57,11 @@ export default function OutfitCard({ product, removeFromOutfit }) {
     if (defaultStyle === -1) {
       return defaultPrice;
     }
-    return (style.sale_price ? style.sale_price : style.original_price);
+    if (style.sale_price) {
+      sale = true;
+      salePrice = style.sale_price;
+    }
+    return style.original_price;
   };
 
   const getProduct = () => axios.get(`/products/${product}`);
@@ -86,7 +91,12 @@ export default function OutfitCard({ product, removeFromOutfit }) {
       <Image img src={image} alt={`A representation of ${name}`} />
       <Text>{category}</Text>
       <Text>{name}</Text>
-      <Text>{price}</Text>
+      {sale ? (
+        <>
+          <Strikethrough>{price}</Strikethrough>
+          <Sale>{salePrice}</Sale>
+        </>
+      ) : <Text>{price}</Text>}
       <Star ratings={rating} results={noDisplay} />
     </CardWrapper>
   );

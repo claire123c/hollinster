@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card.jsx';
-import styled from 'styled-components';
 
 export default function List({ current, related, productID, setProductID, switchProduct }) {
-  const [displayed, setDisplayed] = useState();
-  const [length, setLength] = useState();
   const [firstCardIndex, setFirstCardIndex] = useState(0);
 
   useEffect(() => {
@@ -41,3 +39,8 @@ export default function List({ current, related, productID, setProductID, switch
     </>
   );
 }
+
+List.propTypes = {
+  current: PropTypes.shape({}).isRequired,
+
+};

@@ -46,39 +46,27 @@ const Sale = styled.div`
   `;
 
 const StarButton = styled.div`
+  hover: {
+    background-color: grey
+  }
 `;
 
 export default function Card({
   current, product, setProductID,
 }) {
-  const [category, setCategory] = useState();
-  const [name, setName] = useState();
-  const [price, setPrice] = useState();
-  const [image, setImage] = useState();
+  const [category, setCategory] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState('');
   const [rating, setRating] = useState();
   const [modal, setModal] = useState(false);
   const [productData, setProductData] = useState([]);
-  const [productStyleData, setProductStyleData] = useState([]);
-  const [productReviewData, setProductReviewData] = useState([]);
+  // const [productStyleData, setProductStyleData] = useState([]);
+  // const [productReviewData, setProductReviewData] = useState([]);
   const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
   let salePrice = 0;
   let sale = false;
-
-  // const averageRating = (reviewResults) => {
-  //   let ratings = 0;
-  //   let totalRatings = 0;
-  //   if (reviewResults.length < 1) {
-  //     return 'No Rating Available';
-  //   }
-  //   for (let i = 0; i < reviewResults.length; i += 1) {
-  //     if (reviewResults[i].rating !== undefined) {
-  //       ratings += reviewResults[i].rating;
-  //       totalRatings += 1;
-  //     }
-  //   }
-  //   return ratings / totalRatings;
-  // };
 
   const checkPrice = (stylesResults) => {
     const defaultStyle = stylesResults.findIndex((element) => element['default?']);
@@ -109,8 +97,8 @@ export default function Card({
         defaultPrice = response[0].data.default_price;
         salePrice = response[0].data.sale_price;
         setProductData(response[0].data);
-        setProductStyleData(response[1].data);
-        setProductReviewData(response[2].data);
+        // setProductStyleData(response[1].data);
+        // setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         setPrice(checkPrice(response[1].data.results));
@@ -151,11 +139,5 @@ export default function Card({
 Card.propTypes = {
   product: PropTypes.number.isRequired,
   setProductID: PropTypes.func.isRequired,
-  current: PropTypes.shape({}),
+  current: PropTypes.number.isRequired,
 };
-
-Card.defaultProps = {
-  current: {},
-};
-
-// alt={`A representation of ${name}`}
