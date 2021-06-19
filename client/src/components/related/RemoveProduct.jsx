@@ -1,6 +1,5 @@
 import React from 'react';
 
-export default function RemoveProduct() {
-  <button></button>
-
+export default function RemoveProduct( {removeFromOutfit} ) {
+  return <button onClick={removeFromOutfit}>X</button>
 }

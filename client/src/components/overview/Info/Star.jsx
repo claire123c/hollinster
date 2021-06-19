@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import averageRating from './Info-helper.jsx/star-helper.jsx'
+import averageRating from './Info-helper.jsx/star-helper.jsx';
 
 const InnerStars = styled.div`
   position: absolute;
@@ -28,29 +28,41 @@ const StarRating = styled.div`
 const ReviewsComp = styled.a`
   margin-left: 2%;
   color: black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-function Star({ reviews }) {
-  const { results } = reviews;
-  const [stars, useStars] = useState(0);
-  const [showStars, useShowStars] = useState(false);
+function Star({ ratings, results }) {
+  const [stars, setStars] = useState(0);
+  const [showStars, setShowStars] = useState(false);
+  const [showReviews, setShowReviews] = useState(true);
 
   useEffect(() => {
-    useStars(averageRating(results, useShowStars));
+    setStars(averageRating(ratings, setShowStars));
+  }, [ratings]);
+
+  useEffect(() => {
+    if (results[0] && results[0].display === 'none') {
+      setShowReviews(false);
+    }
   }, [results]);
 
   return (
-    <StarRating className="starrating">
+    <StarRating className="star-rating">
       {showStars
         ? (
           <div>
-            <OuterStar className="outerstars">
+            <OuterStar className="outer-stars">
               &#9734;&#9734;&#9734;&#9734;&#9734;
-              <InnerStars className="innerstars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
+              <InnerStars className="inner-stars" stars={(stars / 5) * 100}>&#9733;&#9733;&#9733;&#9733;&#9733;</InnerStars>
             </OuterStar>
-            <ReviewsComp href="#RatingsandReviews">
-              {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
-            </ReviewsComp>
+            {showReviews
+              ? (
+                <ReviewsComp href="#RatingsandReviews">
+                  {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
+                </ReviewsComp>
+              ) : <></>}
           </div>
         ) : <InnerStars />}
     </StarRating>
@@ -60,5 +72,11 @@ function Star({ reviews }) {
 export default Star;
 
 Star.propTypes = {
-  reviews: PropTypes.object,
+  ratings: PropTypes.shape({}),
+  results: PropTypes.instanceOf(Array),
+};
+
+Star.defaultProps = {
+  ratings: {},
+  results: [{ display: 'yes' }],
 };

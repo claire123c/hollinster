@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Star from './Star.jsx';
 
 const ProductInfo = styled.div`
-  margin-left: 3%;
-  margin-top: 2%;
 `;
 
 const Category = styled.div`
@@ -26,6 +24,7 @@ const Price = styled.div`
 const SalePrice = styled.div`
   display: inline;
   color: red;
+  margin-right: 1%;
 `;
 const Original = styled.div`
   display: inline;
@@ -41,13 +40,17 @@ const Pin = styled.div`
   vertical-align: top;
 `;
 
-function Info({ productInfo, styles, reviews }) {
+function Info({
+  productInfo, styles, meta, reviews,
+}) {
   const { name, category } = productInfo;
   const { original_price, sale_price } = styles;
+  const { ratings } = meta;
+  const { results } = reviews;
 
   return (
     <ProductInfo className="productinfo">
-      <Star reviews={reviews} />
+      <Star ratings={ratings} results={results} />
       <Category className="category">
         {category ? category.toUpperCase() : category}
       </Category>
@@ -64,11 +67,16 @@ function Info({ productInfo, styles, reviews }) {
               {original_price}
             </Original>
           </Price>
-        ) : <Price>${original_price}</Price>}
+        ) : (
+          <Price>
+            $
+            {original_price}
+          </Price>
+        )}
       </div>
       <Social>
         <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
-        <a href="https://twitter.com/Cpak90?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @Cpak90</a>
+        <a href="https://twitter.com/Cpak90?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow</a>
         <Pin className="pinterest-save-button">
           <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" />
         </Pin>
@@ -91,15 +99,33 @@ Info.propTypes = {
     name: PropTypes.string,
     category: PropTypes.string,
   }),
+  meta: PropTypes.shape({
+    ratings: PropTypes.shape({
+      3: PropTypes.string,
+    }),
+  }),
   reviews: PropTypes.shape({
-    count: PropTypes.number,
-    page: PropTypes.number,
     product: PropTypes.string,
+    results: PropTypes.instanceOf(Array),
   }),
 };
 
 Info.defaultProps = {
   styles: {},
   productInfo: {},
-  reviews: {},
+  meta: {
+    ratings: {
+    },
+  },
+  reviews: {
+    product: '',
+    page: 0,
+    count: 5,
+    results: [
+      {
+        review_id: 0,
+        rating: 0,
+      },
+    ],
+  },
 };

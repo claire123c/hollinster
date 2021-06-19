@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
-  height: calc(60vh - 16px);
-  width: ${(props) => (props.expand ? '70%' : '50%')};
+  height: calc(70vh - 16px);
+  width: ${(props) => (props.expand ? '80%' : '60%')};
   background-color: rgb(232,232,232);
   overflow: hidden;
   padding: 2%;
 `;
-const Expand = styled.div`
+const Expand = styled.img`
   font-size: 40px;
   float: right;
   min-height: 20px;
   min-width: 20px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Gallery({ styles }) {
@@ -26,7 +29,7 @@ function Gallery({ styles }) {
 
   return (
     <GalleryBox className="gallery" expand={expand}>
-      <Expand onClick={onClickExp} className="collapsible">&#10696;</Expand>
+      <Expand onClick={onClickExp} className="collapsible" src="./assets/fullscreen.png" />
       <Large
         defaultStyle={styles}
       />
