@@ -1,7 +1,12 @@
-import React from 'react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Card from '../../components/overview/AddCart/Cart.jsx';
+/**
+ * @jest-environment jsdom
+ */
+ import React from 'react';
+ import { render } from '@testing-library/react';
+ import '@testing-library/jest-dom/extend-expect';
+ import AddToOutfit from '../../components/related/AddToOutfit.jsx';
 
+ test('it renders a +', () => {
+   const outfitComponent = render(<AddToOutfit />);
+   expect(outfitComponent.getByText('+').innerHTML).toBe('+');
+ });

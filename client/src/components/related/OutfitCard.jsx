@@ -51,7 +51,7 @@ export default function OutfitCard({ product, removeFromOutfit }) {
   // };
 
   const checkPrice = (stylesResults) => {
-    const defaultStyle = stylesResults.findIndex((element) => element['default?'] === true);
+    const defaultStyle = stylesResults.findIndex((element) => element['default?']);
     const style = stylesResults[defaultStyle];
     if (defaultStyle === -1) {
       return defaultPrice;

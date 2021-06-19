@@ -63,7 +63,7 @@ export default function Card({
   const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
   let salePrice = 0;
-  let sale = false;
+  const sale = false;
 
   // const averageRating = (reviewResults) => {
   //   let ratings = 0;
@@ -132,7 +132,7 @@ export default function Card({
         <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
         <Text>{category}</Text>
         <Text>{name}</Text>
-        {sale? (
+        {sale ? (
           <>
             <Strikethrough>{price}</Strikethrough>
             <Sale>{salePrice}</Sale>
@@ -147,4 +147,9 @@ export default function Card({
 Card.propTypes = {
   product: PropTypes.number.isRequired,
   setProductID: PropTypes.func.isRequired,
+  current: PropTypes.shape({}),
+};
+
+Card.defaultProps = {
+  current: {},
 };
