@@ -14,8 +14,8 @@ const Top = styled.div`
 `;
 
 const OveviewComp = styled.div`
-  margin-left: 12%;
-  margin-right: 12%;
+  margin-left: 10%;
+  margin-right: 10%;
 `;
 
 const SideColumn = styled.div`

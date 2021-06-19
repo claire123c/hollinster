@@ -38,18 +38,18 @@ const DefaultView = styled.div`
   }
 `;
 const RightArrow = styled.img`
-  font-size: 80px;
   visibility: ${(props) => (props.rightArrow ? 'visible' : 'hidden')};
   margin-left: 52%;
+  padding: 1%;
   border: 1px solid black;
   &:hover {
     cursor: pointer;
   }
 `;
 const LeftArrow = styled.img`
-  font-size: 80px;
   visibility: ${(props) => (props.leftArrow ? 'visible' : 'hidden')};
   margin-right: 52%;
+  padding: 1%;
   border: 1px solid black;
   &:hover {
     cursor: pointer;

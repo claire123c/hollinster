@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
 import styled from 'styled-components';
-import Overview from './overview/Overview.jsx';
+// import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
 // import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
@@ -52,7 +52,6 @@ const SearchImg = styled.img`
 `;
 
 const LightButton = styled.button`
-  display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid black;
   margin: 0 0.3em 0. 3em 0;
@@ -61,19 +60,18 @@ const LightButton = styled.button`
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
   font-weight: 800;
+  background-color: grey;
   color: black;
   text-align: center;
   transition: all 0.2s;
-  float: right;
-  margin-right: 10%;
   margin-top: 1%;
+  margin-left: 10%;
   &:hover{
     color: #000000;
     background-color: #303030;
     }
 `;
 const DarkButton = styled.button`
-  display:inline-block;
   padding:0.35em 1.2em;
   border:0.1em solid #FFFFFF;
   margin:0 0.3em 0.3em 0;
@@ -85,10 +83,8 @@ const DarkButton = styled.button`
   color:#FFFFFF;
   text-align: center;
   transition: all 0.2s;
-  background-color: grey;
-  float: right;
-  margin-right: 10%;
   margin-top: 1%;
+  margin-left: 10%;
   &:hover{
     color:#000000;
     background-color:#FFFFFF;
@@ -118,7 +114,7 @@ const App = (props) => {
         </Search>
       </LogoBar>
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
-      <Overview productID={productID} />
+      {/* <Overview productID={productID} /> */}
       {/* <Question />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
       <RatingsReviews productID={productID} /> */}
