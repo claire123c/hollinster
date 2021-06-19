@@ -13,25 +13,12 @@ export default function IndividualAnswer(props) {
   // };
   Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
   console.log('this is a list of answers c/o having to do a ternary', listOfAnswers);
-  const answers = listOfAnswers.map((answer) => (
-    <div key={answer.id}>
-      <strong>
-        A:
-      </strong>
-      {answer.body}
-      <br />
-    </div>
-  ));
   const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
-  const [answerDate] = useState(sampleAnswersList.results[0].date);
   const [answerHelpfulnessRating, setAnswerHelpfulnessRating] =
     useState(sampleAnswersList.results[0].helpfulness);
   const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
   const [isReported, setIsReported] = useState(false);
   const [reported, setReported] = useState('Report');
-  const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const date = new Date(answerDate);
-  const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   const handleAnswerHelpfulness = () => {
     if (!answerHelpfulnessClicked) {
@@ -52,34 +39,36 @@ export default function IndividualAnswer(props) {
       setReported('Report');
     }
   };
-  // console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
+
+  const answers = listOfAnswers.map((answer) => {
+    const answerDate = answer.date;
+    const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date(answerDate);
+    const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    return (
+      <div key={answer.id}>
+        <strong>A:</strong> {answer.body}
+        <p>
+          <span>
+            by {answer.answerer_name}, {stringOfDate} | Helpful? <button onClick={handleAnswerHelpfulness}>
+              Yes
+            </button>
+            ({answer.helpfulness}) |
+            <button onClick={handleReported}>
+              {reported}
+            </button>
+          </span>
+        </p>
+      </div>
+    );
+  });
+
   return (
     <IndividualAnswerRow>
       <br />
       <span>
         {answers}
       </span>
-      <p>
-        by
-        {answerUsername}
-        ,
-        {stringOfDate}
-        |
-        Helpful?
-        <u
-          onClick={handleAnswerHelpfulness}>
-          Yes
-        </u>
-        (
-        {answerHelpfulnessRating}
-        )
-        |
-        <u
-          onClick={handleReported}
-        >
-          {reported}
-        </u>
-      </p>
       <hr />
     </IndividualAnswerRow>
   );
