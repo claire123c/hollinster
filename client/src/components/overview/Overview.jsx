@@ -13,11 +13,6 @@ const Top = styled.div`
   display: flex;
 `;
 
-const OveviewComp = styled.div`
-  margin-left: 12%;
-  margin-right: 12%;
-`;
-
 const SideColumn = styled.div`
   padding: 2%;
   max-width: 40%;
