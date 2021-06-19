@@ -18,9 +18,9 @@ const Body = styled.div`
 
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
-  background-color: #1477B2;
   margin: 0 10%;
   padding: 2%;
+  background-color: silver;
 `;
 
 const KangaImg = styled.img`
