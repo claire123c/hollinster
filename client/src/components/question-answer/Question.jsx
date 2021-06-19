@@ -3,10 +3,10 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Search from './Search.jsx';
 import ListOfQuestions from './ListOfQuestions.jsx';
-import AddQuestionForm from './AddQuestionForm.jsx';
 
 const QuestionContainer = styled.div`
   color: #343a40;
+  margin: 0 auto;
 `;
 
 export default function Question(props) {
@@ -42,10 +42,7 @@ export default function Question(props) {
       <p>QUESTIONS & ANSWERS</p>
       <Search />
       <ListOfQuestions questions={questions} />
-      <span>
-        <button onClick={() => console.log('retrieve more questions')}><strong>MORE ANSWERED QUESTIONS</strong></button>
-        <AddQuestionForm />
-      </span>
+
     </QuestionContainer>
   );
 };

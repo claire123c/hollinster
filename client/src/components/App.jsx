@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 // import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
-// import Question from './question-answer/Question.jsx';
+import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
+const OverviewComp = styled.div`
+  margin-left: 12%;
+  margin-right: 12%;
+`;
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
   background-color: teal;
@@ -51,7 +55,7 @@ const App = (props) => {
   };
 
   return (
-    <>
+    <OverviewComp>
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
@@ -61,11 +65,11 @@ const App = (props) => {
         </Search>
       </LogoBar>
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
-      {/* <Overview productID={productID} /> */}
-      {/* <Question productID={productID} /> */}
-      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <RatingsReviews productID={productID} />  */}
-    </>
+      {/* <Overview productID={productID} />
+      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} /> */}
+      <Question productID={productID} />
+      {/* <RatingsReviews productID={productID} /> */}
+    </OverviewComp>
   );
 };
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const QuestionSearchInput = styled.input`
-  width: 60%;
+  width: 80%;
   height: 50px;
   margin: 1% 0;
   border: 1px solid black;
