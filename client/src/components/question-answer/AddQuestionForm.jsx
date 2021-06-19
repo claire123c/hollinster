@@ -14,7 +14,8 @@ const customStyles = {
 
 Modal.setAppElement('#app');
 
-const AddQuestionForm = () => {
+const AddQuestionForm = (props) => {
+  console.log('these are props in addquestionform', props)
   const [modalOpen, setModalOpen] = useState(false);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');

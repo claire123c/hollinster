@@ -29,7 +29,7 @@ export default function ListOfQuestions(props) {
       <div>{individualQuestion}</div>
       <span>
         {addQuestionButton}
-        <AddQuestionForm />
+        <AddQuestionForm questionBody={props} />
       </span>
     </>
   );
