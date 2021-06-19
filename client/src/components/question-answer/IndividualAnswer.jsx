@@ -5,7 +5,7 @@ import { sampleAnswersList } from './sampleData.js';
 const IndividualAnswerRow = styled.div`
 `;
 
-export default function IndividualAnswer() {
+export default function IndividualAnswer(props) {
   const [answers] = useState(sampleAnswersList.results[0].body);
   const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
   const [answerDate] = useState(sampleAnswersList.results[0].date);
