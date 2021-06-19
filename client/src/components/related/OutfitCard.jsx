@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import RemoveProduct from './RemoveProduct.jsx'
 import Star from '../overview/Info/Star.jsx';
 
 const CardWrapper = styled.div`
@@ -13,7 +12,6 @@ const CardWrapper = styled.div`
   height: 36em;
   margin: 1em;
   user-select: none;
-  font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
 `;
@@ -23,15 +21,6 @@ const Image = styled.img`
   height: 24rem;
   object-fit: cover;
 `;
-
-const Background = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  `;
 
 const Text = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -43,12 +32,8 @@ export default function OutfitCard({ product, removeFromOutfit }) {
   const [price, setPrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
-  const [showOutfit, setShowOutfit] = useState(false);
-  // const [productData, setProductData] = useState([]);
-  // const [productStyleData, setProductStyleData] = useState([]);
-  // const [productReviewData, setProductReviewData] = useState([]);
+  const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
-  let noDisplay = [{ display: 'none' }];
 
   // const averageRating = (reviewResults) => {
   //   let ratings = 0;
@@ -83,15 +68,9 @@ export default function OutfitCard({ product, removeFromOutfit }) {
   useEffect(() => {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
-        console.log(response[2].data.ratings, 'hulluh');
         defaultPrice = response[0].data.default_price;
-        // setProductData(response[0].data);
-        // setProductStyleData(response[1].data);
-        // setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
-        // setDefaultPrice(response[0].data.default_price);
-        // setPrice(response[1].data.results[0].original_price);
         setPrice(checkPrice(response[1].data.results));
         setImage(response[1].data.results[0].photos[0].url);
         setRating(response[2].data.ratings);
@@ -108,8 +87,12 @@ export default function OutfitCard({ product, removeFromOutfit }) {
       <Text>{category}</Text>
       <Text>{name}</Text>
       <Text>{price}</Text>
-      {/* <Text>{rating}</Text> */}
       <Star ratings={rating} results={noDisplay} />
     </CardWrapper>
   );
 }
+
+OutfitCard.propTypes = {
+  product: PropTypes.number.isRequired,
+  removeFromOutfit: PropTypes.func.isRequired,
+};

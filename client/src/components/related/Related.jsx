@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import List from './List.jsx';
 import YourOutfit from './YourOutfit.jsx';
 
@@ -10,6 +10,7 @@ const Carousel = styled.div`
   grid-auto-flow: column;
   justify-content: left;
   align-items: center;
+  scroll-behavior: smooth;
   width: 18rem;
   height: 36rem;
   margin: 1rem;
@@ -26,12 +27,9 @@ export default function Related({ productID, setProductID, switchProduct }) {
 
   useEffect(() => {
     const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
-    // if (storedOutfit) {
-    //   setOutfit(storedOutfit);
-    // } else {
-    //   console.log('empty');
-    // }
-    storedOutfit ? setOutfit(storedOutfit) : null;
+    if (storedOutfit) {
+      setOutfit(storedOutfit);
+    }
   }, []);
 
   useEffect(() => {
@@ -54,18 +52,14 @@ export default function Related({ productID, setProductID, switchProduct }) {
       updatedOutfit.push(productID);
       setOutfit(updatedOutfit);
       localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
-      console.log('added');
-    } else {
-      console.log('already exists');
     }
   };
 
   const removeFromOutfit = (id) => {
     const updatedOutfit = [...outfit];
-    const found = updatedOutfit.findIndex((element) => element === id);
-    console.log(found);
-    if (found !== -1) {
-      updatedOutfit.splice(found, 1);
+    const index = updatedOutfit.findIndex((element) => element === id);
+    if (index !== -1) {
+      updatedOutfit.splice(index, 1);
       setOutfit(updatedOutfit);
       localStorage.setItem('outfit', JSON.stringify(updatedOutfit));
     }

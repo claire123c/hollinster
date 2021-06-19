@@ -5,30 +5,15 @@ import AddToOutfit from './AddToOutfit.jsx';
 
 export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
   const [firstCardIndex, setFirstCardIndex] = useState(0);
-  // const [outfit, setOutfit] = useState([]);
-
-  // useEffect(() => {
-  //   const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
-  //   if (storedOutfit) {
-  //     setOutfit(storedOutfit);
-  //   } else {
-  //     console.log('empty');
-  //   }
-  //   // storedOutfit ? setOutfit(storedOutfit) : null
-  // }, []);
 
   const previousCard = () => {
     const previousIndex = firstCardIndex - 1;
     setFirstCardIndex(previousIndex);
-    console.log(outfit);
-    console.log(firstCardIndex + 2 < outfit.length - 1);
   };
 
   const nextCard = () => {
     const nextIndex = firstCardIndex + 1;
     setFirstCardIndex(nextIndex);
-    console.log(outfit);
-    console.log(firstCardIndex + 2 < outfit.length - 1);
   };
 
   const displayedCards = outfit.slice(firstCardIndex, firstCardIndex + 3);
@@ -44,7 +29,7 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
           removeFromOutfit={removeFromOutfit}
         />
       ))}
-      {(outfit.length > 4 && firstCardIndex + 2 === outfit.length -1) ? null : <h1 onClick={nextCard}>&#8250;</h1>}
+      {(outfit.length > 4 && firstCardIndex + 2) === outfit.length -1 ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );
 }

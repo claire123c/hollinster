@@ -49,22 +49,21 @@ const StarButton = styled.div`
 `;
 
 export default function Card({
-  current, product, setProductID, switchProduct,
+  current, product, setProductID,
 }) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
-  const [sale, setSale] = useState(false);
-  const [salePrice, setSalePrice] = useState();
   const [image, setImage] = useState();
   const [rating, setRating] = useState();
   const [modal, setModal] = useState(false);
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
-
+  const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
-  let noDisplay = [{ display: 'none' }];
+  let salePrice = 0;
+  let sale = false;
 
   // const averageRating = (reviewResults) => {
   //   let ratings = 0;
@@ -87,10 +86,6 @@ export default function Card({
     if (defaultStyle === -1) {
       return defaultPrice;
     }
-    if (style.sale_price) {
-      setSale(true);
-      setSalePrice(style.sale_price);
-    }
     return (style.sale_price ? style.sale_price : style.original_price);
   };
 
@@ -108,6 +103,7 @@ export default function Card({
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
         defaultPrice = response[0].data.default_price;
+        salePrice = response[0].data.sale_price;
         setProductData(response[0].data);
         setProductStyleData(response[1].data);
         setProductReviewData(response[2].data);
@@ -136,7 +132,7 @@ export default function Card({
         <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
         <Text>{category}</Text>
         <Text>{name}</Text>
-        {sale ? (
+        {sale? (
           <>
             <Strikethrough>{price}</Strikethrough>
             <Sale>{salePrice}</Sale>
