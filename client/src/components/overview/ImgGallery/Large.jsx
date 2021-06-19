@@ -33,91 +33,101 @@ const DefaultView = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  &:hover {
+    cursor: zoom-in;
+  }
 `;
-const RightArrow = styled.p`
-  font-size: 80px;
-  color: ${(props) => (props.rightArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
-  padding-left: 50%;
+const RightArrow = styled.img`
+  visibility: ${(props) => (props.rightArrow ? 'visible' : 'hidden')};
+  margin-left: 52%;
+  padding: 1%;
+  border: 1px solid black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
-const LeftArrow = styled.p`
-  font-size: 80px;
-  color: ${(props) => (props.leftArrow ? 'rgba(72, 72, 72, 0.7)' : 'rgba(72, 72, 72, 0.0)')};
-  padding-right: 50%;
+const LeftArrow = styled.img`
+  visibility: ${(props) => (props.leftArrow ? 'visible' : 'hidden')};
+  margin-right: 52%;
+  padding: 1%;
+  border: 1px solid black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Large(props) {
   const { defaultStyle } = props;
   const { photos } = defaultStyle;
-  const [currentImgIndex, usecurrentImgIndex] = useState(0);
-  const [currentImg, useCurrentImg] = useState(photos[currentImgIndex]);
-  const [allImgs, useAllImgs] = useState(photos);
-  const [leftClicked, useLeftClicked] = useState(false);
-  const [rightClicked, useRightClicked] = useState(false);
-  const [leftArrow, useLeftArrow] = useState(false);
-  const [rightArrow, useRightArrow] = useState(true);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [currentImg, setCurrentImg] = useState(photos ? photos[currentImgIndex] : { url: '' });
+  const [allImgs, setAllImgs] = useState(photos);
+  const [leftClicked, setLeftClicked] = useState(false);
+  const [rightClicked, setRightClicked] = useState(false);
+  const [leftArrow, setLeftArrow] = useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
 
   useEffect(() => {
-    if (photos.length <= 1) {
-      useRightArrow(false);
+    if (photos && photos.length === 1) {
+      setRightArrow(false);
     } else {
-      useRightArrow(true);
+      setRightArrow(true);
+      setLeftArrow(false);
     }
   }, [props]);
 
   const leftButtonOnClick = () => {
     if (photos[currentImgIndex - 1] !== undefined) {
-      usecurrentImgIndex(currentImgIndex - 1);
-      useCurrentImg(photos[currentImgIndex - 1]);
-      useLeftClicked(!leftClicked);
-      useRightArrow(true);
+      setCurrentImgIndex(currentImgIndex - 1);
+      setCurrentImg(photos[currentImgIndex - 1]);
+      setLeftClicked(!leftClicked);
+      setRightArrow(true);
       if (currentImgIndex === 1) {
-        useLeftArrow(false);
+        setLeftArrow(false);
       }
     }
   };
   const rightButtonOnClick = () => {
     if (photos[currentImgIndex + 1] !== undefined) {
-      usecurrentImgIndex(currentImgIndex + 1);
-      useCurrentImg(photos[currentImgIndex + 1]);
-      useRightClicked(!rightClicked);
-      useLeftArrow(true);
+      setCurrentImgIndex(currentImgIndex + 1);
+      setCurrentImg(photos[currentImgIndex + 1]);
+      setRightClicked(!rightClicked);
+      setLeftArrow(true);
       if (currentImgIndex === photos.length - 2) {
-        useRightArrow(false);
+        setRightArrow(false);
       }
     }
   };
   const onClickThu = (current, i) => {
-    useCurrentImg(current);
-    usecurrentImgIndex(i);
+    setCurrentImg(current);
+    setCurrentImgIndex(i);
     if (photos.length > 1) {
       if (i === 0) {
-        useLeftArrow(false);
-        useRightArrow(true);
+        setLeftArrow(false);
+        setRightArrow(true);
       } else if (i === photos.length - 1) {
-        useLeftArrow(true);
-        useRightArrow(false);
+        setLeftArrow(true);
+        setRightArrow(false);
       } else {
-        useLeftArrow(true);
-        useRightArrow(true);
+        setLeftArrow(true);
+        setRightArrow(true);
       }
     }
   };
 
   useEffect(() => {
-    usecurrentImgIndex(0);
-    useCurrentImg(defaultStyle.photos[0]);
-    useAllImgs(photos);
+    setCurrentImgIndex(0);
+    setCurrentImg(photos ? photos[0] : { url: '' });
+    setAllImgs(photos);
   }, [props]);
 
   return (
     <ThumbnailsGroup className="thumbnailgroup">
       <Minis minis={allImgs} currentImg={currentImg} onClickThu={onClickThu} leftClicked={leftClicked} rightClicked={rightClicked} />
       <AllDefaultView className="alldefaultview">
-        <DefaultView className="defaultview" src={currentImg.url} alt={defaultStyle.name}>
-          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow}>
-            &#xab;
-          </LeftArrow>
-          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow}>&#xbb;</RightArrow>
+        <DefaultView className="default-view" src={currentImg.url} alt={defaultStyle.name}>
+          <LeftArrow onClick={leftButtonOnClick} type="button" data-testid="leftArrowImgGallery" leftArrow={leftArrow} src="./assets/left-arrow.png" />
+          <RightArrow type="button" data-testid="rightArrowImgGallery" onClick={rightButtonOnClick} rightArrow={rightArrow} src="./assets/right-arrow.png" />
         </DefaultView>
       </AllDefaultView>
     </ThumbnailsGroup>
@@ -130,6 +140,7 @@ Large.propTypes = {
   defaultStyle: PropTypes.shape({
     'default?': PropTypes.bool,
     name: PropTypes.string,
+    photos: PropTypes.instanceOf(Array),
   }),
 };
 

@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import {sampleAnswersList } from './sampleData.js';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { sampleAnswersList } from './sampleData.js';
 
-const IndividualAnswer = () => {
+const IndividualAnswerRow = styled.div`
+`;
 
-  const [ answers, setAnswers ] = useState(sampleAnswersList.results[0].body);
-  const [ answerUsername, setAnswerUsername ] = useState(sampleAnswersList.results[0].answerer_name);
-  const [ answerDate, setAnswerDate ] = useState(sampleAnswersList.results[0].date);
-  const [ answerHelpfulnessRating, setAnswerHelpfulnessRating ] = useState(sampleAnswersList.results[0].helpfulness);
-  const [ answerHelpfulnessClicked, setAnswerHelpfulnessClicked ] = useState(false);
-  const [ isReported, setIsReported ] = useState(false);
-  const [ reported, setReported ] = useState('Report');
-  const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const date = new Date(answerDate)
-  const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+const MoreAnswersButton = styled.button`
+  border: none;
+`;
+
+const UnderlinedButtons = styled.button`
+  border: none;
+  text-decoration: underline;
+`;
+export default function IndividualAnswer(props) {
+  const listOfAnswers = [];
+  Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
+  const [amountOfAnswers, setAmountOfAnswers] = useState(2);
+  const visibleAnswers = listOfAnswers.slice(0, amountOfAnswers);
+  console.log('visible answers in individual answers:', visibleAnswers);
+  const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
+  const [reported, setReported] = useState('Report');
 
   const handleAnswerHelpfulness = () => {
     if (!answerHelpfulnessClicked) {
@@ -22,7 +30,7 @@ const IndividualAnswer = () => {
       setAnswerHelpfulnessClicked(false);
       setAnswerHelpfulnessRating(answerHelpfulnessRating - 1);
     }
-  }
+  };
 
   const handleReported = () => {
     if (!isReported) {
@@ -32,16 +40,71 @@ const IndividualAnswer = () => {
       setIsReported(false);
       setReported('Report');
     }
-  }
+  };
 
-  console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
+  const [isReported, setIsReported] = useState(false);
+  const answers = visibleAnswers.map((answer) => {
+    const answerDate = answer.date;
+    const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date(answerDate);
+    const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    return (
+      <div key={answer.id}>
+        <strong>A:</strong> {answer.body}
+        <p>
+          <span>
+            by {answer.answerer_name}, {stringOfDate} | Helpful?
+            &nbsp;
+            <UnderlinedButtons
+              type="button"
+              onClick={handleAnswerHelpfulness}
+            >
+              Yes
+            </UnderlinedButtons>
+            &nbsp;
+            (
+            {answer.helpfulness}
+            )
+            &nbsp;|&nbsp;
+            <UnderlinedButtons
+              type="button"
+              onClick={handleReported}
+            >
+              {reported}
+            </UnderlinedButtons>
+          </span>
+        </p>
+      </div>
+    );
+  });
 
   return (
-    <>
-    <span><strong>A:</strong> {answers}</span>
-    <p>by {answerUsername}, {stringOfDate} | Helpful? <u onClick={handleAnswerHelpfulness}>Yes</u> ({answerHelpfulnessRating}) | <u onClick={handleReported}>{reported}</u></p>
-    </>
-  )
+    <IndividualAnswerRow>
+      <br />
+      <span>
+        {answers}
+      </span>
+      {listOfAnswers.length <= 2 ? null
+        : amountOfAnswers === listOfAnswers.length ? (
+          <p>
+            <MoreAnswersButton
+              type="button"
+              onClick={() => setAmountOfAnswers(2)}
+            >
+              <strong>COLLAPSE ANSWERS</strong>
+            </MoreAnswersButton>
+          </p>
+        ) : (
+          <p>
+            <MoreAnswersButton
+              type="button"
+              onClick={() => setAmountOfAnswers(listOfAnswers.length)}
+            >
+              <strong>LOAD MORE ANSWERS</strong>
+            </MoreAnswersButton>
+          </p>
+        )}
+      <hr />
+    </IndividualAnswerRow>
+  );
 }
-
-export default IndividualAnswer;

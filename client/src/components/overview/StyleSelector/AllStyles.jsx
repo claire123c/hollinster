@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -9,11 +9,16 @@ const StyleText = styled.span`
   margin-right: 2%;
 `;
 
+const LessThan = styled.img`
+  width: 10px;
+  margin-bottom: 1px;
+`;
+
 const StyleThumbnails = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-height: 100%;
-  max-width: 350px;
+  width: calc(50vh);
 `;
 
 const AllStylesComp = styled.div`
@@ -21,7 +26,7 @@ const AllStylesComp = styled.div`
   max-width: 100%;
 `;
 
-function AllStyles({ styleData, currentStyle }) {
+function AllStyles({ styleData, currentStyle, changeStyle }) {
   const { name, style_id } = currentStyle;
 
   return (
@@ -30,13 +35,15 @@ function AllStyles({ styleData, currentStyle }) {
         <StyleText>
           STYLE
           {' '}
-          {'>'}
+          <LessThan src="./assets/is-greater-than-mathematical-sign.png" alt="less-than" />
         </StyleText>
-        {name.toUpperCase()}
+        <span className="style-title">
+          {typeof name === 'string' ? name.toUpperCase() : ''}
+        </span>
       </div>
       <StyleThumbnails>
         {styleData.map((style) => (
-          <StyleThumbnail style={style} key={style.style_id} current={style_id} />
+          <StyleThumbnail style={style} key={style.style_id} current={style_id} changeStyle={changeStyle} />
         ))}
       </StyleThumbnails>
     </AllStylesComp>
@@ -48,9 +55,11 @@ export default AllStyles;
 AllStyles.propTypes = {
   styleData: PropTypes.instanceOf(Array),
   currentStyle: PropTypes.instanceOf(Object),
+  changeStyle: PropTypes.func,
 };
 
 AllStyles.defaultProps = {
   styleData: [],
   currentStyle: { name: '' },
+  changeStyle: () => {},
 };

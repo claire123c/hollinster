@@ -1,10 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import styled from 'styled-components';
 import CompareButton from './CompareButton.jsx';
-import Modal from './Modal.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 
-export default function Card({ current, product }) {
+const CardWrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width: 24em;
+  height: 36em;
+  margin: 1em;
+  user-select: none;
+  font-family: Quicksand, arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+`;
+
+const Image = styled.img`
+  width: 95%;
+  height: 24rem;
+  object-fit: cover;
+`;
+
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  `;
+
+const Text = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  `;
+
+const Star = styled.div`
+  position:
+  &:hover { background-color: black;
+  }
+`;
+
+export default function Card({
+  current, product, setProductID, switchProduct,
+}) {
   const [category, setCategory] = useState();
   const [name, setName] = useState();
   const [price, setPrice] = useState();
@@ -14,7 +55,6 @@ export default function Card({ current, product }) {
   const [productData, setProductData] = useState([]);
   const [productStyleData, setProductStyleData] = useState([]);
   const [productReviewData, setProductReviewData] = useState([]);
-
   let defaultPrice = 0;
 
   const averageRating = (reviewResults) => {
@@ -41,7 +81,7 @@ export default function Card({ current, product }) {
     return (style.sale_price ? style.sale_price : style.original_price);
   };
 
-  const showComparison = () => {
+  const toggleModal = () => {
     setModal(!modal);
   };
 
@@ -101,22 +141,26 @@ export default function Card({ current, product }) {
   // }, []);
 
   return (
-    <div>
-      {modal ? <Modal current={current} productData={productData} /> : null}
-      <CompareButton showComparison={showComparison} />
-      <img src={image} alt={`A representation of ${name}`} />
-      <div>{category}</div>
-      <div>{name}</div>
-      <div>{price}</div>
-      <div>{rating}</div>
-    </div>
+    <>
+      {modal
+        ? (
+          <Background onClick={toggleModal}>
+            <ComparisonModal current={current} productData={productData} />
+          </Background>
+        )
+        : null}
+      <CardWrapper>
+        <Star onClick={toggleModal}>&#9734;</Star>
+        <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
+        <Text>{category}</Text>
+        <Text>{name}</Text>
+        <Text>{price}</Text>
+        <Text>{rating}</Text>
+      </CardWrapper>
+    </>
   );
 }
 
 Card.propTypes = {
-  product: PropTypes.number,
-};
-
-Card.defaultProps = {
-  product: 25167,
+  product: PropTypes.number.isRequired,
 };

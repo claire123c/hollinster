@@ -1,7 +1,32 @@
 import React, { useState } from 'react';
 import Comparison from './Comparison.jsx';
+import styled from 'styled-components'
 
-export default function Modal({ current, productData }) {
+const Modal = styled.div`
+  position: absolute;
+  width: 500px;
+  background: white;
+  transition: 1.1s ease-out;
+  box-shadow: -2rem 2rem 2rem
+  rgba(black, 0.2);
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  // position: absolute;
+  // width: 60%;
+  // background: #ffffff;
+  left: 40%;
+  top: 40%;
+  padding: 20px;
+
+  `;
+
+const ModalText = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  `;
+
+export default function ComparisonModal({ current, productData }) {
   const { name: currentName, features: currentFeatures } = current;
   const { name: comparedName, features: comparedFeatures } = productData;
 
@@ -52,6 +77,8 @@ export default function Modal({ current, productData }) {
     return results.map((feature, i) => (<Comparison feature={feature} key={i} />));
   };
 
+  // checkmark &#10003
+
   // const combinedFeatures = () => {
   //   const results = [];
   //   // console.log(currentFeatures, 'current');
@@ -79,69 +106,70 @@ export default function Modal({ current, productData }) {
   //     }
   //   }
 
-    // currentLength = currentFeatures.length;
-    // comparedLength = comparedFeatures.length;
-    // for (let i = 0; i < combined.length; i += 1) {
-    //   for (let j = i + 1; j < combined.length; j += 1) {
-    //     if (combined[i].feature === combined[j].feature) {
-    //       results.push({
-    //         feature: combined[i].feature,
-    //         currentValue: combined[i].value,
-    //         comparedValue: combined[j].value,
-    //       });
-    //     // } else {
-    //     //   results.push({
-    //     //     feature: combined[i].feature,
-    //     //     currentValue: combined[i].value,
-    //     //     comparedValue: '',
-    //     //   });
-    //     }
-    //   }
-    // }
-    // for (let i = 0; i < currentFeatures.length; i += 1) {
-    //   for (let j = 0; j < comparedFeatures.length; j += 1) {
+  // currentLength = currentFeatures.length;
+  // comparedLength = comparedFeatures.length;
+  // for (let i = 0; i < combined.length; i += 1) {
+  //   for (let j = i + 1; j < combined.length; j += 1) {
+  //     if (combined[i].feature === combined[j].feature) {
+  //       results.push({
+  //         feature: combined[i].feature,
+  //         currentValue: combined[i].value,
+  //         comparedValue: combined[j].value,
+  //       });
+  //     // } else {
+  //     //   results.push({
+  //     //     feature: combined[i].feature,
+  //     //     currentValue: combined[i].value,
+  //     //     comparedValue: '',
+  //     //   });
+  //     }
+  //   }
+  // }
+  // for (let i = 0; i < currentFeatures.length; i += 1) {
+  //   for (let j = 0; j < comparedFeatures.length; j += 1) {
 
-    //     if (currentFeatures[i].feature === comparedFeatures[j].feature) {
-    //       results.push({
-    //         feature: currentFeatures[i].feature,
-    //         currentValue: currentFeatures[i].value,
-    //         comparedValue: comparedFeatures[j].value,
-    //       });
-    //     } else {
-    //       results.push({
-    //         feature: currentFeatures[i].feature,
-    //         currentValue: currentFeatures[i].value,
-    //         comparedValue: '',
-    //       });
-    //     }
-    //   }
-    // }
-    // for (let i = 0; i < comparedFeatures.length; i += 1) {
-    //   for (let j = 0; j < currentFeatures.length; j += 1) {
-    //     if (comparedFeatures[i].feature === currentFeatures[j].feature) {
-    //       results.push({
-    //         feature: comparedFeatures[i].feature,
-    //         currentValue: currentFeatures[j].value,
-    //         comparedValue: comparedFeatures[i].value,
-    //       });
-    //     // } else {
-    //     //   results.push({
-    //     //     feature: comparedFeatures[i].feature,
-    //     //     currentValue: '',
-    //     //     comparedValue: comparedFeatures[i].value,
-    //     //   });
-    //     }
-    //   }
-    // }
-    // console.log(results, 'results');
+  //     if (currentFeatures[i].feature === comparedFeatures[j].feature) {
+  //       results.push({
+  //         feature: currentFeatures[i].feature,
+  //         currentValue: currentFeatures[i].value,
+  //         comparedValue: comparedFeatures[j].value,
+  //       });
+  //     } else {
+  //       results.push({
+  //         feature: currentFeatures[i].feature,
+  //         currentValue: currentFeatures[i].value,
+  //         comparedValue: '',
+  //       });
+  //     }
+  //   }
+  // }
+  // for (let i = 0; i < comparedFeatures.length; i += 1) {
+  //   for (let j = 0; j < currentFeatures.length; j += 1) {
+  //     if (comparedFeatures[i].feature === currentFeatures[j].feature) {
+  //       results.push({
+  //         feature: comparedFeatures[i].feature,
+  //         currentValue: currentFeatures[j].value,
+  //         comparedValue: comparedFeatures[i].value,
+  //       });
+  //     // } else {
+  //     //   results.push({
+  //     //     feature: comparedFeatures[i].feature,
+  //     //     currentValue: '',
+  //     //     comparedValue: comparedFeatures[i].value,
+  //     //   });
+  //     }
+  //   }
+  // }
+  // console.log(results, 'results');
   //   return combined.map((feature, i) => (<Comparison feature={feature} key={i} />));
   // };
 
   // const combinedFeatures = [...currentFeatures, ...comparedFeatures];
 
   return (
-    <>
-      <p>COMPARING</p>
+
+    <Modal>
+       <p>COMPARING</p>
       <table>
         <th>{currentName}</th>
         <th />
@@ -151,16 +179,16 @@ export default function Modal({ current, productData }) {
           {tester()}
         </tbody>
       </table>
-    </>
+    </Modal>
   );
 }
 
-Modal.propTypes = {
-  current: Number,
-  selected: Number,
+ComparisonModal.propTypes = {
+  current: Number.isRequired,
+  productData: Number.isRequired,
 };
 
-Modal.defaultProps = {
-  current: 25167,
-  selected: 25168,
-};
+// ComparisonModal.defaultProps = {
+//   current: 25167,
+//   selected: 25168,
+// };

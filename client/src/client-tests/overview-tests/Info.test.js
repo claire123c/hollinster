@@ -21,7 +21,7 @@ describe('Star Rating', () => {
       },
     };
     render(<Star ratings={reviews.ratings} />);
-    const starElement = document.querySelector('.innerstars').innerHTML;
+    const starElement = document.querySelector('.inner-stars').innerHTML;
 
     expect(starElement).toBe('★★★★★');
   });

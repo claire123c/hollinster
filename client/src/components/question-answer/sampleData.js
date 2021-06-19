@@ -15,7 +15,6 @@ const sampleQuestionsList = {
             "answerer_name": "Seller",
             "helpfulness": 4,
             "photos": []
-            // ...
           }
         }
       },
@@ -44,8 +43,7 @@ const sampleQuestionsList = {
             "photos": [],
           }
         }
-      },
-      // ...
+      }
   ]
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -24,6 +24,7 @@ const Price = styled.div`
 const SalePrice = styled.div`
   display: inline;
   color: red;
+  margin-right: 1%;
 `;
 const Original = styled.div`
   display: inline;
@@ -75,7 +76,7 @@ function Info({
       </div>
       <Social>
         <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore" rel="noreferrer">Share</a></div>
-        <a href="https://twitter.com/Cpak90?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @Cpak90</a>
+        <a href="https://twitter.com/Cpak90?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow</a>
         <Pin className="pinterest-save-button">
           <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" />
         </Pin>
