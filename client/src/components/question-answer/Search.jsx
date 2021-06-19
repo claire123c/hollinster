@@ -1,20 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { AiOutlineSearch } from 'react-icons/ai';
 
-const Search = () => {
+const QuestionSearchInput = styled.input`
+  width: 60%;
+  height: 50px;
+  margin: 1% 0;
+  border: 1px solid black;
+  border-right: none;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    font-weight: 600;
+    font-size: 14px;
+    padding-left: 3%;
+  }
+`;
 
-  const [ search, setSearch ] = useState('');
+const MagnifyingGlass = styled.button`
+  border: 1px solid black;
+  border-left: none;
+  height: 50px;
+  width: 5%;
+  background: white;
+  position: relative; top: 2px;
+`;
+
+export default function Search() {
+  const [search, setSearch] = useState('');
 
   return (
     <>
-    <p>QUESTIONS & ANSWERS</p>
-    <input type="text"
-           value={search}
-           onChange={(e) => setSearch(e.target.value)}
-           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-    >
-    </input>
+      <form>
+        <span>
+          <QuestionSearchInput
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+          />
+          <MagnifyingGlass
+            onClick={() => event.preventDefault()}
+          >
+            <AiOutlineSearch />
+          </MagnifyingGlass>
+        </span>
+      </form>
     </>
-  )
+  );
 }
-
-export default Search;

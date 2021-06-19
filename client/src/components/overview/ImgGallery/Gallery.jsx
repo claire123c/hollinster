@@ -6,10 +6,13 @@ import Large from './Large.jsx';
 
 const GalleryBox = styled.div`
   height: calc(70vh - 16px);
-  width: ${(props) => (props.expand ? '80%' : '60%')};
-  background-color: rgb(232,232,232);
+  width: ${(props) => (props.expand ? '100%' : '60%')};
   overflow: hidden;
   padding: 2%;
+  padding-left: 1%;
+
+  // position: relative;
+  // z-index: 3;
 `;
 const Expand = styled.img`
   font-size: 40px;
@@ -21,12 +24,7 @@ const Expand = styled.img`
   }
 `;
 
-function Gallery({ styles }) {
-  const [expand, setExpand] = useState(false);
-  const onClickExp = () => {
-    setExpand(!expand);
-  };
-
+function Gallery({ styles, expand, onClickExp }) {
   return (
     <GalleryBox className="gallery" expand={expand}>
       <Expand onClick={onClickExp} className="collapsible" src="./assets/fullscreen.png" />

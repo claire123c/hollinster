@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -10,6 +10,7 @@ const AddtoBag = styled.div`
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
+  font-size: 16px;
 `;
 
 const BagButton = styled.button`
@@ -31,14 +32,15 @@ const Plus = styled.span`
   font-weight: normal;
 `;
 
-function AddtoCart({ currentSize, skus, setShowError }) {
+function AddtoCart({
+  currentSize, skus, setShowError, selectedQ,
+}) {
   const addItem = () => {
     if (currentSize === 'SELECT SIZE') {
       setShowError(true);
     } else {
-      axios.post('/cart', { sku_id: currentSize })
-        .then((response) => {
-          console.log(response);
+      axios.post('/cart', { sku_id: currentSize, count: selectedQ })
+        .then(() => {
         })
         .catch((error) => {
           console.error(error);
@@ -55,9 +57,9 @@ function AddtoCart({ currentSize, skus, setShowError }) {
     return false;
   };
   return (
-    <AddtoBag onClick={addItem}>
+    <AddtoBag onClick={addItem} className="add-to-bag">
       {checkSkus() ? (
-        <BagButton type="button">
+        <BagButton type="button" className="bag-button">
           ADD TO BAG
           <Plus>+</Plus>
         </BagButton>
@@ -70,12 +72,14 @@ AddtoCart.propTypes = {
   currentSize: PropTypes.string,
   skus: PropTypes.shape({}),
   setShowError: PropTypes.func,
+  selectedQ: PropTypes.string,
 };
 
 AddtoCart.defaultProps = {
   currentSize: 0,
   skus: {},
   setShowError: () => {},
+  selectedQ: '1',
 };
 
 export default AddtoCart;

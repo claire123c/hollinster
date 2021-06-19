@@ -7,8 +7,6 @@ import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
 import Cart from './AddCart/Cart.jsx';
 import Freeform from './Info/Freeform.jsx';
-import sampleData from './sampleData.js';
-import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
 
 const Top = styled.div`
@@ -16,13 +14,14 @@ const Top = styled.div`
 `;
 
 const OveviewComp = styled.div`
-  margin-left: 12%;
-  margin-right: 12%;
+  margin-left: 10%;
+  margin-right: 10%;
 `;
 
 const SideColumn = styled.div`
   padding: 2%;
   max-width: 40%;
+  display: ${(props) => (props.expand ? 'none' : 'visible')}
 `;
 
 function Overview({ productID }) {
@@ -32,6 +31,11 @@ function Overview({ productID }) {
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [rMeta, setrMeta] = useState({});
+  const [expand, setExpand] = useState(false);
+
+  const onClickExp = () => {
+    setExpand(!expand);
+  };
 
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
@@ -48,8 +52,7 @@ function Overview({ productID }) {
       .then((response) => {
         setProductInfo(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getStyles = () => {
@@ -58,8 +61,7 @@ function Overview({ productID }) {
         setStyleData(response.data.results);
         setCurrentStyle(findDefaultStyles(response.data.results));
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getReviews = () => {
@@ -67,8 +69,7 @@ function Overview({ productID }) {
       .then((response) => {
         setReviews(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getMetaReviews = () => {
@@ -76,8 +77,7 @@ function Overview({ productID }) {
       .then((response) => {
         setrMeta(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
 
@@ -95,9 +95,9 @@ function Overview({ productID }) {
   return (
     <OveviewComp>
       <Top>
-        <Gallery className="gallery" styles={currentStyle} />
-        <SideColumn className="side-column">
-          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
+        <Gallery className="gallery" styles={currentStyle} onClickExp={onClickExp} expand={expand} />
+        <SideColumn className="side-column" expand={expand}>
+          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} expand={expand}/>
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
           <Cart currentStyle={currentStyle} />
         </SideColumn>

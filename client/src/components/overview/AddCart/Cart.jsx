@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -10,7 +10,8 @@ import StarCart from './StarCart.jsx';
 const CartFormat = styled.div`
   display: flex;
   height: 10%;
-  margin: 5%;
+  margin-bottom: 5%;
+  margin-top: 2%;
   width: 100%;
 `;
 
@@ -18,16 +19,17 @@ function Cart({ currentStyle }) {
   const { skus } = currentStyle;
   const [currentSize, setCurrentSize] = useState('SELECT SIZE');
   const [showError, setShowError] = useState(false);
+  const [selectedQ, setSelectedQ] = useState('1');
 
   return (
     <div>
+      {showError ? <div>Please select size</div> : <div /> }
       <CartFormat>
-        {showError ? 'Please select size' : ''}
         <Size skus={skus} useCurrentSize={setCurrentSize} setShowError={setShowError} />
-        <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} />
+        <Quantity currentSizeObj={skus ? skus[currentSize] : { quantity: 0 }} selectedQ={selectedQ} setSelectedQ={setSelectedQ} />
       </CartFormat>
       <CartFormat>
-        <AddtoCart currentSize={`${currentSize}`} skus={skus} setShowError={setShowError} />
+        <AddtoCart currentSize={`${currentSize}`} skus={skus} setShowError={setShowError} selectedQ={selectedQ} />
         <StarCart />
       </CartFormat>
     </div>

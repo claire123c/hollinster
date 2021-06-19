@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -12,6 +12,7 @@ const SizeSelector = styled.div`
   padding: 5% 1%;
   text-align: center;
   border: 1px solid black;
+  font-size: 16px;
 `;
 
 
@@ -28,9 +29,7 @@ const HeaderContainer = styled.ul`
   font-weight: bold;
 `;
 const SizeHeader = styled.li`
-
 `;
-
 const SizeDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
@@ -60,11 +59,12 @@ const ListContainer = styled.div`
 `;
 const ArrowImg = styled.img`
   height: 13px;
-  margin-left: 30%;
+  margin-left: 40%;
 `;
 
 function Size({ skus, useCurrentSize, setShowError }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('SELECT SIZE');
   let imageSource = './assets/down-chevron.png';
   if (!isOpen) {
     imageSource = './assets/down-chevron.png';
@@ -73,6 +73,7 @@ function Size({ skus, useCurrentSize, setShowError }) {
   }
 
   const clickOption = (event) => {
+    setSelected(event.target.innerText);
     useCurrentSize(event.target.value);
     setIsOpen(false);
     setShowError(false);
@@ -100,11 +101,11 @@ function Size({ skus, useCurrentSize, setShowError }) {
 
   if (!isOpen) {
     return (
-      <SizeSelector className="size-selector">
+      <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
         <Container>
           <HeaderContainer>
-            <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
-              SELECT SIZE
+            <SizeHeader defaultValue="select">
+              {selected}
               <ArrowImg src={imageSource} alt="arrows" />
             </SizeHeader>
           </HeaderContainer>
@@ -114,11 +115,11 @@ function Size({ skus, useCurrentSize, setShowError }) {
   }
 
   return (
-    <SizeSelector className="size-selector">
+    <SizeSelector className="size-selector" onClick={() => { setIsOpen(!isOpen); }}>
       <Container>
         <HeaderContainer>
-          <SizeHeader defaultValue="select" onClick={() => { setIsOpen(!isOpen); }}>
-            SELECT SIZE
+          <SizeHeader defaultValue="select">
+            {selected}
             <ArrowImg src={imageSource} alt="arrows" />
           </SizeHeader>
         </HeaderContainer>
@@ -135,13 +136,13 @@ function Size({ skus, useCurrentSize, setShowError }) {
 Size.propTypes = {
   skus: PropTypes.shape({}),
   useCurrentSize: PropTypes.func,
-  showError: PropTypes.bool,
+  setShowError: PropTypes.func,
 };
 
 Size.defaultProps = {
   skus: {},
   useCurrentSize: () => {},
-  showError: false,
+  setShowError: () => {},
 };
 
 export default Size;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -12,6 +12,7 @@ const QuantityBox = styled.div`
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
+
 `;
 
 const ContainerQ = styled.div`
@@ -33,7 +34,7 @@ const QuantHeader = styled.li`
 const QuantityDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
-  margin-top: 8%;
+  margin-top: 17%;
   z-index: 2;
   background-color: #F5F4F2;
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -53,16 +54,18 @@ const QuantityOptions = styled.li`
   &:hover {
     background-color: rgba(0, 0, 0, 0.14);
   }
+  text-align: center;
 `;
 
 const ArrowImgQ = styled.img`
   height: 15px;
-  margin-left: 40%;
+  margin-left: 50%;
 `;
 
-function Quantity({ currentSizeObj }) {
+function Quantity({ currentSizeObj, setSelectedQ, selectedQ }) {
   const { quantity } = currentSizeObj;
   const [isOpenQ, setIsOpenQ] = useState(false);
+
   let imageSource = './assets/down-chevron.png';
 
   if (!isOpenQ) {
@@ -70,6 +73,10 @@ function Quantity({ currentSizeObj }) {
   } else {
     imageSource = './assets/up-chevron.png';
   }
+  const onClickQuantity = (event) => {
+    setSelectedQ(event.target.innerText);
+  };
+
   const getQuantities = () => {
     let num;
     const numArray = [];
@@ -78,10 +85,10 @@ function Quantity({ currentSizeObj }) {
     } else {
       num = quantity;
     }
-    let i = 2;
-    while (i <= num - 1) {
+    let i = 1;
+    while (i <= num) {
       numArray.push(
-        <QuantityOptions value={i} key={i}>{i}</QuantityOptions>,
+        <QuantityOptions value={i} key={i} onClick={onClickQuantity}>{i}</QuantityOptions>,
       );
       i += 1;
     }
@@ -98,11 +105,11 @@ function Quantity({ currentSizeObj }) {
 
   if (!isOpenQ) {
     return (
-      <QuantityBox>
+      <QuantityBox onClick={() => { setIsOpenQ(!isOpenQ); }}>
         <ContainerQ>
           <HeaderContQ>
-            <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
-              1
+            <QuantHeader value="1" key="1">
+              {selectedQ}
               <ArrowImgQ src={imageSource} alt="arrows" />
             </QuantHeader>
           </HeaderContQ>
@@ -112,11 +119,11 @@ function Quantity({ currentSizeObj }) {
   }
 
   return (
-    <QuantityBox>
+    <QuantityBox onClick={() => { setIsOpenQ(!isOpenQ); }}>
       <ContainerQ>
         <HeaderContQ>
-          <QuantHeader onClick={() => { setIsOpenQ(!isOpenQ); }} value="1" key="1">
-            1
+          <QuantHeader value="1" key="1">
+            {selectedQ}
             <ArrowImgQ src={imageSource} alt="arrows" />
           </QuantHeader>
         </HeaderContQ>
