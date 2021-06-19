@@ -46,7 +46,7 @@ export default function IndividualQuestion(props) {
         >
           Yes
         </span> ({helpfulness}) | <AddAnswerForm /></span>
-      <IndividualAnswer />
+      <IndividualAnswer answers="props.question.answers" />
     </IndividualQuestionRow>
   );
 };

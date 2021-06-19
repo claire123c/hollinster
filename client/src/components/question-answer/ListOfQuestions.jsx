@@ -11,10 +11,8 @@ export default function ListOfQuestions(props) {
   console.log('props.questions in list of qs:', props.questions);
   const individualQuestion = props.questions.length === 0 ? 'WAITING FOR DATA' : (
     props.questions.map((question) => (
-
-      <IndividualQuestion question={question}/>
-
-      ))
+      <IndividualQuestion key={question.question_id} question={question} />
+    ))
   );
   // if data is not present, make individual question render string 'Loading..'
   if (props.questions.length === 0) {
