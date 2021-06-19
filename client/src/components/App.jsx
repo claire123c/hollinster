@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 // import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
-import Question from './question-answer/Question.jsx';
+// import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 const LogoBar = styled.h1`
@@ -62,7 +62,7 @@ const App = (props) => {
       </LogoBar>
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
       {/* <Overview productID={productID} /> */}
-      <Question productID={productID} />
+      {/* <Question productID={productID} /> */}
       {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
       <RatingsReviews productID={productID} />  */}
     </>
