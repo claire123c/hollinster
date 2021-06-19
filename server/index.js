@@ -94,10 +94,10 @@ app.get('/reviews/:product_id', (req, res) => {
     })
     .catch(error => {
       res.status(500).send(error);
-    })
-})
+    });
+});
 
-//Reviews meta goes here
+// Reviews meta goes here
 app.get('/reviews/meta/:product_id', (req, res) => {
   axios({
     url: `${API}/reviews/meta?product_id=${req.params.product_id}`,
@@ -109,8 +109,10 @@ app.get('/reviews/meta/:product_id', (req, res) => {
     })
     .catch(error => {
       res.status(500).send(error);
-    })
-})
+    });
+});
+
+// Reviews – create new review
 
 // ***********************************************************************
 // Q&A API Calls
