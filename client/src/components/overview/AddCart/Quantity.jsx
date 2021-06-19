@@ -33,7 +33,7 @@ const QuantHeader = styled.li`
 const QuantityDropDown = styled.div`
   border: 1px solid black;
   padding: 0;
-  margin-top: 18%;
+  margin-top: 25%;
   right: 30%;
   z-index: 2;
   background-color: #F5F4F2;
