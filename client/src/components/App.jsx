@@ -115,10 +115,10 @@ const App = (props) => {
       </LogoBar>
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
       {/* <Overview productID={productID} /> */}
-      {/* <Question />
-      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <RatingsReviews productID={productID} /> */}
-    </Body>
+      {/* <Question productID={productID} /> */}
+      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
+      <RatingsReviews productID={productID} />  */}
+    </>
   );
 };
 
