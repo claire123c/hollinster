@@ -39,7 +39,8 @@ export default function Related({ productID, setProductID, switchProduct }) {
       });
     axios.get(`/products/${productID}/related`)
       .then((response) => {
-        setRelated(response.data);
+        const uniqueIDS = [...new Set(response.data)];
+        setRelated(uniqueIDS);
       })
       .catch((error) => {
         console.log(error);
@@ -90,3 +91,4 @@ export default function Related({ productID, setProductID, switchProduct }) {
     </>
   );
 }
+
