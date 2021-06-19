@@ -1,6 +1,4 @@
-// imports the react module installed in node_modules
 import React, { useState } from 'react';
-// import axios from 'axios';
 import styled from 'styled-components';
 // import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
@@ -12,6 +10,8 @@ window.onbeforeunload = function () {
 };
 
 const Body = styled.div`
+  margin-left: 12%;
+  margin-right: 12%;
   background-color: ${(props) => (props.current ? '#F5F4F2' : '121212')};
   color: ${(props) => (props.current ? '#292A33' : '#F5F4F2')};
 `;
@@ -19,7 +19,6 @@ const Body = styled.div`
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
   background-color: teal;
-  margin: 0 10%;
   padding: 2%;
 `;
 
@@ -104,7 +103,7 @@ const App = (props) => {
   };
 
   return (
-    <Body current={theme}>
+    <Body current={theme} >
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
@@ -115,10 +114,10 @@ const App = (props) => {
       </LogoBar>
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
       {/* <Overview productID={productID} /> */}
+      {/* <Related productID={productID} /> */}
       {/* <Question productID={productID} /> */}
-      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
-      <RatingsReviews productID={productID} />  */}
-    </>
+      {/* <RatingsReviews productID={productID} /> */}
+    </Body>
   );
 };
 

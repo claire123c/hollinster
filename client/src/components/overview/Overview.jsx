@@ -13,11 +13,6 @@ const Top = styled.div`
   display: flex;
 `;
 
-const OveviewComp = styled.div`
-  margin-left: 10%;
-  margin-right: 10%;
-`;
-
 const SideColumn = styled.div`
   padding: 2%;
   max-width: 40%;
@@ -87,7 +82,7 @@ function Overview({ productID }) {
   }, [productNum]);
 
   return (
-    <OveviewComp>
+    <>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn className="side-column">
@@ -97,7 +92,7 @@ function Overview({ productID }) {
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
-    </OveviewComp>
+    </>
   );
 }
 

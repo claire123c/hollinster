@@ -5,18 +5,22 @@ import { sampleAnswersList } from './sampleData.js';
 const IndividualAnswerRow = styled.div`
 `;
 
+const MoreAnswersButton = styled.button`
+  border: none;
+`;
+
+const UnderlinedButtons = styled.button`
+  border: none;
+  text-decoration: underline;
+`;
 export default function IndividualAnswer(props) {
-  const [answers] = useState(sampleAnswersList.results[0].body);
-  const [answerUsername] = useState(sampleAnswersList.results[0].answerer_name);
-  const [answerDate] = useState(sampleAnswersList.results[0].date);
-  const [answerHelpfulnessRating, setAnswerHelpfulnessRating] =
-    useState(sampleAnswersList.results[0].helpfulness);
+  const listOfAnswers = [];
+  Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
+  const [amountOfAnswers, setAmountOfAnswers] = useState(2);
+  const visibleAnswers = listOfAnswers.slice(0, amountOfAnswers);
+  console.log('visible answers in individual answers:', visibleAnswers);
   const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
-  const [isReported, setIsReported] = useState(false);
   const [reported, setReported] = useState('Report');
-  const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const date = new Date(answerDate);
-  const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
   const handleAnswerHelpfulness = () => {
     if (!answerHelpfulnessClicked) {
@@ -37,37 +41,70 @@ export default function IndividualAnswer(props) {
       setReported('Report');
     }
   };
-  // console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
+
+  const [isReported, setIsReported] = useState(false);
+  const answers = visibleAnswers.map((answer) => {
+    const answerDate = answer.date;
+    const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const date = new Date(answerDate);
+    const stringOfDate = `${arrOfStringMonths[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    return (
+      <div key={answer.id}>
+        <strong>A:</strong> {answer.body}
+        <p>
+          <span>
+            by {answer.answerer_name}, {stringOfDate} | Helpful?
+            &nbsp;
+            <UnderlinedButtons
+              type="button"
+              onClick={handleAnswerHelpfulness}
+            >
+              Yes
+            </UnderlinedButtons>
+            &nbsp;
+            (
+            {answer.helpfulness}
+            )
+            &nbsp;|&nbsp;
+            <UnderlinedButtons
+              type="button"
+              onClick={handleReported}
+            >
+              {reported}
+            </UnderlinedButtons>
+          </span>
+        </p>
+      </div>
+    );
+  });
+
   return (
     <IndividualAnswerRow>
       <br />
       <span>
-        <strong>
-          A:
-        </strong>
         {answers}
       </span>
-      <p>
-        by
-        {answerUsername}
-        ,
-        {stringOfDate}
-        |
-        Helpful?
-        <u
-          onClick={handleAnswerHelpfulness}>
-          Yes
-        </u>
-        (
-        {answerHelpfulnessRating}
-        )
-        |
-        <u
-          onClick={handleReported}
-        >
-          {reported}
-        </u>
-      </p>
+      {listOfAnswers.length <= 2 ? null
+        : amountOfAnswers === listOfAnswers.length ? (
+          <p>
+            <MoreAnswersButton
+              type="button"
+              onClick={() => setAmountOfAnswers(2)}
+            >
+              <strong>COLLAPSE ANSWERS</strong>
+            </MoreAnswersButton>
+          </p>
+        ) : (
+          <p>
+            <MoreAnswersButton
+              type="button"
+              onClick={() => setAmountOfAnswers(listOfAnswers.length)}
+            >
+              <strong>LOAD MORE ANSWERS</strong>
+            </MoreAnswersButton>
+          </p>
+        )}
+      <hr />
     </IndividualAnswerRow>
   );
 }
