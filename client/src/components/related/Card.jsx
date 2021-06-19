@@ -63,7 +63,7 @@ export default function Card({
   const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
   let salePrice = 0;
-  const sale = false;
+  let sale = false;
 
   // const averageRating = (reviewResults) => {
   //   let ratings = 0;
@@ -86,7 +86,11 @@ export default function Card({
     if (defaultStyle === -1) {
       return defaultPrice;
     }
-    return (style.sale_price ? style.sale_price : style.original_price);
+    if (style.sale_price) {
+      sale = true;
+      salePrice = style.sale_price;
+    }
+    return style.original_price;
   };
 
   const toggleModal = () => {
@@ -129,7 +133,7 @@ export default function Card({
         : null}
       <CardWrapper>
         <StarButton onClick={toggleModal}>&#9734;</StarButton>
-        <Image src={image} alt={`A representation of ${name}`} onClick={() => { setProductID(product); }} />
+        <Image src={image} alt="No Image Available" onClick={() => { setProductID(product); }} />
         <Text>{category}</Text>
         <Text>{name}</Text>
         {sale ? (
@@ -153,3 +157,5 @@ Card.propTypes = {
 Card.defaultProps = {
   current: {},
 };
+
+// alt={`A representation of ${name}`}

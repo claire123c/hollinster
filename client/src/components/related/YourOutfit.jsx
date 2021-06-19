@@ -33,5 +33,3 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
     </>
   );
 }
-
-
