@@ -10,9 +10,6 @@ const GalleryBox = styled.div`
   overflow: hidden;
   padding: 2%;
   padding-left: 1%;
-
-  // position: relative;
-  // z-index: 3;
 `;
 const Expand = styled.img`
   font-size: 40px;
@@ -38,7 +35,9 @@ function Gallery({ styles, expand, onClickExp }) {
 export default Gallery;
 
 Gallery.propTypes = {
-  styles: PropTypes.object,
+  styles: PropTypes.shape({}),
+  expand: PropTypes.bool,
+  onClickExp: PropTypes.func,
 };
 
 Gallery.defaultProps = {
@@ -55,4 +54,6 @@ Gallery.defaultProps = {
       },
     ],
   },
+  expand: false,
+  onClickExp: () => {},
 };
