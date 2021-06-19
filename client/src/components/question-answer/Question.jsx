@@ -11,29 +11,37 @@ const QuestionContainer = styled.div`
 
 export default function Question(props) {
   // const [ product, setProduct ] = useState({});
-  const [arrOfQuestions, setArrOfQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   // console.log('question list:', sampleQuestionsList, 'answer list', sampleAnswersList.results);
   // const productID = '25168'; // hard ID for now, try to draw id located in App
-  let productID = props.productID;
+  const productID = props.productID;
 
   useEffect(() => {
     axios.get(`/qa/questions/${productID}`)
-      .then(function (response) {
+      .then((response) => {
         // setProduct(response.data);
-        setArrOfQuestions(response.data.results);
+        setQuestions(response.data.results);
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
-  console.log('this is array of questions', arrOfQuestions);
+  // useEffect(() => {
+  //   axios.get(`/qa/questions/${productID}/answers`)
+  //     .then((response) => {
+  //       setArrOfAnswers(response.data.results); arrOfAnswers doesn't exist anymore
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   return (
     <QuestionContainer>
       <p>QUESTIONS & ANSWERS</p>
       <Search />
-      <ListOfQuestions />
+      <ListOfQuestions questions={questions} />
       <span>
         <button onClick={() => console.log('retrieve more questions')}><strong>MORE ANSWERED QUESTIONS</strong></button>
         <AddQuestionForm />

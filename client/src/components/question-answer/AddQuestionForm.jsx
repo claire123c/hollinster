@@ -14,8 +14,7 @@ const customStyles = {
 
 Modal.setAppElement('#app');
 
-  const AddQuestionForm = () => {
-  let subtitle;
+const AddQuestionForm = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -36,7 +35,13 @@ Modal.setAppElement('#app');
 
   return (
     <>
-      <button onClick={handleModalOpen}><strong>ADD A QUESTION +</strong></button>
+      <button
+        onClick={handleModalOpen}
+      >
+        <strong>
+          ADD A QUESTION +
+        </strong>
+      </button>
       <Modal
         isOpen={modalOpen}
         // onAfterOpen={() => afterModalOpen()}
@@ -55,18 +60,24 @@ Modal.setAppElement('#app');
             }
             event.preventDefault();
           }
-        }>
+        }
+        >
           <div>
             <h2>Ask Your Question</h2>
             <h3>About the [PRODUCT_NAME]</h3>
-            <span><strong>Your Nickname*:</strong>
+            <span>
+              <strong>
+                Your Nickname*:
+              </strong>
               <p>(For privacy reasons, do not use your full name or address)</p>
-              <input type="text"
+              <input
+                type="text"
                 placeholder="Example: Jack123"
                 onChange={(e) => setNickname(e.target.value)}
                 value={nickname}
                 maxLength="60"
-                minLength="1"></input>
+                minLength="1"
+              />
             </span>
             <br />
           </div>
@@ -75,30 +86,40 @@ Modal.setAppElement('#app');
             <span><strong>Your Email*:</strong></span>
             <p>(For authentication reasons, you will not be emailed)</p>
             <p>
-              <input type="email"
+              <input
+                type="email"
                 placeholder="Example: Jack123@email.com"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 maxLength="60"
-                minLength="1"></input>
+                minLength="1"
+              />
             </p>
           </div>
           <p><strong>Your Question*:</strong></p>
-          <textarea type="text"
+          <textarea
+            type="text"
             placeholder="Why did you like the product or not?"
             onChange={e => setQuestionText(e.target.value)}
             value={questionText}
             maxLength="1000"
             minLength="1"
-          >
-          </textarea>
-          <p>{incorrectFormat ? `This error will occur if:
+          />
+          <p>
+            {incorrectFormat ? `This error will occur if:
                                    1. Any mandatory fields are blank
-                                   2. The email provided is not in correct email format` : null}</p>
+                                   2. The email provided is not in correct email format` : null}
+          </p>
           <hr />
           <p>Note: items marked with * are mandatory</p>
-          <input type="submit"></input>
-          <button onClick={handleModalClose}>Close</button>
+          <input
+            type="submit"
+          />
+          <button
+            onClick={handleModalClose}
+          >
+            Close
+          </button>
         </form>
       </Modal>
     </>

@@ -40,6 +40,7 @@ export default function IndividualAnswer() {
   // console.log('sampleanswer:', sampleAnswersList.results[0], 'answerUsername:', answerUsername);
   return (
     <IndividualAnswerRow>
+      <br />
       <span>
         <strong>
           A:

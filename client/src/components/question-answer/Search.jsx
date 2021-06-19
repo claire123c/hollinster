@@ -22,7 +22,7 @@ const MagnifyingGlass = styled.button`
   height: 50px;
   width: 5%;
   background: white;
-  position: relative; top: 2.5px;
+  position: relative; top: 2px;
 `;
 
 export default function Search() {

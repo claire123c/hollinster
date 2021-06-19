@@ -119,17 +119,17 @@ app.get('/qa/questions/:product_id', (req, res) => {
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
-    .then(response => {
+    .then((response) => {
       res.status(200).send(response.data);
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).send(error);
     });
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   axios({
-    url: `${API}/qa/questions/${req.params.question_id}`,
+    url: `${API}/qa/questions/${req.params.question_id}/answers`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
