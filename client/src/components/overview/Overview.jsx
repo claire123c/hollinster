@@ -7,17 +7,10 @@ import Gallery from './ImgGallery/Gallery.jsx';
 import Info from './Info/Info.jsx';
 import Cart from './AddCart/Cart.jsx';
 import Freeform from './Info/Freeform.jsx';
-import sampleData from './sampleData.js';
-import emptyData from './emptyData.js';
 import AllStyles from './StyleSelector/AllStyles.jsx';
 
 const Top = styled.div`
   display: flex;
-`;
-
-const OveviewComp = styled.div`
-  margin-left: 12%;
-  margin-right: 12%;
 `;
 
 const SideColumn = styled.div`
@@ -48,8 +41,7 @@ function Overview({ productID }) {
       .then((response) => {
         setProductInfo(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getStyles = () => {
@@ -58,8 +50,7 @@ function Overview({ productID }) {
         setStyleData(response.data.results);
         setCurrentStyle(findDefaultStyles(response.data.results));
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getReviews = () => {
@@ -67,8 +58,7 @@ function Overview({ productID }) {
       .then((response) => {
         setReviews(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
   const getMetaReviews = () => {
@@ -76,8 +66,7 @@ function Overview({ productID }) {
       .then((response) => {
         setrMeta(response.data);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
       });
   };
 
@@ -93,7 +82,7 @@ function Overview({ productID }) {
   }, [productNum]);
 
   return (
-    <OveviewComp>
+    <>
       <Top>
         <Gallery className="gallery" styles={currentStyle} />
         <SideColumn className="side-column">
@@ -103,7 +92,7 @@ function Overview({ productID }) {
         </SideColumn>
       </Top>
       <Freeform productInfo={productInfo} />
-    </OveviewComp>
+    </>
   );
 }
 

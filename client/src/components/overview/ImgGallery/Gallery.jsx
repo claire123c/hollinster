@@ -7,15 +7,21 @@ import Large from './Large.jsx';
 const GalleryBox = styled.div`
   height: calc(70vh - 16px);
   width: ${(props) => (props.expand ? '80%' : '60%')};
-  background-color: rgb(232,232,232);
   overflow: hidden;
   padding: 2%;
+  padding-left: 1%;
+
+  // position: relative;
+  // z-index: 3;
 `;
 const Expand = styled.img`
   font-size: 40px;
   float: right;
   min-height: 20px;
   min-width: 20px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Gallery({ styles }) {

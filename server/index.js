@@ -22,7 +22,6 @@ const sessionConfig = {
 };
 app.use(express.json());
 app.use(serveStatic);
-
 app.use(session(sessionConfig));
 
 // PRODUCT API Calls
@@ -118,7 +117,7 @@ app.get('/reviews/meta/:product_id', (req, res) => {
 // Q&A API Calls
 app.get('/qa/questions/:product_id', (req, res) => {
   axios({
-    url: `${API}/qa/questions?product_id=${req.params.product_id}&page=1&count=5`,
+    url: `${API}/qa/questions?product_id=${req.params.product_id}`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
@@ -132,7 +131,7 @@ app.get('/qa/questions/:product_id', (req, res) => {
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   axios({
-    url: `${API}/qa/questions/${req.params.question_id}/answers&page=1&count=5`,
+    url: `${API}/qa/questions/${req.params.question_id}/answers`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
@@ -159,7 +158,6 @@ app.get('/cart', (req, res) => {
 });
 
 app.post('/cart', (req, res) => {
-  console.log(req.body);
   axios({
     url: `${API}/cart`,
     method: 'POST',

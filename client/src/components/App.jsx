@@ -5,19 +5,33 @@ import Related from './related/Related.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 const App = (props) => {
-  const [test, setTest] = useState(true);
-  const [productID, setProductID] = useState(25173);
+  const [theme, setTheme] = useState(true);
+  const [productID, setProductID] = useState(25174);
+
+  const switchProduct = () => {
+    setProductID(product);
+  };
+
+  const onClickTheme = () => {
+    setTheme(!theme);
+  };
 
   return (
-    <>
-      <h1 style={{ fontFamily: 'Staatliches' }}>HOLLINSTER established 1991</h1>
-      <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
-
+    <Body current={theme} >
+      <LogoBar>
+        <KangaImg src="./kangaroo.png" alt="kanga" />
+        HOLLINSTER
+        <Search>
+          <SearchLine placeholder="Search..." />
+          <SearchImg src="./assets/loupe.png" />
+        </Search>
+      </LogoBar>
+      {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
       {/* <Overview productID={productID} /> */}
-      <Related productID={productID} setProductID={setProductID} />
-      {/* <Question />
-      <RatingsReviews productID={productID} /> */}
-    </>
+      {/* <Related productID={productID} /> */}
+      {/* <Question productID={productID} /> */}
+      {/* <RatingsReviews productID={productID} /> */}
+    </Body>
   );
 };
 

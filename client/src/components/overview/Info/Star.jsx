@@ -27,7 +27,9 @@ const StarRating = styled.div`
 
 const ReviewsComp = styled.a`
   margin-left: 2%;
-  color: black;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 function Star({ ratings, results }) {
@@ -56,7 +58,7 @@ function Star({ ratings, results }) {
             </OuterStar>
             {showReviews
               ? (
-                <ReviewsComp href="#RatingsandReviews">
+                <ReviewsComp href="#ratings-reviews">
                   {results.length === 1 ? (`Read ${results.length} review`) : (`Read ${results.length} reviews`)}
                 </ReviewsComp>
               ) : <></>}
