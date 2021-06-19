@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 // import Overview from './overview/Overview.jsx';
 // import Related from './related/Related.jsx';
-import Question from './question-answer/Question.jsx';
+// import Question from './question-answer/Question.jsx';
 // import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 const OverviewComp = styled.div`
@@ -67,7 +67,7 @@ const App = (props) => {
       <button type="button" onClick={() => { setTest(!test); }}>{test.toString()}</button>
       {/* <Overview productID={productID} />
       <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} /> */}
-      <Question productID={productID} />
+      {/* <Question productID={productID} /> */}
       {/* <RatingsReviews productID={productID} /> */}
     </OverviewComp>
   );
