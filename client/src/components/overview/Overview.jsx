@@ -16,6 +16,7 @@ const Top = styled.div`
 const SideColumn = styled.div`
   padding: 2%;
   max-width: 40%;
+  display: ${(props) => (props.expand ? 'none' : 'visible')}
 `;
 
 function Overview({ productID }) {
@@ -25,6 +26,11 @@ function Overview({ productID }) {
   const [reviews, setReviews] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [rMeta, setrMeta] = useState({});
+  const [expand, setExpand] = useState(false);
+
+  const onClickExp = () => {
+    setExpand(!expand);
+  };
 
   const findDefaultStyles = (stylesArr) => {
     const newArr = stylesArr.find((style) => (
@@ -84,9 +90,9 @@ function Overview({ productID }) {
   return (
     <>
       <Top>
-        <Gallery className="gallery" styles={currentStyle} />
-        <SideColumn className="side-column">
-          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} />
+        <Gallery className="gallery" styles={currentStyle} onClickExp={onClickExp} expand={expand} />
+        <SideColumn className="side-column" expand={expand}>
+          <Info productInfo={productInfo} styles={currentStyle} reviews={reviews} meta={rMeta} expand={expand}/>
           <AllStyles className="all-styles" styleData={styleData} currentStyle={currentStyle} changeStyle={setCurrentStyle} />
           <Cart currentStyle={currentStyle} />
         </SideColumn>
