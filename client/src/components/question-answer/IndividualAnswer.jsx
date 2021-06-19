@@ -77,11 +77,20 @@ export default function IndividualAnswer(props) {
         {answers}
       </span>
       {listOfAnswers.length <= 2 ? null
-        : (
+        : amountOfAnswers === listOfAnswers.length ? (
           <p>
             <button
               type="button"
-              onClick={() => setAmountOfAnswers(amountOfAnswers + 2)}
+              onClick={() => setAmountOfAnswers(2)}
+            >
+              <strong>COLLAPSE ANSWERS</strong>
+            </button>
+          </p>
+        ) : (
+          <p>
+            <button
+              type="button"
+              onClick={() => setAmountOfAnswers(listOfAnswers.length)}
             >
               <strong>LOAD MORE ANSWERS</strong>
             </button>
