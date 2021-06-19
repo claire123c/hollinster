@@ -146,7 +146,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 app.post('/qa/questions/:question_id/answers', (req, res) => {
   axios({
     url: `${API}/qa/questions/${req.params.question_id}/answers`,
-    method: 'GET',
+    method: 'POST',
     headers: { Authorization: APIInfo.token },
   })
     .then(res.status(201).send('Status: 201 CREATED'));
