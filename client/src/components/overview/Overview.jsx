@@ -45,6 +45,7 @@ function Overview({ productID }) {
   const getProductDeets = () => {
     axios.get(`/products/${productNum}`)
       .then((response) => {
+        localStorage.setItem('product', JSON.stringify(response.data));
         setProductInfo(response.data);
       })
       .catch(() => {
@@ -53,6 +54,7 @@ function Overview({ productID }) {
   const getStyles = () => {
     axios.get(`/products/${productNum}/styles`)
       .then((response) => {
+        localStorage.setItem('styles', JSON.stringify(response.data.results));
         setStyleData(response.data.results);
         setCurrentStyle(findDefaultStyles(response.data.results));
       })
@@ -62,6 +64,7 @@ function Overview({ productID }) {
   const getReviews = () => {
     axios.get(`/reviews/${productNum}`)
       .then((response) => {
+        localStorage.setItem('reviews', JSON.stringify(response.data));
         setReviews(response.data);
       })
       .catch(() => {
@@ -70,6 +73,7 @@ function Overview({ productID }) {
   const getMetaReviews = () => {
     axios.get(`/reviews/meta/${productNum}`)
       .then((response) => {
+        localStorage.setItem('meta_reviews', JSON.stringify(response.data));
         setrMeta(response.data);
       })
       .catch(() => {
@@ -81,10 +85,32 @@ function Overview({ productID }) {
   }, [productID]);
 
   useEffect(() => {
-    getStyles();
-    getProductDeets();
-    getReviews();
-    getMetaReviews();
+    const prod = localStorage.getItem(('product'));
+    const sty = localStorage.getItem(('styles'));
+    const rev = localStorage.getItem('reviews');
+    const met = localStorage.getItem('meta_reviews');
+
+    if (!prod) {
+      getProductDeets();
+    } else {
+      setProductInfo(JSON.parse(prod));
+    }
+    if (!sty) {
+      getStyles();
+    } else {
+      setStyleData(JSON.parse(sty));
+      setCurrentStyle(findDefaultStyles(JSON.parse(sty)));
+    }
+    if (!rev) {
+      getReviews();
+    } else {
+      setReviews(JSON.parse(rev));
+    }
+    if (!met) {
+      getMetaReviews();
+    } else {
+      setrMeta(JSON.parse(met));
+    }
   }, [productNum]);
 
   return (
