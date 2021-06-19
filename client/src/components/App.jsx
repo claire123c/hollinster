@@ -63,7 +63,6 @@ const LightButton = styled.button`
   color: black;
   text-align: center;
   transition: all 0.2s;
-  margin-top: 1%;
   &:hover{
     color: #000000;
     background-color: #303030;
@@ -81,8 +80,6 @@ const DarkButton = styled.button`
   color:#FFFFFF;
   text-align: center;
   transition: all 0.2s;
-  margin-top: 1%;
-  margin-left: 10%;
   &:hover{
     color:#000000;
     background-color:#FFFFFF;
