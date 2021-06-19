@@ -5,6 +5,14 @@ import { sampleAnswersList } from './sampleData.js';
 const IndividualAnswerRow = styled.div`
 `;
 
+const MoreAnswersButton = styled.button`
+  border: none;
+`;
+
+const UnderlinedButtons = styled.button`
+  border: none;
+  text-decoration: underline;
+`;
 export default function IndividualAnswer(props) {
   const listOfAnswers = [];
   Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
@@ -12,7 +20,6 @@ export default function IndividualAnswer(props) {
   const visibleAnswers = listOfAnswers.slice(0, amountOfAnswers);
   console.log('visible answers in individual answers:', visibleAnswers);
   const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
-  const [isReported, setIsReported] = useState(false);
   const [reported, setReported] = useState('Report');
 
   const handleAnswerHelpfulness = () => {
@@ -35,6 +42,7 @@ export default function IndividualAnswer(props) {
     }
   };
 
+  const [isReported, setIsReported] = useState(false);
   const answers = visibleAnswers.map((answer) => {
     const answerDate = answer.date;
     const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -47,23 +55,23 @@ export default function IndividualAnswer(props) {
           <span>
             by {answer.answerer_name}, {stringOfDate} | Helpful?
             &nbsp;
-            <button
+            <UnderlinedButtons
               type="button"
               onClick={handleAnswerHelpfulness}
             >
               Yes
-            </button>
+            </UnderlinedButtons>
             &nbsp;
             (
             {answer.helpfulness}
             )
             &nbsp;|&nbsp;
-            <button
+            <UnderlinedButtons
               type="button"
               onClick={handleReported}
             >
               {reported}
-            </button>
+            </UnderlinedButtons>
           </span>
         </p>
       </div>
@@ -79,21 +87,21 @@ export default function IndividualAnswer(props) {
       {listOfAnswers.length <= 2 ? null
         : amountOfAnswers === listOfAnswers.length ? (
           <p>
-            <button
+            <MoreAnswersButton
               type="button"
               onClick={() => setAmountOfAnswers(2)}
             >
               <strong>COLLAPSE ANSWERS</strong>
-            </button>
+            </MoreAnswersButton>
           </p>
         ) : (
           <p>
-            <button
+            <MoreAnswersButton
               type="button"
               onClick={() => setAmountOfAnswers(listOfAnswers.length)}
             >
               <strong>LOAD MORE ANSWERS</strong>
-            </button>
+            </MoreAnswersButton>
           </p>
         )}
       <hr />
