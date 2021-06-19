@@ -74,6 +74,7 @@ export default function OutfitCard({ product, removeFromOutfit }) {
     Promise.all([getProduct(), getProductStyles(), getProductReviews()])
       .then((response) => {
         defaultPrice = response[0].data.default_price;
+        salePrice = response[0].data.sale_price;
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         setPrice(checkPrice(response[1].data.results));

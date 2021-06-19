@@ -34,7 +34,7 @@ export default function List({ current, related, productID, setProductID, switch
           setProductID={setProductID}
         />
       ))}
-      {(related && firstCardIndex) + 3 === related.length - 1
+      {related && (firstCardIndex + 4 === related.length)
         ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );

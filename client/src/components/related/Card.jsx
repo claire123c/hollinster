@@ -21,6 +21,11 @@ const Image = styled.img`
   width: 95%;
   height: 24rem;
   object-fit: cover;
+  img:active {
+    background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  }
 `;
 
 const Background = styled.div`
@@ -61,8 +66,6 @@ export default function Card({
   const [rating, setRating] = useState();
   const [modal, setModal] = useState(false);
   const [productData, setProductData] = useState([]);
-  // const [productStyleData, setProductStyleData] = useState([]);
-  // const [productReviewData, setProductReviewData] = useState([]);
   const noDisplay = [{ display: 'none' }];
   let defaultPrice = 0;
   let salePrice = 0;
@@ -97,8 +100,6 @@ export default function Card({
         defaultPrice = response[0].data.default_price;
         salePrice = response[0].data.sale_price;
         setProductData(response[0].data);
-        // setProductStyleData(response[1].data);
-        // setProductReviewData(response[2].data);
         setCategory(response[0].data.category);
         setName(response[0].data.name);
         setPrice(checkPrice(response[1].data.results));

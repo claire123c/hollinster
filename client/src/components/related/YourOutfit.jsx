@@ -7,6 +7,10 @@ import AddToOutfit from './AddToOutfit.jsx';
 export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
   const [firstCardIndex, setFirstCardIndex] = useState(0);
 
+  useEffect(() => {
+    setFirstCardIndex(0);
+  }, [outfit]);
+
   const previousCard = () => {
     const previousIndex = firstCardIndex - 1;
     setFirstCardIndex(previousIndex);
@@ -30,7 +34,7 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
           removeFromOutfit={removeFromOutfit}
         />
       ))}
-      {(outfit.length > 4 && firstCardIndex + 2) === outfit.length -1 ? null : <h1 onClick={nextCard}>&#8250;</h1>}
+      {outfit.length < 4 || (firstCardIndex + 3 === outfit.length) ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );
 }
