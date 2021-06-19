@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CardWrapper = styled.div`
@@ -14,10 +15,14 @@ const CardWrapper = styled.div`
   border-radius: 5px;
 `;
 
-export default function AddToOutfit( {addToOutfit} ) {
+export default function AddToOutfit({ addToOutfit }) {
   return (
     <CardWrapper onClick={addToOutfit}>
       <h1>+</h1>
     </CardWrapper>
   );
 }
+
+AddToOutfit.propTypes = {
+  addToOutfit: PropTypes.func.isRequired,
+};

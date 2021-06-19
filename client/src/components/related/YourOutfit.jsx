@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card.jsx'
 import OutfitCard from './OutfitCard.jsx';
 import AddToOutfit from './AddToOutfit.jsx';
 
 export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
   const [firstCardIndex, setFirstCardIndex] = useState(0);
-  // const [outfit, setOutfit] = useState([]);
 
-  // useEffect(() => {
-  //   const storedOutfit = JSON.parse(localStorage.getItem('outfit'));
-  //   if (storedOutfit) {
-  //     setOutfit(storedOutfit);
-  //   } else {
-  //     console.log('empty');
-  //   }
-  //   // storedOutfit ? setOutfit(storedOutfit) : null
-  // }, []);
+  useEffect(() => {
+    setFirstCardIndex(0);
+  }, [outfit]);
 
   const previousCard = () => {
     const previousIndex = firstCardIndex - 1;
@@ -31,8 +25,8 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
 
   return (
     <>
-       {firstCardIndex === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
-       <AddToOutfit addToOutfit={addToOutfit} />
+      {firstCardIndex === 0 ? null : <h1 onClick={previousCard}>&#8249;</h1>}
+      <AddToOutfit addToOutfit={addToOutfit} />
       {displayedCards.map((product) => (
         <OutfitCard
           product={product}
@@ -40,7 +34,13 @@ export default function YourOutfit({ outfit, addToOutfit, removeFromOutfit }) {
           removeFromOutfit={removeFromOutfit}
         />
       ))}
-      {firstCardIndex + 3 === outfit.length - 1 ? null : <h1 onClick={nextCard}>&#8250;</h1>}
+      {outfit.length < 4 || (firstCardIndex + 3 === outfit.length) ? null : <h1 onClick={nextCard}>&#8250;</h1>}
     </>
   );
 }
+
+YourOutfit.propTypes = {
+  outfit: PropTypes.instanceOf(Array).isRequired,
+  addToOutfit: PropTypes.func.isRequired,
+  removeFromOutfit: PropTypes.func.isRequired,
+};
