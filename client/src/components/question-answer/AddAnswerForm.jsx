@@ -15,8 +15,9 @@ const customStyles = {
 //binds modal to the id
 Modal.setAppElement('#app');
 
-const AddAnswerForm = () => {
+const AddAnswerForm = (props) => {
   // modal experimental section
+  console.log('these are props in addanswerform:', props);
   const [modalOpen, setModalOpen] = useState(false);
 
   function handleModalOpen() {
@@ -62,59 +63,84 @@ const AddAnswerForm = () => {
         contentLabel="Question Answer Form"
       >
         <form onSubmit={
-          () => {
+          (e) => {
             if (answerText.length === 0 || email.length === 0 || nickname.length === 0) {
               setIncorrectFormat(true);
               event.preventDefault();
             } else {
+              console.log('this is form data:', nickname, email, answerText);
               handleModalClose();
+              e.preventDefault();
             }
           }
-        }>
+        }
+        >
           <div>
             <h2>Submit Your Answer</h2>
-            <h3>[PRODUCT_NAME] : [QUESTION_BODY]</h3>
-            <span><strong>Your Nickname*:</strong>
-              <p>(For privacy reasons, do not use your full name or address)</p>
-              <input type="text"
-                placeholder="Example: Jack123"
-                onChange={(e) => setNickname(e.target.value)}
-                value={nickname}
-                maxLength="60"
-                minLength="1"></input>
+            <h3>[PRODUCT {props.product}] : {props.question}</h3>
+            <span>
+              <label
+                htmlFor="nickname"
+              >
+                <strong>Your Nickname*:</strong>
+                <p>(For privacy reasons, do not use your full name or address)</p>
+                <input
+                  type="text"
+                  placeholder="Example: Jack123"
+                  onChange={(e) => setNickname(e.target.value)}
+                  value={nickname}
+                  maxLength="60"
+                  minLength="1"
+                  name="nickname"
+                />
+              </label>
             </span>
-            <br />
           </div>
           <div>
             <br />
-            <span><strong>Your Email*:</strong></span>
-            <p>(For authentication reasons, you will not be emailed)</p>
-            <p>
-              <input type="email"
-                placeholder="Example: Jack123@email.com"
-                onChange={e => setEmail(e.target.value)}
-                value={email}
-                maxLength="60"
-                minLength="1"></input>
-            </p>
+            <label htmlFor="email">
+              <strong>Your Email*:</strong>
+              <p>(For authentication reasons, you will not be emailed)</p>
+              <p>
+                <input
+                  type="email"
+                  placeholder="Example: Jack123@email.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  maxLength="60"
+                  minLength="1"
+                  name="email"
+                />
+              </p>
+            </label>
           </div>
-          <p><strong>Your Answer*:</strong></p>
-          <textarea type="text"
-            placeholder="Why did you like the product or not?"
-            onChange={e => setAnswerText(e.target.value)}
-            value={answerText}
-            maxLength="1000"
-            minLength="1"
-          >
-          </textarea>
-          <p>{incorrectFormat ? `This error will occur if:
-                                   1. Any mandatory fields are blank
-                                   2. The email provided is not in correct email format` : null}</p>
+          <div>
+            <label htmlFor="answer">
+              <p>
+                <strong>Your Answer*:</strong>
+              </p>
+              <textarea
+                type="text"
+                placeholder="Why did you like the product or not?"
+                onChange={(e) => setAnswerText(e.target.value)}
+                value={answerText}
+                maxLength="1000"
+                minLength="1"
+                name="answer"
+              />
+            </label>
+          </div>
+          <p>
+            {incorrectFormat
+              ? 'This error will occur if: 1. Any mandatory fields are blank 2. The email provided is not in correct email format' : null}
+          </p>
           <hr />
           <p>Note: items marked with * are mandatory</p>
-          <button onClick={handlePhotoModalOpen}>Upload Your Photos</button>
-          <input type="submit"></input>
-          <button onClick={handleModalClose}>Close</button>
+          <button onClick={handlePhotoModalOpen} type="button">Upload Your Photos</button>
+          <input
+            type="submit"
+          />
+          <button onClick={handleModalClose} type="button">Close</button>
         </form>
       </Modal>
       <Modal

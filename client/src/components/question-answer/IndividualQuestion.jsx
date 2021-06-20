@@ -8,6 +8,7 @@ const IndividualQuestionRow = styled.div`
 `;
 
 export default function IndividualQuestion(props) {
+  console.log('this is props from individual question', props);
   const question = props.question.question_body;
   const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
   const [yesClicked, toggleClicked] = useState(false);
@@ -36,7 +37,7 @@ export default function IndividualQuestion(props) {
           onClick={() => handleYesClick()}
         >
           Yes
-        </span> ({helpfulness}) | <AddAnswerForm /></span>
+        </span> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} /></span>
       <IndividualAnswer answers={props.question.answers} />
     </IndividualQuestionRow>
   );

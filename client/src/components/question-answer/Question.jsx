@@ -41,7 +41,7 @@ export default function Question(props) {
     <QuestionContainer>
       <p>QUESTIONS & ANSWERS</p>
       <Search />
-      <ListOfQuestions questions={questions} />
+      <ListOfQuestions questions={questions} product={productID} />
     </QuestionContainer>
   );
 };

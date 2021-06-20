@@ -8,13 +8,14 @@ import AddQuestionForm from './AddQuestionForm.jsx';
 // properly route it to answers
 
 export default function ListOfQuestions(props) {
+  console.log('props in list of questions', props);
   const [amountOfQuestions, setAmountOfQuestions] = useState(4);
   const listOfQuestions = props.questions.length === 0
     ? null : props.questions;
   const visibleQuestions = props.questions.length === 0 ? null : listOfQuestions.slice(0, amountOfQuestions);
   const individualQuestion = props.questions.length === 0 ? 'WAITING FOR DATA' : (
     visibleQuestions.map((question) => (
-      <IndividualQuestion key={question.question_id} question={question} />
+      <IndividualQuestion key={question.question_id} question={question} product={props.product} />
     ))
   );
   const addQuestionButton = props.questions.length === 0 || visibleQuestions.length === listOfQuestions.length || visibleQuestions.length > listOfQuestions.length  ? null : <button onClick={() => setAmountOfQuestions(amountOfQuestions + 2)}><strong>MORE ANSWERED QUESTIONS</strong></button>;
@@ -24,6 +25,7 @@ export default function ListOfQuestions(props) {
       <div>Loading...</div>
     );
   }
+
   return (
     <>
       <div>{individualQuestion}</div>
