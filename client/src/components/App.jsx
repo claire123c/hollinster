@@ -10,15 +10,15 @@ window.onbeforeunload = function () {
 };
 
 const Body = styled.div`
-  margin-left: 12%;
-  margin-right: 12%;
+  padding-left: 12%;
+  padding-right: 12%;
   background-color: ${(props) => (props.current ? '#F5F4F2' : '121212')};
   color: ${(props) => (props.current ? '#292A33' : '#F5F4F2')};
 `;
 
 const LogoBar = styled.h1`
   font-family: 'Staatliches';
-  background-color: teal;
+  background-color: silver;
   padding: 2%;
 `;
 
@@ -63,8 +63,6 @@ const LightButton = styled.button`
   color: black;
   text-align: center;
   transition: all 0.2s;
-  margin-top: 1%;
-  margin-left: 10%;
   &:hover{
     color: #000000;
     background-color: #303030;
@@ -82,17 +80,16 @@ const DarkButton = styled.button`
   color:#FFFFFF;
   text-align: center;
   transition: all 0.2s;
-  margin-top: 1%;
-  margin-left: 10%;
   &:hover{
     color:#000000;
     background-color:#FFFFFF;
     }
 `;
 
+
 const App = (props) => {
   const [theme, setTheme] = useState(true);
-  const [productID, setProductID] = useState(25174);
+  const [productID, setProductID] = useState(25168);
 
   const switchProduct = () => {
     setProductID(product);
@@ -103,7 +100,7 @@ const App = (props) => {
   };
 
   return (
-    <Body current={theme} >
+    <Body current={theme}>
       <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
@@ -114,13 +111,24 @@ const App = (props) => {
       </LogoBar>
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
       <Overview productID={productID} />
+<<<<<<< HEAD
       <Related productID={productID} />
       <Question productID={productID} />
       <RatingsReviews productID={productID} />
+=======
+      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
+      <Question productID={productID} />
+      <RatingsReviews productID={productID} />
+      <div>
+        Icons made by
+        <a href="https://www.freepik.com" title="Freepik">Freepik</a>
+        {' '}
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      </div>
+>>>>>>> main
     </Body>
   );
 };
-
-// attribute free icon flaticon at bottom of website: <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 export default App;
