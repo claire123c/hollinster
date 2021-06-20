@@ -15,10 +15,17 @@ const customStyles = {
 //binds modal to the id
 Modal.setAppElement('#app');
 
-const AddAnswerForm = (props) => {
+export default function AddAnswerForm(props) {
   // modal experimental section
   console.log('these are props in addanswerform:', props);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [answerText, setAnswerText] = useState('');
+  // end part of modal form
+  // upload photo modal
+  const [photoModalOpen, setPhotoModalOpen] = useState(false);
 
   function handleModalOpen() {
     setModalOpen(true);
@@ -26,15 +33,12 @@ const AddAnswerForm = (props) => {
 
   function handleModalClose() {
     setModalOpen(false);
+    setNickname('');
+    setEmail('');
+    setAnswerText('');
   }
   //end modal experimental section
   //part of modal form
-  const [nickname, setNickname] = useState('');
-  const [email, setEmail] = useState('');
-  const [answerText, setAnswerText] = useState('');
-  // end part of modal form
-  // upload photo modal
-  const [photoModalOpen, setPhotoModalOpen] = useState(false);
 
   function handlePhotoModalOpen() {
     setPhotoModalOpen(true);
@@ -69,6 +73,9 @@ const AddAnswerForm = (props) => {
               event.preventDefault();
             } else {
               console.log('this is form data:', nickname, email, answerText);
+              setNickname('');
+              setEmail('');
+              setAnswerText('');
               handleModalClose();
               e.preventDefault();
             }
@@ -77,7 +84,9 @@ const AddAnswerForm = (props) => {
         >
           <div>
             <h2>Submit Your Answer</h2>
-            <h3>[PRODUCT {props.product}] : {props.question}</h3>
+            <h3>
+              [PRODUCT {props.product}] : {props.question}
+            </h3>
             <span>
               <label
                 htmlFor="nickname"
@@ -156,7 +165,5 @@ const AddAnswerForm = (props) => {
         </form>
       </Modal>
     </>
-  )
+  );
 }
-
-export default AddAnswerForm;
