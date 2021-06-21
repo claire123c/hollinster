@@ -183,7 +183,21 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     headers: { Authorization: APIInfo.token },
   })
     .then((response) => {
-      res.status(204).send(response.data);
+      res.status(204);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  axios({
+    url: `${API}/qa/answers/${req.params.answer_id}/helpful`,
+    method: 'PUT',
+    headers: { Authorization: APIInfo.token },
+  })
+    .then((response) => {
+      res.status(204);
     })
     .catch((error) => {
       res.status(500).send(error);
@@ -219,6 +233,7 @@ app.post('/cart', (req, res) => {
       res.status(500).send(error);
     });
 });
+
 // ***********************************************************************
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`);

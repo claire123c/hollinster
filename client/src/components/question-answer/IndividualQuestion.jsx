@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import axios from 'axios';
 import IndividualAnswer from './IndividualAnswer.jsx';
 import { sampleQuestionsList } from './sampleData.js';
 import AddAnswerForm from './AddAnswerForm.jsx';
@@ -14,12 +15,16 @@ export default function IndividualQuestion(props) {
   const [yesClicked, toggleClicked] = useState(false);
   // need to modify this handleYesClick function to something that interacts with API
   const handleYesClick = () => {
-    if (!yesClicked) {
+    if (!yesClicked && yesClicked === false) {
       toggleClicked(true);
       setHelpfulness(helpfulness + 1);
-    } else {
-      toggleClicked(false);
-      setHelpfulness(helpfulness - 1);
+      axios.put(`/qa/questions/${props.question.question_id}/helpful`)
+        .then((response) => {
+          console.log(response.status);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 

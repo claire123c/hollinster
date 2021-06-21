@@ -8,7 +8,6 @@ import AddQuestionForm from './AddQuestionForm.jsx';
 // properly route it to answers
 
 export default function ListOfQuestions(props) {
-  console.log('props in list of questions', props);
   const [amountOfQuestions, setAmountOfQuestions] = useState(4);
   const listOfQuestions = props.questions.length === 0
     ? null : props.questions;

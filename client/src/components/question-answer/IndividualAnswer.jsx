@@ -18,31 +18,30 @@ export default function IndividualAnswer(props) {
   Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
   const [amountOfAnswers, setAmountOfAnswers] = useState(2);
   const visibleAnswers = listOfAnswers.slice(0, amountOfAnswers);
-  const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
-  const [reported, setReported] = useState('Report');
-
-  const handleAnswerHelpfulness = () => {
-    if (!answerHelpfulnessClicked) {
-      setAnswerHelpfulnessClicked(true);
-      setAnswerHelpfulnessRating(answerHelpfulnessRating + 1);
-    } else {
-      setAnswerHelpfulnessClicked(false);
-      setAnswerHelpfulnessRating(answerHelpfulnessRating - 1);
-    }
-  };
-
-  const handleReported = () => {
-    if (!isReported) {
-      setIsReported(true);
-      setReported('Reported');
-    } else {
-      setIsReported(false);
-      setReported('Report');
-    }
-  };
-
-  const [isReported, setIsReported] = useState(false);
   const answers = visibleAnswers.map((answer) => {
+    const [answerHelpfulnessClicked, setAnswerHelpfulnessClicked] = useState(false);
+    const [reported, setReported] = useState('Report');
+    const [answerHelpfulness, setAnswerHelpfulness] = useState(answer.helpfulness);
+    const handleAnswerHelpfulness = () => {
+      if (!answerHelpfulnessClicked) {
+        setAnswerHelpfulnessClicked(true);
+        setAnswerHelpfulness(answerHelpfulness + 1);
+      }
+    };
+
+    const handleReported = () => {
+      if (!isReported) {
+        setIsReported(true);
+        setReported('Reported');
+      } else {
+        setIsReported(false);
+        setReported('Report');
+      }
+    };
+
+    const [isReported, setIsReported] = useState(false);
+    const id = answer.id;
+    console.log('answer', answer);
     const answerDate = answer.date;
     const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const date = new Date(answerDate);
@@ -62,7 +61,7 @@ export default function IndividualAnswer(props) {
             </UnderlinedButtons>
             &nbsp;
             (
-            {answer.helpfulness}
+            {answerHelpfulness}
             )
             &nbsp;|&nbsp;
             <UnderlinedButtons
