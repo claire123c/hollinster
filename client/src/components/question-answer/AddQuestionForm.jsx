@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const AddQuestion = styled.button`
+  padding: 20px;
+  border: 5px solid;
+  margin: 3%;
+`;
 
 const customStyles = {
   content: {
@@ -56,14 +63,14 @@ export default function AddQuestionForm(props) {
 
   return (
     <>
-      <button
+      <AddQuestion
         onClick={handleModalOpen}
         type="button"
       >
         <strong>
           ADD A QUESTION +
         </strong>
-      </button>
+      </AddQuestion>
       <Modal
         isOpen={modalOpen}
         // onAfterOpen={() => afterModalOpen()}
