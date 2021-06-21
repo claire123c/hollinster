@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 
 //modal styles
 const customStyles = {
@@ -17,9 +18,7 @@ Modal.setAppElement('#app');
 
 export default function AddAnswerForm(props) {
   // modal experimental section
-  console.log('these are props in addanswerform:', props);
   const [modalOpen, setModalOpen] = useState(false);
-
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [answerText, setAnswerText] = useState('');
@@ -52,6 +51,31 @@ export default function AddAnswerForm(props) {
     setPhotoModalOpen(false);
     event.preventDefault();
   }
+
+  function handleSubmit() {
+    if (answerText.length === 0 || email.length === 0 || nickname.length === 0) {
+      setIncorrectFormat(true);
+    } else {
+      axios.post(`/qa/questions/${props.questionID}/answers`, {
+        body: answerText,
+        name: nickname,
+        email: email,
+        photos: [],
+      })
+        .then((response) => {
+          console.log(response);
+          setNickname('');
+          setEmail('');
+          setAnswerText('');
+          props.getQuestions();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      handleModalClose();
+    }
+  }
+
   // end upload photo modal
 
   const [incorrectFormat, setIncorrectFormat] = useState(false);
@@ -66,21 +90,8 @@ export default function AddAnswerForm(props) {
         style={customStyles}
         contentLabel="Question Answer Form"
       >
-        <form onSubmit={
-          (e) => {
-            if (answerText.length === 0 || email.length === 0 || nickname.length === 0) {
-              setIncorrectFormat(true);
-              event.preventDefault();
-            } else {
-              console.log('this is form data:', nickname, email, answerText);
-              setNickname('');
-              setEmail('');
-              setAnswerText('');
-              handleModalClose();
-              e.preventDefault();
-            }
-          }
-        }
+        <form
+          onSubmit={() => handleSubmit()}
         >
           <div>
             <h2>Submit Your Answer</h2>

@@ -15,7 +15,7 @@ export default function ListOfQuestions(props) {
   const visibleQuestions = props.questions.length === 0 ? null : listOfQuestions.slice(0, amountOfQuestions);
   const individualQuestion = props.questions.length === 0 ? 'WAITING FOR DATA' : (
     visibleQuestions.map((question) => (
-      <IndividualQuestion key={question.question_id} question={question} product={props.product} />
+      <IndividualQuestion key={question.question_id} question={question} product={props.product} getQuestions={props.getRequest} />
     ))
   );
   const addQuestionButton = props.questions.length === 0 || visibleQuestions.length === listOfQuestions.length || visibleQuestions.length > listOfQuestions.length  ? null : <button onClick={() => setAmountOfQuestions(amountOfQuestions + 2)}><strong>MORE ANSWERED QUESTIONS</strong></button>;
@@ -31,7 +31,10 @@ export default function ListOfQuestions(props) {
       <div>{individualQuestion}</div>
       <span>
         {addQuestionButton}
-        <AddQuestionForm questionBody={props} />
+        <AddQuestionForm
+          questionBody={props}
+          getQuestions={props.getRequest}
+        />
       </span>
     </>
   );

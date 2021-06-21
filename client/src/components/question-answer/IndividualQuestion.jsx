@@ -37,7 +37,7 @@ export default function IndividualQuestion(props) {
           onClick={() => handleYesClick()}
         >
           Yes
-        </span> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} /></span>
+        </span> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} /></span>
       <IndividualAnswer answers={props.question.answers} />
     </IndividualQuestionRow>
   );

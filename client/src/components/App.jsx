@@ -86,7 +86,6 @@ const DarkButton = styled.button`
     }
 `;
 
-
 const App = (props) => {
   const [theme, setTheme] = useState(true);
   const [productID, setProductID] = useState(25168);
