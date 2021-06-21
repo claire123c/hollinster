@@ -48,4 +48,4 @@ export default function Question(props) {
       <ListOfQuestions questions={questions} product={productID} getRequest={getQuestionsRequest} />
     </QuestionContainer>
   );
-};
+}
