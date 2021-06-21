@@ -183,7 +183,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     headers: { Authorization: APIInfo.token },
   })
     .then((response) => {
-      res.status(201).send(response);
+      res.status(204).send(response.data);
     })
     .catch((error) => {
       res.status(500).send(error);
