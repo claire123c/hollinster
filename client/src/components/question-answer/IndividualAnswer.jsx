@@ -13,6 +13,7 @@ const UnderlinedButtons = styled.button`
   border: none;
   text-decoration: underline;
 `;
+
 export default function IndividualAnswer(props) {
   const listOfAnswers = [];
   Object.keys(props.answers).forEach((answerID) => listOfAnswers.push(props.answers[answerID]));
@@ -47,8 +48,6 @@ export default function IndividualAnswer(props) {
     };
 
     const [isReported, setIsReported] = useState(false);
-    const id = answer.id;
-    console.log('answer', answer);
     const answerDate = answer.date;
     const arrOfStringMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const date = new Date(answerDate);

@@ -8,8 +8,16 @@ import AddAnswerForm from './AddAnswerForm.jsx';
 const IndividualQuestionRow = styled.div`
 `;
 
+const HelpfulnessSection = styled.span`
+
+`;
+
+const UnderlinedButtons = styled.button`
+  border: none;
+  text-decoration: underline;
+`;
+
 export default function IndividualQuestion(props) {
-  console.log('this is props from individual question', props);
   const question = props.question.question_body;
   const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
   const [yesClicked, toggleClicked] = useState(false);
@@ -35,14 +43,15 @@ export default function IndividualQuestion(props) {
           Q: {question}
         </strong>
       </span>
-      <span>
+      <HelpfulnessSection>
         Helpful?
-        <span
+        <UnderlinedButtons
           role="button"
           onClick={() => handleYesClick()}
         >
           Yes
-        </span> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} /></span>
+        </UnderlinedButtons> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} />
+      </HelpfulnessSection>
       <IndividualAnswer answers={props.question.answers} />
     </IndividualQuestionRow>
   );
