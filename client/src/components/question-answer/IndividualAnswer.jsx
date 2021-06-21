@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { sampleAnswersList } from './sampleData.js';
+import axios from 'axios';
 
 const IndividualAnswerRow = styled.div`
 `;
@@ -26,6 +26,13 @@ export default function IndividualAnswer(props) {
       if (!answerHelpfulnessClicked) {
         setAnswerHelpfulnessClicked(true);
         setAnswerHelpfulness(answerHelpfulness + 1);
+        axios.put(`/qa/answers/${answer.id}/helpful`)
+          .then((response) => {
+            console.log(response.status);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
     };
 
