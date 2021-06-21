@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Overview from './overview/Overview.jsx';
-import Related from './related/Related.jsx';
+// import Overview from './overview/Overview.jsx';
+// import Related from './related/Related.jsx';
 import Question from './question-answer/Question.jsx';
-import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
+// import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -86,10 +86,9 @@ const DarkButton = styled.button`
     }
 `;
 
-
 const App = (props) => {
   const [theme, setTheme] = useState(true);
-  const [productID, setProductID] = useState(25167);
+  const [productID, setProductID] = useState(25168);
 
   const switchProduct = () => {
     setProductID(product);
@@ -101,26 +100,26 @@ const App = (props) => {
 
   return (
     <Body current={theme}>
-      <LogoBar>
+      {/* <LogoBar>
         <KangaImg src="./kangaroo.png" alt="kanga" />
         HOLLINSTER
         <Search>
           <SearchLine placeholder="Search..." />
           <SearchImg src="./assets/loupe.png" />
         </Search>
-      </LogoBar>
+      </LogoBar> */}
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
-      <Overview productID={productID} />
-      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
+      {/* <Overview productID={productID} /> */}
+      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} /> */}
       <Question productID={productID} />
-      <RatingsReviews productID={productID} />
-      <div>
+      {/* <RatingsReviews productID={productID} /> */}
+      {/* <div>
         Icons made by
         <a href="https://www.freepik.com" title="Freepik">Freepik</a>
         {' '}
         from
         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-      </div>
+      </div> */}
     </Body>
   );
 };

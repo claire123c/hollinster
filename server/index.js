@@ -119,7 +119,7 @@ app.get('/reviews/meta/:product_id', (req, res) => {
 // Q&A API Calls
 app.get('/qa/questions/:product_id', (req, res) => {
   axios({
-    url: `${API}/qa/questions?product_id=${req.params.product_id}`,
+    url: `${API}/qa/questions?product_id=${req.params.product_id}&page=1&count=20`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
@@ -145,13 +145,49 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
     });
 });
 
+app.post('/qa/questions', (req, res) => {
+  console.log(req.body);
+  axios({
+    url: `${API}/qa/questions`,
+    method: 'POST',
+    headers: { Authorization: APIInfo.token },
+    data: req.body,
+  })
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
 app.post('/qa/questions/:question_id/answers', (req, res) => {
   axios({
     url: `${API}/qa/questions/${req.params.question_id}/answers`,
     method: 'POST',
     headers: { Authorization: APIInfo.token },
+    data: req.body,
   })
-    .then(res.status(201).send('Status: 201 CREATED'));
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  axios({
+    url: `${API}/qa/questions/${req.params.question_id}/helpful`,
+    method: 'PUT',
+    headers: { Authorization: APIInfo.token },
+  })
+    .then((response) => {
+      res.status(204).send(response.data);
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
 });
 
 // CART API Calls

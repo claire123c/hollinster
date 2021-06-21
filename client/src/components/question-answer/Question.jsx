@@ -16,7 +16,7 @@ export default function Question(props) {
   // const productID = '25168'; // hard ID for now, try to draw id located in App
   const productID = props.productID;
 
-  useEffect(() => {
+  const getQuestionsRequest = () => {
     axios.get(`/qa/questions/${productID}`)
       .then((response) => {
         // setProduct(response.data);
@@ -25,6 +25,10 @@ export default function Question(props) {
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  useEffect(() => {
+    getQuestionsRequest();
   }, []);
 
   // useEffect(() => {
@@ -41,7 +45,7 @@ export default function Question(props) {
     <QuestionContainer>
       <p>QUESTIONS & ANSWERS</p>
       <Search />
-      <ListOfQuestions questions={questions} />
+      <ListOfQuestions questions={questions} product={productID} getRequest={getQuestionsRequest} />
     </QuestionContainer>
   );
 };
