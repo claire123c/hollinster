@@ -55,4 +55,4 @@ export default function IndividualQuestion(props) {
       <IndividualAnswer answers={props.question.answers} />
     </IndividualQuestionRow>
   );
-};
+}
