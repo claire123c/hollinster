@@ -38,11 +38,11 @@ export default function Answers(props) {
   return (
     <>
       <br />
-      <div>
-        {individualAnswer}
-      </div>
+      <br />
       <IndividualAnswerRow>
-        <br />
+        <div>
+          {individualAnswer}
+        </div>
         <p>
           <MoreAnswersButton
             type="button"

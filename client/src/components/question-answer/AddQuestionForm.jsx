@@ -53,6 +53,10 @@ export default function AddQuestionForm(props) {
       })
         .then((response) => {
           console.log(response);
+          props.getQuestions();
+          setNickname('');
+          setEmail('');
+          setQuestionText('');
         })
         .catch((error) => {
           console.log(error);
