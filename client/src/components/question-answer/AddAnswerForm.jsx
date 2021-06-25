@@ -67,7 +67,6 @@ export default function AddAnswerForm(props) {
           setNickname('');
           setEmail('');
           setAnswerText('');
-          props.getQuestions();
         })
         .catch((error) => {
           console.log(error);

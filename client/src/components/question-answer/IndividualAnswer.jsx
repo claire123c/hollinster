@@ -35,10 +35,10 @@ export default function IndividualAnswer(props) {
     const [isReported, setIsReported] = useState(false);
     const handleAnswerHelpfulness = () => {
       if (!answerHelpfulnessClicked) {
-        setAnswerHelpfulnessClicked(true);
-        setAnswerHelpfulness(answerHelpfulness + 1);
         axios.put(`/qa/answers/${answer.id}/helpful`)
           .then((response) => {
+            setAnswerHelpfulnessClicked(true);
+            setAnswerHelpfulness(answerHelpfulness + 1);
             console.log(response.status);
           })
           .catch((error) => {

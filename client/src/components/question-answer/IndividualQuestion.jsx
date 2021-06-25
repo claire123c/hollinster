@@ -23,7 +23,7 @@ export default function IndividualQuestion(props) {
   const [yesClicked, toggleClicked] = useState(false);
   // need to modify this handleYesClick function to something that interacts with API
   const handleYesClick = () => {
-    if (!yesClicked && yesClicked === false) {
+    if (!yesClicked) {
       toggleClicked(true);
       setHelpfulness(helpfulness + 1);
       axios.put(`/qa/questions/${props.question.question_id}/helpful`)
@@ -46,7 +46,7 @@ export default function IndividualQuestion(props) {
       <HelpfulnessSection>
         Helpful?
         <UnderlinedButtons
-          role="button"
+          disabled={yesClicked}
           onClick={() => handleYesClick()}
         >
           Yes

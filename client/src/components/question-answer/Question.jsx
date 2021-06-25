@@ -29,7 +29,7 @@ export default function Question(props) {
 
   useEffect(() => {
     getQuestionsRequest();
-  }, []);
+  }, [questions]);
 
   // useEffect(() => {
   //   axios.get(`/qa/questions/${productID}/answers`)
