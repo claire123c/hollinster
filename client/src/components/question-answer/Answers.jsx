@@ -37,6 +37,7 @@ export default function Answers(props) {
 
   return (
     <>
+      <br />
       <div>
         {individualAnswer}
       </div>

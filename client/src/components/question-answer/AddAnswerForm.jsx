@@ -17,6 +17,7 @@ const customStyles = {
 Modal.setAppElement('#app');
 
 export default function AddAnswerForm(props) {
+  console.log('answerform', props);
   // modal experimental section
   const [modalOpen, setModalOpen] = useState(false);
   const [nickname, setNickname] = useState('');
@@ -64,6 +65,7 @@ export default function AddAnswerForm(props) {
       })
         .then((response) => {
           console.log(response);
+          props.getQuestions();
           setNickname('');
           setEmail('');
           setAnswerText('');

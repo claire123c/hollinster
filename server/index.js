@@ -133,7 +133,7 @@ app.get('/qa/questions/:product_id', (req, res) => {
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   axios({
-    url: `${API}/qa/questions/${req.params.question_id}/answers&page=1&count=20`,
+    url: `${API}/qa/questions/${req.params.question_id}/answers`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
