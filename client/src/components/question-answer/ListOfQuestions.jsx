@@ -35,6 +35,7 @@ export default function ListOfQuestions(props) {
         <AddQuestionForm
           questionBody={props}
           getQuestions={props.getRequest}
+          product={props.product}
         />
       </span>
     </>

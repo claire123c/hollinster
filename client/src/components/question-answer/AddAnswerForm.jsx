@@ -164,7 +164,6 @@ export default function AddAnswerForm(props) {
       </Modal>
       <Modal
         isOpen={photoModalOpen}
-        // onAfterOpen={() => afterModalOpen()}
         onRequestClose={handlePhotoModalClose}
         style={customStyles}
         contentLabel="Upload Photo Form"

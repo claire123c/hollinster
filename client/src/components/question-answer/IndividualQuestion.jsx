@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import axios from 'axios';
-import IndividualAnswer from './IndividualAnswer.jsx';
+import Answers from './Answers.jsx';
 import { sampleQuestionsList } from './sampleData.js';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
@@ -9,7 +9,6 @@ const IndividualQuestionRow = styled.div`
 `;
 
 const HelpfulnessSection = styled.span`
-
 `;
 
 const UnderlinedButtons = styled.button`
@@ -52,7 +51,7 @@ export default function IndividualQuestion(props) {
           Yes
         </UnderlinedButtons> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} />
       </HelpfulnessSection>
-      <IndividualAnswer answers={props.question.answers} />
+      <Answers answers={props.question.answers} product={props.product} />
     </IndividualQuestionRow>
   );
 }

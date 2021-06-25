@@ -12,8 +12,6 @@ const QuestionContainer = styled.div`
 export default function Question(props) {
   // const [ product, setProduct ] = useState({});
   const [questions, setQuestions] = useState([]);
-  // console.log('question list:', sampleQuestionsList, 'answer list', sampleAnswersList.results);
-  // const productID = '25168'; // hard ID for now, try to draw id located in App
   const productID = props.productID;
 
   const getQuestionsRequest = () => {

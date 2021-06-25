@@ -119,7 +119,7 @@ app.get('/reviews/meta/:product_id', (req, res) => {
 // Q&A API Calls
 app.get('/qa/questions/:product_id', (req, res) => {
   axios({
-    url: `${API}/qa/questions?product_id=${req.params.product_id}&page=1&count=20`,
+    url: `${API}/qa/questions?product_id=${req.params.product_id}&page=1&count=60`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
@@ -133,7 +133,7 @@ app.get('/qa/questions/:product_id', (req, res) => {
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
   axios({
-    url: `${API}/qa/questions/${req.params.question_id}/answers`,
+    url: `${API}/qa/questions/${req.params.question_id}/answers&page=1&count=20`,
     method: 'GET',
     headers: { Authorization: APIInfo.token },
   })
