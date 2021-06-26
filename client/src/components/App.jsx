@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import Overview from './overview/Overview.jsx';
-// import Related from './related/Related.jsx';
+import Overview from './overview/Overview.jsx';
+import Related from './related/Related.jsx';
 import Question from './question-answer/Question.jsx';
-// import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
+import RatingsReviews from './ratings-reviews/ratings-reviews.jsx';
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -109,10 +109,10 @@ const App = () => {
         </Search>
       </LogoBar>
       {theme ? <LightButton type="button" onClick={onClickTheme}>Go Dark</LightButton> : <DarkButton type="button" onClick={onClickTheme}>Light it up!</DarkButton>}
-      {/* <Overview productID={productID} /> */}
-      {/* <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} /> */}
+      <Overview productID={productID} />
+      <Related productID={productID} setProductID={setProductID} switchProduct={switchProduct} />
       <Question productID={productID} />
-      {/* <RatingsReviews productID={productID} /> */}
+      <RatingsReviews productID={productID} />
       <div>
         Icons made by
         <a href="https://www.freepik.com" title="Freepik">Freepik</a>
