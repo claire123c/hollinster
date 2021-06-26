@@ -7,7 +7,7 @@ import React from 'react';
 // import { rest } from 'msw';
 // import { setupServer } from 'msw/node';
 // import react-testing methods
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 // add custom jest matchers from jest-dom
 // import '@testing-library/jest-dom/extend-expect';
 import Search from '../../components/question-answer/Search.jsx';

@@ -20,7 +20,7 @@ const customStyles = {
   },
 };
 
-Modal.setAppElement('#app');
+// Modal.setAppElement('#app');
 
 export default function AddQuestionForm(props) {
   const [modalOpen, setModalOpen] = useState(false);

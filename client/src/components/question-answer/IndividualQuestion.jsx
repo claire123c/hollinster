@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import axios from 'axios';
 import Answers from './Answers.jsx';
-import { sampleQuestionsList } from './sampleData.js';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
 const IndividualQuestionRow = styled.div`
@@ -47,6 +46,7 @@ export default function IndividualQuestion(props) {
         <UnderlinedButtons
           disabled={yesClicked}
           onClick={() => handleYesClick()}
+          data-testid="yesButton"
         >
           Yes
         </UnderlinedButtons> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} />
