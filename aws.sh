@@ -1,0 +1,1 @@
+ssh -i "hollinster.pem" ec2-user@ec2-3-231-217-230.compute-1.amazonaws.com
