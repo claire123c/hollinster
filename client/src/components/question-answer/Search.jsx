@@ -37,6 +37,7 @@ export default function Search() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+            data-testid="searchInput"
           />
           <MagnifyingGlass
             onClick={() => event.preventDefault()}

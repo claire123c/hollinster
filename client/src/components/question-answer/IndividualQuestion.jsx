@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import IndividualAnswer from './IndividualAnswer.jsx';
-import { sampleQuestionsList } from './sampleData.js';
+import styled from 'styled-components';
+import axios from 'axios';
+import Answers from './Answers.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
 const IndividualQuestionRow = styled.div`
+`;
+
+const HelpfulnessSection = styled.span`
+`;
+
+const UnderlinedButtons = styled.button`
+  border: none;
+  text-decoration: underline;
 `;
 
 export default function IndividualQuestion(props) {
@@ -16,9 +24,13 @@ export default function IndividualQuestion(props) {
     if (!yesClicked) {
       toggleClicked(true);
       setHelpfulness(helpfulness + 1);
-    } else {
-      toggleClicked(false);
-      setHelpfulness(helpfulness - 1);
+      axios.put(`/qa/questions/${props.question.question_id}/helpful`)
+        .then((response) => {
+          console.log(response.status);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 
@@ -29,15 +41,17 @@ export default function IndividualQuestion(props) {
           Q: {question}
         </strong>
       </span>
-      <span>
+      <HelpfulnessSection>
         Helpful?
-        <span
-          role="button"
+        <UnderlinedButtons
+          disabled={yesClicked}
           onClick={() => handleYesClick()}
+          data-testid="yesButton"
         >
           Yes
-        </span> ({helpfulness}) | <AddAnswerForm /></span>
-      <IndividualAnswer answers={props.question.answers} />
+        </UnderlinedButtons> ({helpfulness}) | <AddAnswerForm product={props.product} question={props.question.question_body} questionID={props.question.question_id} getQuestions={props.getQuestions} />
+      </HelpfulnessSection>
+      <Answers answers={props.question.answers} product={props.product} />
     </IndividualQuestionRow>
   );
-};
+}

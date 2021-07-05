@@ -82,6 +82,10 @@ function Overview({ productID }) {
 
   useEffect(() => {
     setProductNum(productID);
+    localStorage.removeItem('product');
+    localStorage.removeItem('styles');
+    localStorage.removeItem('reviews');
+    localStorage.removeItem('meta_reviews');
   }, [productID]);
 
   useEffect(() => {
