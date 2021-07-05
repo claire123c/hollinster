@@ -69,11 +69,12 @@ To ensure server is running properly, run:
 ```sh
 npm test
 ```
-## Author
+## Authors
 - Product Overview - Claire Chen
+- Related Items & Comparison - Chris Pak
 - Ratings & Reviews = Hollin Wakefield
 - Questions & Answers = John Yasis
-- Related Items & Comparison - Chris Pak
+
 
 ## Acknowledgements
 
