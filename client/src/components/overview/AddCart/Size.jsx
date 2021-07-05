@@ -15,7 +15,6 @@ const SizeSelector = styled.div`
   font-size: 16px;
 `;
 
-
 const Container = styled.div`
   position: relative;
   width: 100%;

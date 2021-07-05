@@ -55,7 +55,11 @@ function Freeform({ productInfo }) {
           }
           return (
             <ListItem key={`${item.feature}_${item.value}`}>
-              <span>{item.feature}: </span>
+              <span>
+                {item.feature}
+                :
+                {' '}
+              </span>
               <span>{item.value}</span>
             </ListItem>
           );
