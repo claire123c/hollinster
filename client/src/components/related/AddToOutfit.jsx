@@ -22,7 +22,3 @@ export default function AddToOutfit({ addToOutfit }) {
     </CardWrapper>
   );
 }
-
-AddToOutfit.propTypes = {
-  addToOutfit: PropTypes.func.isRequired,
-};
