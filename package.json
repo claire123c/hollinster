@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d eval-source-map --watch",
+    "react-prod": "webpack -d eval-source-map",
     "test": "jest --coverage"
   },
   "repository": {
