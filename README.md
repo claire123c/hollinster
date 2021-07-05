@@ -49,7 +49,7 @@ The Overview module is the top-most module on the Product Details page. It's fun
    - Features thumbnail images that can be scrolled through if more than 7 images
    - On Click thumbanil feature that updates the main image to match the clicked thumbnail
    - Includes on Hover features for user interface
-2.  Product Information
+2. Product Information
    - Features a star rating that displays product average rating
    - Displays a Read all reviews that when clicked scrolls the page to the Ratings & Reviews module
    - Displays product information obtained from API
