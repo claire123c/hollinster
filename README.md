@@ -39,7 +39,7 @@ npm run react:prod
 ```sh
 npm start
 ```
-5. The server runs on PORT 3002 on default. Navigate to http://localhost:3000.
+5. The server runs on PORT 3000 on default. Navigate to http://localhost:3000.
 
 ## Module Description
 The Overview module is the top-most module on the Product Details page. It's functionality can be divided in several pieces:
