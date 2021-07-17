@@ -47,7 +47,7 @@ The Overview module is the top-most module on the Product Details page. It's fun
    - Allows the user to expand and shrink the main image
    - Features right and left arrows to allow the user to click between images
    - Features thumbnail images that can be scrolled through if more than 7 images
-   - On Click thumbanil feature that updates the main image to match the clicked thumbnail
+   - On Click thumbnail feature that updates the main image to match the clicked thumbnail
    - Includes on Hover features for user interface
 2. Product Information
    - Features a star rating that displays product average rating
