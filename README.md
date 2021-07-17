@@ -72,8 +72,8 @@ npm test
 ## Authors
 - Product Overview - Claire Chen
 - Related Items & Comparison - Chris Pak
-- Ratings & Reviews = Hollin Wakefield
-- Questions & Answers = John Yasis
+- Ratings & Reviews - Hollin Wakefield
+- Questions & Answers - John Yasis
 
 
 ## Acknowledgements
